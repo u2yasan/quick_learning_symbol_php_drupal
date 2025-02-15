@@ -1,0 +1,18 @@
+create_namespace:
+  version: 0.1
+  js:
+    # /modules/custom/quicklearning_symbol/js/bundle.web.js: { type: external, attributes: { type: 'module' } }
+    /modules/custom/quicklearning_symbol/js/env.js: { type: external, attributes: { type: 'module' } }
+    /modules/custom/quicklearning_symbol/js/create_namespace.js: { type: external, attributes: { type: 'module' } }
+
+create_subnamespace:
+  version: 0.1
+  js:
+    /modules/custom/quicklearning_symbol/js/env.js: { type: external, attributes: { type: 'module' } }
+    /modules/custom/quicklearning_symbol/js/create_subnamespace.js: { type: external, attributes: { type: 'module' } }   
+
+link_namespace:
+  version: 0.1
+  js:
+    /modules/custom/quicklearning_symbol/js/env.js: { type: external, attributes: { type: 'module' } }
+    /modules/custom/quicklearning_symbol/js/link_namespace.js: { type: external, attributes: { type: 'module' } }         

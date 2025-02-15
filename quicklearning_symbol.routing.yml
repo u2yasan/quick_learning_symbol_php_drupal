@@ -1,0 +1,15 @@
+quicklearning_symbol.description:
+  path: '/quicklearning_symbol'
+  defaults:
+    _controller: '\Drupal\quicklearning_symbol\Controller\Page::description'
+    _title: 'Qucik Learning Symbol'
+  requirements:
+    _permission: 'access content'
+
+quicklearning_symbol.settings:
+  path: '/admin/config/quicklearning_symbol/settings'
+  defaults:
+    _form: '\Drupal\quicklearning_symbol\Form\SettingsForm'
+    _title: 'Quick Learning Symbol Settings'
+  requirements:
+    _permission: 'administer site configuration'

@@ -1,0 +1,47 @@
+qls_sect3.description:
+  path: '/quicklearning_symbol/qls_sect3'
+  defaults:
+    _controller: '\Drupal\qls_sect3\Controller\Page::description'
+    _title: 'Qucik Learning Symbol Section 3'
+  requirements:
+    _permission: 'access content'
+
+qls_sect3.generate_account_form:
+  path: '/quicklearning_symbol/qls_sect3/generate_account_form'
+  defaults:
+    _form: '\Drupal\qls_sect3\Form\GenerateAccountForm'
+    _title: 'Qucik Learning Symbol Section 3'
+  requirements:
+    _permission: 'access content'
+
+qls_sect3.generate_account_from_pvtkey_form:
+  path: '/quicklearning_symbol/qls_sect3/generate_account_from_pvtkey_form'
+  defaults:
+    _form: '\Drupal\qls_sect3\Form\GenerateAccountFromPvtKeyForm'
+    _title: 'Qucik Learning Symbol Section 3'
+  requirements:
+    _permission: 'access content'    
+
+qls_sect3.generate_account_from_pubkey_form:
+  path: '/quicklearning_symbol/qls_sect3/generate_account_from_pubkey_form'
+  defaults:
+    _form: '\Drupal\qls_sect3\Form\GenerateAccountFromPubKeyForm'
+    _title: 'Qucik Learning Symbol Section 3'
+  requirements:
+    _permission: 'access content' 
+
+qls_sect3.list_owned_mosaics_form:
+  path: '/quicklearning_symbol/qls_sect3/list_owned_mosaics_form'
+  defaults:
+    _form: '\Drupal\qls_sect3\Form\ListOwnedMosaicsForm'
+    _title: 'Qucik Learning Symbol Section 3'
+  requirements:
+    _permission: 'access content' 
+
+# qls_sect3.account_info:
+#   path: '/quicklearning_symbol/qls_sect3/account_info'
+#   defaults:
+#     _controller: '\Drupal\qls_sect3\Controller\SymbolAccountController::accountInfo'
+#     _title: 'Qucik Learning Symbol Section 3 Account Information'
+#   requirements:
+#     _permission: 'access content'    

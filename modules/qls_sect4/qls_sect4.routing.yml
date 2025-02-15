@@ -1,0 +1,62 @@
+# This routing.yml file makes both the fapi example description page and the
+# included sample forms available at specific URL's on your site. A route
+# maps a URL path to a controller. For page controllers it defines the
+# function or method that will be called when the page is accessed.  For form
+# controllers the content is determined by the buildForm method defined by the
+# form controller implementation.
+
+# Access to these paths is restricted to users with the permission
+# 'access content'. This is notated as _permission: 'access content'.
+
+# Menu items corresponding to these URLs are defined separately in the
+# form_api_example.links.menu.yml file.
+qls_sect4.description:
+  path: '/quicklearning_symbol/qls_sect4'
+  defaults:
+    _controller: '\Drupal\qls_sect4\Controller\Page::description'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+qls_sect4.simple_transfer_transaction_form:
+  path: '/quicklearning_symbol/qls_sect4/simple_transfer_transaction'
+  defaults:
+    _form: '\Drupal\qls_sect4\Form\SimpleTransferTransactionForm'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+qls_sect4.generate_address_form:
+  path: '/quicklearning_symbol/qls_sect4/generate_address'
+  defaults:
+    _form: '\Drupal\qls_sect4\Form\GenerateAddressForm'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+qls_sect4.list_transactions_form:
+  path: '/quicklearning_symbol/qls_sect4/list_transactions'
+  defaults:
+    _form: '\Drupal\qls_sect4\Form\ListTransactionsForm'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+qls_sect4.aggregate_transfer_transaction_form:
+  path: '/quicklearning_symbol/qls_sect4/aggregate_transfer_transaction'
+  defaults:
+    _form: '\Drupal\qls_sect4\Form\AggregateTransferTransactionForm'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+qls_sect4.form_page:
+  path: '/quicklearning_symbol/qls_sect4/form_page'
+  defaults:
+    _controller: '\Drupal\qls_sect4\Controller\FormPageController::content'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+
+

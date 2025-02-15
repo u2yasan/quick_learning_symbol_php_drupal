@@ -1,0 +1,14 @@
+name: Quick Learning Symbol Example
+type: module
+description: 'Provides example code for Symbol Blockchain.'
+package: Symbol Blockchain Example modules
+dependencies:
+  - drupal:toolbar
+  - drupal:key
+  # - drupal:encrypt
+  - drupal:config
+configure: quicklearning_symbol.settings  
+core_version_requirement: ^11.0
+version: '0.0.1'
+project: 'quicklearning_symbol'
+datestamp: 1731040780

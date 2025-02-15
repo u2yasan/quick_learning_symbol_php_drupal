@@ -1,0 +1,39 @@
+qls_sect7.description:
+  path: '/quicklearning_symbol/qls_sect7'
+  defaults:
+    _controller: '\Drupal\qls_sect7\Controller\Page::description'
+    _title: 'Qucik Learning Symbol Section 7'
+  requirements:
+    _permission: 'access content'
+
+qls_sect7.metadata_account_form:
+  path: '/quicklearning_symbol/qls_sect7/metadata_account'
+  defaults:
+    _form: '\Drupal\qls_sect7\Form\MetadataAccountForm'
+    _title: 'Qucik Learning Symbol Section 7'
+  requirements:
+    _permission: 'access content'
+
+qls_sect7.metadata_mosaic_form:
+  path: '/quicklearning_symbol/qls_sect7/metadata_mosaic'
+  defaults:
+    _form: '\Drupal\qls_sect7\Form\MetadataMosaicForm'
+    _title: 'Qucik Learning Symbol Section 7'
+  requirements:
+    _permission: 'access content' 
+
+qls_sect7.metadata_namespace_form:
+  path: '/quicklearning_symbol/qls_sect7/metadata_namespace'
+  defaults:
+    _form: '\Drupal\qls_sect7\Form\MetadataNamespaceForm'
+    _title: 'Qucik Learning Symbol Section 7'
+  requirements:
+    _permission: 'access content'
+
+qls_sect7.list_metadata_form:
+  path: '/quicklearning_symbol/qls_sect7/list_metadata'
+  defaults:
+    _form: '\Drupal\qls_sect7\Form\ListMetadataForm'
+    _title: 'Qucik Learning Symbol Section 7'
+  requirements:
+    _permission: 'access content'          

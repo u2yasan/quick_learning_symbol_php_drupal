@@ -1,0 +1,55 @@
+qls_sect5.description:
+  path: '/quicklearning_symbol/qls_sect5'
+  defaults:
+    _controller: '\Drupal\qls_sect5\Controller\Page::description'
+    _title: 'Qucik Learning Symbol Section 5'
+  requirements:
+    _permission: 'access content'
+
+qls_sect5.create_mosaic_form:
+  path: '/quicklearning_symbol/qls_sect5/create_mosaic_form'
+  defaults:
+    _form: '\Drupal\qls_sect5\Form\CreateMosaicForm'
+    _title: 'Qucik Learning Symbol Section 5'
+  requirements:
+    _permission: 'access content'
+
+qls_sect5.list_mosaics_form:
+  path: '/quicklearning_symbol/qls_sect5/list_mosaics_form'
+  defaults:
+    _form: '\Drupal\qls_sect5\Form\ListMosaicsForm'
+    _title: 'Qucik Learning Symbol Section 5'
+  requirements:
+    _permission: 'access content'
+
+qls_sect5.mosaics_transfer_transaction_form:
+  path: '/quicklearning_symbol/qls_sect5/mosaics_trnasfer_transaction_form'
+  defaults:
+    _form: '\Drupal\qls_sect5\Form\MosaicsTransferTransactionForm'
+    _title: 'Qucik Learning Symbol Section 5'
+  requirements:
+    _permission: 'access content'
+
+qls_sect5.confirm_transaction_form:
+  path: '/quicklearning_symbol/qls_sect5/confirm_transaction_form'
+  defaults:
+    _form: '\Drupal\qls_sect5\Form\ConfirmTransactionForm'
+    _title: 'Qucik Learning Symbol Section 5'
+  requirements:
+    _permission: 'access content'
+
+qls_sect5.json_table:
+  path: '/json_table'
+  defaults:
+    _controller: '\Drupal\qls_sect5\Controller\JsonTableController::renderTable'
+    _title: 'JSON Table'
+  requirements:
+    _permission: 'access content'    
+
+qls_sect5.mosaic_data:
+  path: '/mosaic_data'
+  defaults:
+    _controller: '\Drupal\qls_sect5\Controller\MosaicDataController::getMosaicData'
+    _format: 'json'
+  requirements:
+    _permission: 'access content' 

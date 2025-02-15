@@ -1,0 +1,6 @@
+# Define default links for this module.
+qls_sect4.description:
+  title: qls_sect4 Examples
+  description: Qucik Learning Symbol Section 4 examples.
+  route_name: qls_sect4.description
+  expanded: TRUE
