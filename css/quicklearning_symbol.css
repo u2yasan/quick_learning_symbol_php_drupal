@@ -1,0 +1,24 @@
+/**
+ * @file
+ * Styling for the quicklearning_symbol.
+ */
+
+ .code-block {
+  display: none; /* 初期状態では非表示 */
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+}
+.toggle-code {
+  display: block;
+  margin-bottom: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+.toggle-code:hover {
+  background-color: #0056b3;
+}
