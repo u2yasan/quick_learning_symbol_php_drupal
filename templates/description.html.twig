@@ -1,12 +1,37 @@
-{# {{ attach_library('core/drupal.dialog.ajax') }} #}
-
-{# {% set qls_ss13_deserialize_payload_form = path('qls_ss13.deserialize_payload_form') %} #}
-
-<div class="line-break">
-
+aaa
 <h1>{% trans %}今日から現場で使える速習Symbolブロックチェーン PHP版(Drupal){% endtrans %}</h1>
+<p>
+{{ '原作者'|t }}<br>
+XEMBook<br>
+<a href="https://github.com/xembook/quick_learning_symbol">速習Symbolブロックチェーン</a>
+</p>
+<p>
+PHP{{ '版編集者'|t }}<br>
+ishidad2<br>
+<a href="https://github.com/ishidad2/quick_learning_symbol-for-php">速習Symbolブロックチェーン(PHP版)</a>
+</p>
+<p>
+PHP_Drupal{{ '版編集者'|t }}<br>
+u2yasan<br>
+<a href="https://github.com/u2yasan/quick_learning_symbol_php_drupal">速習Symbolブロックチェーン(PHP Drupal版)</a>
+</p>
+
+<h2>{{ '目次'|t }}</h2>
+
+<h4><a href=quicklearning_symbol/qls_sect3>第3章 {{ 'アカウント'|t }}</a></h4>
+<h4><a href=quicklearning_symbol/qls_sect4>第4章 {{ 'トランザクション'|t }}</a></h4>
+<h4><a href=quicklearning_symbol/qls_sect5>第5章 {{ 'モザイク'|t }}</a></h4>
+<h4><a href=quicklearning_symbol/qls_sect6>第6章 {{ 'ネームスペース'|t }}</a></h4>
+<h4><a href=quicklearning_symbol/qls_sect7>第7章 {{ 'メタデータ'|t }}</a></h4>
+<h4><a href=quicklearning_symbol/qls_sect8>第8章 {{ 'ロック'|t }}</a></h4>
+<h4><a href=quicklearning_symbol/qls_sect9>第9章 {{ 'マルチシグ化'|t }}</a></h4>
+<h4><a href=quicklearning_symbol/qls_sect10>第10章 {{ '監視'|t }}</a></h4>
+<h4><a href=quicklearning_symbol/qls_sect11>第11章 {{ '制限'|t }}</a></h4>
+<h4><a href=quicklearning_symbol/qls_sect12>第12章 {{ 'オフライン署名'|t }}</a></h4> 
+<h4><a href=quicklearning_symbol/qls_sect13>第13章 {{ '検証'|t }}</a></h4>
 
 <h1>{{ 'はじめに'|t }}</h1>
+
 <h2>{{ '本ドキュメントのねらい'|t }}</h2>
 <p>
 {% trans %}
@@ -40,18 +65,3 @@
 {% trans %}Symbolブロックチェーンにはコントラクトアカウントが存在しません。したがって、スマートコントラクトをデプロイするという発想がなく、すべてのスマートコントラクトは1回だけ実行されて、その効力を失います。そのため、デプロイレス・ワンタイムスマートコントラクトと表現されることもあります。{% endtrans %}
 {% trans %}デプロイ不要なため、任意の言語でスマートコントラクトを記述することができ、また、1回限りの実行のため、不適切なループ制御などでネットワークのリソースを大量に消費したり、コントラクト内のロジックを再利用して悪用されるといった脆弱性を狙われることもありません。{% endtrans %}
 </p>
-
-<h2>{{ '目次'|t }}</h2>
-<h3><a href=quicklearning_symbol/qls_sect3>第3章 {{ 'アカウント'|t }}</a></h3>
-<h3><a href=quicklearning_symbol/qls_sect4>第4章 {{ 'トランザクション'|t }}</a></h3>
-<h3><a href=quicklearning_symbol/qls_sect5>第5章 {{ 'モザイク'|t }}</a></h3>
-<h3><a href=quicklearning_symbol/qls_sect6>第6章 {{ 'ネームスペース'|t }}</a></h3>
-<h3><a href=quicklearning_symbol/qls_sect7>第7章 {{ 'メタデータ'|t }}</a></h3>
-<h3><a href=quicklearning_symbol/qls_sect8>第8章 {{ 'ロック'|t }}</a></h3>
-<h3><a href=quicklearning_symbol/qls_sect9>第9章 {{ 'マルチシグ化'|t }}</a></h3>
-<h3><a href=quicklearning_symbol/qls_sect10>第10章 {{ '監視'|t }}</a></h3>
-<h3><a href=quicklearning_symbol/qls_sect11>第11章 {{ '制限'|t }}</a></h3>
-<h3><a href=quicklearning_symbol/qls_sect12>第12章 {{ 'オフライン署名'|t }}</a></h3> 
-<h3><a href=quicklearning_symbol/qls_sect13>第13章 {{ '検証'|t }}</a></h3>
-
-</div>
