@@ -3,7 +3,7 @@ type: module
 description: 'Provides example code for Symbol Blockchain.'
 package: Symbol Blockchain Example modules
 dependencies:
-  - drupal:toolbar
+  # - drupal:toolbar
   - drupal:key
   # - drupal:encrypt
   - drupal:config
