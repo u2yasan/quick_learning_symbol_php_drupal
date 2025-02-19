@@ -1,83 +1,83 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Drupal\Component\Utility\Html;
-use Drupal\Core\Url;
+// use Drupal\Component\Utility\Html;
+// use Drupal\Core\Url;
 
 /**
  * Implements hook_toolbar().
  */
-function quicklearning_symbol_toolbar() {
-  // First, build an array of all example modules and their routes.
-  // We resort to this hard-coded way so as not to muck up each example.
-  $quicklearning_symbol = _quicklearning_symbol_toolbar_routes();
+// function quicklearning_symbol_toolbar() {
+//   // First, build an array of all example modules and their routes.
+//   // We resort to this hard-coded way so as not to muck up each example.
+//   $quicklearning_symbol = _quicklearning_symbol_toolbar_routes();
 
-  // Build a list of links for the menu.
-  $links = [];
-  foreach ($quicklearning_symbol as $module => $route) {
+//   // Build a list of links for the menu.
+//   $links = [];
+//   foreach ($quicklearning_symbol as $module => $route) {
 
-    // Check if module is installed or not.
-    if (\Drupal::moduleHandler()->moduleExists($module)) {
+//     // Check if module is installed or not.
+//     if (\Drupal::moduleHandler()->moduleExists($module)) {
 
-      // Get the module info (title, description) from Drupal.
-      $info = \Drupal::service('extension.list.module')->getExtensionInfo($module);
+//       // Get the module info (title, description) from Drupal.
+//       $info = \Drupal::service('extension.list.module')->getExtensionInfo($module);
 
-      // If there's no info, the example isn't enabled, so don't display it.
-      if (!empty($info)) {
-        $links[$module] = [
-          'title' => Html::escape($info['name']),
-          'url' => Url::fromRoute($route),
-          'attributes' => [
-            'class' => [Html::getClass($module)],
-            'title' => Html::escape($info['description']),
-          ],
-        ];
-      }
-    }
-  }
+//       // If there's no info, the example isn't enabled, so don't display it.
+//       if (!empty($info)) {
+//         $links[$module] = [
+//           'title' => Html::escape($info['name']),
+//           'url' => Url::fromRoute($route),
+//           'attributes' => [
+//             'class' => [Html::getClass($module)],
+//             'title' => Html::escape($info['description']),
+//           ],
+//         ];
+//       }
+//     }
+//   }
 
-  // Add a link to enable all examples.
-  $links['enable_quicklearning_symbol'] = [
-    'title' => t('Enable Quick Learing Symbol Examples'),
-    'url' => Url::fromRoute('system.modules_list'),
-    'options' => [
-      'title' => t('Enable more examples in on the Extend page.'),
-    ],
-    'fragment' => 'edit-modules-quicklearning_symbol-modules',
-  ];
+//   // Add a link to enable all examples.
+//   $links['enable_quicklearning_symbol'] = [
+//     'title' => t('Enable Quick Learing Symbol Examples'),
+//     'url' => Url::fromRoute('system.modules_list'),
+//     'options' => [
+//       'title' => t('Enable more examples in on the Extend page.'),
+//     ],
+//     'fragment' => 'edit-modules-quicklearning_symbol-modules',
+//   ];
 
-  // Create the examples toolbar render array.
-  $items['quicklearning_symbol'] = [
-    '#type' => 'toolbar_item',
-    'tab' => [
-      '#type' => 'link',
-      '#title' => t('QLSymbol'),
-      '#url' => Url::fromRoute('<front>'),
-      '#attributes' => [
-        'title' => t('Quicklearing Symbol Examples'),
-        'class' => ['toolbar-icon', 'toolbar-icon-quicklearning_symbol'],
-      ],
-    ],
-    'tray' => [
-      '#heading' => t('Quicklearing Symbol Examples'),
-      'shortcuts' => [
-        '#theme' => 'links__toolbar_quicklearning_symbol',
-        '#links' => $links,
-        '#attributes' => [
-          'class' => ['toolbar-menu'],
-        ],
-      ],
-    ],
-    '#weight' => 99,
-    '#attached' => [
-      'library' => [
-        'quicklearning_symbol/quicklearning_symbol.icons',
-      ],
-    ],
-  ];
+//   // Create the examples toolbar render array.
+//   $items['quicklearning_symbol'] = [
+//     '#type' => 'toolbar_item',
+//     'tab' => [
+//       '#type' => 'link',
+//       '#title' => t('QLSymbol'),
+//       '#url' => Url::fromRoute('<front>'),
+//       '#attributes' => [
+//         'title' => t('Quicklearing Symbol Examples'),
+//         'class' => ['toolbar-icon', 'toolbar-icon-quicklearning_symbol'],
+//       ],
+//     ],
+//     'tray' => [
+//       '#heading' => t('Quicklearing Symbol Examples'),
+//       'shortcuts' => [
+//         '#theme' => 'links__toolbar_quicklearning_symbol',
+//         '#links' => $links,
+//         '#attributes' => [
+//           'class' => ['toolbar-menu'],
+//         ],
+//       ],
+//     ],
+//     '#weight' => 99,
+//     '#attached' => [
+//       'library' => [
+//         'quicklearning_symbol/quicklearning_symbol.icons',
+//       ],
+//     ],
+//   ];
 
-  return $items;
-}
+//   return $items;
+// }
 
 /**
  * Get a list of toolbar links for testing toolbar routes.
@@ -90,18 +90,18 @@ function quicklearning_symbol_toolbar() {
  *
  * @see toolbar_menu()
  */
-function _quicklearning_symbol_toolbar_routes() {
-  return [
-    'qls_sect3' => 'qls_sect3.description',
-    'qls_sect4' => 'qls_sect4.description',
-    'qls_sect5' => 'qls_sect5.description',
-    'qls_sect6' => 'qls_sect6.description',
-    'qls_sect7' => 'qls_sect7.description',
-    'qls_sect8' => 'qls_sect8.description',
-    'qls_sect9' => 'qls_sect9.description',
-    'qls_sect10' => 'qls_sect10.description',
-    'qls_sect11' => 'qls_sect11.description',
-    'qls_sect12' => 'qls_sect12.description',
-    'qls_sect13' => 'qls_sect13.description',
-  ];
-}
+// function _quicklearning_symbol_toolbar_routes() {
+//   return [
+//     'qls_sect3' => 'qls_sect3.description',
+//     'qls_sect4' => 'qls_sect4.description',
+//     'qls_sect5' => 'qls_sect5.description',
+//     'qls_sect6' => 'qls_sect6.description',
+//     'qls_sect7' => 'qls_sect7.description',
+//     'qls_sect8' => 'qls_sect8.description',
+//     'qls_sect9' => 'qls_sect9.description',
+//     'qls_sect10' => 'qls_sect10.description',
+//     'qls_sect11' => 'qls_sect11.description',
+//     'qls_sect12' => 'qls_sect12.description',
+//     'qls_sect13' => 'qls_sect13.description',
+//   ];
+// }
