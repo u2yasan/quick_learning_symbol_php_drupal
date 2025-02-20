@@ -5,7 +5,7 @@ Original MIT License applies.
   
 
 Symbol PHP SDK  
-"[<symbol-sdk-php>](https://github.com/symbol-blockchain-community/symbol-sdk-php)" by 0x070696E65.  
+https://github.com/symbol-blockchain-community/symbol-sdk-php by 0x070696E65.  
 Drupal  
 https://new.drupal.org/home  
 Examples for Developers  
