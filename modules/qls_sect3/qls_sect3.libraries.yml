@@ -1,15 +1,10 @@
-quicklearning_symbol.icons:
-  version: VERSION
-  css:
-    theme:
-      css/quicklearning_symbol.icons.css: {}
 quicklearning_symbol.code:
   version: 1.x
   css:
     theme:
       css/quicklearning_symbol.css: {}
   js:
-    js/quicklearning_symbol_code.js: {}
+   js/quicklearning_symbol_code.js: {}
   dependencies:
     - core/jquery
     - core/once

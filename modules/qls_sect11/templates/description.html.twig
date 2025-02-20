@@ -17,17 +17,22 @@ Description text for Section 11.
 アカウントに対する制限とモザイクのグローバル制限についての方法を紹介します。本章では、既存アカウントの権限を制限してしまうので、使い捨てのアカウントを新規に作成してお試しください。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 //使い捨てアカウントCarolの生成
 $carolKey = $facade->createAccount(PrivateKey::random());
 
 echo "https://testnet.symbol.tools/?recipient=" . $carolKey->address . "&amount=20" . PHP_EOL;
-</pre></code>
+</code></pre>
+</div>
 
 <h3>11.1 {{ 'アカウント制限'|t }}</h3>
 <h4><a href={{ qls_sect11_account_address_restriction_form }}>11.1.1 {{ '指定アドレスからの受信制限・指定アドレスへの送信制限'|t }}</a></h4>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 
 $bobKey = $facade->createAccount(new PrivateKey('7CBA79757479402DDCDE6577F938CDE6FD9035ACADC1E343AE155EFA679D462A') );
 $bobAddress = $bobKey->address;
@@ -62,7 +67,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 restrictionFlagsはv2のAddressRestrictionFlagに相当します。
@@ -96,7 +102,9 @@ symbolSdk.symbol.AccountRestrictionFlags.OUTGOING
 
 <h4><a href={{ qls_sect11_account_mosaic_restriction_form }}>11.1.2 {{ '指定モザイクの受信制限'|t }}</a></h4>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $f = AccountRestrictionFlags::MOSAIC_ID; // モザイク制限
 $f += AccountRestrictionFlags::BLOCK; // ブロック
 $flags = new AccountRestrictionFlags($f);
@@ -123,7 +131,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 アカウント制限と同様、restrictionFlagsはv2のMosaicRestrictionFlagに相当します。
@@ -148,7 +157,9 @@ BlockMosaic：{{ '指定モザイクを含むトランザクションを受信�
 
 <h4><a href={{ qls_sect11_account_operation_restriction_form }}>11.1.3 {{ '指定トランザクションの送信制限'|t }}</a></h4>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $f = AccountRestrictionFlags::TRANSACTION_TYPE; // トランザクション制限
 $f += AccountRestrictionFlags::OUTGOING; // 送信
 $flags = new AccountRestrictionFlags($f);
@@ -175,7 +186,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 アカウント制限やモザイク制限と同様、restrictionFlags はv2 のOperationRestrictionFlag に相当します。
@@ -203,7 +215,9 @@ BlockOutgoingTransactionType：{{ '指定トランザクションの送信を禁
 {% trans %}
 TransactionTypeについては以下の通りです。
 {% endtrans %}
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
 16705: 'AGGREGATE_COMPLETE',
 16707: 'VOTING_KEY_LINK',
@@ -230,7 +244,8 @@ TransactionTypeについては以下の通りです。
 17229: 'MOSAIC_SUPPLY_REVOCATION',
 17230: 'MOSAIC_ALIAS',
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 ■{{ '注意事項'|t }} 
 17232: 
@@ -246,13 +261,18 @@ TransactionTypeについては以下の通りです。
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $restrictionAipInstance = new RestrictionAccountRoutesApi($client, $config);
 $res = $restrictionAipInstance->getAccountRestrictions($carolKey->address);
 echo $res . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "accountRestrictions": {
         "version": 1,
@@ -279,7 +299,8 @@ echo $res . PHP_EOL;
         ]
     }
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h3>11.2 {{ 'グローバルモザイク制限'|t }}</h3>
 
@@ -296,7 +317,9 @@ restrictableをtrueにしてCarolでモザイクを作成します。
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 
 // モザイクフラグ設定
 $f = MosaicFlags::NONE;
@@ -368,7 +391,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -427,7 +451,9 @@ MosaicRestrictionTypeについては以下の通りです。
 Carol,Bobに対してグローバル制限モザイクに対しての適格情報を追加します。送信・受信についてかかる制限なので、すでに所有しているモザイクについての制限はありません。送信を成功させるためには、送信者・受信者双方が条件をクリアしている必要があります。モザイク作成者の秘密鍵があればどのアカウントに対しても承諾の署名を必要とせずに制限をつけることができます。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // carolに適用
 $carolMosaicAddressResTx = new MosaicAddressRestrictionTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
@@ -476,7 +502,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h4><a href={{ qls_sect11_search_mosaic_restrictions_form }}>11.2.3 {{ '制限状態確認'|t }}</a></h4>
 <p>
@@ -485,16 +512,21 @@ try {
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $restrictionAipInstance = new RestrictionMosaicRoutesApi($client, $config);
 $res = $restrictionAipInstance->searchMosaicRestrictions(
   mosaic_id: '10FE6A79F72DB356'
 );
 echo 'MosaicRestrictions' . PHP_EOL;
 echo $res . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "data": [
         {
@@ -550,7 +582,8 @@ echo $res . PHP_EOL;
         "pageSize": 10
     }
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h4>11.2.4 {{ '送信確認'|t }}</h4>
 <p>
@@ -559,7 +592,9 @@ echo $res . PHP_EOL;
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // 成功（CarolからBobに送信）
 $tx = new TransferTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
@@ -613,15 +648,19 @@ try {
 }
 echo 'TxHash' . PHP_EOL;
 echo $facade->hashTransaction($tx) . PHP_EOL;
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 失敗した場合以下のようなエラーステータスになります。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {"hash":"C7E0EAF9941D9030E055BE87F0F79805582CA1713680BA546837042EA3DEDBCD","code":"Failure_RestrictionMosaic_Account_Unauthorized","deadline":"54911200734","group":"failed"}
-</pre></code>
+</code></pre>
+</div>
 
 <h3>11.3 {{ '現場で使えるヒント'|t }}</h3>
 <p>

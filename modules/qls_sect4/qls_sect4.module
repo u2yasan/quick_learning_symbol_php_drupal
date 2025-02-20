@@ -1,1 +1,4 @@
 <?php
+function qls_sect4_preprocess_page(array &$variables) {
+    $variables['#attached']['library'][] = '/modules/custom/quicklearning_symbol/quicklearning_symbol.code';
+  }

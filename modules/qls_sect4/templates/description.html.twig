@@ -66,19 +66,27 @@ Description text for Section 4.
 まずは最も基本的な転送トランザクションを作成してみます。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $bobKey = $facade->createAccount(PrivateKey::random());
 echo $bobKey->address . PHP_EOL;
-</pre></code>
-<code><pre>
+</code></pre>
+</div>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 > TDCTNJQT27NMIMGAQYWBUG6MCLBXYI2OOPVZ76I
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 トランザクションを作成します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // aliceの秘密鍵からアカウント生成
 $aliceKey = $facade->createAccount(new PrivateKey($alicePrivateKey));
 
@@ -99,9 +107,12 @@ $tx = new TransferTransactionV1(
 
 $facade->setMaxFee($transferTransaction, 100);  // 手数料
 var_dump($tx);
-</pre></code>
+</code></pre>
+</div>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 object(SymbolSdk\Symbol\Models\TransferTransactionV1)#71 (14) {
   ["recipientAddress"]=>
   object(SymbolSdk\Symbol\Models\UnresolvedAddress)#68 (1) {
@@ -175,7 +186,8 @@ object(SymbolSdk\Symbol\Models\TransferTransactionV1)#71 (14) {
   ["entityBodyReserved_1":"SymbolSdk\Symbol\Models\Transaction":private]=>
   int(0)
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 各設定項目について説明します。
@@ -189,9 +201,12 @@ object(SymbolSdk\Symbol\Models\TransferTransactionV1)#71 (14) {
 SDKではデフォルトで2時間後に設定されます。 最大6時間まで指定可能です。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 new Timestamp($facade->now()->addHours(2))
-</pre></code>
+</code></pre>
+</div>
 </p>
 
 <p>
@@ -206,9 +221,12 @@ new Timestamp($facade->now()->addHours(2))
 <p>
 {{ '空メッセージ'|t }}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $messageData = "";?
-</pre></code>
+</code></pre>
+</div>
 <p>
 {{ '平文メッセージ'|t }}
 </p>
@@ -217,9 +235,12 @@ $messageData = "";?
 エクスプローラーなどで表示するためには先頭に\0を付加する必要があります。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $messageData = "\0hello, symbol!";
-</pre></code>
+</code></pre>
+</div>
 <p>
 {{ '暗号文メッセージ'|t }}
 </p>
@@ -228,10 +249,13 @@ $messageData = "\0hello, symbol!";
 MessageEncoderを使用して暗号化すると、自動で暗号文メッセージを表すメッセージタイプ0x01が付加されます。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $aliceMesgEncoder = new MessageEncoder($aliceKey);
 $encryptedMessage = $aliceMesgEncoder->encode($bobKey->publicKey(), $message);
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {{ '最大手数料'|t }}
@@ -251,9 +275,12 @@ $encryptedMessage = $aliceMesgEncoder->encode($bobKey->publicKey(), $message);
 feeMultiprier = 100として指定する方法
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $facade->setMaxFee($transferTransaction, 100);
-</pre></code>
+</code></pre>
+</div>
 
 <h3>4.3 {{ '署名とアナウンス'|t }}</h3>
 <p>
@@ -264,22 +291,30 @@ $facade->setMaxFee($transferTransaction, 100);
 <p>
 {{ '署名'|t }}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $signature = $aliceKey->signTransaction($transferTransaction);
 $payload = $facade->attachSignature($transferTransaction, $signature);
 var_dump($payload);
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 array(1) {
   ["payload"]=>
   string(382) "BF0000000000000071B2D3DA6B83E6904DEB1EE5AE259D6F51B71E742B3F4D5B9EC394BADC844A1574F9418F0349D825AAD836100F39F0AB87EC0BF19BE8E21B1AB94D0AC11B780625189135BF2307DCBCD1657A34ABC3FDEEC04A126D4572876BCA4F514DB5AC9B00000000019854419C4A0000000000000CB455A40C00000098D02DDEA92E7186B5321831A58554E7B6EB58454B08161E0F00010000000000CE8BA0672E21C07240420F00000000000068656C6C6F2C2073796D626F6C21"
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {{ 'アナウンス'|t }}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $config = new Configuration();
 $config->setHost($NODE_URL);
 $client = new GuzzleHttp\Client();
@@ -291,16 +326,20 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 ※ {% trans %}
 IDEを使っている人は$apiInstance->announceTransaction($payload)ここのpayloadの指定でwarningが表示されるかもしれませんが気にしなくて大丈夫です。
 {% endtrans %}
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "message": "packet 9 was pushed to the network via \/transactions"
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 上記のスクリプトのようにpacket n was pushed to the network というレスポンスがあれば、トランザクションはノードに受理されたことになります。これはトランザクションのフォーマット等に異常が無かった程度の意味しかありません。Symbolではノードの応答速度を極限に高めるため、トランザクションの内容を検証するまえに受信結果の応答を返し接続を切断します。レスポンス値はこの情報を受け取ったにすぎません。フォーマットに異常があった場合は以下のようなメッセージ応答があります。
@@ -311,14 +350,17 @@ IDEを使っている人は$apiInstance->announceTransaction($payload)ここのp
 アナウンスに失敗した場合の応答例
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 Uncaught Error: {
 "statusCode":409,
 "statusMessage":"Unknown Error",
 "body":
 "{\"code\":\"InvalidArgument\",\"message\":\"payload has an invalid format\"}"
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h3>4.4 {{ '確認'|t }}</h3>
 <h4>4.4.1 {{ 'ステータスの確認'|t }}</h4>
@@ -328,7 +370,9 @@ Uncaught Error: {
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $hash = $facade->hashTransaction($transferTransaction);
 $txStatusApi = new TransactionStatusRoutesApi($client, $config);
 
@@ -338,9 +382,12 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 object(SymbolRestClient\Model\TransactionStatusDTO)#111 (2) {
   ["openAPINullablesSetToNull":protected]=>
   array(0) {
@@ -359,7 +406,8 @@ object(SymbolRestClient\Model\TransactionStatusDTO)#111 (2) {
     string(1) "0"
   }
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 承認されると group: "confirmed"となっています。
@@ -370,7 +418,9 @@ object(SymbolRestClient\Model\TransactionStatusDTO)#111 (2) {
 受理されたものの、エラーが発生していた場合は以下のような出力となります。トランザクションを書き直して再度アナウンスしてみてください。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 object(SymbolRestClient\Model\TransactionStatusDTO)#111 (2) {
   ["openAPINullablesSetToNull":protected]=>
   array(0) {
@@ -389,16 +439,20 @@ object(SymbolRestClient\Model\TransactionStatusDTO)#111 (2) {
     NULL
   }
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 以下のようにResourceNotFoundエラーが発生した場合はトランザクションが受理されていません。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 response:
 {"code":"ResourceNotFound","message":"no resource exists with id '066A063559C2D4EF2EA3222A9BA46193520915DE24EA4B3E601910 (truncated...)}
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 考えられる可能性としては、トランザクションで指定した最大手数料が、ノードで設定された最低手数料に満たない場合や、 アグリゲートトランザクションとしてアナウンスすることが求められているトランザクションを単体のトランザクションでアナウンスした場合に発生するようです。
@@ -422,13 +476,19 @@ response:
 signedTx.hashで取得できるハッシュ値を使ってエクスプローラーで検索してみましょう。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $hash = $facade->hashTransaction($transferTransaction);
 echo $hash . PHP_EOL;
-</pre></code>
-<code><pre>
+</code></pre>
+</div>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 > "BAD83010F0A707A8ED0AF9D5BFDDBF8226878F6921CE75C7E75BBE50F869870B"
-</pre></code>
+</code></pre>
+</div>
 <p>
 メインネット https://symbol.fyi/transactions/BAD83010F0A707A8ED0AF9D5BFDDBF8226878F6921CE75C7E75BBE50F869870B<br>
 テストネット https://testnet.symbol.fyi/transactions/BAD83010F0A707A8ED0AF9D5BFDDBF8226878F6921CE75C7E75BBE50F869870B
@@ -437,16 +497,21 @@ echo $hash . PHP_EOL;
 <p>
 {{ 'SDKで確認'|t }}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 try {
   $result = $apiInstance->getConfirmedTransaction($hash);
   echo $result . PHP_EOL;
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "id": "669CABEA527B051AC20A62DF",
     "meta": {
@@ -476,7 +541,8 @@ try {
         "message": "0068656C6C6F2C2073796D626F6C21"
     }
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 ■{{ '注意点'|t }} 
@@ -491,7 +557,9 @@ try {
 トランザクションをアナウンスした後は以下のようなスクリプトを流すと、チェーンの状態を把握しやすくて便利です。※途中sleepを入れているのはアナウンスより先にステータスを確認しに行ってしまいエラーを返す可能性があるためです。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 sleep(2);
 $hash = $facade->hashTransaction($transferTransaction);
 echo "\n===トランザクションハッシュ===" . PHP_EOL;
@@ -518,12 +586,15 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 
 <h3><a href={{ qls_sect4_list_transactions_form }}>4.5 {{ 'トランザクション履歴'|t }}</a></h3>
 <p>{% trans %}Alice が送受信したトランザクション履歴を一覧で取得します。{% endtrans %}</p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 try {
   $result = $apiInstance->searchConfirmedTransactions(
     address: $aliceKey->address,
@@ -534,14 +605,17 @@ try {
 } catch (\Throwable $th) {
   echo 'Exception when calling TransactionRoutesApi->searchConfirmedTransactions: ', $th->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 <p>※ 
 {% trans %}
 IDEなどを使うとembeddedはbool型を期待するのでwarningが表示されるかもしれませんが、ここでは文字列のtrueを渡します。
 {% endtrans %}
 </p>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "data": [
         {
@@ -840,7 +914,8 @@ IDEなどを使うとembeddedはbool型を期待するのでwarningが表示さ�
         "pageSize": 10
     }
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h4>4.5.1 {% trans %}Txペイロード作成時のメッセージの差異{% endtrans %}</h4>
 <p>【{% trans %}未検証のため検証後執筆予定{% endtrans %}】</p>
@@ -854,7 +929,9 @@ https://docs.symbol-community.com/ja/symbol_sdk/v3/transaction
 Symbolでは複数のトランザクションを1ブロックにまとめてアナウンスすることができます。最大で100件のトランザクションをまとめることができます(連署者が異なる場合は25アカウントまでを連署指定可能)。以降の章で扱う内容にアグリゲートトランザクションへの理解が必要な機能が含まれますので、本章ではアグリゲートトランザクションのうち、簡単なものだけを紹介します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $bobKey = $facade->createAccount(PrivateKey::random());
 $bobAddress = $bobKey->address;
 $carolKey = $facade->createAccount(PrivateKey::random());
@@ -899,7 +976,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -913,7 +991,9 @@ try {
 アグリゲートトランザクションも通常のトランザクション同様、最大手数料を直接指定する方法とfeeMultiprierで指定する方法があります。先の例では最大手数料を直接指定する方法を使用しました。ここではfeeMultiprierで指定する方法を紹介します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $requiredCosignatures = 1; // 必要な連署者の数を指定
 $calculatedCosignatures = $requiredCosignatures > count($aggregateTx->cosignatures)
     ? $requiredCosignatures
@@ -924,7 +1004,8 @@ $calculatedSize = $aggregateTx->size() -
     $calculatedCosignatures * $sizePerCosignature;
 
 $aggregateTx->fee = new Amount($calculatedSize * 100);  // 手数料
-</pre></code>
+</code></pre>
+</div>
 
 <h3>4.7 {{ '現場で使えるヒント'|t }}</h3>
 <p>
@@ -932,14 +1013,17 @@ $aggregateTx->fee = new Amount($calculatedSize * 100);  // 手数料
 存在証明アカウントの章でアカウントによるデータの署名と検証する方法について説明しました。このデータをトランザクションに載せてブロックチェーンが承認することで、アカウントがある時刻にあるデータの存在を認知したことを消すことができなくなります。タイムスタンプの刻印された電子署名を利害関係者間で所有することと同じ意味があると考えることもできます。（法律的な判断は他の方にお任せします）ブロックチェーンは、この消せない「アカウントが認知したという事実」の存在をもって送信などのデータ更新を行います。また、誰もがまだ知らないはずの事実を知っていたことの証明としてブロックチェーンを利用することもできます。ここでは、その存在が証明されたデータをトランザクションに載せる2つの方法について説明します。デジタルデータのハッシュ値(SHA256)出力方法ファイルの要約値をブロックチェーンに記録することでそのファイルの存在を証明することができます。各OSごとのファイルのSHA256でハッシュ値を計算する方法は下記の通りです。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 #Windows
 certutil -hashfile WINファイルパス SHA256
 #Mac
 shasum -a 256 MACファイルパス
 #Linux
 sha256sum Linuxファイルパス
-</pre></code>
+</code></pre>
+</div>
 
 <h4>4.7.1 {{ '大きなデータの分割'|t }}</h4>
 <p>
@@ -947,7 +1031,9 @@ sha256sum Linuxファイルパス
 トランザクションのペイロードには1023バイトしか格納できないため、大きなデータは分割してペイロードに詰め込んでアグリゲートトランザクションにします。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $bigdata = "C00200000000000093B0B985101C1BDD1BC2BF30D72F35E34265B3F381ECA464733E147A4F0A6B9353547E2E08189EF37E50D271BEB5F09B81CE5816BB34A153D2268520AF630A0A0E5C72B0D5946C1EFEE7E5317C5985F106B739BB0BC07E4F9A288417B3CD6D26000000000198414140770200000000002A769FB40000000076B455CFAE2CCDA9C282BF8556D3E9C9C0DE18B0CBE6660ACCF86EB54AC51B33B001000000000000DB000000000000000E5C72B0D5946C1EFEE7E5317C5985F106B739BB0BC07E4F9A288417B3CD6D26000000000198544198205C1A4CE06C45B3A896B1B2360E03633B9F36BF7F22338B000000000000000066653465353435393833444430383935303645394533424446434235313637433046394232384135344536463032413837364535303734423641303337414643414233303344383841303630353343353345354235413835323835443639434132364235343233343032364244444331443133343139464435353438323930334242453038423832304100000000006800000000000000B2D4FD84B2B63A96AA37C35FC6E0A2341CEC1FD19C8FFC8D93CCCA2B028D1E9D000000000198444198205C1A4CE06C45B3A896B1B2360E03633B9F36BF7F2233BC089179EBBE01A81400140035383435344434373631364336433635373237396800000000000000B2D4FD84B2B63A96AA37C35FC6E0A2341CEC1FD19C8FFC8D93CCCA2B028D1E9D000000000198444198205C1A4CE06C45B3A896B1B2360E03633B9F36BF7F223345ECB996EDDB9BEB1400140035383435344434373631364336433635373237390000000000000000B2D4FD84B2B63A96AA37C35FC6E0A2341CEC1FD19C8FFC8D93CCCA2B028D1E9D5A71EBA9C924EFA146897BE6C9BB3DACEFA26A07D687AC4A83C9B03087640E2D1DDAE952E9DDBC33312E2C8D021B4CC0435852C0756B1EBD983FCE221A981D02";
 
 $payloads = [];
@@ -956,7 +1042,8 @@ for ($i = 0; $i < strlen($bigdata) / 1023; $i++) {
 }
 
 print_r($payloads);
-</pre></code>
+</code></pre>
+</div>
 
 
 

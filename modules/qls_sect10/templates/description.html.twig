@@ -17,7 +17,9 @@ WebSocketを生成してリスナーの設定を行います。PHPはサーバ�
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // チャンネル名
 ListenerChannelName = {
   block: "block",
@@ -75,7 +77,8 @@ listener.onclose = function (closeEvent) {
   funcs = {};
   console.log(closeEvent);
 };
-</pre></code>
+</code></pre>
+</div>
 
 <h3>10.2 {{ '受信検知'|t }}</h3>
 <p>
@@ -84,7 +87,9 @@ listener.onclose = function (closeEvent) {
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // 承認トランザクション検知時の処理
 channelName =
   ListenerChannelName.confirmedAdded + "/" + aliceAddress.toString();
@@ -112,9 +117,12 @@ listener.send(
     subscribe: channelName,
   }),
 );
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 > {transaction: {…}, meta: {…}}
   > meta:
       hash: "A95F2E59D22EDA24D1E82515D452F106B93D7C869B601CCA63A46D0EB2CFB182"
@@ -132,7 +140,8 @@ listener.send(
       signerPublicKey: "69A31A837EB7DE323F08CA52495A57BA0A95B52D1BB54CEA9A94C12A87B1CADB"
       type: 16724
       version: 1
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -153,7 +162,9 @@ listener.send(
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // ブロック生成検知時の処理
 addCallback(ListenerChannelName.block, (block) => {
   console.log(block);
@@ -165,9 +176,12 @@ listener.send(
     subscribe: ListenerChannelName.block,
   }),
 );
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 > {block: {…}, meta: {…}}
   > block:
       beneficiaryAddress: "98BE9AC4CD3E833736762A12A63065FF42E476744E6FC597"
@@ -190,7 +204,8 @@ listener.send(
   > meta:
       generationHash: "B76DE01D89CC6672F30AC183BCEA601DE019AD7D37C84CAE723814A59AED253F"
       hash: "88277C8A9B45D075BF554DA5DAA24667DAE844DE1C583DFB4A5891822BE9A0DB"
-</pre></code>
+</code></pre>
+</div>
 
 <h3>10.4 {{ '署名要求'|t }}</h3>
 <p>
@@ -198,7 +213,9 @@ listener.send(
 署名が必要なトランザクションが発生すると検知します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // 署名が必要なアグリゲートボンデッドトランザクション発生検知時の処理
 channelName = ListenerChannelName.partialAdded + "/" + aliceAddress.toString();
 addCallback(channelName, (tx) => {
@@ -211,9 +228,12 @@ listener.send(
     subscribe: channelName,
   }),
 );
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 > {transaction: {…}, meta: {…}}
   > meta:
     hash: "D7DD269A6D6EDC6A1F95045609BBF645B5FD908ED540C312489261C2913955DB"
@@ -240,7 +260,8 @@ listener.send(
       transactionsHash: "5B59E92F56E78AB14E751177413807CEA7A4C8426F1A756DA43B74EEE1F32679"
       type: 16961
       version: 2
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 指定アドレスが関係するすべてのアグリゲートトランザクションが検知されます。連署が必要かどうかは別途フィルターして判断します。
@@ -257,7 +278,9 @@ listener.send(
 </p>
 
 <p>{{ 'ノードへの接続'|t }}</p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 //ノード一覧
 NODES = ["https://node.com:3001",...];
 
@@ -297,7 +320,8 @@ function connectNode(nodes) {
     req.send();
     });
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 タイムアウト値を設定しておき、応答の悪いノードに接続した場合は選びなおします。エンドポイント /node/health を確認してステータス異常の場合はノードを選びなおします。
@@ -310,7 +334,9 @@ function connectNode(nodes) {
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 function searchUrl(nodes) {
   return connectNode(nodes).then(async function onFulfilled(node) {
     try {
@@ -332,11 +358,14 @@ function searchUrl(nodes) {
     return node;
   });
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>■{{ 'リスナーの常時接続'|t }}</p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 async function listenerKeepOpening(nodes) {
   const url = await searchUrl(nodes);
   let wsEndpoint = url.replace("http", "ws") + "/ws";
@@ -401,16 +430,20 @@ async function listenerKeepOpening(nodes) {
   console.log("listener connected : ", lner.url);
   return lner;
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 リスナーがcloseした場合は再接続します。
 {% endtrans %}
 </p>
 <p>■{{ 'リスナー開始'|t }}</p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 listener = await listenerKeepOpening(NODES);
-</pre></code>
+</code></pre>
+</div>
 
 <h4>10.5.2 {{ '未署名トランザクション自動連署'|t }}</h4>
 <p>
@@ -418,7 +451,9 @@ listener = await listenerKeepOpening(NODES);
 未署名のトランザクションを検知して、署名＆ネットワークにアナウンスします。初期画面表示時と画面閲覧中の受信と2パターンの検知が必要です。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // 選択中アカウントの完了トランザクション検知リスナー
 const statusChanged = function (address, hash) {
   // 承認トランザクション検知時の処理
@@ -582,7 +617,8 @@ async function getAllPartialTxes(address) {
 (await getAllPartialTxes(bobAddress)).forEach((partialTx) => {
   bondedSubscribe(partialTx);
 });
-</pre></code>
+</code></pre>
+</div>
 
  
 <p>■{{ '注意事項'|t }}</p>

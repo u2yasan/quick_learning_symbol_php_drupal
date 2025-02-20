@@ -31,7 +31,9 @@ Description text for Section 9.
 この章のサンプルソースコードで使用するアカウントを作成し、それぞれの秘密鍵を出力しておきます。本章でマルチシグ化したアカウントBobは、Carolの秘密鍵を紛失すると使えなくなってしまうのでご注意ください。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $bobKey = $facade->createAccount(PrivateKey::random());
 $carolKey1 = $facade->createAccount(PrivateKey::random());
 $carolKey2 = $facade->createAccount(PrivateKey::random());
@@ -46,16 +48,20 @@ echo $carolKey2->keyPair->privateKey() . PHP_EOL;
 echo $carolKey3->keyPair->privateKey() . PHP_EOL;
 echo $carolKey4->keyPair->privateKey() . PHP_EOL;
 echo $carolKey5->keyPair->privateKey() . PHP_EOL;
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {{ 'URL出力'|t }}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 echo "https://testnet.symbol.tools/?recipient=" . $bobKey->address . "&amount=20" . PHP_EOL;
 echo "https://testnet.symbol.tools/?recipient=" . $carolKey1->address . "&amount=20" . PHP_EOL;
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 テストネットの場合はFAUCETでネットワーク手数料分をbobとcarol1に補給しておきます。
@@ -73,7 +79,9 @@ Symbolではマルチシグアカウントを新規に作成するのではな�
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $multisigTx =  new EmbeddedMultisigAccountModificationTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
   signerPublicKey: $bobKey->publicKey,  // マルチシグ化したいアカウントの公開鍵を指定
@@ -125,19 +133,25 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h3>9.2 {{ '第9章'|t }} {{ '確認'|t }}</h3>
 <h4>9.2.1 {{ 'マルチシグ化したアカウントの確認'|t }}</h4>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $multisigApiInstance = new MultisigRoutesApi($client, $config);
 $multisigInfo = $multisigApiInstance->getAccountMultisig($bobKey->address);
 echo "===マルチシグ情報===" . PHP_EOL;
 echo $multisigInfo . PHP_EOL;
-</pre></code>
+</code></pre>
+</div>
 
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "multisig": {
         "version": 1,
@@ -153,20 +167,26 @@ echo $multisigInfo . PHP_EOL;
         "multisigAddresses": []
     }
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 cosignatoryAddressesが連署者として登録されていることがわかります。また、minApproval:3 によりトランザクションが成立するために必要な署名数3 minRemoval: 3により連署者を取り外すために必要な署名者数は3であることがわかります。
 {% endtrans %}
 </p>
 <h4>9.2.2 {{ '第9章'|t }}連署者アカウントの確認</h4>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $multisigInfo = $multisigApiInstance->getAccountMultisig($carolKey1->address);
 echo "===連署者1のマルチシグ情報===" . PHP_EOL;
 echo $multisigInfo . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "multisig": {
         "version": 1,
@@ -179,7 +199,8 @@ echo $multisigInfo . PHP_EOL;
         ]
     }
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -202,7 +223,9 @@ multisigAddresses に対して連署する権利を持っていることが分�
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $tx = new EmbeddedTransferTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
   signerPublicKey: $bobKey->publicKey,  //マルチシグ化したアカウントの公開鍵
@@ -249,7 +272,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h4><a href={{ qls_sect9_multi_sig_abtx_form }}>9.3.2 {{ 'アグリゲートボンデッドトランザクションで送信'|t }}</a></h4>
 <p>
@@ -257,7 +281,9 @@ try {
 アグリゲートボンデッドトランザクションの場合は連署者を指定せずにアナウンスできます。事前にハッシュロックでトランザクションを留め置きしておくことを宣言しておき、連署者がネットワーク上に留め置きされたトランザクションに追加署名することで完成となります。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // アグリゲートTxに含めるTxを作成
 $tx = new EmbeddedTransferTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
@@ -315,9 +341,12 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 //ハッシュロックの承認を確認した後、ボンデッドTXをアナウンス
 try {
   $result = $apiInstance->announcePartialTransaction($payload);
@@ -325,7 +354,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 ボンデッドトランザクションがノードに取り込まれるとパーシャル署名状態となるので、8. ロックで紹介した連署を使用して、マルチシグアカウントで連署します。連署をサポートするウォレットで承認することもできます。
@@ -333,7 +363,9 @@ try {
 </p>
 
 <p><a href={{ qls_sect9_multi_sig_cosig_form }}>{{ '連署例'|t }}</a></p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 /**
  * 連署
  */
@@ -385,7 +417,8 @@ try {
 }
 echo 'TxHash' . PHP_EOL;
 echo $signTxHash->__toString() . PHP_EOL;
-</pre></code>
+</code></pre>
+</div>
 
 <h3><a href={{ qls_sect9_multi_sig_confirm_form }}>9.4 {{ 'マルチシグ送信の確認'|t }}</a></h3>
 <p>
@@ -393,13 +426,18 @@ echo $signTxHash->__toString() . PHP_EOL;
 マルチシグで行った送信トランザクションの結果を確認してみます。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $aggregateHash = $facade->hashTransaction($aggregateTx);
 $txInfo = $apiInstance->getConfirmedTransaction($aggregateHash);
 console.log(txInfo);
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "id": "66A4BF0F527B051AC20AF327",
     "meta": {
@@ -461,7 +499,8 @@ console.log(txInfo);
         ]
     }
 }
-</pre></code>
+</code></pre>
+</div>
 <ul>
     <li><strong>マルチシグアカウント</strong>
         <ul>
@@ -510,7 +549,9 @@ console.log(txInfo);
 連署者を減らすには除名対象アドレスに指定するとともに最小署名者数を連署者数が超えてしまわないように調整してトランザクションをアナウンスします。除名対象者を連署者に含む必要はありません。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $multisigTx = new EmbeddedMultisigAccountModificationTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
   signerPublicKey: $bobKey->publicKey,  // マルチシグ化したいアカウントの公開鍵を指定
@@ -555,7 +596,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h4>9.5.2 {{ '連署者構成の差替え'|t }}</h4>
 <p>
@@ -563,7 +605,9 @@ try {
 連署者を差し替えるには、追加対象アドレスと除名対象アドレスを指定します。新たに追加指定するアカウントの連署は必ず必要です。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $multisigTx = new EmbeddedMultisigAccountModificationTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
   signerPublicKey: $bobKey->publicKey,  // 構成変更したいマルチシグアカウントの公開鍵を指定
@@ -610,7 +654,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h3>9.6 {{ '現場で使えるヒント'|t }}</h3>
 <h4>9.6.1 {{ '多要素認証'|t }}</h4>

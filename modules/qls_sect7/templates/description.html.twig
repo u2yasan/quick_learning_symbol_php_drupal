@@ -22,7 +22,9 @@ Description text for Section 7.
 アカウントに対して、Key-Value値を登録します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $config = new Configuration();
 $config->setHost($NODE_URL);
 $client = new GuzzleHttp\Client();
@@ -88,7 +90,8 @@ try {
 $hash = $facade->hashTransaction($aggregateTx);
 echo "\n===トランザクションハッシュ===" . PHP_EOL;
 echo $hash . PHP_EOL;
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 メタデータの登録には記録先アカウントが承諾を示す署名が必要です。
@@ -100,7 +103,9 @@ echo $hash . PHP_EOL;
 異なるアカウントのメタデータに登録する場合は署名時にsignTransactionWithCosig-natoriesを使用します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $bobKey = $facade->createAccount(new PrivateKey('ED949592C90CA58A16CB5BEC303DB011A48373063DDB0C4CFD6DFD01Fxxxxxx'));
 $targetAddress = $bobKey->address;  // メタデータ記録先アドレス
 $sourceAddress = $aliceKey->address;  // メタデータ作成者アドレス
@@ -162,7 +167,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 bobの秘密鍵が分からない場合はこの後の章で説明するアグリゲートボンデッドトランザクション、あるいはオフライン署名を使用する必要があります。
@@ -177,7 +183,9 @@ bobの秘密鍵が分からない場合はこの後の章で説明するアグ�
 登録・更新にはモザイクを作成したアカウントの署名が必要です。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $targetMosaic = '6FA40B0B8B9E392F';
 $mosaicApiInstance = new MosaicRoutesApi($client, $config);
 $mosaicInfo = $mosaicApiInstance->getMosaic($targetMosaic);
@@ -235,7 +243,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h3><a href={{ qls_sect7_metadata_namespace_form }}>7.3 {{ 'ネームスペースに登録'|t }}</a></h3>
 <p>
@@ -243,7 +252,9 @@ try {
 登録・更新にはネームスペースを作成したアカウントの署名が必要です。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 //ターゲットと作成者アドレスの設定
 $targetNamespace = new NamespaceId(IdGenerator::generateNamespaceId("fugafuga"));
 
@@ -304,13 +315,16 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h3><a href={{ qls_sect7_list_metadata_form }}>7.4 {{ '確認'|t }}</a></h3>
 <p>
 {% trans %}登録したメタデータを確認します。{% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $metaApiInstance = new MetadataRoutesApi($client, $config);
 $metadataInfo = $metaApiInstance->searchMetadataEntries(
   target_address: $aliceKey->address,
@@ -318,10 +332,13 @@ $metadataInfo = $metaApiInstance->searchMetadataEntries(
 );
 echo "\n===メタデータ一覧===" . PHP_EOL;
 echo $metadataInfo;
-</pre></code>
+</code></pre>
+</div>
 
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "data": [
         {
@@ -395,7 +412,8 @@ echo $metadataInfo;
         "pageSize": 10
     }
 }
-</pre></code>
+</code></pre>
+</div>
 {% trans %}
 metadataTypeは以下の通りです。
 {% endtrans %}

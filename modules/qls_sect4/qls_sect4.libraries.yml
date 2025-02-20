@@ -1,0 +1,10 @@
+quicklearning_symbol.code:
+  version: 1.x
+  css:
+    theme:
+      /modules/custom/quicklearning_symbol/css/quicklearning_symbol.css: {}
+  js:
+   /modules/custom/quicklearning_symbol/js/quicklearning_symbol_code.js: {}
+  dependencies:
+    - core/jquery
+    - core/once

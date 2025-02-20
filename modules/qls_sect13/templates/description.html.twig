@@ -30,11 +30,14 @@ Description text for Section 13.
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 payload =
   "2802000000000000A5151FD55D82351DD488DB5563DD328DA72B2AD25B513C1D0F7F78AFF4D35BA094ABF505C74E6D6BE1FA19F3E5AC60A85E1A4EDC4AC07DECC0E56C59D5D24F0B69A31A837EB7DE323F08CA52495A57BA0A95B52D1BB54CEA9A94C12A87B1CADB0000000002984141A0D70000000000000EEAD6810500000062E78B6170628861B4FC4FCA75210352ACDBD2378AC0A447A3DCF63F969366BB1801000000000000540000000000000069A31A837EB7DE323F08CA52495A57BA0A95B52D1BB54CEA9A94C12A87B1CADB000000000198544198A8D76FEF8382274D472EE377F2FF3393E5B62C08B4329D04000000000000000074783100000000590000000000000069A31A837EB7DE323F08CA52495A57BA0A95B52D1BB54CEA9A94C12A87B1CADB000000000198444198A8D76FEF8382274D472EE377F2FF3393E5B62C08B4329D6668A0DE72812AAE05000500746573743100000000000000590000000000000069A31A837EB7DE323F08CA52495A57BA0A95B52D1BB54CEA9A94C12A87B1CADB000000000198444198A8D76FEF8382274D472EE377F2FF3393E5B62C08B4329DBF85DADBFD54C48D050005007465737432000000000000000000000000000000662CEDF69962B1E0F1BF0C43A510DFB12190128B90F7FE9BA48B1249E8E10DBEEDD3B8A0555B4237505E3E0822B74BCBED8AA3663022413AFDA265BE1C55431ACAE3EA975AF6FD61DEFFA6A16CBA5174A16EF5553AE669D5803A0FA9D1424600";
 height = 686312;
-</pre></code>
+</code></pre>
+</div>
 
 <h4><a href={{ qls_sect13_deserialize_payload_form }}>13.1.2 {{ 'payload確認'|t }}</a></h4>
 <p>
@@ -42,15 +45,20 @@ height = 686312;
 トランザクションの内容を確認します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $tx = TransactionFactory::deserialize(hex2bin($payload));
 $hash = $facade->hashTransaction($tx);
 echo "\n===payload確認===" . PHP_EOL;
 echo $hash . PHP_EOL;
 print_r($tx);
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 4A1C88BBFE6EB46111C2B02F7C7355DAE186E54132197C2CD6D51297846A1824
 SymbolSdk\Symbol\Models\AggregateCompleteTransactionV2 Object
 (
@@ -219,7 +227,8 @@ SymbolSdk\Symbol\Models\AggregateCompleteTransactionV2 Object
     [verifiableEntityHeaderReserved_1:SymbolSdk\Symbol\Models\Transaction:private] => 0
     [entityBodyReserved_1:SymbolSdk\Symbol\Models\Transaction:private] => 0
 )
-</pre></code>
+</code></pre>
+</div>
 
 <h4>13.1.3 {{ '署名者の検証'|t }}</h4>
 <p>
@@ -227,17 +236,23 @@ SymbolSdk\Symbol\Models\AggregateCompleteTransactionV2 Object
 トランザクションがブロックに含まれていることが確認できれば自明ですが、念のため、アカウントの公開鍵でトランザクションの署名を検証しておきます。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $signature = new Signature($tx->signature);
 $res = $facade->verifyTransaction($tx, $signature);
 echo "\n===署名の検証===" . PHP_EOL;
 var_dump($res);
 console.log(res);
-</pre></code>
+</code></pre>
+</div>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 true
-</pre></code>
+</code></pre>
+</div>
 
 <h4>13.1.4 {{ 'マークルコンポーネントハッシュの計算'|t }}</h4>
 <p>
@@ -245,7 +260,9 @@ true
 トランザクションのハッシュ値には連署者の情報が含まれていません。一方でブロックヘッダーに格納されるマークルルートはトランザクションのハッシュに連署者の情報が含めたものが格納されます。そのためトランザクションがブロック内部に存在しているかどうかを検証する場合は、トランザクションハッシュをマークルコンポーネントハッシュに変換しておく必要があります。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $merkleComponentHash = $hash;
 
 if (isset($tx->cosignatures) && count($tx->cosignatures) > 0) {
@@ -258,11 +275,15 @@ if (isset($tx->cosignatures) && count($tx->cosignatures) > 0) {
   $merkleComponentHash = $hasher->final();
 }
 echo strtoupper($merkleComponentHash) . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 C61D17F89F5DEBC74A98A1321DB71EB7DC9111CDF1CF3C07C0E9A91FFE305AC3
-</pre></code>
+</code></pre>
+</div>
 
 <h4>13.1.5 {{ 'InBlockの検証'|t }}</h4>
 <p>
@@ -270,7 +291,9 @@ C61D17F89F5DEBC74A98A1321DB71EB7DC9111CDF1CF3C07C0E9A91FFE305AC3
 ノードからマークルツリーを取得し、先ほど計算したmerkleComponentHashからブロックヘッダーのマークルルートが導出できることを確認します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $leafhash = new Hash256($merkleComponentHash);
 
 // ノードから取得
@@ -288,11 +311,15 @@ $merklePath = $merkleProof["merkle_path"];
 $resutl = Merkle::proveMerkle($leafhash, $merklePath, $HRootHash);
 echo "===InBlockの検証===" . PHP_EOL;
 var_dump($resutl);
-</pre></code>
+</code></pre>
+</div>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 bool(true)
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -308,7 +335,9 @@ bool(true)
 </p>
 
 <h4>13.2.1 {{ 'normalブロックの検証'|t }}</h4>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 /**
  * Converts a given number to a reversed hex string of specified byte length.
  *
@@ -361,7 +390,8 @@ if ($block['type'] === BlockType::NORMAL) {
   echo "===ブロックヘッダーの検証===" . PHP_EOL;
   var_dump($hash === $blockInfo['meta']['hash']);
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -384,7 +414,9 @@ importanceBlockは、importance 値の再計算が行われるブロック(720�
 </ul>
 
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $height = 1440;
 // height = Importance Block のブロック高
 $blockInfo = $blockApiInstance->getBlockByHeight($height);
@@ -424,7 +456,8 @@ if($block['type'] === BlockType::IMPORTANCE){
   echo "===importanceブロックの検証===" . PHP_EOL;
   var_dump($hash === $blockInfo['meta']['hash']);
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -433,11 +466,16 @@ if($block['type'] === BlockType::IMPORTANCE){
 </p>
 
 <h4>13.2.3 {{ 'stateHashの検証'|t }}</h4>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 print_r($blockInfo);
-</pre></code>
+</code></pre>
+</div>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 SymbolRestClient\Model\BlockInfoDTO Object
 (
     [openAPINullablesSetToNull:protected] => Array
@@ -515,9 +553,12 @@ SymbolRestClient\Model\BlockInfoDTO Object
         )
 
 )
-</pre></code>
+</code></pre>
+</div>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $hasher = hash_init('sha3-256');
 hash_update($hasher, hex2bin($blockInfo['meta']['state_hash_sub_cache_merkle_roots'][0]));
 hash_update($hasher, hex2bin($blockInfo['meta']['state_hash_sub_cache_merkle_roots'][1]));
@@ -531,11 +572,15 @@ hash_update($hasher, hex2bin($blockInfo['meta']['state_hash_sub_cache_merkle_roo
 $hash = strtoupper(bin2hex(hash_final($hasher, true)));
 echo "===stateHashの検証===" . PHP_EOL;
 var_dump($hash === $blockInfo['block']['state_hash']);
-</pre></code>
+</code></pre>
+</div>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 bool(true)
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -551,7 +596,9 @@ bool(true)
 </p>
 
 {{ '検証用共通関数'|t }}
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
  //検証用共通関数
 
 function reverseHex($number, $bytes = 1) {
@@ -632,7 +679,8 @@ function hexToUint8($hex) {
   // バイナリデータを配列に変換
   return array_values(unpack('C*', $binary));
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h4><a href={{ qls_sect13_verify_account_info_form }}>13.3.1 {{ 'アカウント情報の検証'|t }}</a></h4>
 
@@ -641,7 +689,9 @@ function hexToUint8($hex) {
 アカウント情報を葉として、マークルツリー上の分岐する枝をアドレスでたどり、ルートに到着できるかを確認します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $aliceRawAddress = "TBIL6D6RURP45YQRWV6Q7YVWIIPLQGLZQFHWFEQ";
 $aliceAddress = new Address($aliceRawAddress);
 
@@ -750,7 +800,8 @@ $stateProof = $accountApiInstance->getAccountInfoMerkle($aliceRawAddress);
 
 //検証
 checkState($stateProof, $aliceStateHash, $alicePathHash, $rootHash);
-</pre></code>
+</code></pre>
+</div>
 
 <h4><a href={{ qls_sect13_verify_mosaic_metadata_form }}>13.3.2 {{ 'モザイクへ登録したメタデータの検証'|t }}</a></h4>
 <p>
@@ -758,7 +809,9 @@ checkState($stateProof, $aliceStateHash, $alicePathHash, $rootHash);
 モザイクに登録したメタデータValue 値を葉として、マークルツリー上の分岐する枝をメタデータキーで構成されるハッシュ値でたどり、ルートに到着できるかを確認します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $srcAddress = new Address('TDSSDPIPAJHVRZTQUAR36OQU6O7MV4BIAOLL5UA');
 $targetAddress = new Address('TDSSDPIPAJHVRZTQUAR36OQU6O7MV4BIAOLL5UA');
 
@@ -811,7 +864,8 @@ $stateProof1 = $metadataApiInstance->getMetadataMerkle(bin2hex($compositeHash));
 //検証
 
 checkState($stateProof1, $stateHash1, $pathHash1, $rootHash1);
-</pre></code>
+</code></pre>
+</div>
 
 <h4><a href={{ qls_sect13_verify_account_metadata_form }}>13.3.3 {{ 'アカウントへ登録したメタデータの検証'|t }}</a></h4>
 <p>
@@ -819,7 +873,9 @@ checkState($stateProof1, $stateHash1, $pathHash1, $rootHash1);
 アカウントに登録したメタデータValue 値を葉として、マークルツリー上の分岐する枝をメタデータキーで構成されるハッシュ値でたどり、ルートに到着できるかを確認します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $srcAddress = new Address('TDNH6IMNTNWAYRM7MXBFNGNGZRCFOQY5MSPTZUI');
 $targetAddress = new Address('TDNH6IMNTNWAYRM7MXBFNGNGZRCFOQY5MSPTZUI');
 
@@ -872,7 +928,8 @@ $stateProof2 = $metadataApiInstance->getMetadataMerkle(bin2hex($compositeHash));
 //検証
 
 checkState($stateProof2, $stateHash2, $pathHash2, $rootHash2);
-</pre></code>
+</code></pre>
+</div>
 
 <h3>13.4 {{ '現場で使えるヒント'|t }}</h3>
 <h4>13.4.1 {{ 'トラステッドウェブ'|t }}</h4>

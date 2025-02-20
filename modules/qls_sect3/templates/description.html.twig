@@ -1,6 +1,7 @@
 {#
 Description text for Section 3.
 #}
+{{ attach_library('quicklearning_symbol/quicklearning_symbol.code') }}
 
 {% set qls_sect3_generate_account_form = path('qls_sect3.generate_account_form') %}
 {% set qls_sect3_generate_account_from_pvtkey_form = path('qls_sect3.generate_account_from_pvtkey_form') %}
@@ -25,12 +26,18 @@ Description text for Section 3.
 
 <h4><a href={{ qls_sect3_generate_account_form }}>3.1.1 {{ '新規生成'|t }} </a></h4>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $aliceKey = $facade->createAccount(PrivateKey::random());
 var_dump($aliceKey);
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 object(SymbolSdk\Symbol\SymbolAccount)#29 (4) {
   ["keyPair"]=>
   object(SymbolSdk\Symbol\KeyPair)#27 (2) {
@@ -114,18 +121,25 @@ object(SymbolSdk\Symbol\SymbolAccount)#29 (4) {
 ���-��CM�3p�"
   }
 }
-</pre></code>
+</code></pre>
+</div>
 
 3.1.2 {{ '秘密鍵と公開鍵の導出'|t }} 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 echo  $aliceKey->publicKey. PHP_EOL;
 echo  $aliceKey->keyPair->privateKey(). PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 > 85B1B06DD5EE2A611325287705FA909442969B3C7FF47672B1EC34E9C*******
 > EA648F781721F5094D77149886F18F6B2C2F621B2A3FB8CFA1E382B9E011DFF3
-</pre></code>
+</code></pre>
+</div>
 {{ '注意事項'|t }}<br>
 <p>
 {% trans %}
@@ -134,14 +148,20 @@ echo  $aliceKey->keyPair->privateKey(). PHP_EOL;
 </p>
 
 3.1.3 {{ 'アドレスの導出'|t }}
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $aliceRawAddress = $aliceKey->address;
 echo $aliceRawAddress . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 > TCTEAYWL2X5PQMYKZD26SLPWUZBRX3KNWMZXBFY
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 これらがブロックチェーンを操作するための最も基本的な情報となります。また、秘密鍵からアカウントを生成したり、公開鍵やアドレスのみを扱うクラスの生成方法も確認しておきましょう。
@@ -149,41 +169,59 @@ echo $aliceRawAddress . PHP_EOL;
 </p>
 
 <h4><a href={{ qls_sect3_generate_account_from_pvtkey_form }}>3.1.4 {{ '秘密鍵からアカウント生成'|t }}</a></h4>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $aliceKey = $facade->createAccount(new PrivateKey('85B1B06DD5EE2A611325287705FA909442969B3C7FF47672B1EC34E9C*******'));
 
 $aliceRawAddress = $aliceKey->address;
 echo $aliceRawAddress . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 >TCTEAYWL2X5PQMYKZD26SLPWUZBRX3KNWMZXBFY
-</pre></code>
+</code></pre>
+</div>
 <h4><a href={{ qls_sect3_generate_account_from_pubkey_form }}>3.1.5 {{ '公開鍵クラスの生成'|t }}</a></h4>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $alicePublicAccount = $facade->createPublicAccount(new PublicKey('EA648F781721F5094D77149886F18F6B2C2F621B2A3FB8CFA1E382B9E011DFF3'));
 
 var_dump($alicePublicAccount->address);
 echo substr($alicePublicAccount->publicKey, 2, 66) . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 object(SymbolSdk\Symbol\Models\UnresolvedAddress)#68 (1) {
   ["binaryData"]=>
   string(24) "�o��dOv|����h!峯oZ4~\�"
 }
 EA648F781721F5094D77149886F18F6B2C2F621B2A3FB8CFA1E382B9E011DFF3
-</pre></code>
+</code></pre>
+</div>
 
 <h4>3.1.6 {{ 'アドレスクラスの生成'|t }}</h4>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $aliceAddress = new Address('TDNX2EJJKC3C4QOGURQZLQS6KJLQACTGWYZFKTQ');
 echo $aliceAddress->__tostring() . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 TDSSDPIPAJHVRZTQUAR36OQU6O7MV4BIAOLL5UA
-</pre></code>
+</code></pre>
+</div>
 
 <h3>3.2 {{ 'アカウントへの送信'|t }}</h3>
 <p>
@@ -223,7 +261,9 @@ TDSSDPIPAJHVRZTQUAR36OQU6O7MV4BIAOLL5UA
 </p>
 
 <h4><a href={{ qls_sect3_list_owned_mosaics_form }}>3.3.1 {{ '所有モザイク一覧の取得'|t }}</a></h4>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $config = new Configuration();
 $config->setHost($NODE_URL);
 $client = new \GuzzleHttp\Client();
@@ -233,9 +273,12 @@ $account = $accountApiInstance->getAccountInfo($aliceAddress);
 
 echo "\n===アカウント情報の確認===" . PHP_EOL;
 echo $account . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "id": "669B74CB84E82060AFB8C21B",
     "account": {
@@ -257,7 +300,8 @@ echo $account . PHP_EOL;
         "importanceHeight": "0"
     }
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 publicKey<br>
@@ -277,9 +321,12 @@ publicKey<br>
 事前準備：対話のためのBob アカウントを生成
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $bobKey = new KeyPair(PrivateKey::random());
-</pre></code>
+</code></pre>
+</div>
 
 
 <p>{{ '暗号化'|t }}</p>
@@ -289,22 +336,30 @@ $bobKey = new KeyPair(PrivateKey::random());
 Alice の秘密鍵・Bob の公開鍵で暗号化し、Alice の公開鍵・Bob の秘密鍵で復号します(AES-GCM 形式)。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $bobKey = new KeyPair(PrivateKey::random());
 
 $message = "Hello Symbol!";
 $encryptedMessage = $aliceKey->messageEncoder()->encode($bobKey->publicKey(), $message);
 $encryptedMessage = $aliceMesgEncoder->encode($bobKey->publicKey(), $message);
 echo strtoupper(bin2hex($encryptedMessage)) . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 > 0105949FB22EF11566D1E7F3EED230CE73D93D71BFD1AAE19D78315FD4F8028D1D16AC223A8A7E9D5AAB
-</pre></code>
+</code></pre>
+</div>
 
 
 <p>{{ '復号'|t }}</p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $bobMsgEncoder = new MessageEncoder($bobKey);
 $decryptMessageData = $bobMsgEncoder->tryDecode($aliceKey->keyPair->publicKey(), $encryptedMessage);
 var_dump($decryptMessageData);
@@ -314,9 +369,12 @@ if($decryptMessageData['isDecoded']){
 }else{
     echo "\nFailed to decode message" . PHP_EOL;
 }
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 array(2) {
   ["isDecoded"]=>
   bool(true)
@@ -324,7 +382,8 @@ array(2) {
   string(13) "Hello Symbol!"
 }
 > "Hello Symol!"
-</pre></code>
+</code></pre>
+</div>
 
 <p>{{ '署名'|t }}</p>
 <p>
@@ -332,20 +391,28 @@ array(2) {
 Aliceの秘密鍵でメッセージを署名し、Aliceの公開鍵と署名でメッセージを検証します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $payload = "Hellow Symbol!";
 $signature = $aliceKey->keyPair->sign($payload);
 echo "\n===署名===" . PHP_EOL;
 echo $signature . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 > 0x1D37BA4A84CF6161A3659038040BD446AC531F116083847E73795DD7188A512AE03BF5326991A81A5D6A0308662242BD77E767AF8F9B3CCC401CCE765AF17C03
-</pre></code>
+</code></pre>
+</div>
 
 
 <p>{{ '検証'|t }}</p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $v = new Verifier($aliceKey->keyPair->publicKey());
 $isVerified = $v->verify($payload, $signature);
 echo "alice verified: " . PHP_EOL;
@@ -356,14 +423,18 @@ $v = new Verifier($bobKey->publicKey());
 $isVerified = $v->verify($payload, $signature);
 echo "bob verified: " . PHP_EOL;
 var_dump($isVerified);
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 alice verified:
 bool(true)
 bob verified:
 bool(false)
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 ブロックチェーンを使用しない署名は何度も再利用される可能性があることにご注意ください。

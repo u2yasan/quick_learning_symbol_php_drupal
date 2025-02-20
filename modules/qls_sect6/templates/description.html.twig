@@ -27,7 +27,9 @@ Symbolブロックチェーンではネームスペースをレンタルして�
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $config = new Configuration();
 $config->setHost($NODE_URL);
 $client = new GuzzleHttp\Client();
@@ -39,13 +41,17 @@ $rentalBlock = ($rentalDays * 24 * 60 * 60) / 30;
 $rootNsRenatalFeeTotal = $rentalBlock * $rootNsperBlock;
 echo "rentalBlock: " . $rentalBlock . PHP_EOL;
 echo "Root Namespace Rental Fee: " . $rootNsRenatalFeeTotal . PHP_EOL;
-</pre></code>
+</code></pre>
+</div>
 
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 rentalBlock: 1051200
 Root Namespace Rental Fee: 210240000 //約210XYM
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -57,14 +63,20 @@ Root Namespace Rental Fee: 210240000 //約210XYM
 サブネームスペースの取得手数料を計算します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $childNamespaceRentalFee = $networkApiInstance->getRentalFees()->getEffectiveChildNamespaceRentalFee();
 echo "Child Namespace Rental Fee: " . $childNamespaceRentalFee . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 Child Namespace Rental Fee: 10000000 //10XYM
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -76,7 +88,9 @@ Child Namespace Rental Fee: 10000000 //10XYM
 <p>
 <a href={{ qls_sect6_create_namespace_form }}>{% trans %}ルートネームスペースをレンタルします{% endtrans %}</a>({{ '例'|t }}:xembook)
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $name = "xembook";
 $tx = new NamespaceRegistrationTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
@@ -103,12 +117,15 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 <a href={{ qls_sect6_create_subnamespace_form }}>{% trans %}サブネームスペースをレンタルします{% endtrans %}</a>({{ '例'|t }}:xembook.tomato)
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $parnetNameId = IdGenerator::generateNamespaceId("xembook"); //ルートネームスペース名
 $name = "tomato"; //サブネームスペース名
 
@@ -143,7 +160,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -151,12 +169,15 @@ try {
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $rootName = IdGenerator::generateNamespaceId("xembook"); //ルートネームスペース名
 $parnetNameId = IdGenerator::generateNamespaceId("tomato", $rootName); // 紐づけたい1階層目のサブネームスペース
 $name = "morning"; //サブネームスペース名
 // 以下はサブネームスペース作成と同じ
-</pre></code>
+</code></pre>
+</div>
 
 <h4><a href={{ qls_sect6_list_namespaces_form }}>6.2.1 {{ '有効期限の計算'|t }}</a></h4>
 
@@ -172,7 +193,9 @@ $name = "morning"; //サブネームスペース名
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $namespaceIds = IdGenerator::generateNamespacePath("xembook"); // ルートネームスペース
 $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
 
@@ -207,7 +230,8 @@ $remainHeight = (int)$nsInfo['namespace']['end_height'] - $lastHeight;
 
 $endDate = Carbon::createFromTimestampMs((int)$lastBlock['block']['timestamp'] + $remainHeight * 30000 + $epochAdjustment * 1000);
 echo "End Date: " . $endDate . PHP_EOL;
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -215,16 +239,21 @@ echo "End Date: " . $endDate . PHP_EOL;
 テストネットでは設定した有効期限よりも1日程度更新期限が猶予されます。メインネットはこの値が30日となっていますのでご留意ください。
 {% endtrans %}
 </p>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 End Date: 2024-09-22 04:02:26
-</pre></code>
+</code></pre>
+</div>
 
 <h3><a href={{ qls_sect6_link_namespace_form }}>6.3 {{ 'リンク'|t }}</a></h3>
 
 <h4>6.3.1 {{ 'アカウントへのリンク'|t }}</h4>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $namespaceId = IdGenerator::generateNamespaceId("xembook"); // ルートネームスペース
 $address = $aliceKey->address;
 
@@ -251,7 +280,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -260,7 +290,9 @@ try {
 </p>
 
 <h4>6.3.2 {{ 'モザイクへリンク'|t }}</h4>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $namespaceIds = IdGenerator::generateNamespacePath("xembook.tomato"); // ルートネームスペース
 $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
 $mosaicId = new MosaicId("0x12679808DC2xxxx");
@@ -288,7 +320,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 モザイクを作成したアドレスと同一の場合のみリンクできるようです。
@@ -304,7 +337,9 @@ try {
 v3ではネームスペースを直接指定できないため、アドレスを特定しないまま操作する場合はデータを加工する必要があります。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 
 // UnresolvedAccount 導出
 $namespaceId = IdGenerator::generateNamespaceId("xembook"); // ルートネームスペース
@@ -332,14 +367,17 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
 送信モザイクにUnresolvedMosaicとして指定して、モザイクIDを特定しないままトランザクションを署名・アナウンスします。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $namespaceIds = IdGenerator::generateNamespacePath("xembook.tomato"); // ルートネームスペース
 $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
 
@@ -369,27 +407,34 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
 XYMをネームスペースで使用する場合は以下のように指定します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $namespaceIds = IdGenerator::generateNamespacePath("symbol.xym");
 $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
 var_dump($namespaceId);
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 object(SymbolSdk\Symbol\Models\NamespaceId)#101 (2) {
   ["size"]=>
   int(8)
   ["value"]=>
   int(-1780160202445377554)
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h3><a href={{ qls_sect6_check_namespace_form }}>6.5 {{ '参照'|t }}</a></h3>
 <p>
@@ -397,13 +442,18 @@ object(SymbolSdk\Symbol\Models\NamespaceId)#101 (2) {
 アドレスへリンクしたネームスペースを参照します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $namespaceId = new NamespaceId(IdGenerator::generateNamespaceId("xembook"));
 $namespaceInfo = $namespaceApiInstance->getNamespace(substr($namespaceId, 2));
 var_dump($namespaceInfo);
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 object(SymbolRestClient\Model\NamespaceInfoDTO)#124 (2) {
   ["openAPINullablesSetToNull":protected]=>
   array(0) {
@@ -471,7 +521,8 @@ object(SymbolRestClient\Model\NamespaceInfoDTO)#124 (2) {
     }
   }
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
@@ -496,14 +547,19 @@ NamespaceRegistrationTypeは以下の通りです。
 モザイクへリンクしたネームスペースを参照します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $namespaceIds = IdGenerator::generateNamespacePath("xembook.tomato");
 $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
 $namespaceInfo = $namespaceApiInstance->getNamespace(substr($namespaceId, 2));
 var_dump($namespaceInfo);
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 object(SymbolRestClient\Model\NamespaceInfoDTO)#104 (2) {
   ["openAPINullablesSetToNull":protected]=>
   array(0) {
@@ -571,7 +627,8 @@ object(SymbolRestClient\Model\NamespaceInfoDTO)#104 (2) {
     }
   }
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h4><a href={{ qls_sect6_reverse_lookup_namespace_form }}>6.5.1 {{ '逆引き'|t }}</a></h4>
 <p>
@@ -579,22 +636,28 @@ object(SymbolRestClient\Model\NamespaceInfoDTO)#104 (2) {
 アドレスに紐づけられたネームスペースを全て調べます。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $addresses = ["addresses"=> ["TBIL6D6RURP45YQRWV6Q7YVWIIPLQGLZQFHWFEQ"]];
 $accountNames = $namespaceApiInstance->getAccountsNames($addresses);
 var_dump($accountNames);
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {% trans %}
 モザイクに紐づけられたネームスペースを全て調べます。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $mosaicIds = ["mosaicIds"=> ["72C0212E67A08BCE"]];
 $mosaicNames = $namespaceApiInstance->getMosaicsNames($mosaicIds);
 var_dump($mosaicNames);
-</pre></code>
+</code></pre>
+</div>
 
 
 <h4><a href={{ qls_sect6_check_receipt_form }}>6.5.2 {{ 'レシートの参照'|t }}</a></h4>
@@ -607,16 +670,21 @@ var_dump($mosaicNames);
 <p>
 {{ 'アドレスの場合'|t }}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $receiptApiInstance = new ReceiptRoutesApi($client, $config);
 
 $state = $receiptApiInstance->searchAddressResolutionStatements(
   height: 1600481
 );
 echo $state;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 {
     "data": [
         {
@@ -644,19 +712,25 @@ echo $state;
         "pageSize": 10
     }
 }
-</pre></code>
+</code></pre>
+</div>
 
 <p>
 {{ 'モザイクの場合'|t }}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $state = $receiptApiInstance->searchMosaicResolutionStatements(
   height: 1601155
 );
 echo $state;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 object(stdClass)#142 (2) {
   ["data"]=>
   array(1) {
@@ -728,7 +802,8 @@ object(stdClass)#142 (2) {
         "pageSize": 10
     }
 }
-</pre></code>
+</code></pre>
+</div>
 
 
 <p>

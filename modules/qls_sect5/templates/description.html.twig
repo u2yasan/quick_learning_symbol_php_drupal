@@ -27,7 +27,9 @@ Wikipediaによると、トークンとは「紀元前8000年頃から紀元前3
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $f = MosaicFlags::NONE;
 $f += MosaicFlags::SUPPLY_MUTABLE; // 供給量変更可能
 // $f += MosaicFlags::TRANSFERABLE; // 第三者への譲渡可否
@@ -42,13 +44,19 @@ if (strlen($hexMosaicId) === 15) {
     $hexMosaicId = '0' . $hexMosaicId;
 }
 echo $hexMosaicId . PHP_EOL;
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 222EF7A74ED6A71C
-</pre></code>
+</code></pre>
+</div>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // モザイク定義
 $mosaicDefTx = new EmbeddedMosaicDefinitionTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
@@ -59,7 +67,8 @@ $mosaicDefTx = new EmbeddedMosaicDefinitionTransactionV1(
   nonce: new MosaicNonce($mosaicId['nonce']),
   flags: $flags,
 );
-</pre></code>
+</code></pre>
+</div>
 <p>※
 {% trans %}
 AggregateTransactionのInner Transactionクラスは全てEmbeddedがつきます。
@@ -70,11 +79,14 @@ AggregateTransactionのInner Transactionクラスは全てEmbeddedがつきま�
 MosaicFlagsは以下の通りです。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 MosaicFlags {
   supplyMutable: false, transferable: false, restrictable: false, revokable: false
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 数量変更、第三者への譲渡、モザイクグローバル制限の適用、発行者からの還収の可否について指定します。 この項目は後で変更することはできません。
@@ -101,7 +113,9 @@ divisibility:0 = 1 divisibility:1 = 1.0 divisibility:2 = 1.00
 次に数量を変更します
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 //モザイク変更
 $mosaicChangeTx = new EmbeddedMosaicSupplyChangeTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
@@ -110,7 +124,8 @@ $mosaicChangeTx = new EmbeddedMosaicSupplyChangeTransactionV1(
   delta: new Amount(10000),
   action: new MosaicSupplyChangeAction(MosaicSupplyChangeAction::INCREASE),
 );
-</pre></code>
+</code></pre>
+</div>
 <p>※
 {% trans %}
 AggregateTransactionのInner Transactionクラスは全てEmbeddedがつきます。
@@ -135,7 +150,9 @@ MosaicSupplyChangeActionは以下の通りです。
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // マークルハッシュの算出
 $embeddedTransactions = [$mosaicDefTx, $mosaicChangeTx];
 $merkleHash = $facade->hashEmbeddedTransactions($embeddedTransactions);
@@ -168,7 +185,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 アグリゲートトランザクションの特徴として、まだ存在していないモザイクの数量を変更しようとしている点に注目してください。 配列化した時に、矛盾点がなければ1つのブロック内で問題なく処理することができます。
@@ -180,7 +198,9 @@ try {
 モザイク作成したアカウントが持つモザイク情報を確認します。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // 3.3 アカウント情報の確認 - 所有モザイク一覧の取得 を事前に実施する
 $accountApiInstance = new AccountRoutesApi($client, $config);
 $mosaicApiInstance = new MosaicRoutesApi($client, $config);
@@ -191,9 +211,12 @@ foreach($account->getAccount()->getMosaics() as $mosaic) {
   echo "\n===モザイク情報===" . PHP_EOL;
   var_dump($mocaisInfo);
 }
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 ===モザイク情報===
 object(SymbolRestClient\Model\MosaicInfoDTO)#131 (2) {
   ["openAPINullablesSetToNull":protected]=>
@@ -232,7 +255,8 @@ object(SymbolRestClient\Model\MosaicInfoDTO)#131 (2) {
     }
   }
 }
-</pre></code>
+</code></pre>
+</div>
 
 <h4><a href={{ qls_sect5_mosaics_transfer_transaction_form }}>5.2 {{ 'モザイク送信'|t }}</a></h4>
 <p>
@@ -240,7 +264,9 @@ object(SymbolRestClient\Model\MosaicInfoDTO)#131 (2) {
 作成したモザイクを送信します。よく、ブロックチェーンに初めて触れる方は、モザイク送信について「クライアント端末に保存されたモザイクを別のクライアント端末へ送信」することとイメージされている人がいますが、モザイク情報はすべてのノードで常に共有・同期化されており、送信先に未知のモザイク情報を届けることではありません。正確にはブロックチェーンへ「トランザクションを送信」することにより、アカウント間でのトークン残量を組み替える操作のことを言います。
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 // 受信アカウント作成
 $bobKey = $facade->createAccount(PrivateKey::random());
 $bobAddress = $bobKey->address;
@@ -270,7 +296,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 
 <span>■{% trans %}送信モザイクリスト{% endtrans %}<span> 
 <p>
@@ -291,13 +318,18 @@ try {
 </p>
 
 <h4><a href={{ qls_sect5_confirm_transaction_form }}>5.2.1 {{ '送信確認'|t }}</a></h4>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $txInfo = $apiInstance->getConfirmedTransaction(
   $hash  // 送信トランザクションのハッシュ
 );
-</pre></code>
-<p>{{ '出力例'|t }}</p>
-<code><pre>
+</code></pre>
+</div>
+<p class="output-ex">{{ '出力例'|t }}</p>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 object(SymbolRestClient\Model\TransactionInfoDTO)#127 (2) {
   ["openAPINullablesSetToNull":protected]=>
   array(0) {
@@ -485,7 +517,8 @@ object(SymbolRestClient\Model\TransactionInfoDTO)#127 (2) {
     }
   }
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 TransferTransactionのmosaicsに2種類のモザイクが送信されていることが確認できます。また、TransactionInfoに承認されたブロックの情報が記載されています。
@@ -507,7 +540,9 @@ TransferTransactionのmosaicsに2種類のモザイクが送信されている�
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $f = MosaicFlags::NONE;
 // $f += MosaicFlags::SUPPLY_MUTABLE; // 供給量変更可能
 $f += MosaicFlags::TRANSFERABLE; // 第三者への譲渡可否
@@ -572,7 +607,8 @@ try {
 } catch (Exception $e) {
   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
 }
-</pre></code>
+</code></pre>
+</div>
 <p>
 ※{% trans %}
 AggregateTransactionのInner Transactionクラスは全てEmbeddedがつくのでEmbeddedTransferTransactionV1を使用します。
@@ -596,20 +632,25 @@ transferableをfalseに設定することで転売が制限されるため、資
 {% endtrans %}
 </p>
 
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $f = MosaicFlags::NONE;
 $f += MosaicFlags::SUPPLY_MUTABLE; // 供給量変更可能
 // $f += MosaicFlags::TRANSFERABLE; // 第三者への譲渡可否
 $f += MosaicFlags::RESTRICTABLE; //制限設定の可否
 $f += MosaicFlags::REVOKABLE; //発行者からの還収可否
 $flags = new MosaicFlags($f);
-</pre></code>
+</code></pre>
+</div>
 <p>
 {% trans %}
 トランザクションは以下のように記述します
 {% endtrans %}
 </p>
-<code><pre>
+<div class="code-container">
+  <button class="toggle-code">Show Code</button>
+  <pre><code class="code-block">
 $revocationTx = new MosaicSupplyRevocationTransactionV1(
   network: new NetworkType(NetworkType::TESTNET),
   signerPublicKey: $aliceKey->publicKey,
@@ -621,4 +662,5 @@ $revocationTx = new MosaicSupplyRevocationTransactionV1(
   sourceAddress: new UnresolvedAddress("TDZ46RYMP6XTRQLOGI3AWULOHV56LBUE7M43MCI"), //回収ターゲット
 );
 $facade->setMaxFee($revocationTx, 100); // 手数料
-</pre></code>
+</code></pre>
+</div>

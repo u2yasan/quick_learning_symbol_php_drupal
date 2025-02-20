@@ -1,2 +1,4 @@
 <?php
-
+function qls_sect3_preprocess_page(array &$variables) {
+  $variables['#attached']['library'][] = 'qls_sect3/quicklearning_symbol.code';
+}
