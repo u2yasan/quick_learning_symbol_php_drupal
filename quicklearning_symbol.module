@@ -1,18 +1,68 @@
 <?php
+
+// function quicklearning_symbol_install() {
+//   // モジュールのパスを取得（__DIR__ でもOK）
+//   $module_path = \Drupal::service('extension.list.module')->getPath('quicklearning_symbol') . '/translations/';
+//   // 対象の言語コードを配列で指定
+//   $langcodes = ['ja', 'it', 'ch-hant', 'ch-hans'];
+
+//   foreach ($langcodes as $langcode) {
+//     $filepath = $module_path . "{$langcode}.po";
+//     if (file_exists($filepath)) {
+//       // Drush の locale:import コマンドをシェルから実行
+//       $command = "/usr/local/bin/drush locale:import $langcode " . escapeshellarg($filepath) . " --yes";
+//       exec($command, $output, $return_var);
+//       if ($return_var !== 0) {
+//         \Drupal::messenger()->addError("Translation import for {$langcode} failed. Output: " . implode("\n", $output));
+//       }
+//     }
+//   }
+// }
+
+// use Drupal\locale\PoDatabaseImporter;
+
+// function quicklearning_symbol_install() {
+//   // モジュールのパスを取得（__DIR__ でもOK）
+//   $module_path = \Drupal::service('extension.list.module')->getPath('quicklearning_symbol') . "/translations/";
+//   $langcodes = ['ja', 'it', 'ch-hant', 'ch-hans']; // 対象言語
+
+//   foreach ($langcodes as $langcode) {
+//     $filepath = $module_path . "{$langcode}.po";
+//     if (file_exists($filepath)) {
+//       // PoDatabaseImporter クラスを手動でインスタンス化してインポート
+//       $importer = new PoDatabaseImporter(\Drupal::database(), \Drupal::service('locale.storage'));
+//       $importer->import($filepath, $langcode);
+//     }
+//   }
+// }
 // require_once __DIR__ . '/vendor/autoload.php';
-use Drupal\locale\PoDatabaseImporter;
+// function quicklearning_symbol_install() {
+//   $module_path = \Drupal::service('extension.list.module')->getPath('quicklearning_symbol') . "/translations/";
+//   $langcodes = ['ja', 'it', 'ch-hant', 'ch-hans']; // 使用する言語コードを指定
 
-function quicklearning_symbol_install() {
-  $langcodes = ['en', 'it', 'ch-hant', 'ch-hans']; 
+//   foreach ($langcodes as $langcode) {
+//     $filepath = $module_path . "{$langcode}.po";
+//     if (file_exists($filepath)) {
+//       // `locale.po_importer` を使って翻訳をインポート
+//       $po_importer = \Drupal::service('locale.po_importer');
+//       $po_importer->import($filepath, $langcode);
+//     }
+//   }
+// }
+// use Drupal\locale\PoDatabaseImporter;
 
-  foreach ($langcodes as $langcode) {
-    $filepath = drupal_get_path('module', 'quicklearning_symbol') . "/translations/{$langcode}.po";
-    if (file_exists($filepath)) {
-      $importer = new PoDatabaseImporter(\Drupal::database(), \Drupal::service('locale.storage'));
-      $importer->import($filepath, $langcode);
-    }
-  }
-}
+// function quicklearning_symbol_install() {
+//   $langcodes = ['en', 'it', 'ch-hant', 'ch-hans']; 
+
+//   foreach ($langcodes as $langcode) {
+//     // $filepath = drupal_get_path('module', 'quicklearning_symbol') . "/translations/{$langcode}.po";
+//     $filepath = \Drupal::service('extension.list.module')->getPath('quicklearning_symbol') . "/translations/{$langcode}.po";
+//     if (file_exists($filepath)) {
+//       $importer = new PoDatabaseImporter(\Drupal::database(), \Drupal::service('locale.storage'));
+//       $importer->import($filepath, $langcode);
+//     }
+//   }
+// }
 // use Drupal\Component\Utility\Html;
 // use Drupal\Core\Url;
 
