@@ -1,18 +1,18 @@
 <?php
 
-use Drupal\locale\PoDatabaseImporter;
+// use Drupal\locale\PoDatabaseImporter;
 
-function qls_ch3_install() {
-  $langcodes = ['en']; // 使用する言語コードを指定
+// function qls_ch3_install() {
+//   $langcodes = ['en']; // 使用する言語コードを指定
 
-  foreach ($langcodes as $langcode) {
-    $filepath = drupal_get_path('module', 'qls_ch3') . "/translations/{$langcode}.po";
-    if (file_exists($filepath)) {
-      $importer = new PoDatabaseImporter(\Drupal::database(), \Drupal::service('locale.storage'));
-      $importer->import($filepath, $langcode);
-    }
-  }
-}
+//   foreach ($langcodes as $langcode) {
+//     $filepath = drupal_get_path('module', 'qls_ch3') . "/translations/{$langcode}.po";
+//     if (file_exists($filepath)) {
+//       $importer = new PoDatabaseImporter(\Drupal::database(), \Drupal::service('locale.storage'));
+//       $importer->import($filepath, $langcode);
+//     }
+//   }
+// }
 
 // function qls_ch3_preprocess_page(array &$variables) {
 //   $variables['#attached']['library'][] = 'qls_ch3/quicklearning_symbol.code';
