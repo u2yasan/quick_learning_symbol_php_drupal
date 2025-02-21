@@ -2,10 +2,10 @@
 Description text for Section 5.
 #}
 
-{% set qls_sect5_create_mosaic_form = path('qls_sect5.create_mosaic_form') %} 
-{% set qls_sect5_list_mosaics_form = path('qls_sect5.list_mosaics_form') %} 
-{% set qls_sect5_mosaics_transfer_transaction_form = path('qls_sect5.mosaics_transfer_transaction_form') %} 
-{% set qls_sect5_confirm_transaction_form = path('qls_sect5.confirm_transaction_form') %} 
+{% set qls_ch5_create_mosaic_form = path('qls_ch5.create_mosaic_form') %} 
+{% set qls_ch5_list_mosaics_form = path('qls_ch5.list_mosaics_form') %} 
+{% set qls_ch5_mosaics_transfer_transaction_form = path('qls_ch5.mosaics_transfer_transaction_form') %} 
+{% set qls_ch5_confirm_transaction_form = path('qls_ch5.confirm_transaction_form') %} 
 
 <h2>{{ '第5章'|t }} {{ 'モザイク'|t }}</h2>
 
@@ -20,7 +20,7 @@ Wikipediaによると、トークンとは「紀元前8000年頃から紀元前3
 {% endtrans %}
 </p>
 
-<h3><a href={{ qls_sect5_create_mosaic_form }}>5.1 {{ 'モザイク生成'|t }}</a></h3>
+<h3><a href={{ qls_ch5_create_mosaic_form }}>5.1 {{ 'モザイク生成'|t }}</a></h3>
 <p>
 {% trans %}
 モザイク生成には作成するモザイクを定義します。
@@ -192,7 +192,7 @@ try {
 アグリゲートトランザクションの特徴として、まだ存在していないモザイクの数量を変更しようとしている点に注目してください。 配列化した時に、矛盾点がなければ1つのブロック内で問題なく処理することができます。
 {% endtrans %}
 </p>
-<h4><a href={{ qls_sect5_list_mosaics_form }}>5.1.1 {{ '確認'|t }}</a></h4>
+<h4><a href={{ qls_ch5_list_mosaics_form }}>5.1.1 {{ '確認'|t }}</a></h4>
 <p>
 {% trans %}
 モザイク作成したアカウントが持つモザイク情報を確認します。
@@ -258,7 +258,7 @@ object(SymbolRestClient\Model\MosaicInfoDTO)#131 (2) {
 </code></pre>
 </div>
 
-<h4><a href={{ qls_sect5_mosaics_transfer_transaction_form }}>5.2 {{ 'モザイク送信'|t }}</a></h4>
+<h4><a href={{ qls_ch5_mosaics_transfer_transaction_form }}>5.2 {{ 'モザイク送信'|t }}</a></h4>
 <p>
 {% trans %}
 作成したモザイクを送信します。よく、ブロックチェーンに初めて触れる方は、モザイク送信について「クライアント端末に保存されたモザイクを別のクライアント端末へ送信」することとイメージされている人がいますが、モザイク情報はすべてのノードで常に共有・同期化されており、送信先に未知のモザイク情報を届けることではありません。正確にはブロックチェーンへ「トランザクションを送信」することにより、アカウント間でのトークン残量を組み替える操作のことを言います。
@@ -317,7 +317,7 @@ try {
 {% endtrans %}
 </p>
 
-<h4><a href={{ qls_sect5_confirm_transaction_form }}>5.2.1 {{ '送信確認'|t }}</a></h4>
+<h4><a href={{ qls_ch5_confirm_transaction_form }}>5.2.1 {{ '送信確認'|t }}</a></h4>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
