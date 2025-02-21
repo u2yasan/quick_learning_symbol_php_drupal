@@ -3,7 +3,7 @@
 use Drupal\locale\PoDatabaseImporter;
 
 function quicklearning_symbol_install() {
-  $langcodes = ['en']; // 使用する言語コードを指定
+  $langcodes = ['en', 'it', 'ch-hant', 'ch-hans']; 
 
   foreach ($langcodes as $langcode) {
     $filepath = drupal_get_path('module', 'quicklearning_symbol') . "/translations/{$langcode}.po";
