@@ -1,6 +1,6 @@
 name: ch10
 type: module
-description: Chapter 10
+description: Quick Learning Symbol Chapter 10
 package: Quick Learning Symbol
 core_version_requirement: ^11.0
 configure: qls_ch10.settings

@@ -1,6 +1,6 @@
 name: ch7
 type: module
-description: Chapter 7
+description: Quick Learning Symbol Chapter 7
 package: Quick Learning Symbol
 core_version_requirement: ^11.0
 configure: qls_ch7.description
