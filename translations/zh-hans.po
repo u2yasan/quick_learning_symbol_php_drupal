@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2025-02-20 20:55+0800\n"
-"PO-Revision-Date: 2025-02-21 16:26+0800\n"
+"PO-Revision-Date: 2025-02-21 22:37+0800\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -15,154 +15,154 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 msgid "Quick learning Symbol blockchain for use in the field today PHP Edition(Drupal)"
-msgstr ""
+msgstr "快速学习区块链符号，用于当今的实地应用 PHP 版本(Drupal)"
 
 msgid "This manual was designed as a practical resource for people looking to learn and leverage the Symbol blockchain's core concepts and native functionality. Unlike most official documents that exhaustively deal with general technology, this document approaches the Symbol blockchain through its usable elements and built-in features, providing a practical overview by detailing key concepts alongside example code and outputs. If read from the beginning, it will provide a holistic understanding of the Symbol blockchain along with all the tools needed to begin application development. For the sake of brevity, this document omits several aspects of the Symbol blockchain and its network including: node management, the consensus algorithm, tokenomics, harvesting rewards, etc."
-msgstr ""
+msgstr "这份手册旨在为希望学习和运用 Symbol 区块链核心概念和原生功能的人提供实用的资源。与大多数官方文件耗尽篇幅处理一般技术不同，本文件通过其可用元素和内置功能来介绍 Symbol 区块链，并通过详细介绍关键概念以及示例代码和输出来提供实用概述。如果从头开始阅读，它将提供对 Symbol 区块链的全面理解以及开始应用开发所需的所有工具。为了简洁起见，本文忽略了 Symbol 区块链及其网络的一些方面，包括：节点管理、共识算法、代币经济、收获奖励等。"
 
 msgid "Newcomers to the Blockchain space who are looking to better understand the Symbol blockchain and experiment with it."
-msgstr ""
+msgstr "希望更好的了解 Symbol 区块链并进行实验的区块链初学者."
 
 msgid "Blockchain enthusiasts looking for practical use cases with examples."
-msgstr ""
+msgstr "寻找实用案例并且需要示例的区块链爱好者."
 
 msgid "Educators & content producers seeking to understand and describe the Symbol blockchain or specific aspects of it."
-msgstr ""
+msgstr "希望了解并描述 Symbol 区块链或其中特定方面的教育工作者和内容制作者."
 
 msgid "Anyone curious about how easy it is to build on Symbol."
-msgstr ""
+msgstr "对于在 Symbol 上开发的易用性感到好奇的任何人."
 
 msgid "A blockchain's most foundational element is a proof of existence with an associated time stamp, not money or 'cryptocurrency'. With this in focus we can imagine blockchain's applicability in areas such as authentication and traceability. Trust is a foundational element upon which society is built, yet we do not inherently trust systems and other individuals. In order to navigate this contradiction, countless solutions have been built around translating that trust into money. Blockchain has introduced the possibility of trustless peer-to-peer interactions, providing a novel opportunity to reframe our relationship with trust and value."
-msgstr ""
+msgstr "区块链最基础的元素是存在证明以及与之相关联的时间戳，而不是货币或「加密货币」。基于这一点，我们可以想像区块链在身份验证和可追溯性等领域的应用。信任是社会建立的基石，然而我们并不会从本质上信任系统和其他个人。为了应对这种矛盾，已经出现了无数的解决方案，围绕着将信任转化为金钱。区块链引入了无需信任的点对点交互的可能性，提供了一个重新定位我们对于信任和价值关系的全新机会。"
 
 msgid "Blockchain technology has made trustless peer-to-peer interactions possible, eliminating the need for money or a trusted third parties in many scenarios. This document was written in such a way that people who are active in fields of business and culture, not just in finance, can get a sense of how to utilise the power of blockchain within their domain."
-msgstr ""
+msgstr "区块链技术使得在许多情况下不需要金钱或信任第三方即可进行无信任对等交互成为可能。本文档的编写旨在让不仅仅是金融领域的从事业务和文化领域的人们了解如何在其领域内利用区块链的力量。"
 
-msgid "The idea that "a Proof of Concept (PoC) is no longer needed" is increasingly taking hold in areas of novel technology advancement such as the Internet of Things (IoT). Physical and digital modularity have progressed to the point where even prototypes can safely deployed in real-world applications as they are, largely bypassing the need for protracted refinement cycles and code review. The Symbol blockchain was largely designed around notions of security, scalability, and modularity. Symbol's native functionality for accounts and tokens provides a robust foundation of highly secure information infrastructure. This is furthered by a powerful network of API-enabled nodes and suite of community-developed tools which largely mitigate the need for custom-build applications and self-hosted nodes."
-msgstr ""
+msgid "The idea that \"a Proof of Concept (PoC) is no longer needed\" is increasingly taking hold in areas of novel technology advancement such as the Internet of Things (IoT). Physical and digital modularity have progressed to the point where even prototypes can safely deployed in real-world applications as they are, largely bypassing the need for protracted refinement cycles and code review. The Symbol blockchain was largely designed around notions of security, scalability, and modularity. Symbol's native functionality for accounts and tokens provides a robust foundation of highly secure information infrastructure. This is furthered by a powerful network of API-enabled nodes and suite of community-developed tools which largely mitigate the need for custom-build applications and self-hosted nodes."
+msgstr "在物联网（IoT）等新领域的技术发展中，“无需概念验证（PoC）”的想法越来越被接受。物理和数字模块化已经进展到了连原型都可以在真实世界的应用中安全部署，大大减少了漫长的精细化周期和代码审查的需要。 Symbol区块链主要是围绕安全、可扩展性和模块化概念而设计的。 Symbol原生的账户和代币功能提供了一个高度安全的信息基础设施的坚实基础。此外，还有一套由社区开发的强大的API节点网络和工具，这些工具很大程度上减少了自定义构建应用程序和自托管节点的需求。"
 
 msgid "We hope the possibilities provided by the Symbol blockchain resonate throughout this document will show you these possibilities. Please note that the 'Tips for use in the field' at the end of each chapter requires a cross-sectional understanding of Symbol's functions, so you can skip these at first."
-msgstr ""
+msgstr "我们希望本文所展现出的 Symbol 区块链的可能性能够让读者感同身受。请注意，每个章节末尾的「使用提示」需要对 Symbol 功能有一个横向的理解，因此您可以先跳过这些内容。"
 
 msgid "The Symbol blockchain does not use smart contracts. A suite of 'smart' infrastructure is baked into Symbol's code base, the complex interactions and transactions enabled by this infrastructure provide similar functionality to many common smart contracts deployed on other chains. Symbol's built-in 'smart contracts' can be used at any time but are executed only once with each use, hence they are sometimes described as a deployless one-time smart contract."
-msgstr ""
+msgstr "Symbol区块链不使用智能合约。一系列的“智能”基础设施被嵌入到Symbol的代码库中，这个基础设施所启用的复杂交互和交易提供了与许多部署在其他链上的智能合约类似的功能。 Symbol内建的“智能合约”可以随时使用，但每次使用仅会执行一次，因此有时被描述为“无需部署的一次性智能合约”。"
 
 msgid "As a deployless chain, Symbol encourages off-chain applications and contracts that interact with Symbol's many functions. These applications can be written in any common programming language. As deployless one-time smart contracts as they are executed only once, they cannot incur inordinate fees nor network resources due to errors like an infinite loop. This also prevents end users or bad actors from deploying contracts with unintended vulnerabilities or outright malicious code."
-msgstr ""
+msgstr "作为一个无部署（deployless）的链，Symbol 鼓励与 Symbol 的多种功能互动的离链应用和合约。这些应用可以使用任何常见的编程语言编写。由于 deployless one-time 智能合约仅在使用时执行一次，因此它们不会因错误（如无限循环）而产生过度的费用或网络资源。这也防止最终用户或坏意的参与者部署具有意外漏洞或明显恶意代码的合约。"
 
 msgid "Original author"
-msgstr ""
+msgstr "原作者"
 
 msgid "Quick learning Symbol blockchain"
-msgstr ""
+msgstr "快速学习 Symbol"
 
 msgid "Edition"
-msgstr ""
+msgstr "版本"
 
 msgid "editor"
-msgstr ""
+msgstr "编辑"
 
 msgid "other languages"
-msgstr ""
+msgstr "其他语言"
 
 msgid "English"
-msgstr ""
+msgstr "英语"
 
 msgid "Chinese"
-msgstr ""
+msgstr "中文"
 
 msgid "simplified"
-msgstr ""
+msgstr "简体"
 
 msgid "traditional"
-msgstr ""
+msgstr "繁体"
 
 msgid "Italian"
-msgstr ""
+msgstr "意大利语"
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "目录"
 
 msgid "Chapter3"
-msgstr ""
+msgstr "第3章"
 
 msgid "Account"
-msgstr ""
+msgstr "帐户"
 
 msgid "Chapter4"
-msgstr ""
+msgstr "第4章"
 
 msgid "Transaction"
-msgstr ""
+msgstr "交易"
 
 msgid "Chapter5"
-msgstr ""
+msgstr "第5章"
 
 msgid "Mosaics"
-msgstr ""
+msgstr "马赛克"
 
 msgid "Chapter6"
-msgstr ""
+msgstr "第6章"
 
 msgid "Namespaces"
-msgstr ""
+msgstr "命名空间"
 
 msgid "Chapter7"
-msgstr ""
+msgstr "第7章"
 
 msgid "Metadata"
-msgstr ""
+msgstr "元数据"
 
 msgid "Chapter8"
-msgstr ""
+msgstr "第8章"
 
 msgid "Lock"
-msgstr ""
+msgstr "锁定"
 
 msgid "Chapter9"
-msgstr ""
+msgstr "第9章"
 
 msgid "Multisignature"
-msgstr ""
+msgstr "多重签名"
 
 msgid "Chapter10"
-msgstr ""
+msgstr "第10章"
 
 msgid "Monitoring"
-msgstr ""
+msgstr "监控"
 
 msgid "Chapter11"
-msgstr ""
+msgstr "第11章"
 
 msgid "Restrictions"
-msgstr ""
+msgstr "限制"
 
 msgid "Chapter12"
-msgstr ""
+msgstr "第12章"
 
 msgid "Offline Signatures"
-msgstr ""
+msgstr "离线签名"
 
 msgid "Chapter13"
-msgstr ""
+msgstr "第13章"
 
 msgid "Validation"
-msgstr ""
+msgstr "验证"
 
 msgid "Introduction"
-msgstr ""
+msgstr "介绍"
 
 msgid "Abstract"
-msgstr ""
+msgstr "摘要"
 
 msgid "Target Audience"
-msgstr ""
+msgstr "目标群体"
 
 msgid "Taking a practical approach"
-msgstr ""
+msgstr "采取实用的方法"
 
 msgid "Ready-to-use with real-world utility"
-msgstr ""
+msgstr "具备实用性的现成解决方案"
 
 msgid "Where Symbol differs from other 'smart' blockchains"
-msgstr ""
+msgstr "Symbol 与其他「智能」区块链的不同之处"

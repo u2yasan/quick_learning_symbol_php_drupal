@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2025-02-20 20:55+0800\n"
-"PO-Revision-Date: 2025-02-21 16:23+0800\n"
+"PO-Revision-Date: 2025-02-21 21:21+0800\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: it\n"
@@ -15,154 +15,154 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 msgid "Quick learning Symbol blockchain for use in the field today PHP Edition(Drupal)"
-msgstr ""
+msgstr "Apprendimento rapido della blockchain simbolica da utilizzare oggi sul campo PHP Edizione(Drupal)"
 
 msgid "This manual was designed as a practical resource for people looking to learn and leverage the Symbol blockchain's core concepts and native functionality. Unlike most official documents that exhaustively deal with general technology, this document approaches the Symbol blockchain through its usable elements and built-in features, providing a practical overview by detailing key concepts alongside example code and outputs. If read from the beginning, it will provide a holistic understanding of the Symbol blockchain along with all the tools needed to begin application development. For the sake of brevity, this document omits several aspects of the Symbol blockchain and its network including: node management, the consensus algorithm, tokenomics, harvesting rewards, etc."
-msgstr ""
+msgstr "Questo manuale è stato progettato per essere una guida pratica alle persone desiderose di imparare e affidarsi ai concetti fondamentali e funzionalità native della blockchain Symbol. Diversamente da altri documenti ufficiali che scendono nei dettagli di una tecnologia, l’approccio scelto per questo documento è di introdurre la blockchain Symbol partendo dalle componenti pronte all’uso e dalle funzionalità che essa incorpora, al fine di offrire una panoramica concreta esponendo dettagliatamente i concetti chiave accompagnati da frammenti di codice sorgente e rispettivi output. Una lettura fatta seguendo l’ordine degli argomenti, consentirà di acquisire una comprensione olistica della blockchain Symbol, inclusi gli strumenti di sviluppo necessari per produrre nuove applicazioni. In questo documento non vengono esposti molti aspetti della blockchain Symbol e della interconnessione dei nodi tra i quali: gestione di un nodo, algoritmo di consenso, economia monetaria, raccolta di commissioni, ecc."
 
 msgid "Newcomers to the Blockchain space who are looking to better understand the Symbol blockchain and experiment with it."
-msgstr ""
+msgstr "Neofiti che gravitano nello spazio della tecnologia blockchain, desiderosi di comprendere più a fondo la blockchain Symbol ed al contempo sperimentarla."
 
 msgid "Blockchain enthusiasts looking for practical use cases with examples."
-msgstr ""
+msgstr "Appassionati di blockchain alla ricerca di casi d’uso concreti ed esemplificati."
 
 msgid "Educators & content producers seeking to understand and describe the Symbol blockchain or specific aspects of it."
-msgstr ""
+msgstr "Docenti e produttori di contenuti che necessitano di capire e spiegare la blockchain Symbol o dettagli particolari."
 
 msgid "Anyone curious about how easy it is to build on Symbol."
-msgstr ""
+msgstr "Chiunque abbia la curiosità di verificare la semplicità di sviluppo software sulla blockchain Symbol."
 
 msgid "A blockchain's most foundational element is a proof of existence with an associated time stamp, not money or 'cryptocurrency'. With this in focus we can imagine blockchain's applicability in areas such as authentication and traceability. Trust is a foundational element upon which society is built, yet we do not inherently trust systems and other individuals. In order to navigate this contradiction, countless solutions have been built around translating that trust into money. Blockchain has introduced the possibility of trustless peer-to-peer interactions, providing a novel opportunity to reframe our relationship with trust and value."
-msgstr ""
+msgstr "Il mattone fondamentale di una blockchain è prova di esistenza (e paternità) con validazione temporale opponibile a terzi, non la moneta detta ‘criptovaluta’. Avendo ben presente questo faro, possiamo addentrarci nelle aree di applicazione della blockchain quali l’autenticazione e la tracciabilità. La fiducia è un elemento fondamentale sul quale è cresciuta la società umana, tuttavia non possiamo ancora affidarci completamente ad un sistema o un individuo esterno. Per sopperire a questa contraddizione, innumerevoli soluzioni sono state escogitate attribuendo significato al concetto di moneta. La blockchain ha messo a disposizione interazioni che coinvolgono attori la cui fiducia è arbitraria, un’opportunità nuova per ristrutturare i legami relativi alla fiducia e l’attribuzione di valore."
 
 msgid "Blockchain technology has made trustless peer-to-peer interactions possible, eliminating the need for money or a trusted third parties in many scenarios. This document was written in such a way that people who are active in fields of business and culture, not just in finance, can get a sense of how to utilise the power of blockchain within their domain."
-msgstr ""
+msgstr "La tecnologia blockchain ha consentito, in molti casi, la realizzazione di scambi tra parti arbitrariamente fidate, eliminando la necessità della moneta o una terza parte. Questo documento è stato scritto in modo da consentire alle persone impegnate nei settori industriali, culturali e finanziari, di utilizzare, con profitto, la potenza della blockchain nei rispettivi campi di applicazione."
 
-msgid "The idea that "a Proof of Concept (PoC) is no longer needed" is increasingly taking hold in areas of novel technology advancement such as the Internet of Things (IoT). Physical and digital modularity have progressed to the point where even prototypes can safely deployed in real-world applications as they are, largely bypassing the need for protracted refinement cycles and code review. The Symbol blockchain was largely designed around notions of security, scalability, and modularity. Symbol's native functionality for accounts and tokens provides a robust foundation of highly secure information infrastructure. This is furthered by a powerful network of API-enabled nodes and suite of community-developed tools which largely mitigate the need for custom-build applications and self-hosted nodes."
-msgstr ""
+msgid "The idea that \"a Proof of Concept (PoC) is no longer needed\" is increasingly taking hold in areas of novel technology advancement such as the Internet of Things (IoT). Physical and digital modularity have progressed to the point where even prototypes can safely deployed in real-world applications as they are, largely bypassing the need for protracted refinement cycles and code review. The Symbol blockchain was largely designed around notions of security, scalability, and modularity. Symbol's native functionality for accounts and tokens provides a robust foundation of highly secure information infrastructure. This is furthered by a powerful network of API-enabled nodes and suite of community-developed tools which largely mitigate the need for custom-build applications and self-hosted nodes."
+msgstr "Si è diffusa l’idea che “PoC (Proof of Concept) non è più necessario” nei settori in cui le nuove tecnologie avanzano, ad esempio IoT (Internet of Things). La componentistica hardware e software è migliorata al punto che i prototipi vengono inseriti in ambienti di produzione esattamente come sono, saltando lunghi cicli di sviluppo per la certificazione del codice. La blockchain Symbol è stata progettata seguendo i principi per garantire ampiamente la sicurezza, la scalabilità e la suddivisione in moduli. Le funzionalità di Symbol quali l’Indirizzo (Account) e Token, sono native, e costituiscono una base solida e altamente sicura delle informazioni all’interno dell’infrastruttura. Ne deriva una rete di nodi potente che forniscono API e assolvono alle richieste degli strumenti sviluppati dalla comunità, mitigando la necessità di introdurre applicazioni ad-hoc autogestiti."
 
 msgid "We hope the possibilities provided by the Symbol blockchain resonate throughout this document will show you these possibilities. Please note that the 'Tips for use in the field' at the end of each chapter requires a cross-sectional understanding of Symbol's functions, so you can skip these at first."
-msgstr ""
+msgstr "Con la speranza che le opportunità offerte dalla blockchain Symbol, risuonando, si propaghino attraverso questo documento, abbiano manifestazione. Per leggere le sezioni ‘Consigli pratici’ di ogni capitolo, è richiesta una comprensione trasversale delle funzionalità di Symbol, pertanto non sono indispensabili in prima lettura."
 
 msgid "The Symbol blockchain does not use smart contracts. A suite of 'smart' infrastructure is baked into Symbol's code base, the complex interactions and transactions enabled by this infrastructure provide similar functionality to many common smart contracts deployed on other chains. Symbol's built-in 'smart contracts' can be used at any time but are executed only once with each use, hence they are sometimes described as a deployless one-time smart contract."
-msgstr ""
+msgstr "La blockchain Symbol non usa ‘smart contracts’. Una infrastruttura ‘smart’ viene applicata al codice sorgente di Symbol. Gli scambi di informazioni e le transazioni possibili mediante questa infrastruttura, la rendono simile a molti ‘smart contract eseguiti da altre piattaforme. Gli ‘smart contract’ già predisposti all’interno della blockchain Symbol in forma nativa, sono pronti all’uso hanno la forma stateless, talvolta descritti come ‘deployless one-time smart contract’."
 
 msgid "As a deployless chain, Symbol encourages off-chain applications and contracts that interact with Symbol's many functions. These applications can be written in any common programming language. As deployless one-time smart contracts as they are executed only once, they cannot incur inordinate fees nor network resources due to errors like an infinite loop. This also prevents end users or bad actors from deploying contracts with unintended vulnerabilities or outright malicious code."
-msgstr ""
+msgstr "Essendo una catena di blocchi ‘deployless’, Symbol incoraggia le applicazioni ‘off-chain’ e i contratti che interagiscono direttamente con le molte funzionalità che Symbol offre. Queste applicazioni possono essere scritte usando un linguaggio di programmazione a propria scelta. Avendo gli smart contract ‘deployless one-time’ termine dopo una esecuzione, non sono soggetti a commissioni o sovraccarico di risorse da azioni involontarie quali errori o loop infiniti. Ciò impedisce utenti o attori malevoli l’inserimento di contratti con vulnerabilità impreviste o codice malevolo doloso."
 
 msgid "Original author"
-msgstr ""
+msgstr "Autore originale"
 
 msgid "Quick learning Symbol blockchain"
-msgstr ""
+msgstr "Impariamo Symbol facilmente"
 
 msgid "Edition"
-msgstr ""
+msgstr "Edizione"
 
 msgid "editor"
-msgstr ""
+msgstr "editore"
 
 msgid "other languages"
-msgstr ""
+msgstr "altre lingue"
 
 msgid "English"
-msgstr ""
+msgstr "Inglese"
 
 msgid "Chinese"
-msgstr ""
+msgstr "Cinese"
 
 msgid "simplified"
-msgstr ""
+msgstr "semplificato"
 
 msgid "traditional"
-msgstr ""
+msgstr "tradizionale"
 
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "Indice dei contenuti"
 
 msgid "Chapter3"
-msgstr ""
+msgstr "Capitolo3"
 
 msgid "Account"
-msgstr ""
+msgstr "Conto"
 
 msgid "Chapter4"
-msgstr ""
+msgstr "Capitolo4"
 
 msgid "Transaction"
-msgstr ""
+msgstr "Transazioni"
 
 msgid "Chapter5"
-msgstr ""
+msgstr "Capitolo5"
 
 msgid "Mosaics"
-msgstr ""
+msgstr "Mosaic"
 
 msgid "Chapter6"
-msgstr ""
+msgstr "Capitolo6"
 
 msgid "Namespaces"
-msgstr ""
+msgstr "Sinonimi"
 
 msgid "Chapter7"
-msgstr ""
+msgstr "Capitolo7"
 
 msgid "Metadata"
-msgstr ""
+msgstr "Metadati"
 
 msgid "Chapter8"
-msgstr ""
+msgstr "Capitolo8"
 
 msgid "Lock"
-msgstr ""
+msgstr "Lock"
 
 msgid "Chapter9"
-msgstr ""
+msgstr "Capitolo9"
 
 msgid "Multisignature"
-msgstr ""
+msgstr "Intestatari delegati"
 
 msgid "Chapter10"
-msgstr ""
+msgstr "Capitolo10"
 
 msgid "Monitoring"
-msgstr ""
+msgstr "Monitoraggio"
 
 msgid "Chapter11"
-msgstr ""
+msgstr "Capitolo11"
 
 msgid "Restrictions"
-msgstr ""
+msgstr "Restrizioni"
 
 msgid "Chapter12"
-msgstr ""
+msgstr "Capitolo12"
 
 msgid "Offline Signatures"
-msgstr ""
+msgstr "Firme offline"
 
 msgid "Chapter13"
-msgstr ""
+msgstr "Capitolo13"
 
 msgid "Validation"
-msgstr ""
+msgstr "Convalida"
 
 msgid "Introduction"
-msgstr ""
+msgstr "Introduzione"
 
 msgid "Abstract"
-msgstr ""
+msgstr "Sommario"
 
 msgid "Target Audience"
-msgstr ""
+msgstr "Pubblico di riferimento"
 
 msgid "Taking a practical approach"
-msgstr ""
+msgstr "Un approccio pragmatico"
 
 msgid "Ready-to-use with real-world utility"
-msgstr ""
+msgstr "Disponibilità immediata all’impiego di casi d’uso concreti"
 
-msgid "Where Symbol differs from other 'smart' blockchains"
-msgstr ""
+msgid "Where Symbol differs from other 'smart' blockchains."
+msgstr "Su cosa differisce Symbol dalle altre blockchain ‘smart’."
