@@ -1,0 +1,168 @@
+# Japanese translation of U2YASAN
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-02-20 20:55+0800\n"
+"PO-Revision-Date: 2025-02-21 18:48+0800\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "Quick learning Symbol blockchain for use in the field today PHP Edition(Drupal)"
+msgstr "今日から現場で使える速習Symbolブロックチェーン PHP版(Drupal)"
+
+msgid "This manual was designed as a practical resource for people looking to learn and leverage the Symbol blockchain's core concepts and native functionality. Unlike most official documents that exhaustively deal with general technology, this document approaches the Symbol blockchain through its usable elements and built-in features, providing a practical overview by detailing key concepts alongside example code and outputs. If read from the beginning, it will provide a holistic understanding of the Symbol blockchain along with all the tools needed to begin application development. For the sake of brevity, this document omits several aspects of the Symbol blockchain and its network including: node management, the consensus algorithm, tokenomics, harvesting rewards, etc."
+msgstr "網羅的に技術全般を扱う一般的な公式ドキュメントとは異なり、本ドキュメントは、素早くSymbolブロックチェーンを活用する技術を身に着けていただくための解説書です。最初から読み進めていただければ、Symbolを活用したアプリ開発のための全体像を無理なく系統立てて学習できるように構成しています。なお、ノードの構築方法やコンセンサスアルゴリズム、インセンティブ報酬などの説明はありません。"
+
+msgid "Newcomers to the Blockchain space who are looking to better understand the Symbol blockchain and experiment with it."
+msgstr "ブロックチェーンを試してみたいけど、なにから勉強したらいいのかわからない方。"
+
+msgid "Blockchain enthusiasts looking for practical use cases with examples."
+msgstr "ブロックチェーンを覚えても、なにに使えるのかピンと来ない方。"
+
+msgid "Educators & content producers seeking to understand and describe the Symbol blockchain or specific aspects of it."
+msgstr "Symbolの教材を作ろうとしてるけどどういう手順で教えたらいいのか悩んでいる方。"
+
+msgid "Anyone curious about how easy it is to build on Symbol."
+msgstr "Symbolって簡単っていうけど、どういう感じで簡単なのかさくっと知りたい方。"
+
+msgid "A blockchain's most foundational element is a proof of existence with an associated time stamp, not money or 'cryptocurrency'. With this in focus we can imagine blockchain's applicability in areas such as authentication and traceability. Trust is a foundational element upon which society is built, yet we do not inherently trust systems and other individuals. In order to navigate this contradiction, countless solutions have been built around translating that trust into money. Blockchain has introduced the possibility of trustless peer-to-peer interactions, providing a novel opportunity to reframe our relationship with trust and value."
+msgstr "ブロックチェーンを構成するデータの最小単位はお金ではなくタイムスタンプつき存在証明です。ここに注目すればブロックチェーンは認証やトレーサビリティなど、さらにその用途を広げることができます。 世の中を見渡せば、あらゆることが 信頼の数珠繋ぎ で成り立っていることが分かります。その信頼を形にすることが困難なために、多くのことがお金に変換されて構築されてきました。"
+
+msgid "Blockchain technology has made trustless peer-to-peer interactions possible, eliminating the need for money or a trusted third parties in many scenarios. This document was written in such a way that people who are active in fields of business and culture, not just in finance, can get a sense of how to utilise the power of blockchain within their domain."
+msgstr "今、ブロックチェーン技術によりその信頼をお金に変換することなく改ざん不可能な形で記録することができるようになりました。本ドキュメントは、金融だけではなくさらに多くのビジネスや文化の 「現場」 で活躍する人にブロックチェーンの力を活かすヒントを得てもらうために執筆しました。"
+
+msgid "The idea that \"a Proof of Concept (PoC) is no longer needed\" is increasingly taking hold in areas of novel technology advancement such as the Internet of Things (IoT). Physical and digital modularity have progressed to the point where even prototypes can safely deployed in real-world applications as they are, largely bypassing the need for protracted refinement cycles and code review. The Symbol blockchain was largely designed around notions of security, scalability, and modularity. Symbol's native functionality for accounts and tokens provides a robust foundation of highly secure information infrastructure. This is furthered by a powerful network of API-enabled nodes and suite of community-developed tools which largely mitigate the need for custom-build applications and self-hosted nodes."
+msgstr "昨今、IoTなどの開発現場では 「もはやPoCすら必要ない」 と表現されることがあります。ITを構成する部品化が進み、試しに作ってみた装置がそのまま実運用を始めてしまえるほどにモジュール化されつつあります。Symbolブロックチェーンもアプリケーションを構築するまでもなく、そして自分でノードを建てる必要もなく、設定したアカウントやトークンがコミュニティの提供するツール群でそのまま高セキュリティな情報基盤として活用できるプラットフォームとなっています。"
+
+msgid "We hope the possibilities provided by the Symbol blockchain resonate throughout this document will show you these possibilities. Please note that the 'Tips for use in the field' at the end of each chapter requires a cross-sectional understanding of Symbol's functions, so you can skip these at first."
+msgstr "ぜひ、本ドキュメントでその可能性を感じていただければと思います。なお、各章の最後に載せた「現場で使えるヒント」は各機能の横断的な知識が必要になりますので最初は読み飛ばしていただいても大丈夫です。"
+
+msgid "The Symbol blockchain does not use smart contracts. A suite of 'smart' infrastructure is baked into Symbol's code base, the complex interactions and transactions enabled by this infrastructure provide similar functionality to many common smart contracts deployed on other chains. Symbol's built-in 'smart contracts' can be used at any time but are executed only once with each use, hence they are sometimes described as a deployless one-time smart contract."
+msgstr "Symbolブロックチェーンにはコントラクトアカウントが存在しません。したがって、スマートコントラクトをデプロイするという発想がなく、すべてのスマートコントラクトは1回だけ実行されて、その効力を失います。そのため、デプロイレス・ワンタイムスマートコントラクトと表現されることもあります。"
+
+msgid "As a deployless chain, Symbol encourages off-chain applications and contracts that interact with Symbol's many functions. These applications can be written in any common programming language. As deployless one-time smart contracts as they are executed only once, they cannot incur inordinate fees nor network resources due to errors like an infinite loop. This also prevents end users or bad actors from deploying contracts with unintended vulnerabilities or outright malicious code."
+msgstr "デプロイ不要なため、任意の言語でスマートコントラクトを記述することができ、また、1回限りの実行のため、不適切なループ制御などでネットワークのリソースを大量に消費したり、コントラクト内のロジックを再利用して悪用されるといった脆弱性を狙われることもありません。"
+
+msgid "Original author"
+msgstr "原作者"
+
+msgid "Quick learning Symbol blockchain"
+msgstr "速習Symbolブロックチェーン"
+
+msgid "Edition"
+msgstr "版"
+
+msgid "editor"
+msgstr "編集者"
+
+msgid "other languages"
+msgstr "他言語"
+
+msgid "English"
+msgstr "英語"
+
+msgid "Chinese"
+msgstr "中国語"
+
+msgid "simplified"
+msgstr "簡体字"
+
+msgid "traditional"
+msgstr "繁体字"
+
+msgid "Italian"
+msgstr "イタリア語"
+
+msgid "Table of Contents"
+msgstr "目次"
+
+msgid "Chapter3"
+msgstr "第3章"
+
+msgid "Account"
+msgstr "アカウント"
+
+msgid "Chapter4"
+msgstr "第4章"
+
+msgid "Transaction"
+msgstr "トランザクション"
+
+msgid "Chapter5"
+msgstr "第5章"
+
+msgid "Mosaics"
+msgstr "モザイク"
+
+msgid "Chapter6"
+msgstr "第6章"
+
+msgid "Namespaces"
+msgstr "ネームスペース"
+
+msgid "Chapter7"
+msgstr "第7章"
+
+msgid "Metadata"
+msgstr "メタデータ"
+
+msgid "Chapter8"
+msgstr "第8章"
+
+msgid "Lock"
+msgstr "ロック"
+
+msgid "Chapter9"
+msgstr "第9章"
+
+msgid "Multisignature"
+msgstr "マルチシグ"
+
+msgid "Chapter10"
+msgstr "第10章"
+
+msgid "Monitoring"
+msgstr "監視"
+
+msgid "Chapter11"
+msgstr "第11章"
+
+msgid "Restrictions"
+msgstr "制限"
+
+msgid "Chapter12"
+msgstr "第12章"
+
+msgid "Offline Signatures"
+msgstr "オフライン署名"
+
+msgid "Chapter13"
+msgstr "第13章"
+
+msgid "Validation"
+msgstr "検証"
+
+msgid "Introduction"
+msgstr "はじめに"
+
+msgid "Abstract"
+msgstr "本ドキュメントのねらい"
+
+msgid "Target Audience"
+msgstr "本書の対象者"
+
+msgid "Taking a practical approach"
+msgstr "現場で使えるとは"
+
+msgid "Ready-to-use with real-world utility"
+msgstr "「明日から」じゃなくて「今日から」使えるの意味"
+
+msgid "Where Symbol differs from other 'smart' blockchains"
+msgstr "Symbolブロックチェーンでできないこと"
