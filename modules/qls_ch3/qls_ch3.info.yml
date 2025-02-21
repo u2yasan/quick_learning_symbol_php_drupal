@@ -1,9 +1,9 @@
-name: sect3
+name: ch3
 type: module
-description: Quick Learning Symbol Section 3
+description: Chapter 3
 package: Symbol Example modules
 core_version_requirement: ^11.0
-configure: qls_sect3.description
+configure: qls_ch3.description
 dependencies:
   - quicklearning_symbol:quicklearning_symbol
 version: '0.0.1'

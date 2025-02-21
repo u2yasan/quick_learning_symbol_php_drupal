@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\qls_sect3\Form;
+namespace Drupal\qls_ch3\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -76,7 +76,7 @@ class GenerateAccountForm extends FormBase {
     $output = '<h1>'. $this->t('Generated Accounts'). '</h1>';
     for ($n = 0; $n < $numAccounts; $n++) {
       $accountKey = $facade->createAccount(PrivateKey::random());
-      // \Drupal::logger('qls_sect3')->notice('<pre>@object</pre>', ['@object' => print_r($accountKey, TRUE)]);
+      // \Drupal::logger('qls_ch3')->notice('<pre>@object</pre>', ['@object' => print_r($accountKey, TRUE)]);
 
       $accountPubKey = $accountKey->publicKey;
       $accountPvtKey = $accountKey->keyPair->privateKey();
@@ -87,7 +87,7 @@ class GenerateAccountForm extends FormBase {
       $output .= 'Private Key: ' . $accountPvtKey . '<br>';
       $output .= 'Raw Address: ' . $accountRawAddress . '</p>';
     }
-    // \Drupal::logger('qls_sect3')->notice('<pre>@object</pre>', ['@object' => print_r($output, TRUE)]);
+    // \Drupal::logger('qls_ch3')->notice('<pre>@object</pre>', ['@object' => print_r($output, TRUE)]);
     
     $form['container']['box']['#markup'] = $output;
     return $form['container'];

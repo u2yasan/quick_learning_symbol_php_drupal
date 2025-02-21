@@ -3,10 +3,10 @@ Description text for Section 3.
 #}
 {{ attach_library('quicklearning_symbol/quicklearning_symbol.code') }}
 
-{% set qls_sect3_generate_account_form = path('qls_sect3.generate_account_form') %}
-{% set qls_sect3_generate_account_from_pvtkey_form = path('qls_sect3.generate_account_from_pvtkey_form') %}
-{% set qls_sect3_generate_account_from_pubkey_form = path('qls_sect3.generate_account_from_pubkey_form') %}
-{% set qls_sect3_list_owned_mosaics_form = path('qls_sect3.list_owned_mosaics_form') %}
+{% set qls_ch3_generate_account_form = path('qls_ch3.generate_account_form') %}
+{% set qls_ch3_generate_account_from_pvtkey_form = path('qls_ch3.generate_account_from_pvtkey_form') %}
+{% set qls_ch3_generate_account_from_pubkey_form = path('qls_ch3.generate_account_from_pubkey_form') %}
+{% set qls_ch3_list_owned_mosaics_form = path('qls_ch3.list_owned_mosaics_form') %}
 
 
 <h2>{{ 'アカウント'|t }}</h2>
@@ -24,7 +24,7 @@ Description text for Section 3.
 {% endtrans %}
 </p>
 
-<h4><a href={{ qls_sect3_generate_account_form }}>3.1.1 {{ '新規生成'|t }} </a></h4>
+<h4><a href={{ qls_ch3_generate_account_form }}>3.1.1 {{ '新規生成'|t }} </a></h4>
 
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
@@ -168,7 +168,7 @@ echo $aliceRawAddress . PHP_EOL;
 {% endtrans %}
 </p>
 
-<h4><a href={{ qls_sect3_generate_account_from_pvtkey_form }}>3.1.4 {{ '秘密鍵からアカウント生成'|t }}</a></h4>
+<h4><a href={{ qls_ch3_generate_account_from_pvtkey_form }}>3.1.4 {{ '秘密鍵からアカウント生成'|t }}</a></h4>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -185,7 +185,7 @@ echo $aliceRawAddress . PHP_EOL;
 >TCTEAYWL2X5PQMYKZD26SLPWUZBRX3KNWMZXBFY
 </code></pre>
 </div>
-<h4><a href={{ qls_sect3_generate_account_from_pubkey_form }}>3.1.5 {{ '公開鍵クラスの生成'|t }}</a></h4>
+<h4><a href={{ qls_ch3_generate_account_from_pubkey_form }}>3.1.5 {{ '公開鍵クラスの生成'|t }}</a></h4>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -260,7 +260,7 @@ TDSSDPIPAJHVRZTQUAR36OQU6O7MV4BIAOLL5UA
 {% endtrans %}
 </p>
 
-<h4><a href={{ qls_sect3_list_owned_mosaics_form }}>3.3.1 {{ '所有モザイク一覧の取得'|t }}</a></h4>
+<h4><a href={{ qls_ch3_list_owned_mosaics_form }}>3.3.1 {{ '所有モザイク一覧の取得'|t }}</a></h4>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">

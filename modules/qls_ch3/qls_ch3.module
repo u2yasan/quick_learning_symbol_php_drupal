@@ -2,11 +2,11 @@
 
 use Drupal\locale\PoDatabaseImporter;
 
-function qls_sect3_install() {
+function qls_ch3_install() {
   $langcodes = ['en']; // 使用する言語コードを指定
 
   foreach ($langcodes as $langcode) {
-    $filepath = drupal_get_path('module', 'qls_sect3') . "/translations/{$langcode}.po";
+    $filepath = drupal_get_path('module', 'qls_ch3') . "/translations/{$langcode}.po";
     if (file_exists($filepath)) {
       $importer = new PoDatabaseImporter(\Drupal::database(), \Drupal::service('locale.storage'));
       $importer->import($filepath, $langcode);
@@ -14,6 +14,6 @@ function qls_sect3_install() {
   }
 }
 
-// function qls_sect3_preprocess_page(array &$variables) {
-//   $variables['#attached']['library'][] = 'qls_sect3/quicklearning_symbol.code';
+// function qls_ch3_preprocess_page(array &$variables) {
+//   $variables['#attached']['library'][] = 'qls_ch3/quicklearning_symbol.code';
 // }
