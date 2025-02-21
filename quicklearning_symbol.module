@@ -1,6 +1,18 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
+// require_once __DIR__ . '/vendor/autoload.php';
+use Drupal\locale\PoDatabaseImporter;
 
+function quicklearning_symbol_install() {
+  $langcodes = ['en']; // 使用する言語コードを指定
+
+  foreach ($langcodes as $langcode) {
+    $filepath = drupal_get_path('module', 'quicklearning_symbol') . "/translations/{$langcode}.po";
+    if (file_exists($filepath)) {
+      $importer = new PoDatabaseImporter(\Drupal::database(), \Drupal::service('locale.storage'));
+      $importer->import($filepath, $langcode);
+    }
+  }
+}
 // use Drupal\Component\Utility\Html;
 // use Drupal\Core\Url;
 
