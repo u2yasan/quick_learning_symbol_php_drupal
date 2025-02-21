@@ -1,0 +1,7 @@
+<?php
+
+// \Drupal::logger('qls_ch7')->notice(
+//     class_exists('\Drupal\qls_ch7\Form\MetadataAccountForm') ? 
+//     'Class exists!' : 
+//     'Class does not exist!'
+//   );

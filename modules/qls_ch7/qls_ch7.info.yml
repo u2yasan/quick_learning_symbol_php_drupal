@@ -1,0 +1,13 @@
+name: ch7
+type: module
+description: Quick Learning Symbol Chapter 7
+package: Symbol Example modules
+core_version_requirement: ^11.0
+configure: qls_ch7.description
+dependencies:
+  # - drupal:node
+  - quicklearning_symbol:quicklearning_symbol
+
+version: '0.0.1'
+project: 'quicklearning_symbol'
+datestamp: 1731040780

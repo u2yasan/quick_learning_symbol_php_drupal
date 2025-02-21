@@ -1,0 +1,6 @@
+# Define default links for this module.
+qls_ch4.description:
+  title: qls_ch4 
+  description: Qucik Learning Symbol Section 4
+  route_name: qls_ch4.description
+  expanded: TRUE

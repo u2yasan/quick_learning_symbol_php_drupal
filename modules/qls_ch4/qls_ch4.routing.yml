@@ -1,0 +1,47 @@
+qls_ch4.description:
+  path: '/quicklearning_symbol/qls_ch4'
+  defaults:
+    _controller: '\Drupal\qls_ch4\Controller\Page::description'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+qls_ch4.simple_transfer_transaction_form:
+  path: '/quicklearning_symbol/qls_ch4/simple_transfer_transaction'
+  defaults:
+    _form: '\Drupal\qls_ch4\Form\SimpleTransferTransactionForm'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+qls_ch4.generate_address_form:
+  path: '/quicklearning_symbol/qls_ch4/generate_address'
+  defaults:
+    _form: '\Drupal\qls_ch4\Form\GenerateAddressForm'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+qls_ch4.list_transactions_form:
+  path: '/quicklearning_symbol/qls_ch4/list_transactions'
+  defaults:
+    _form: '\Drupal\qls_ch4\Form\ListTransactionsForm'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+qls_ch4.aggregate_transfer_transaction_form:
+  path: '/quicklearning_symbol/qls_ch4/aggregate_transfer_transaction'
+  defaults:
+    _form: '\Drupal\qls_ch4\Form\AggregateTransferTransactionForm'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'
+
+qls_ch4.form_page:
+  path: '/quicklearning_symbol/qls_ch4/form_page'
+  defaults:
+    _controller: '\Drupal\qls_ch4\Controller\FormPageController::content'
+    _title: 'Qucik Learning Symbol Section 4'
+  requirements:
+    _permission: 'access content'

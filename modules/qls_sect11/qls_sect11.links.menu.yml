@@ -1,6 +1,0 @@
-# Define default links for this module.
-qls_sect11.description:
-  title: qls_sect11 Examples
-  description: Qucik Learning Symbol Section 11 examples.
-  route_name: qls_sect11.description
-  expanded: TRUE

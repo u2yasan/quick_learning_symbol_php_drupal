@@ -1,0 +1,71 @@
+qls_ch11.description:
+  path: '/quicklearning_symbol/qls_ch11'
+  defaults:
+    _controller: '\Drupal\qls_ch11\Controller\Page::description'
+    _title: 'Qucik Learning Symbol Section 11'
+  requirements:
+    _permission: 'access content'
+
+qls_ch11.settings:
+  path: '/admin/config/qls_ch11/settings'
+  defaults:
+    _form: '\Drupal\qls_ch11\Form\SettingsForm'
+    _title: 'Section 11 Settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+qls_ch11.account_address_restriction_form:
+  path: '/quicklearning_symbol/qls_ch11/account_address_restriction_form'
+  defaults:
+    _form: '\Drupal\qls_ch11\Form\AccountAddressRestrictionForm'
+    _title: 'Section 11 Account Address Restriction Form'
+  requirements:
+    _permission: 'access content'
+
+qls_ch11.account_mosaic_restriction_form:
+  path: '/quicklearning_symbol/qls_ch11/account_mosaic_restriction_form'
+  defaults:
+    _form: '\Drupal\qls_ch11\Form\AccountMosaicRestrictionForm'
+    _title: 'Section 11 Account Mosaic Restriction Form'
+  requirements:
+    _permission: 'access content'    
+
+qls_ch11.account_operation_restriction_form:
+  path: '/quicklearning_symbol/qls_ch11/account_operation_restriction_form'
+  defaults:
+    _form: '\Drupal\qls_ch11\Form\AccountOperationRestrictionForm'
+    _title: 'Section 11 Account Operation Restriction Form'
+  requirements:
+    _permission: 'access content'
+
+qls_ch11.search_account_restrictions_form:
+  path: '/quicklearning_symbol/qls_ch11/search_account_restrictions_form'
+  defaults:
+    _form: '\Drupal\qls_ch11\Form\SearchAccountRestrictionsForm'
+    _title: 'Section 11 Search Account Restrictions Form'
+  requirements:
+    _permission: 'access content' 
+
+qls_ch11.mosaic_global_restriction_form:
+  path: '/quicklearning_symbol/qls_ch11/mosaic_global_restriction_form'
+  defaults:
+    _form: '\Drupal\qls_ch11\Form\MosaicGlobalRestrictionForm'
+    _title: 'Section 11 Mosaic Global Restriction Form'
+  requirements:
+    _permission: 'access content'
+
+qls_ch11.mosaic_address_restriction_form:
+  path: '/quicklearning_symbol/qls_ch11/mosaic_address_restriction_form'
+  defaults:
+    _form: '\Drupal\qls_ch11\Form\MosaicAddressRestrictionForm'
+    _title: 'Section 11 Mosaic Address Restriction Form'
+  requirements:
+    _permission: 'access content' 
+
+qls_ch11.search_mosaic_restrictions_form:
+  path: '/quicklearning_symbol/qls_ch11/search_mosaic_restrictions_form'
+  defaults:
+    _form: '\Drupal\qls_ch11\Form\SearchMosaicRestrictionsForm'
+    _title: 'Section 11 Search Mosaic Restrictions Form'
+  requirements:
+    _permission: 'access content'              

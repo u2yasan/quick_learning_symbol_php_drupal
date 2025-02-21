@@ -1,0 +1,133 @@
+<?php
+
+/**
+ * Implements hook_views_data().
+ */
+// function qls_ch5_views_data() {
+//   $data = [];
+//   // データソースの定義を追加
+//   $data['mosaic_data_source'] = \Drupal::service('plugin.manager.views.data')->getData('mosaic_data_source');
+//   return $data;
+// }
+
+/**
+ * Implements hook_theme().
+ */
+function qls_ch5_theme() {
+  return [
+    'json_table' => [
+      'variables' => [
+        'headers' => [],
+        'data' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_views_data().
+ */
+// function qls_ch5_views_data() {
+//   $data = [];
+
+//   // データソースの定義を追加
+//   $data['mosaic_data_source'] = [
+//     'table' => [
+//       'group' => t('Mosaic Data'),
+//       'provider' => 'qls_ch5',
+//       'base' => [
+//         'title' => t('Mosaic Data'),
+//         'help' => t('Mosaic data from the custom form.'),
+//         'query_id' => 'mosaic_data_source', // カスタムクエリプラグインを指定
+//       ],
+//     ],
+//     'fields' => [
+//       'mosaic_id' => [
+//         'title' => t('Mosaic ID'),
+//         'help' => t('The ID of the mosaic.'),
+//         'field' => [
+//           'id' => 'standard', // 標準フィールドハンドラ
+//         ],
+//         'alter' => [
+//           'alter_text' => FALSE,
+//           'make_link' => FALSE,
+//           'path' => '',
+//         ],
+//       ],
+//       'supply' => [
+//         'title' => t('Supply'),
+//         'help' => t('The supply of the mosaic.'),
+//         'field' => [
+//           'id' => 'numeric', // 数値フィールドハンドラ
+//         ],
+//         'alter' => [
+//           'alter_text' => FALSE,
+//           'make_link' => FALSE,
+//           'path' => '',
+//         ],
+//       ],
+//       'owner_address' => [
+//         'title' => t('Owner Address'),
+//         'help' => t('The address of the mosaic owner.'),
+//         'field' => [
+//           'id' => 'standard',
+//         ],
+//         'alter' => [
+//           'alter_text' => FALSE,
+//           'make_link' => FALSE,
+//           'path' => '',
+//         ],
+//       ],
+//       'divisibility' => [
+//         'title' => t('Divisibility'),
+//         'help' => t('The divisibility of the mosaic.'),
+//         'field' => [
+//           'id' => 'numeric',
+//         ],
+//         'alter' => [
+//           'alter_text' => FALSE,
+//           'make_link' => FALSE,
+//           'path' => '',
+//         ],
+//       ],
+//       'flags' => [
+//         'title' => t('Flags'),
+//         'help' => t('The flags of the mosaic.'),
+//         'field' => [
+//           'id' => 'numeric',
+//         ],
+//         'alter' => [
+//           'alter_text' => FALSE,
+//           'make_link' => FALSE,
+//           'path' => '',
+//         ],
+//       ],
+//       'duration' => [
+//         'title' => t('Duration'),
+//         'help' => t('The duration of the mosaic.'),
+//         'field' => [
+//           'id' => 'numeric',
+//         ],
+//         'alter' => [
+//           'alter_text' => FALSE,
+//           'make_link' => FALSE,
+//           'path' => '',
+//         ],
+//       ],
+//       'start_height' => [
+//         'title' => t('Start Height'),
+//         'help' => t('The start height of the mosaic.'),
+//         'field' => [
+//           'id' => 'numeric',
+//         ],
+//         'alter' => [
+//           'alter_text' => FALSE,
+//           'make_link' => FALSE,
+//           'path' => '',
+//         ],
+//       ],
+//     ],
+//   ];
+
+//   return $data;
+// }

@@ -1,7 +1,7 @@
-name: Quick Learning Symbol Example
+name: Quick Learning Symbol
 type: module
 description: 'Provides example codes for Symbol Blockchain.'
-package: Symbol Blockchain Example modules
+package: Quick Learning Symbol
 dependencies:
   # - drupal:toolbar
   # - drupal:key

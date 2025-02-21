@@ -1,5 +1,0 @@
-services:
-  qls_sect5.views.query.mosaic_data_source:
-    class: Drupal\qls_sect5\Plugin\views\query\MosaicDataSource
-    tags:
-      - { name: views.query, id: mosaic_data_source }

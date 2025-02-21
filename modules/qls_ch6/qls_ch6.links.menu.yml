@@ -1,0 +1,6 @@
+# Define default links for this module.
+qls_ch6.description:
+  title: qls_ch6
+  description: Qucik Learning Symbol Chapter 6 examples.
+  route_name: qls_ch6.description
+  expanded: TRUE

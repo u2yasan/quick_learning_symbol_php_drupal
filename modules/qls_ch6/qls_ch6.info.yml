@@ -1,11 +1,12 @@
-name: ch3
+name: ch6
 type: module
-description: Chapter 3
-package: Quick Learning Symbol
+description: Quick Learning Symbol Chapter 6
+package: Symbol Example modules
 core_version_requirement: ^11.0
-configure: qls_ch3.description
+configure: qls_ch6.description
 dependencies:
   - quicklearning_symbol:quicklearning_symbol
+
 version: '0.0.1'
 project: 'quicklearning_symbol'
 datestamp: 1731040780

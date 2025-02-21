@@ -1,0 +1,39 @@
+qls_ch8.description:
+  path: '/quicklearning_symbol/qls_ch8'
+  defaults:
+    _controller: '\Drupal\qls_ch8\Controller\Page::description'
+    _title: 'Qucik Learning Symbol Section 8'
+  requirements:
+    _permission: 'access content'
+
+qls_ch8.hash_lock_form:
+  path: '/quicklearning_symbol/qls_ch8/hash_lock_form'
+  defaults:
+    _form: '\Drupal\qls_ch8\Form\HashLockForm'
+    _title: 'Qucik Learning Symbol Section 8'
+  requirements:
+    _permission: 'access content'
+
+qls_ch8.secret_lock_form:
+  path: '/quicklearning_symbol/qls_ch8/secret_lock_form'
+  defaults:
+    _form: '\Drupal\qls_ch8\Form\SecretLockForm'
+    _title: 'Qucik Learning Symbol Section 8'
+  requirements:
+    _permission: 'access content'
+
+qls_ch8.secret_proof_form:
+  path: '/quicklearning_symbol/qls_ch8/secret_proof_form'
+  defaults:
+    _form: '\Drupal\qls_ch8\Form\SecretProofForm'
+    _title: 'Qucik Learning Symbol Section 8'
+  requirements:
+    _permission: 'access content'
+
+qls_ch8.confirm_receipt_form:
+  path: '/quicklearning_symbol/qls_ch8/confirm_receipt_form'
+  defaults:
+    _form: '\Drupal\qls_ch8\Form\ConfirmReceiptForm'
+    _title: 'Qucik Learning Symbol Section 8'
+  requirements:
+    _permission: 'access content'

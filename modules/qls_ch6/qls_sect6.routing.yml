@@ -1,0 +1,71 @@
+qls_ch6.description:
+  path: '/quicklearning_symbol/qls_ch6'
+  defaults:
+    _controller: '\Drupal\qls_ch6\Controller\Page::description'
+    _title: 'Qucik Learning Symbol Section 6'
+  requirements:
+    _permission: 'access content'
+
+qls_ch6.create_namespace_form:
+  path: '/quicklearning_symbol/qls_ch6/create_namespace'
+  defaults:
+    _form: '\Drupal\qls_ch6\Form\CreateNamespaceForm'
+    _title: 'Qucik Learning Symbol Section 6'
+  requirements:
+    _permission: 'access content'
+
+qls_ch6.create_subnamespace_form:
+  path: '/quicklearning_symbol/qls_ch6/create_subnamespace'
+  defaults:
+    _form: '\Drupal\qls_ch6\Form\CreateSubNamespaceForm'
+    _title: 'Qucik Learning Symbol Section 6'
+  requirements:
+    _permission: 'access content'
+
+qls_ch6.list_namespaces_form:
+  path: '/quicklearning_symbol/qls_ch6/list_namespaces'
+  defaults:
+    _form: '\Drupal\qls_ch6\Form\ListNamespacesForm'
+    _title: 'Qucik Learning Symbol Section 6'
+  requirements:
+    _permission: 'access content' 
+
+qls_ch6.link_namespace_form:
+  path: '/quicklearning_symbol/qls_ch6/link_namespace'
+  defaults:
+    _form: '\Drupal\qls_ch6\Form\LinkNamespaceForm'
+    _title: 'Qucik Learning Symbol Section 6'
+  requirements:
+    _permission: 'access content'
+
+qls_ch6.namespace_transfer_transaction_form:
+  path: '/quicklearning_symbol/qls_ch6/namespace_transfer_transaction'
+  defaults:
+    _form: '\Drupal\qls_ch6\Form\NamespaceTransferTransactionForm'
+    _title: 'Qucik Learning Symbol Section 6'
+  requirements:
+    _permission: 'access content'     
+
+qls_ch6.check_namespace_form:
+  path: '/quicklearning_symbol/qls_ch6/check_namespace'
+  defaults:
+    _form: '\Drupal\qls_ch6\Form\CheckNamespaceForm'
+    _title: 'Qucik Learning Symbol Section 6'
+  requirements:
+    _permission: 'access content'
+
+qls_ch6.reverse_lookup_namespace_form:
+  path: '/quicklearning_symbol/qls_ch6/reverse_lookup_namespace'
+  defaults:
+    _form: '\Drupal\qls_ch6\Form\ReverseLookupNamespaceForm'
+    _title: 'Qucik Learning Symbol Section 6'
+  requirements:
+    _permission: 'access content'
+
+qls_ch6.check_receipt_form:
+  path: '/quicklearning_symbol/qls_ch6/check_receipt'
+  defaults:
+    _form: '\Drupal\qls_ch6\Form\CheckReceiptForm'
+    _title: 'Qucik Learning Symbol Section 6'
+  requirements:
+    _permission: 'access content'    
