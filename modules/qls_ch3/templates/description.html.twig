@@ -8,23 +8,22 @@ Description text for Section 3.
 {% set qls_ch3_generate_account_from_pubkey_form = path('qls_ch3.generate_account_from_pubkey_form') %}
 {% set qls_ch3_list_owned_mosaics_form = path('qls_ch3.list_owned_mosaics_form') %}
 
-
-<h2>{{ 'アカウント'|t }}</h2>
+<h2>{{ 'Account'|t }}</h2>
 
 <p>
 {% trans %}
-アカウントは秘密鍵に紐づく情報が記録されたデータ構造体です。アカウントと関連づいた秘密鍵を使って署名することでのみブロックチェーンのデータを更新することができます。
+An account is a data deposit structure in which information and assets associated with a private key is recorded. Only by signing with the private key associated with the account is the data updated on the blockchain.
 {% endtrans %}
 </p>
 
-<h3>3.1 {{ 'アカウント生成'|t }}</h3>
+<h3>3.1 {{ 'Creating an account'|t }}</h3>
 <p>
 {% trans %}
-アカウントには秘密鍵と公開鍵をセットにしたキーペア、アドレスなどの情報が含まれています。まずはランダムにアカウントを作成して、それらの情報を確認してみましょう。
+The account contains a key pair, which is a set of private and public keys, an address and other information. First of all, try creating an account randomly and check the information that is contained.
 {% endtrans %}
 </p>
 
-<h4><a href={{ qls_ch3_generate_account_form }}>3.1.1 {{ '新規生成'|t }} </a></h4>
+<h4><a href={{ qls_ch3_generate_account_form }}>3.1.1 {{ 'Create a new account '|t }} </a></h4>
 
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
@@ -33,7 +32,7 @@ $aliceKey = $facade->createAccount(PrivateKey::random());
 var_dump($aliceKey);
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
@@ -124,7 +123,7 @@ object(SymbolSdk\Symbol\SymbolAccount)#29 (4) {
 </code></pre>
 </div>
 
-3.1.2 {{ '秘密鍵と公開鍵の導出'|t }} 
+3.1.2 {{ 'Address class generation'|t }} 
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -132,7 +131,7 @@ echo  $aliceKey->publicKey. PHP_EOL;
 echo  $aliceKey->keyPair->privateKey(). PHP_EOL;
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -140,14 +139,14 @@ echo  $aliceKey->keyPair->privateKey(). PHP_EOL;
 > EA648F781721F5094D77149886F18F6B2C2F621B2A3FB8CFA1E382B9E011DFF3
 </code></pre>
 </div>
-{{ '注意事項'|t }}<br>
+{{ 'Notes'|t }}<br>
 <p>
 {% trans %}
-秘密鍵を紛失するとそのアカウントに紐づけられたデータを操作することが出来なくなります。また、他人は知らないという秘密鍵の性質を利用してデータ操作の署名を行うので、秘密鍵を他人に教えてはいけません。組織のなかで秘密鍵を譲り受けて運用を続けるといった行為も控えましょう。一般的なWebサービスでは「アカウントID」に対してパスワードが割り振られるため、パスワードの変更が可能ですが、ブロックチェーンではパスワードにあたる秘密鍵に対して一意に決まるID(アドレス)が割り振られるため、アカウントに紐づく秘密鍵を変更するということはできません。
+If the private key is lost, the data associated with that account can never be changed and any funds will be lost. In addition, the private key must not be shared with others since knowledge of the private key will give full access to the account. In general web services, passwords are allocated to an "account ID", so passwords can be changed from the account, but in blockchain, a unique ID (address) is allocated to the private key that is the password, thus it is not possible to change or re-generate the private key associated with an account from the account.
 {% endtrans %}
 </p>
 
-3.1.3 {{ 'アドレスの導出'|t }}
+3.1.3 {{ 'Deriving of address'|t }}
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -155,7 +154,7 @@ $aliceRawAddress = $aliceKey->address;
 echo $aliceRawAddress . PHP_EOL;
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -164,11 +163,11 @@ echo $aliceRawAddress . PHP_EOL;
 </div>
 <p>
 {% trans %}
-これらがブロックチェーンを操作するための最も基本的な情報となります。また、秘密鍵からアカウントを生成したり、公開鍵やアドレスのみを扱うクラスの生成方法も確認しておきましょう。
+These things above are the most basic information for operating the blockchain. It is also better to check how to generate accounts from a private key and how to generate classes that only deal with publickey and addresses.
 {% endtrans %}
 </p>
 
-<h4><a href={{ qls_ch3_generate_account_from_pvtkey_form }}>3.1.4 {{ '秘密鍵からアカウント生成'|t }}</a></h4>
+<h4><a href={{ qls_ch3_generate_account_from_pvtkey_form }}>3.1.4 {{ 'Account generation from private key'|t }}</a></h4>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -178,14 +177,14 @@ $aliceRawAddress = $aliceKey->address;
 echo $aliceRawAddress . PHP_EOL;
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
 >TCTEAYWL2X5PQMYKZD26SLPWUZBRX3KNWMZXBFY
 </code></pre>
 </div>
-<h4><a href={{ qls_ch3_generate_account_from_pubkey_form }}>3.1.5 {{ '公開鍵クラスの生成'|t }}</a></h4>
+<h4><a href={{ qls_ch3_generate_account_from_pubkey_form }}>3.1.5 {{ 'Public key class generation'|t }}</a></h4>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -195,7 +194,7 @@ var_dump($alicePublicAccount->address);
 echo substr($alicePublicAccount->publicKey, 2, 66) . PHP_EOL;
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -207,7 +206,7 @@ EA648F781721F5094D77149886F18F6B2C2F621B2A3FB8CFA1E382B9E011DFF3
 </code></pre>
 </div>
 
-<h4>3.1.6 {{ 'アドレスクラスの生成'|t }}</h4>
+<h4>3.1.6 {{ 'Address class generation'|t }}</h4>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -215,7 +214,7 @@ $aliceAddress = new Address('TDNX2EJJKC3C4QOGURQZLQS6KJLQACTGWYZFKTQ');
 echo $aliceAddress->__tostring() . PHP_EOL;
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -223,44 +222,44 @@ TDSSDPIPAJHVRZTQUAR36OQU6O7MV4BIAOLL5UA
 </code></pre>
 </div>
 
-<h3>3.2 {{ 'アカウントへの送信'|t }}</h3>
+<h3>3.2 {{ 'A TransferTransaction to another account'|t }}</h3>
 <p>
 {% trans %}
-アカウントを作成しただけでは、ブロックチェーンにデータを送信することはできません。パブリックブロックチェーンはリソースを有効活用するためにデータ送信時に手数料を要求します。Symbolブロックチェーンでは、この手数料をXYMという共通トークンで支払うことになります。アカウントを生成したら、この後の章から説明するトランザクションを実行するために必要な手数料を送信しておきます。
+Creating an account does not simply mean that data can be transferred on the blockchain. Public blockchains require fees for data transfer in order to utilise resources effectively. On the Symbol blockchain, fees are paid with a native token which is called XYM. Once you have generated an account, send XYM to the account to cover transaction fees (described in later chapters). 
 {% endtrans %}
 </p>
 
-<h4>3.2.1 {{ 'フォーセットから送信'|t }}</h4>
+<h4>3.2.1 {{ 'Receive XYM from the faucet'|t }}</h4>
 <p>
 {% trans %}
-テストネットではフォーセット(蛇口)サービスから検証用のXYM を入手することができます。メインネットの場合は取引所などでXYM を購入するか、投げ銭サービス(QUEST) などを利用して寄付を募りましょう。
+Testnet XYM can be obtained for free using the faucet. For Mainnet transactions, you can buy XYM on exchanges, or use tipping services such QUEST to have obtain donations.
 {% endtrans %}
 <ul>
 <li>
-<a href="https://testnet.symbol.tools/">{{ 'テストネット'|t }} - FAUCET({{ '蛇口'|t }}) - https://testnet.symbol.tools/</a></li>
-<li><a href="https://quest-bc.com/">{{ 'メインネット'|t }} - QUEST - https://quest-bc.com/</a></li>
+<a href="https://testnet.symbol.tools/">{{ 'Testnet'|t }} - ({{ 'FAUCET'|t }}) - https://testnet.symbol.tools/</a></li>
+<li><a href="https://quest-bc.com/">{{ 'Mainnet'|t }} - QUEST - https://quest-bc.com/</a></li>
 </ul>
 
 </p>
-<h4>3.2.2 {{ 'エクスプローラーで確認'|t }}</h4>
+<h4>3.2.2 {{ 'Using the explorer'|t }}</h4>
 <p>
 {% trans %}
-フォーセットから作成したアカウントへ送信が成功したらエクスプローラーで確認してみましょう。
+Transactions can be viewed in the explorer after transferring from the faucet to the account you have created.
 {% endtrans %}
 <ul>
-<li><a href="https://testnet.symbol.fyi/">{{ 'テストネット'|t }} – https://testnet.symbol.fyi/</a></li>
-<li><a href="https://symbol.fyi/">{{ 'メインネット'|t }} – https://symbol.fyi/</a></li>
+<li><a href="https://testnet.symbol.fyi/">{{ 'Testnet'|t }} – https://testnet.symbol.fyi/</a></li>
+<li><a href="https://symbol.fyi/">{{ 'Mainnet'|t }} – https://symbol.fyi/</a></li>
 </ul>
 </p>
 
-<h3>3.3 {{ 'アカウント情報の確認'|t }}</h3>
+<h3>3.3 {{ 'Check account information'|t }}</h3>
 <p>
 {% trans %}
-ノードに保存されているアカウント情報を取得します。
+Retrieve the account information stored by the node.
 {% endtrans %}
 </p>
 
-<h4><a href={{ qls_ch3_list_owned_mosaics_form }}>3.3.1 {{ '所有モザイク一覧の取得'|t }}</a></h4>
+<h4><a href={{ qls_ch3_list_owned_mosaics_form }}>3.3.1 {{ 'Retrieve a list of owned mosaics'|t }}</a></h4>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -275,7 +274,7 @@ echo "\n===アカウント情報の確認===" . PHP_EOL;
 echo $account . PHP_EOL;
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -306,19 +305,19 @@ echo $account . PHP_EOL;
 <p>
 publicKey<br>
 {% trans %}
-クライアント側で作成しただけで、ブロックチェーンでまだ利用されていないアカウント情報は記録されていません。宛先として指定されて受信することで初めてアカウント情報が記録され、署名したトランザクションを送信することで公開鍵の情報が記録されます。そのため、publicKey は現在00000... 表記となっています。
+Account information which has just been created on the client side and has not yet been involved in a transaction on the blockchain is not recorded. Account information will be stored on the blockchain when when the address first appears in a transaction. Therefore, the publicKey is noted as `00000...` at this moment.
 {% endtrans %}
 </p>
 
-<h3>3.4 {{ '現場で使えるヒント'|t }}</h3>
-<h4>3.4.1 {{ '暗号化と署名'|t }}</h4>
+<h3>3.4 {{ 'Tips for use'|t }}</h3>
+<h4>3.4.1 {{ 'Encryption and signatures'|t }}</h4>
 {% trans %}
-アカウントとして生成した秘密鍵や公開鍵は、そのまま従来の暗号化や電子署名として活用することができます。信頼性に問題点があるアプリケーションを使用する必要がある場合も、個人間（エンドツーエンド）でデータの秘匿性・正当性を検証することができます。
+Both private and public keys generated for an account can be used for conventional encryption and digital signatures. Data confidentiality and legitimacy can be verified on a p2p (end-to-end) basis, even if applications have reliability issues.
 {% endtrans %}
 
 <p>
 {% trans %}
-事前準備：対話のためのBob アカウントを生成
+Advance preparation: generating Bob account for connectivity test
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -328,12 +327,11 @@ $bobKey = new KeyPair(PrivateKey::random());
 </code></pre>
 </div>
 
-
-<p>{{ '暗号化'|t }}</p>
+<p>{{ 'Encryption'|t }}</p>
 
 <p>
 {% trans %}
-Alice の秘密鍵・Bob の公開鍵で暗号化し、Alice の公開鍵・Bob の秘密鍵で復号します(AES-GCM 形式)。
+Encrypt with Alice's private key and Bob's public key and decrypt with Alice's public key and Bob's private key (AES-GCM format).
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -347,7 +345,7 @@ $encryptedMessage = $aliceMesgEncoder->encode($bobKey->publicKey(), $message);
 echo strtoupper(bin2hex($encryptedMessage)) . PHP_EOL;
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -356,7 +354,7 @@ echo strtoupper(bin2hex($encryptedMessage)) . PHP_EOL;
 </div>
 
 
-<p>{{ '復号'|t }}</p>
+<p>{{ 'Decrypt'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -371,7 +369,7 @@ if($decryptMessageData['isDecoded']){
 }
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -385,10 +383,10 @@ array(2) {
 </code></pre>
 </div>
 
-<p>{{ '署名'|t }}</p>
+<p>{{ 'Signature'|t }}</p>
 <p>
 {% trans %}
-Aliceの秘密鍵でメッセージを署名し、Aliceの公開鍵と署名でメッセージを検証します。
+Sign the message with Alice's private key and verify the message with Alice's public key and signature.
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -400,7 +398,7 @@ echo "\n===署名===" . PHP_EOL;
 echo $signature . PHP_EOL;
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -409,7 +407,7 @@ echo $signature . PHP_EOL;
 </div>
 
 
-<p>{{ '検証'|t }}</p>
+<p>{{ 'Verification'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -425,7 +423,7 @@ echo "bob verified: " . PHP_EOL;
 var_dump($isVerified);
 </code></pre>
 </div>
-<p class="output-ex">{{ '出力例'|t }}</p>
+<p class="output-ex">{{ 'Sample output'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -437,6 +435,6 @@ bool(false)
 </div>
 <p>
 {% trans %}
-ブロックチェーンを使用しない署名は何度も再利用される可能性があることにご注意ください。
+Note that signatures that do not use the blockchain may be re-used many times.
 {% endtrans %}
 </p>
