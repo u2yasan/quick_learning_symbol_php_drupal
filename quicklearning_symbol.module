@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/vendor/autoload.php';
 // function quicklearning_symbol_install() {
 //   // モジュールのパスを取得（__DIR__ でもOK）
 //   $module_path = \Drupal::service('extension.list.module')->getPath('quicklearning_symbol') . '/translations/';
@@ -35,7 +35,7 @@
 //     }
 //   }
 // }
-// require_once __DIR__ . '/vendor/autoload.php';
+// 
 // function quicklearning_symbol_install() {
 //   $module_path = \Drupal::service('extension.list.module')->getPath('quicklearning_symbol') . "/translations/";
 //   $langcodes = ['ja', 'it', 'ch-hant', 'ch-hans']; // 使用する言語コードを指定
