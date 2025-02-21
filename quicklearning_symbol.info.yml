@@ -7,6 +7,7 @@ dependencies:
   # - drupal:key
   # - drupal:encrypt
   - drupal:config
+  - drupal:locale
 configure: quicklearning_symbol.settings  
 core_version_requirement: ^11.0
 version: '0.0.1'
