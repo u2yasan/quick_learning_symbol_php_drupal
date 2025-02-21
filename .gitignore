@@ -1,4 +1,3 @@
 .DS_Store
 vendor
-modules/qls_sect3/.DS_Store
-modules/.DS_Store
+*.mo
