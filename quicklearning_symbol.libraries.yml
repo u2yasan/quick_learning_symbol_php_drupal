@@ -1,5 +1,5 @@
 quicklearning_symbol.icons:
-  version: VERSION
+  version: 1.x 
   css:
     theme:
       css/quicklearning_symbol.icons.css: {}
