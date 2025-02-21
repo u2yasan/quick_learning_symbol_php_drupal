@@ -16,7 +16,7 @@ class GenerateAccountFromPubKeyForm extends FormBase {
 
     $form['description'] = [
       '#type' => 'item',
-      '#markup' => $this->t('3.1.5 公開鍵クラスの生成'),
+      '#markup' => '3.1.5 '.$this->t('公開鍵クラスの生成'),
     ];
 
     $form['public_key'] = [
