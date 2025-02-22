@@ -1,0 +1,132 @@
+msgid "The Symbol blockchain has two types of LockTransactions: Hash Lock Transaction and Secret Lock Transaction."
+msgstr ""
+
+msgid "Hash Lock Transactions enable a transaction to be be announced later. The transaction is stored in every node's partial cache with a hash value until the transaction is announced. The transaction is locked and not processed on the API node until it is signed by all cosignatories. It does not lock the tokens owned by the account but a 10 XYM deposit is paid by the initiator of the transaction. The locked funds will be refunded to the initiating account when the Hash Lock transaction is fully signed. The maximum validity period of a Hash Lock Transaction is approximately 48 hours, if the transaction is not completed within this time period then the 10 XYM deposit is lost."
+msgstr ""
+
+msgid "Specify the public key of the sender's account when two transactions, tx1 and tx2, are arrayed in AggregateArray. Get the public key in advance via the API with reference to the Account chapter. Arrayed transactions are verified for integrity in this order during block approval."
+msgstr ""
+
+msgid "For example, it is possible to send an NFT from Alice to Bob in tx1 and then from Bob to Carol in tx2, but changing the order of the Aggregate Transaction to tx2,tx1 will result in an error. In addition, if there is even one inconsistent transaction in the Aggregate transaction, the entire Aggregate transaction will fail and will not be approved into the chain."
+msgstr ""
+
+msgid "After checking with e.g. Explorer, announce the Bonded Transaction to the network."
+msgstr ""
+
+msgid "Co-sign the locked transaction from the specified account (Bob)."
+msgstr ""
+
+msgid "Hash Lock Transactions can be created and announced by anyone, not just the account that initially creates and signs the transaction. But make sure that the Aggregate Transaction includes a transaction for whom the account is the signer. Dummy transactions with no mosaic transmission and no message are valid."
+msgstr ""
+
+msgid "The secret lock creates a common password in advance and locks the designated mosaic. This allows the recipient to receive the locked mosaic if they can prove that they possess the password before the lock expiry date."
+msgstr ""
+
+msgid "This section describes how Alice locks 1XYM and Bob unlocks the transaction to receive the funds."
+msgstr ""
+
+msgid "First, create a Bob account to interact with Alice. Bob needs to announce the transaction to unlock the transaction, so please request 10XYM from the faucet."
+msgstr ""
+
+msgid "Create a common pass for locking and unlocking."
+msgstr ""
+
+msgid "PHP installs a library that provides the SHA3-256 hash function."
+msgstr ""
+
+msgid "Creating, signing and announcing transaction"
+msgstr ""
+
+msgid "The LockHashAlgorithm is as follows"
+msgstr ""
+
+msgid "At the time of locking, the unlock destination is specified by Bob, thus the destination account (Bob) cannot be changed even if an account other than Bob unlocks the transaction."
+msgstr ""
+
+msgid "The maximum lock period is 365 days (counting number of blocks in days)."
+msgstr ""
+
+msgid "Check the approved transactions."
+msgstr ""
+
+msgid "It shows that Alice who locked the transaction is recorded in ownerAddress and the Bob is recorded in recipientAddress. The information about the secret is published and Bob informs the network of the corresponding proof."
+msgstr ""
+
+msgid "Unlock the transaction using the secret proof. Bob must have obtained the secret proof in advance."
+msgstr ""
+
+msgid "Confirm the approval result."
+msgstr ""
+
+msgid "The SecretProofTransaction does not contain information about the amount of any mosaics received. Check the amount in the receipt created when the block is generated. Search for receipts addressed to Bob with receipt type:LockHash_Completed."
+msgstr ""
+
+msgid "ReceiptTypes are as follows:"
+msgstr ""
+
+msgid "Generally blockchains require transaction fees for sending transactions. Therefore, users who want to use blockchains need to obtain the native currency of the chain to pay fees (e.g. Symbol's native currency XYM) from the exchange in advance. If the user is a company, the way it is managed might be an issue from an operational point of view. If using Aggregate Transactions, service providers can cover hash lock and transaction fees on behalf of users."
+msgstr ""
+
+msgid "Secret locks are refunded to the account that created the transaction after a specified number of blocks. When the service provider charges the cost of the lock for the Secret Lock account, the amount of tokens owned by the user for the lock will increase after the expiry date has passed. On the other hand, announcing a secret proof transaction before the deadline has passed is treated as a cancellation as the transaction is completed and the funds are returned to the service provider."
+msgstr ""
+
+msgid "Secret locks can be used to exchange mosaics (tokens) with other chains. Please note that other chains refer to this as a hash time lock contract (HTLC) not to be mistaken for a Symbol Hash Lock."
+msgstr ""
+
+msgid "Chapter 8"
+msgstr ""
+
+msgid "Lock"
+msgstr ""
+
+msgid "Hash Lock"
+msgstr ""
+
+msgid "Creation of an Aggregate Bonded Transaction."
+msgstr ""
+
+msgid "Creation, signing and announcement of Hash Lock Transaction"
+msgstr ""
+
+msgid "Announcement of Aggregate Bonded Transaction"
+msgstr ""
+
+msgid "Co-signature"
+msgstr ""
+
+msgid "Note"
+msgstr ""
+
+msgid "Secret Lock・Secret Proof"
+msgstr ""
+
+msgid "Secret Lock"
+msgstr ""
+
+msgid "出力例"
+msgstr ""
+
+msgid "Secret Proof"
+msgstr ""
+
+msgid "Search for receipts"
+msgstr ""
+
+msgid "LockSecret is completed"
+msgstr ""
+
+msgid "LockSecret is expired"
+msgstr ""
+
+msgid "Tips for use"
+msgstr ""
+
+msgid "Paying the transaction fee instead"
+msgstr ""
+
+msgid "Scheduled transactions"
+msgstr ""
+
+msgid "Atomic swaps"
+msgstr ""
+

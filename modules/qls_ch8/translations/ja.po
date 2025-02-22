@@ -1,0 +1,141 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "The Symbol blockchain has two types of LockTransactions: Hash Lock Transaction and Secret Lock Transaction."
+msgstr "Symbolブロックチェーンにはハッシュロックとシークレットロックの２種類のロック機構があります。"
+
+msgid "Hash Lock Transactions enable a transaction to be be announced later. The transaction is stored in every node's partial cache with a hash value until the transaction is announced. The transaction is locked and not processed on the API node until it is signed by all cosignatories. It does not lock the tokens owned by the account but a 10 XYM deposit is paid by the initiator of the transaction. The locked funds will be refunded to the initiating account when the Hash Lock transaction is fully signed. The maximum validity period of a Hash Lock Transaction is approximately 48 hours, if the transaction is not completed within this time period then the 10 XYM deposit is lost."
+msgstr "ハッシュロックは後でアナウンスされる予定のトランザクションを事前にハッシュ値で登録しておくことで、 該当トランザクションがアナウンスされた場合に、そのトランザクションをAPIノード上で処理せずにロックさせて、署名が集まってから処理を行うことができます。 アカウントが所有するモザイクを操作できないようにロックするわけではなく、ロックされるのはハッシュ値の対象となるトランザクションとなります。 ハッシュロックにかかる費用は10XYM、有効期限は最大約48時間です。ロックしたトランザクションが承認されれば10XYMは返却されます。"
+
+msgid "Specify the public key of the sender's account when two transactions, tx1 and tx2, are arrayed in AggregateArray. Get the public key in advance via the API with reference to the Account chapter. Arrayed transactions are verified for integrity in this order during block approval."
+msgstr "tx1,tx2の2つのトランザクションをaggregateArrayで配列にする時に、送信元アカウントの公開鍵を指定します。 公開鍵はアカウントの章を参考に事前にAPIで取得しておきましょう。 配列化されたトランザクションはブロック承認時にその順序で整合性を検証されます。"
+
+msgid "For example, it is possible to send an NFT from Alice to Bob in tx1 and then from Bob to Carol in tx2, but changing the order of the Aggregate Transaction to tx2,tx1 will result in an error. In addition, if there is even one inconsistent transaction in the Aggregate transaction, the entire Aggregate transaction will fail and will not be approved into the chain."
+msgstr "例えば、tx1でNFTをAliceからBobへ送信した後、tx2でBobからCarolへ同じNFTを送信することは可能ですが、tx2,tx1の順序でアグリゲートトランザクションを通知するとエラーになります。 また、アグリゲートトランザクションの中に1つでも整合性の合わないトランザクションが存在していると、アグリゲートトランザクション全体がエラーとなってチェーンに承認されることはありません。"
+
+msgid "After checking with e.g. Explorer, announce the Bonded Transaction to the network."
+msgstr "エクスプローラーなどで確認した後、ボンデッドトランザクションをネットワークにアナウンスします。"
+
+msgid "Co-sign the locked transaction from the specified account (Bob)."
+msgstr "ロックされたトランザクションを指定されたアカウント(Bob)で連署します。"
+
+msgid "Hash Lock Transactions can be created and announced by anyone, not just the account that initially creates and signs the transaction. But make sure that the Aggregate Transaction includes a transaction for whom the account is the signer. Dummy transactions with no mosaic transmission and no message are valid."
+msgstr "ハッシュロックトランザクションは起案者(トランザクションを作成し最初に署名するアカウント)に限らず、誰が作成してアナウンスしても大丈夫ですが、 アグリゲートトランザクションにそのアカウントがsignerとなるトランザクションを含めるようにしてください。 モザイク送信無し＆メッセージ無しのダミートランザクションでも問題ありません（パフォーマンスに影響が出るための仕様とのことです） また、ハッシュロックトランザクションが承認された直後にボンデッドトランザクションをアナウンスした場合、 ハッシュロックの承認がネットワーク全体に伝播する前にボンデッドトランザクションを受け取ってしまうノードが出てくる可能性があります。 そのような状態を防ぐために、ボンデッドトランザクションはハッシュロックトランザクションが承認された後しばらく待ってからアナウンスするようにしてください。"
+
+msgid "The secret lock creates a common password in advance and locks the designated mosaic. This allows the recipient to receive the locked mosaic if they can prove that they possess the password before the lock expiry date."
+msgstr "シークレットロックは事前に共通パスワードを作成しておき、指定モザイクをロックします。 受信者が有効期限内にパスワードの所有を証明することができればロックされたモザイクを受け取ることができる仕組みです。"
+
+msgid "This section describes how Alice locks 1XYM and Bob unlocks the transaction to receive the funds."
+msgstr "ここではAliceが1XYMをロックしてBobが解除することで受信する方法を説明します。"
+
+msgid "First, create a Bob account to interact with Alice. Bob needs to announce the transaction to unlock the transaction, so please request 10XYM from the faucet."
+msgstr "ロック解除にBob側からトランザクションをアナウンスする必要があるのでFAUCETで10XYMほど受信しておきます。"
+
+msgid "Create a common pass for locking and unlocking."
+msgstr "ロック・解除にかかわる共通暗号を作成します。"
+
+msgid "PHP installs a library that provides the SHA3-256 hash function."
+msgstr "PHPではSHA3-256ハッシュ関数を提供するライブラリをインストールします。"
+
+msgid "Creating, signing and announcing transaction"
+msgstr "トランザクションを作成・署名・アナウンスします"
+
+msgid "The LockHashAlgorithm is as follows"
+msgstr "LockHashAlgorithmは以下の通りです"
+
+msgid "At the time of locking, the unlock destination is specified by Bob, thus the destination account (Bob) cannot be changed even if an account other than Bob unlocks the transaction."
+msgstr "ロック時に解除先を指定するのでBob以外のアカウントが解除しても転送先（Bob）を変更することはできません。"
+
+msgid "The maximum lock period is 365 days (counting number of blocks in days)."
+msgstr "ロック期間は最長で365日(ブロック数を日換算)までです。"
+
+msgid "Check the approved transactions."
+msgstr "承認されたトランザクションを確認します。"
+
+msgid "It shows that Alice who locked the transaction is recorded in ownerAddress and the Bob is recorded in recipientAddress. The information about the secret is published and Bob informs the network of the corresponding proof."
+msgstr "ロックしたAliceがownerAddress、受信予定のBobがrecipientAddressに記録されています。 secret情報が公開されていて、これに対応するproofをBobがネットワークに通知します。"
+
+msgid "Unlock the transaction using the secret proof. Bob must have obtained the secret proof in advance."
+msgstr "解除用キーワードを使用してロック解除します。 Bobは事前に解除用キーワードを入手しておく必要があります。"
+
+msgid "Confirm the approval result."
+msgstr "承認結果を確認します。"
+
+msgid "The SecretProofTransaction does not contain information about the amount of any mosaics received. Check the amount in the receipt created when the block is generated. Search for receipts addressed to Bob with receipt type:LockHash_Completed."
+msgstr "SecretProofTransactionにはモザイクの受信量の情報は含まれていません。 ブロック生成時に作成されるレシートで受信量を確認します。 レシートタイプ:LockSecret_Completed でBob宛のレシートを検索してみます。"
+
+msgid "ReceiptTypes are as follows:"
+msgstr "ReceiptTypeは以下の通りです。"
+
+msgid "Generally blockchains require transaction fees for sending transactions. Therefore, users who want to use blockchains need to obtain the native currency of the chain to pay fees (e.g. Symbol's native currency XYM) from the exchange in advance. If the user is a company, the way it is managed might be an issue from an operational point of view. If using Aggregate Transactions, service providers can cover hash lock and transaction fees on behalf of users."
+msgstr "一般的にブロックチェーンはトランザクション送信に手数料を必要とします。 そのため、ブロックチェーンを利用しようとするユーザは事前に手数料を取引所から入手しておく必要があります。 このユーザが企業である場合はその管理方法も加えてさらにハードルの高い問題となります。 アグリゲートトランザクションを使用することでハッシュロック費用とネットワーク手数料をサービス提供者が代理で負担することができます。"
+
+msgid "Secret locks are refunded to the account that created the transaction after a specified number of blocks. When the service provider charges the cost of the lock for the Secret Lock account, the amount of tokens owned by the user for the lock will increase after the expiry date has passed. On the other hand, announcing a secret proof transaction before the deadline has passed is treated as a cancellation as the transaction is completed and the funds are returned to the service provider."
+msgstr ""
+
+msgid "Secret locks can be used to exchange mosaics (tokens) with other chains. Please note that other chains refer to this as a hash time lock contract (HTLC) not to be mistaken for a Symbol Hash Lock."
+msgstr "シークレットロックを使用して、他のチェーンとのトークン・モザイクの交換を行うことができます。 他のチェーンではハッシュタイムロックコントラクト(HTLC)と呼ばれているためハッシュロックと間違えないようにご注意ください。"
+
+msgid "Chapter 8"
+msgstr "第8章"
+
+msgid "Lock"
+msgstr "ロック"
+
+msgid "Hash Lock"
+msgstr "ハッシュロック"
+
+msgid "Creation of an Aggregate Bonded Transaction."
+msgstr "アグリゲートボンデッドトランザクションの作成"
+
+msgid "Creation, signing and announcement of Hash Lock Transaction"
+msgstr "ハッシュロックトランザクションの作成と署名、アナウンス"
+
+msgid "Announcement of Aggregate Bonded Transaction"
+msgstr "アグリゲートボンデッドトランザクションのアナウンス"
+
+msgid "Co-signature"
+msgstr "連署"
+
+msgid "Note"
+msgstr "注意点"
+
+msgid "Secret Lock・Secret Proof"
+msgstr "シークレットロック・シークレットプルーフ"
+
+msgid "Secret Lock"
+msgstr "シークレットロック"
+
+msgid "Secret Proof"
+msgstr "シークレットプルーフ"
+
+msgid "Search for receipts"
+msgstr "レシートを検索"
+
+msgid "LockSecret is completed"
+msgstr "ロック解除完了"
+
+msgid "LockSecret is expired"
+msgstr "ロック期限切れ"
+
+msgid "Tips for use"
+msgstr "現場で使えるヒント"
+
+msgid "Paying the transaction fee instead"
+msgstr "手数料代払い"
+
+msgid "Scheduled transactions"
+msgstr "タイマー送信"
+
+msgid "Atomic swaps"
+msgstr "アトミックスワップ"
