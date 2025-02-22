@@ -1,0 +1,147 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "This chapter describes the Mosaic settings and how they are generated. In Symbol, a token is called as a Mosaic."
+msgstr "本章ではモザイクの設定とその生成方法について解説します。 Symbol ではトークンのことをモザイクと表現します。"
+
+msgid "According to Wikipedia, Tokens are 'objects of various shapes made of clay with a diameter of around 1 cm, excavated from Mesopotamian strata from around 8000 BC to 3000 BC'. On the other hand, mosaic, is \"a technique of decorative art in which small pieces are assembled and embedded to form a picture (image) or pattern. Stone, ceramics (mosaic tiles), coloured and colourless glass, shells and wood are used to decorate the floors and walls of buildings or crafts.\". In Symbol, mosaics can be thought of as the various components that represent aspects of the ecosystem created by the Symbol blockchain."
+msgstr "Wikipedia によると、トークンとは「紀元前 8000 年頃から紀元前 3000 年までのメソポタミアの地層から出土する直径が 1cm 前後の粘土で作られたさまざまな形状の物体」のことを指します。一方でモザイクとは「小片を寄せあわせ埋め込んで、絵（図像）や模様を表す装飾美術の技法。石、陶磁器（モザイクタイル）、有色無色のガラス、貝殻、木などが使用され、建築物の床や壁面、あるいは工芸品の装飾のために施される。」とあります。Symbol においてモザイクとは Symbol が作りなすエコシステムの様相を表すさまざまな構成要素、と考えることができます。"
+
+msgid "For mosaic generation, define the mosaic to be created."
+msgstr "モザイク生成には 作成するモザイクを定義します。"
+
+msgid "All Inner Transaction classes of AggregateTransaction are marked with Embedded."
+msgstr "AggregateTransaction の Inner Transaction クラスは全て Embedded がつきます。"
+
+msgid "MosaicFlags are as follows."
+msgstr "MosaicFlagsは以下の通りです。"
+
+msgid "Permissions of supply changes, transferability to third parties, application of Mosaic Global Restrictions and revocability from the issuer can be specified. Once set these properties cannot be changed at a later date."
+msgstr "数量変更、第三者への譲渡、モザイクグローバル制限の適用、発行者からの還収の可否について指定します。 この項目は後で変更することはできません。"
+
+msgid "Divisibility determines to what number of decimal places the quantity can be measured. Data is held as integer values."
+msgstr "可分性は小数点第何位まで数量の単位とするかを決めます。データは整数値として保持されます。"
+
+msgid "If specified as 0, it cannot be subdivided into smaller units. If a mosaic expiry date is set, the data will not disappear after the expiry date. Please note that you can own up to 1,000 mosaics per account."
+msgstr "0を指定した場合、無期限に使用することができます。 モザイク有効期限を設定した場合、期限が切れた後も消滅することはなくデータとしては残ります。 アカウント1つにつき1000までしか所有することはできませんのでご注意ください。"
+
+msgid "Next, change the quantity."
+msgstr "次に数量を変更します"
+
+msgid "If supplyMutable:false, the quantity can only be changed if the entire supply of the mosaic is in the issuers account. If divisibility > 0, define it as an integer value with the smallest unit being 1. （Specify divisibility:2 if you want to value 100 units as 1.00）"
+msgstr "supplyMutable:falseの場合、全モザイクが発行者にある場合だけ数量の変更が可能です。 divisibility > 0 の場合は、最小単位を1として整数値で定義してください。 （divisibility:2 で 1.00 作成したい場合は100と指定）"
+
+msgid "MosaicSupplyChangeAction is as follows."
+msgstr "MosaicSupplyChangeActionは以下の通りです。"
+
+msgid "Specify Increase if you want to increase it. Merge two transactions above into an aggregate transaction."
+msgstr "増やしたい場合はIncreaseを指定します。 上記2つのトランザクションをまとめてアグリゲートトランザクションを作成します。"
+
+msgid "Note that a feature of the aggregate transaction is that it attempts to change the quantity of a mosaic that does not yet exist. When arrayed, if there are no inconsistencies, they can be handled without problems within a single block."
+msgstr "アグリゲートトランザクションの特徴として、まだ存在していないモザイクの数量を変更しようとしている点に注目してください。 配列化した時に、矛盾点がなければ1つのブロック内で問題なく処理することができます。"
+
+msgid "Confirm the mosaic information held by the account which created the mosaic."
+msgstr "モザイク作成したアカウントが持つモザイク情報を確認します。"
+
+msgid "Transfer the created mosaic. Those new to blockchain often imagine mosaic transferring as \"sending a mosaic stored on a client terminal to another client terminal\", but mosaic information is always shared and synchronised across all nodes, and it is not about transferring mosaic information to the destination. More precisely, it refers to the operation of recombining token balances between accounts by 'sending transactions' to the blockchain."
+msgstr "作成したモザイクを送信します。 よく、ブロックチェーンに初めて触れる方は、 モザイク送信について「クライアント端末に保存されたモザイクを別のクライアント端末へ送信」することとイメージされている人がいますが、 モザイク情報はすべてのノードで常に共有・同期化されており、送信先に未知のモザイク情報を届けることではありません。 正確にはブロックチェーンへ「トランザクションを送信」することにより、アカウント間でのトークン残量を組み替える操作のことを言います。"
+
+msgid "Transfer a list of mosaics"
+msgstr "送信モザイクリスト"
+
+msgid "Multiple mosaics can be transferred in a single transaction. To transfer XYM, specify the following mosaic ID."
+msgstr "複数のモザイクを一度に送信できます。 XYMを送信するには以下のモザイクIDを指定します。"
+
+msgid "All decimal points are also specified as integers. XYM is divisibility 6, so it is specified as 1XYM=1000000."
+msgstr "小数点もすべて整数にして指定します。 XYMは可分性6なので、1XYM=1000000で指定します。"
+
+msgid "It can be seen that two types of mosaics have been transferred in the Mosaic of the TransferTransaction. You can also find information on the approved blocks in the TransactionInfo."
+msgstr "TransferTransactionのmosaicsに2種類のモザイクが送信されていることが確認できます。また、TransactionInfoに承認されたブロックの情報が記載されています。"
+
+msgid "Proof of existence by transaction was explained in the previous chapter. The transferring instructions created by an account can be left as an indelible record, so that a ledger can be created that is absolutely consistent. As a result of the accumulation of 'absolute, indelible transaction instructions' for all accounts, each account can prove its own mosaic ownership. As a result of the accumulation of 'indelible transaction instructions' for all accounts, each account can prove its own mosaic ownership. (In this document, possession is defined as \"the state of being able to give it up at will\". Slightly off topic, but the meaning of 'state of being able to give it up at will' may make sense if you look at the fact that ownership is not legally recognised for digital data, at least in Japan yet, and that once you know the data, you cannot prove to others that you have forgotten it of your own will. The blockchain allows you to clearly indicate the relinquishment of that data, but I'll leave the details to the legal experts.)"
+msgstr "前章でトランザクションによる存在証明について説明しました。 アカウントの作成した送信指示が消せない形で残せるので、絶対につじつまの合う台帳を作ることができます。 すべてのアカウントの「絶対に消せない送信指示」の蓄積結果として、各アカウントは自分のモザイク所有を証明することができます。 （本ドキュメントでは所有を「自分の意思で手放すことができる状態」とします。少し話題がそれますが、法律的にはデジタルデータに所有権が認められていないのも、一度知ってしまったデータは自分の意志では忘れたことを他人に証明することができない点に注目すると「手放すことができる状態」の意味に納得がいくかもしれません。ブロックチェーンによりそのデータの放棄を明確に示すことができるのですが、詳しくは法律の専門の方にお任せします。）"
+
+msgid "By limiting the number of tokens total supply to 1 and setting supplyMutable to false, only one token can be issued and no more can ever exist."
+msgstr "発行枚数を1に限定し、supplyMutableをfalseに設定することで、1つだけしか存在しないトークンを発行できます。 "
+
+msgid "Mosaics store information about the account address that issued the mosaic and this data cannot be tampered with. Therefore, transactions from the account that issued the mosaic can be treated as metadata."
+msgstr "モザイクは作成したアカウントアドレスを改ざんできない情報として保有しているので、 そのアカウントの送信トランザクションをメタ情報として利用できます。 "
+
+msgid "Note that there is also a way to register metadata to the mosaic, described in Chapter 7, which can be updated by the multi signature of the registered account and the mosaic issuer."
+msgstr "7章で説明するメタデータをモザイクに登録する方法もありますが、その方法は登録アカウントとモザイク作成者の連署によって更新可能なことにご注意ください。"
+
+msgid "There are many ways to create NFTs, an example of the process is given below (please set the nonce and flag information appropriately for execution)."
+msgstr "NFTの実現方法はいろいろありますが、その一例の処理概要を以下に例示します（実行するためにはnonceやフラグ情報を適切に設定してください）。"
+
+msgid "All Inner Transaction classes of AggregateTransaction are Embedded, so EmbeddedTransferTransactionV1 is used."
+msgstr "AggregateTransaction の Inner Transaction クラスは全て Embedded がつくので EmbeddedTransferTransactionV1 を使用します。"
+
+msgid "The block height and creation account at the time of mosaic generation are included in the mosaic information, so by searching for transactions in the same block, the NFT data associated with the mosaic can be retrieved. The NFT data associated with the transactions in the same block can be retrieved."
+msgstr "モザイク生成時のブロック高と作成アカウントがモザイク情報に含まれているので同ブロック内のトランザクションを検索することにより、 紐づけられたNFTデータを取得することができます。"
+
+msgid "In case that the creator of the mosaic owns the entire quantity, the total supply can be changed. If the data is split into transactions and recorded, it cannot be tampered with, but data can be appended. When managing an NFT, please take care to manage it appropriately, for example by strictly managing or discarding the mosaic creator's private key."
+msgstr "モザイクの作成者が全数量を所有している場合、供給量を変更することが可能です。 またトランザクションに分割してデータを記録した場合、改ざんできませんがデータの追記は可能です。 NFTを運用する場合はモザイク作成者の秘密鍵を厳重に管理・あるいは破棄するなど、適切な運用にご注意ください。"
+
+msgid "Revocable point service operations"
+msgstr "回収可能なポイント運用"
+
+msgid "Setting transferable to false restricts resale, making it possible to define points that are less susceptible to the act on settlement laws or regulations. Setting revokable to true enables centrally managed point service operations where the user does not need to manage the private key to collect the amount used."
+msgstr "transferableをfalseに設定することで転売が制限されるため、資金決済法の影響を受けにくいポイントを定義することができます。 またrevokableをtrueに設定することで、ユーザ側が秘密鍵を管理しなくても使用分を回収できるような中央管理型のポイント運用を行うことができます。"
+
+msgid "A transaction is described as follows"
+msgstr "トランザクションは以下のように記述します。"
+
+msgid "Chapter 5"
+msgstr "第5章"
+
+msgid "Mosaics"
+msgstr "モザイク"
+
+msgid "Mosaic generation"
+msgstr "モザイク生成"
+
+msgid "Sample output"
+msgstr "出力例"
+
+msgid "Divisibility"
+msgstr "可分性"
+
+msgid "Duration"
+msgstr "有効期限"
+
+msgid "Confirmation"
+msgstr "確認"
+
+msgid "Mosaic transfer"
+msgstr "モザイク送信"
+
+msgid "Mainnet"
+msgstr "メインネット"
+
+msgid "Testnet"
+msgstr "テストネット"
+
+msgid "Amount"
+msgstr "送信量"
+
+msgid "Confirmation of transaction"
+msgstr "送信確認"
+
+msgid "Tips for use"
+msgstr "現場で使えるヒント"
+
+msgid "Proof of ownership"
+msgstr "所有証明"
+
+msgid "Note"
+msgstr "注意事項"
