@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "The chapter on Locks, explained the Lock transactions with a hash value specification and the Aggregate transaction, which collects multiple signatures (online signatures). This chapter explains offline signing, which involves collecting signatures in advance and announcing the transaction to the node."
+msgstr "ロック機構の章で、アナウンスしたトランザクションをハッシュ値指定でロックして、 複数の署名（オンライン署名）を集めるアグリゲートトランザクションを紹介しました。 この章では、トランザクションを事前に署名を集めてノードにアナウンスするオフライン署名について説明します。"
+
+msgid "Alice creates and signs the transaction. Then Bob signs it and returns it to Alice. Finally, Alice combines the transactions and announces them to the network."
+msgstr "Aliceが起案者となりトランザクションを作成し、署名します。 次にBobが署名してAliceに返します。 最後にAliceがトランザクションを結合してネットワークにアナウンスします。"
+
+msgid "Sign and output signedHash, signedPayload. Pass signedPayload to Bob to prompt him to sign."
+msgstr "署名を行い、signedHash,signedPayloadを出力します。 signedPayloadをBobに渡して署名を促します。"
+
+msgid "Restore the transaction with the signedPayload received from Alice."
+msgstr "Aliceから受け取ったsignedPayloadでトランザクションを復元します。"
+
+msgid "To make sure, verify whether the transaction (payload) has already been signed by Alice."
+msgstr "念のため、Aliceがすでに署名したトランザクション（ペイロード）かどうかを検証します。"
+
+msgid "It has been verified that the payload is signed by the signer Alice, then Bob co-signs."
+msgstr "ペイロードがsigner、つまりAliceによって署名されたものであることが確認できました。 次にBobが連署します。"
+
+msgid "Bob signs with the signatureCosignatureTransaction and outputs bobSignedTxSignature, bobSignedTxSignerPublicKey then returns these to Alice. If Bob can create all of the signatures then Bob can also make the announcement without having to return it to Alice."
+msgstr "CosignatureTransactionで署名を行い、bobSignedTxSignature,bobSignedTxSignerPublicKeyを出力しAliceに返却します。 Bobが全ての署名を揃えられる場合は、Aliceに返却しなくてもBobがアナウンスすることも可能です。"
+
+msgid "Alice receives bobSignedTxSignature, bobSignedTxSignerPublicKey from Bob. Also, prepare a signedPayload created by Alice herself in advance."
+msgstr "AliceはBobからbobSignedTxSignature,bobSignedTxSignerPublicKeyを受け取ります。 また事前にAlice自身で作成したsignedPayloadを用意します。"
+
+msgid "Unlike Bonded Transactions, there is no need to pay fees (10XYM) for hashlocks. If the payload can be shared, the seller can create payloads for all possible potential buyers and wait for negotiations to start. (Exclusion control should be used, e.g. by mixing only one existing receipt NFT into the Aggregate Transaction, so that multiple transactions are not executed separately). There is no need to build a dedicated marketplace for these negotiations. Users can use a social networking timeline as a marketplace, or develop a one-time marketplace at any time or in any space as required."
+msgstr ""
+"ボンデッドトランザクションと異なりハッシュロックのための手数料(10XYM)を気にする必要がありません。\n"
+"ペイロードを共有できる場が存在する場合、売り手は考えられるすべての買い手候補に対してペイロードを作成して交渉開始を待つことができます。 （複数のトランザクションが個別に実行されないように、1つしか存在しない領収書NFTをアグリゲートトランザクションに混ぜ込むなどして排他制御をしてください）。 この交渉に専用のマーケットプレイスを構築する必要はありません。 SNSのタイムラインをマーケットプレイスにしたり、必要に応じて任意の時間や空間でワンタイムマーケットプレイスを展開することができます。"
+
+msgid "Just be careful of spoofed hash signature requests, as signatures are exchanged offline (always generate and sign a hash from a verifiable payload)."
+msgstr "ただ、オフラインで署名を交換するため、なりすましのハッシュ署名要求には気を付けましょう。（必ず検証可能なペイロードからハッシュを生成して署名するようにしてください）"
+
+msgid "Chapter 12"
+msgstr "第12章"
+
+msgid "Offline Signatures"
+msgstr "オフライン署名"
+
+msgid "Procedure"
+msgstr "手順"
+
+msgid "Transaction creation"
+msgstr "トランザクション作成"
+
+msgid "Sample output"
+msgstr "出力例"
+
+msgid "Cosignature by Bob"
+msgstr "Bobによる連署"
+
+msgid "Announcement by Alice"
+msgstr "Aliceによるアナウンス"
+
+msgid "Tips for use"
+msgstr "現場で使えるヒント"
+
+msgid "Beyond the marketplace"
+msgstr "マーケットプレイスレス"

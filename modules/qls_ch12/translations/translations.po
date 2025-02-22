@@ -1,0 +1,57 @@
+msgid "The chapter on Locks, explained the Lock transactions with a hash value specification and the Aggregate transaction, which collects multiple signatures (online signatures). This chapter explains offline signing, which involves collecting signatures in advance and announcing the transaction to the node."
+msgstr ""
+
+msgid "Alice creates and signs the transaction. Then Bob signs it and returns it to Alice. Finally, Alice combines the transactions and announces them to the network."
+msgstr ""
+
+msgid "Sign and output signedHash, signedPayload. Pass signedPayload to Bob to prompt him to sign."
+msgstr ""
+
+msgid "Restore the transaction with the signedPayload received from Alice."
+msgstr ""
+
+msgid "To make sure, verify whether the transaction (payload) has already been signed by Alice."
+msgstr ""
+
+msgid "It has been verified that the payload is signed by the signer Alice, then Bob co-signs."
+msgstr ""
+
+msgid "Bob signs with the signatureCosignatureTransaction and outputs bobSignedTxSignature, bobSignedTxSignerPublicKey then returns these to Alice. If Bob can create all of the signatures then Bob can also make the announcement without having to return it to Alice."
+msgstr ""
+
+msgid "Alice receives bobSignedTxSignature, bobSignedTxSignerPublicKey from Bob. Also, prepare a signedPayload created by Alice herself in advance."
+msgstr ""
+
+msgid "Unlike Bonded Transactions, there is no need to pay fees (10XYM) for hashlocks. If the payload can be shared, the seller can create payloads for all possible potential buyers and wait for negotiations to start. (Exclusion control should be used, e.g. by mixing only one existing receipt NFT into the Aggregate Transaction, so that multiple transactions are not executed separately). There is no need to build a dedicated marketplace for these negotiations. Users can use a social networking timeline as a marketplace, or develop a one-time marketplace at any time or in any space as required."
+msgstr ""
+
+msgid "Just be careful of spoofed hash signature requests, as signatures are exchanged offline (always generate and sign a hash from a verifiable payload)."
+msgstr ""
+
+msgid "Chapter 12"
+msgstr ""
+
+msgid "Offline Signatures"
+msgstr ""
+
+msgid "Procedure"
+msgstr ""
+
+msgid "Transaction creation"
+msgstr ""
+
+msgid "Sample output"
+msgstr ""
+
+msgid "Cosignature by Bob"
+msgstr ""
+
+msgid "Announcement by Alice"
+msgstr ""
+
+msgid "Tips for use"
+msgstr ""
+
+msgid "Beyond the marketplace"
+msgstr ""
+
