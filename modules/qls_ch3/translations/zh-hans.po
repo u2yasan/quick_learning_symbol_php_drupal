@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "An account is a data deposit structure in which information and assets associated with a private key is recorded. Only by signing with the private key associated with the account is the data updated on the blockchain."
+msgstr "帐户是一种资料存款结构，其中包含与私钥相关联的资讯和资产的记录。只有使用与帐户相关联的私钥进行签署，才能在区块链上更新资料。"
+
+msgid "The account contains a key pair, which is a set of private and public keys, an address and other information. First of all, try creating an account randomly and check the information that is contained."
+msgstr "帐户包含一对密钥，即私钥和公钥，以及地址和其他信息。首先，尝试随机创建一个帐户，并检查其中包含的信息。"
+
+msgid "If the private key is lost, the data associated with that account can never be changed and any funds will be lost. In addition, the private key must not be shared with others since knowledge of the private key will give full access to the account. In general web services, passwords are allocated to an \"account ID\", so passwords can be changed from the account, but in blockchain, a unique ID (address) is allocated to the private key that is the password, thus it is not possible to change or re-generate the private key associated with an account from the account."
+msgstr "如果私钥遗失，与该帐户相关的数据将无法更改，并且任何资金将会遗失。此外，私钥不得与他人分享，因为知道私钥将可完全存取该帐户。 在一般的网路服务中，密码是分配给「帐户 ID」的，因此密码可以从帐户更改，但在区块链中，私钥是密码，因此唯一的 ID（位址）会分配给私钥，因此无法从帐户更改或重新产生与帐户关联的私钥。"
+
+msgid "These things above are the most basic information for operating the blockchain. It is also better to check how to generate accounts from a private key and how to generate classes that only deal with publickey and addresses."
+msgstr "以上这些是操作区块链所需的最基本信息。建议进一步了解如何从私钥生成帐户，以及如何生成仅处理公钥和位址的类别。"
+
+msgid "Creating an account does not simply mean that data can be transferred on the blockchain. Public blockchains require fees for data transfer in order to utilise resources effectively. On the Symbol blockchain, fees are paid with a native token which is called XYM. Once you have generated an account, send XYM to the account to cover transaction fees (described in later chapters)."
+msgstr ""
+"创建账户并不仅仅意味着数据可以在区块链上传输。 公共区块链需要数据传输费用才能有效利用资源。 在 Symbol 区块链上，使用称为 XYM 的原生代币支付费用。\n"
+"生成帐户后，将 XYM 发送到该帐户以支付交易费用（在后面的章节中描述）。"
+
+msgid "Testnet XYM can be obtained for free using the faucet. For Mainnet transactions, you can buy XYM on exchanges, or use tipping services such QUEST to have obtain donations."
+msgstr "可以使用水龙头免费获得测试网 XYM。 对于主网交易，可以在交易所购买XYM，也可以使用NEMLOG、QUEST等打赏服务获得捐款。"
+
+msgid "Transactions can be viewed in the explorer after transferring from the faucet to the account you have created."
+msgstr "从水龙头转账到您创建的账户后，可以在浏览器中查看交易。"
+
+msgid "Retrieve the account information stored by the node."
+msgstr "检索节点存储的帐户信息。"
+
+msgid "Account information which has just been created on the client side and has not yet been involved in a transaction on the blockchain is not recorded. Account information will be stored on the blockchain when when the address first appears in a transaction. Therefore, the publicKey is noted as `00000...` at this moment."
+msgstr "客户端刚刚创建的、尚未参与区块链交易的账户信息不被记录。当地址首次出现在交易中时，帐户信息将存储在区块链上。因此，此时 publicKey 记为“00000…”。"
+
+msgid "Both private and public keys generated for an account can be used for conventional encryption and digital signatures. Data confidentiality and legitimacy can be verified on a p2p (end-to-end) basis, even if applications have reliability issues."
+msgstr "为帐户生成的私钥和公钥均可用于常规加密和数字签名。即使应用程序存在可靠性问题，也可以在 p2p（端到端）的基础上验证数据的机密性和合法性。"
+
+msgid "Advance preparation: generating Bob account for connectivity test"
+msgstr "预先准备：为连通性测试生成Bob帐户"
+
+msgid "Encrypt with Alice's private key and Bob's public key and decrypt with Alice's public key and Bob's private key (AES-GCM format)."
+msgstr "用Alice的私钥和Bob的公钥加密，用Alice的公钥和Bob的私钥解密（AES-GCM格式）。"
+
+msgid "Sign the message with Alice's private key and verify the message with Alice's public key and signature."
+msgstr "使用 Alice 的私钥对消息进行签名，并使用 Alice 的公钥和签名验证消息。"
+
+msgid "Note that signatures that do not use the blockchain may be re-used many times."
+msgstr "请注意，不使用区块链的签名可能会被多次重复使用。"
+
+msgid "Account"
+msgstr "帐户"
+
+msgid "Creating an account"
+msgstr "创建帐户"
+
+msgid "Create a new account"
+msgstr "创建一个新帐户"
+
+msgid "Sample output"
+msgstr "示例输出"
+
+msgid "Address class generation"
+msgstr "地址生成"
+
+msgid "Notes"
+msgstr "注意事項"
+
+msgid "Deriving of address"
+msgstr "产生位址"
+
+msgid "Account generation from private key"
+msgstr "从私钥生成帐户"
+
+msgid "Public key class generation"
+msgstr "公钥类别的生成"
+
+msgid "TransferTransaction to another account"
+msgstr "转帐交易到另一个帐户"
+
+msgid "Receive XYM from the faucet"
+msgstr "从水龙头接收 XYM"
+
+msgid "Testnet"
+msgstr "测试网"
+
+msgid "FAUCET"
+msgstr "FAUCET"
+
+msgid "Mainnet"
+msgstr "主网"
+
+msgid "Using the explorer"
+msgstr "使用区块链浏览器"
+
+msgid "Check account information"
+msgstr "查看账户信息"
+
+msgid "Retrieve a list of owned mosaics"
+msgstr "检索节点存储的帐户信息"
+
+msgid "Tips for use"
+msgstr "使用提示"
+
+msgid "Encryption and signatures"
+msgstr "加密和签名"
+
+msgid "Encryption"
+msgstr "加密"
+
+msgid "Decrypt"
+msgstr "解密"
+
+msgid "Signature"
+msgstr "签名"
+
+msgid "Verification"
+msgstr "验证"

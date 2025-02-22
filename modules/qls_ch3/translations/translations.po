@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "An account is a data deposit structure in which information and assets associated with a private key is recorded. Only by signing with the private key associated with the account is the data updated on the blockchain."
+msgstr ""
+
+msgid "The account contains a key pair, which is a set of private and public keys, an address and other information. First of all, try creating an account randomly and check the information that is contained."
+msgstr ""
+
+msgid "If the private key is lost, the data associated with that account can never be changed and any funds will be lost. In addition, the private key must not be shared with others since knowledge of the private key will give full access to the account. In general web services, passwords are allocated to an \"account ID\", so passwords can be changed from the account, but in blockchain, a unique ID (address) is allocated to the private key that is the password, thus it is not possible to change or re-generate the private key associated with an account from the account."
+msgstr ""
+
+msgid "These things above are the most basic information for operating the blockchain. It is also better to check how to generate accounts from a private key and how to generate classes that only deal with publickey and addresses."
+msgstr ""
+
+msgid "Creating an account does not simply mean that data can be transferred on the blockchain. Public blockchains require fees for data transfer in order to utilise resources effectively. On the Symbol blockchain, fees are paid with a native token which is called XYM. Once you have generated an account, send XYM to the account to cover transaction fees (described in later chapters)."
+msgstr ""
+
+msgid "Testnet XYM can be obtained for free using the faucet. For Mainnet transactions, you can buy XYM on exchanges, or use tipping services such QUEST to have obtain donations."
+msgstr ""
+
+msgid "Transactions can be viewed in the explorer after transferring from the faucet to the account you have created."
+msgstr ""
+
+msgid "Retrieve the account information stored by the node."
+msgstr ""
+
+msgid "Account information which has just been created on the client side and has not yet been involved in a transaction on the blockchain is not recorded. Account information will be stored on the blockchain when when the address first appears in a transaction. Therefore, the publicKey is noted as `00000...` at this moment."
+msgstr ""
+
+msgid "Both private and public keys generated for an account can be used for conventional encryption and digital signatures. Data confidentiality and legitimacy can be verified on a p2p (end-to-end) basis, even if applications have reliability issues."
+msgstr ""
+
+msgid "Advance preparation: generating Bob account for connectivity test"
+msgstr ""
+
+msgid "Encrypt with Alice's private key and Bob's public key and decrypt with Alice's public key and Bob's private key (AES-GCM format)."
+msgstr ""
+
+msgid "Sign the message with Alice's private key and verify the message with Alice's public key and signature."
+msgstr ""
+
+msgid "Note that signatures that do not use the blockchain may be re-used many times."
+msgstr ""
+
+msgid "Account"
+msgstr ""
+
+msgid "Creating an account"
+msgstr ""
+
+msgid "Create a new account"
+msgstr ""
+
+msgid "Sample output"
+msgstr ""
+
+msgid "Address class generation"
+msgstr ""
+
+msgid "Notes"
+msgstr ""
+
+msgid "Deriving of address"
+msgstr ""
+
+msgid "Account generation from private key"
+msgstr ""
+
+msgid "Public key class generation"
+msgstr ""
+
+msgid "TransferTransaction to another account"
+msgstr ""
+
+msgid "Receive XYM from the faucet"
+msgstr ""
+
+msgid "Testnet"
+msgstr ""
+
+msgid "FAUCET"
+msgstr ""
+
+msgid "Mainnet"
+msgstr ""
+
+msgid "Using the explorer"
+msgstr ""
+
+msgid "Check account information"
+msgstr ""
+
+msgid "Retrieve a list of owned mosaics"
+msgstr ""
+
+msgid "Tips for use"
+msgstr ""
+
+msgid "Encryption and signatures"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Decrypt"
+msgstr ""
+
+msgid "Signature"
+msgstr ""
+
+msgid "Verification"
+msgstr ""

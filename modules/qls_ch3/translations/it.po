@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "An account is a data deposit structure in which information and assets associated with a private key is recorded. Only by signing with the private key associated with the account is the data updated on the blockchain."
+msgstr "Un indirizzo è una struttura dati di memorizzazione delle informazioni, divenute beni di proprietà perchè associati ad una chiave privata. Condizione necessaria e sufficiente per la loro registrazione e aggiornamento nella blockchain è applicarvi l’operazione di firma con la chiave privata dell’Indirizzo."
+
+msgid "The account contains a key pair, which is a set of private and public keys, an address and other information. First of all, try creating an account randomly and check the information that is contained."
+msgstr "L’Indirizzo contiene una coppia di chiavi, ovvero un insieme di chiavi pubbliche e chiavi private, il nome dell’Indirizzo stesso e altre informazioni. Per prima cosa, creeremo un Indirizzo casuale e controlleremo le informazioni ivi contenute."
+
+msgid "If the private key is lost, the data associated with that account can never be changed and any funds will be lost. In addition, the private key must not be shared with others since knowledge of the private key will give full access to the account. In general web services, passwords are allocated to an \"account ID\", so passwords can be changed from the account, but in blockchain, a unique ID (address) is allocated to the private key that is the password, thus it is not possible to change or re-generate the private key associated with an account from the account."
+msgstr "La perdita della chiave privata implica la perdita irrevocabile di ogni dato interno all’Indirizzo, tutte le quantità finanziarie andranno perse. Inoltre la chiave privata non deve essere condivisa con terze parti eccezzion fatta per i casi in cui sia necessario fornire il controllo completo dell’Indirizzo. Nello sviluppo di web services generici, le password vengono memorizzate in un “account ID”, in modo da poter cambiare le password partendo dall’Indirizzo. Diversamente nella blockchain, l’ID (Indirizzo) è univocamente legato alla chiave privata che svolge la funzione di password, quindi non è possibile cambiare o rigenerare la chiave privata associata ad un Indirizzo partendo dal nome."
+
+msgid "These things above are the most basic information for operating the blockchain. It is also better to check how to generate accounts from a private key and how to generate classes that only deal with publickey and addresses."
+msgstr "Quanto esposto prima costituisce le informazioni di base per operare con la blockchain. E’ utile provare a creare Indirizzi dalla chiave privata ma anche creare classi che si istanziano dalla chiave pubblica o dal nome dell’Indirizzo."
+
+msgid "Creating an account does not simply mean that data can be transferred on the blockchain. Public blockchains require fees for data transfer in order to utilise resources effectively. On the Symbol blockchain, fees are paid with a native token which is called XYM. Once you have generated an account, send XYM to the account to cover transaction fees (described in later chapters)."
+msgstr "Creare un Indirizzo non è sufficiente a trasferire informazioni nella blockchain. Le blockchain pubbliche obbligano a versare delle commissioni di trasferimento dati quando si consumano risorse. Nella blockchain Symbol, le commissioni si pagano con il token nativo chiamato XYM. Una quantità di XYM sarà trasferita all’Indirizzo dopo averlo creato, a copertura delle commissioni della transazione (come vedremo in seguito)."
+
+msgid "Testnet XYM can be obtained for free using the faucet. For Mainnet transactions, you can buy XYM on exchanges, or use tipping services such QUEST to have obtain donations."
+msgstr "Monete XYM della rete di test (testnet) si possono ricevere senza costi dal rubinetto ‘faucet’. Per eseguire transazioni sulla rete di produzione (mainnet), gli XYM possono essere acquistati nei siti di cambiovaluta (exchange), o dai servizi di donazioni per prestazioni occasionali, quali QUEST."
+
+msgid "Transactions can be viewed in the explorer after transferring from the faucet to the account you have created."
+msgstr "L’applicazione web ‘explorer’ ritorna l’elenco delle transazioni, compresa quella dal faucet al nostro Indirizzo appena creato."
+
+msgid "Retrieve the account information stored by the node."
+msgstr "Per la verifica è necessario recuperare le informazioni dell’Indirizzo memorizzate in un nodo della rete."
+
+msgid "Account information which has just been created on the client side and has not yet been involved in a transaction on the blockchain is not recorded. Account information will be stored on the blockchain when when the address first appears in a transaction. Therefore, the publicKey is noted as `00000...` at this moment."
+msgstr "Tutte le informazioni di un Indirizzo appena creato dal client non verranno memorizzate nella blockchain se l’Indirizzo non sarà oggetto di una transazione. Ciò spiega il valore `00000…` ritornato per la chiave pubblica."
+
+msgid "Both private and public keys generated for an account can be used for conventional encryption and digital signatures. Data confidentiality and legitimacy can be verified on a p2p (end-to-end) basis, even if applications have reliability issues."
+msgstr ""
+"La chiave privata, ma anche la pubblica di un Indirizzo, possono essere usate per operazioni di \n"
+"cifratura e firma digitale. Si possono verificare la segretezza e la paternità ai due estremi \n"
+"di una comunicazione, persino in condizioni di applicazioni inaffidabili."
+
+msgid "Advance preparation: generating Bob account for connectivity test"
+msgstr "Prova avanzata: creare l’Indirizzo di Bob per un test di trasmissione"
+
+msgid "Encrypt with Alice's private key and Bob's public key and decrypt with Alice's public key and Bob's private key (AES-GCM format)."
+msgstr "Cifrare un messaggio con la chiave privata di Alice, poi cifrarlo con la chiave pubblica di Bob, il risultato ottenuto decifrarlo con la chiave privata di Bob, poi con la chiave pubblica di Alice (formato AES-GCM)."
+
+msgid "Sign the message with Alice's private key and verify the message with Alice's public key and signature."
+msgstr "Firma del messaggio con la chiave privata di Alice e verifica della firma con la chiave pubblica di Alice."
+
+msgid "Note that signatures that do not use the blockchain may be re-used many times."
+msgstr "Notare che se le firme non usano la blockchain possono essere riutilizzate più volte."
+
+msgid "Account"
+msgstr "Indirizzo sulla catena di blocchi"
+
+msgid "Creating an account"
+msgstr "Creazione di un indirizzo"
+
+msgid "Create a new account"
+msgstr "Creazione di un nuovo Indirizzo"
+
+msgid "Sample output"
+msgstr "Output esemplificativo"
+
+msgid "Address class generation"
+msgstr "Istanziare la classe Indirizzo"
+
+msgid "Notes"
+msgstr "Note"
+
+msgid "Deriving of address"
+msgstr "Calcolo del nome dell’Indirizzo"
+
+msgid "Account generation from private key"
+msgstr "Creazione di un Indirizzo a partire dalla chiave privata"
+
+msgid "Public key class generation"
+msgstr "Istanziare la classe Indirizzo pubblico partendo dalla chiave pubblica"
+
+msgid "TransferTransaction to another account"
+msgstr "Trasferimento verso un Indirizzo"
+
+msgid "Receive XYM from the faucet"
+msgstr "Ricezione di XYM dal faucet"
+
+msgid "Testnet"
+msgstr "Testnet"
+
+msgid "FAUCET"
+msgstr "FAUCET"
+
+msgid "Mainnet"
+msgstr "Mainnet"
+
+msgid "Using the explorer"
+msgstr "Ispezionare la blockchain con l’explorer"
+
+msgid "Check account information"
+msgstr "Verifica dei dati di un indirizzo"
+
+msgid "Retrieve a list of owned mosaics"
+msgstr "Recuperare la lista dei Mosaic associati all’Indirizzo"
+
+msgid "Tips for use"
+msgstr "Consigli pratici"
+
+msgid "Encryption and signatures"
+msgstr "Cifratura e firma"
+
+msgid "Encryption"
+msgstr "Cifratura"
+
+msgid "Decrypt"
+msgstr "Decrypt"
+
+msgid "Signature"
+msgstr "Firma"
+
+msgid "Verification"
+msgstr "Verification"

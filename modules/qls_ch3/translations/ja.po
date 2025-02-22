@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "An account is a data deposit structure in which information and assets associated with a private key is recorded. Only by signing with the private key associated with the account is the data updated on the blockchain."
+msgstr "アカウントは秘密鍵に紐づく情報が記録されたデータ構造体です。アカウントと関連づいた秘密鍵を使って署名することでのみブロックチェーンのデータを更新することができます。"
+
+msgid "The account contains a key pair, which is a set of private and public keys, an address and other information. First of all, try creating an account randomly and check the information that is contained."
+msgstr "アカウントには秘密鍵と公開鍵をセットにしたキーペア、アドレスなどの情報が含まれています。まずはランダムにアカウントを作成して、それらの情報を確認してみましょう。"
+
+msgid "If the private key is lost, the data associated with that account can never be changed and any funds will be lost. In addition, the private key must not be shared with others since knowledge of the private key will give full access to the account. In general web services, passwords are allocated to an \"account ID\", so passwords can be changed from the account, but in blockchain, a unique ID (address) is allocated to the private key that is the password, thus it is not possible to change or re-generate the private key associated with an account from the account."
+msgstr "秘密鍵を紛失するとそのアカウントに紐づけられたデータを操作することが出来なくなります。また、他人は知らないという秘密鍵の性質を利用してデータ操作の署名を行うので、秘密鍵を他人に教えてはいけません。組織のなかで秘密鍵を譲り受けて運用を続けるといった行為も控えましょう。一般的な Web サービスでは「アカウント ID」に対してパスワードが割り振られるため、パスワードの変更が可能ですが、ブロックチェーンではパスワードにあたる秘密鍵に対して一意に決まる ID(アドレス)が割り振られるため、アカウントに紐づく秘密鍵を変更するということはできません。"
+
+msgid "These things above are the most basic information for operating the blockchain. It is also better to check how to generate accounts from a private key and how to generate classes that only deal with publickey and addresses."
+msgstr "これらがブロックチェーンを操作するための最も基本的な情報となります。また、秘密鍵からアカウントを生成したり、公開鍵やアドレスのみを扱うクラスの生成方法も確認しておきましょう。"
+
+msgid "Creating an account does not simply mean that data can be transferred on the blockchain. Public blockchains require fees for data transfer in order to utilise resources effectively. On the Symbol blockchain, fees are paid with a native token which is called XYM. Once you have generated an account, send XYM to the account to cover transaction fees (described in later chapters)."
+msgstr "アカウントを作成しただけでは、ブロックチェーンにデータを送信することはできません。パブリックブロックチェーンはリソースを有効活用するためにデータ送信時に手数料を要求します。Symbolブロックチェーンでは、この手数料をXYMという共通トークンで支払うことになります。アカウントを生成したら、この後の章から説明するトランザクションを実行するために必要な手数料を送信しておきます。"
+
+msgid "Testnet XYM can be obtained for free using the faucet. For Mainnet transactions, you can buy XYM on exchanges, or use tipping services such QUEST to have obtain donations."
+msgstr "テストネットではフォーセット（蛇口）サービスから検証用の XYM を入手することができます。メインネットの場合は取引所などでXYMを購入するか、投げ銭サービス(QUEST)などを利用して寄付を募りましょう。"
+
+msgid "Transactions can be viewed in the explorer after transferring from the faucet to the account you have created."
+msgstr "フォーセットから作成したアカウントへ送信が成功したらエクスプローラーで確認してみましょう。"
+
+msgid "Retrieve the account information stored by the node."
+msgstr "ノードに保存されているアカウント情報を取得します。"
+
+msgid "Account information which has just been created on the client side and has not yet been involved in a transaction on the blockchain is not recorded. Account information will be stored on the blockchain when when the address first appears in a transaction. Therefore, the publicKey is noted as `00000...` at this moment."
+msgstr "クライアント側で作成しただけで、ブロックチェーンでまだ利用されていないアカウント情報は記録されていません。宛先として指定されて受信することで初めてアカウント情報が記録され、署名したトランザクションを送信することで公開鍵の情報が記録されます。そのため、publicKeyは現在`00000…`表記となっています。"
+
+msgid "Both private and public keys generated for an account can be used for conventional encryption and digital signatures. Data confidentiality and legitimacy can be verified on a p2p (end-to-end) basis, even if applications have reliability issues."
+msgstr "アカウントとして生成した秘密鍵や公開鍵は、そのまま従来の暗号化や電子署名として活用することができます。信頼性に問題点があるアプリケーションを使用する必要がある場合も、個人間（エンドツーエンド）でデータの秘匿性・正当性を検証することができます。"
+
+msgid "Advance preparation: generating Bob account for connectivity test"
+msgstr "事前準備：対話のためのBobアカウントを生成"
+
+msgid "Encrypt with Alice's private key and Bob's public key and decrypt with Alice's public key and Bob's private key (AES-GCM format)."
+msgstr "Aliceの秘密鍵・Bobの公開鍵で暗号化し、Aliceの公開鍵・Bobの秘密鍵で復号します（AES-GCM 形式）。"
+
+msgid "Sign the message with Alice's private key and verify the message with Alice's public key and signature."
+msgstr "Aliceの秘密鍵でメッセージを署名し、Aliceの公開鍵と署名でメッセージを検証します。"
+
+msgid "Note that signatures that do not use the blockchain may be re-used many times."
+msgstr "ブロックチェーンを使用しない署名は何度も再利用される可能性があることにご注意ください。"
+
+msgid "Account"
+msgstr "アカウント"
+
+msgid "Creating an account"
+msgstr "アカウント生成"
+
+msgid "Create a new account"
+msgstr "新規生成"
+
+msgid "Sample output"
+msgstr "出力例"
+
+msgid "Address class generation"
+msgstr "アドレスクラスの生成"
+
+msgid "Notes"
+msgstr "注意事項"
+
+msgid "Deriving of address"
+msgstr "アドレスの導出"
+
+msgid "Account generation from private key"
+msgstr "秘密鍵からアカウント生成"
+
+msgid "Public key class generation"
+msgstr "公開鍵クラスの生成"
+
+msgid "TransferTransaction to another account"
+msgstr "アカウントへの送信"
+
+msgid "Receive XYM from the faucet"
+msgstr "フォーセットから送信"
+
+msgid "Testnet"
+msgstr "テストネット"
+
+msgid "FAUCET"
+msgstr "蛇口"
+
+msgid "Mainnet"
+msgstr "メインネット"
+
+msgid "Using the explorer"
+msgstr "エクスプローラーで確認"
+
+msgid "Check account information"
+msgstr "アカウント情報の確認"
+
+msgid "Retrieve a list of owned mosaics"
+msgstr "所有モザイク一覧の取得"
+
+msgid "Tips for use"
+msgstr "現場で使えるヒント"
+
+msgid "Encryption and signatures"
+msgstr "暗号化と署名"
+
+msgid "Encryption"
+msgstr "暗号化"
+
+msgid "Decrypt"
+msgstr "復号化"
+
+msgid "Signature"
+msgstr "署名"
+
+msgid "Verification"
+msgstr "検証"
