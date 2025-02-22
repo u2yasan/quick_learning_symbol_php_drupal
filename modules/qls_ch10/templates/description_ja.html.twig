@@ -3,18 +3,18 @@ Description text for Chapter 10.
 #}
 {{ attach_library('quicklearning_symbol/quicklearning_symbol.code') }}
 
-<h2>{{ 'Chapter 10'|t }} {{ 'Monitoring'|t }}</h2>
+<h2>{{ '第10章'|t }} {{ '監視'|t }}</h2>
 
 <p>
 {% trans %}
-Symbol nodes can monitor blockchain state changes via WebSocket communication.
+SymbolのノードはWebSocket通信でブロックチェーンの状態変化を監視することが可能です。
 {% endtrans %}
 </p>
 
-<h3>10.1 {{ 'Listener configuration'|t }}</h3>
+<h3>10.1 {{ 'リスナー設定'|t }}</h3>
 <p>
 {% trans %}
-PHP is a server-side language, and monitoring blockchains using WebSockets with PHP is a fairly rare pattern, so here we will show you how to implement it on the front end using javascript. We will introduce how to implement it on the front end using javascript. The following is based on SymbolV3 for quick learning. The listener in v2 is a function dependent on rxjs, so v3 does not have a listener function. Therefore, implementers need to program WebSocket clients.
+WebSocketを生成してリスナーの設定を行います。PHPはサーバーサイド言語です。PHPを使用してWebSocketを利用してブロックチェーンを監視するのはかなり稀なパターンかと思いますのでここではjavascriptを用いたフロントエンドでの実装方法を紹介します。以下、速習SymbolV3を元にしています。事前の環境構築はこちらを参照してください。v2におけるリスナーはrxjsに依存した機能であるため、v3ではリスナーの機能はありません。したがって、実装者がWebSocketクライアントをプログラミングする必要があります。
 {% endtrans %}
 </p>
 
@@ -81,10 +81,10 @@ listener.onclose = function (closeEvent) {
 </code></pre>
 </div>
 
-<h3>10.2 {{ 'Receiving transactions'|t }}</h3>
+<h3>10.2 {{ '受信検知'|t }}</h3>
 <p>
 {% trans %}
-Detects transactions received by the account.
+アカウントが受信したトランザクションを検知します。
 {% endtrans %}
 </p>
 
@@ -120,7 +120,7 @@ listener.send(
 );
 </code></pre>
 </div>
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -146,20 +146,20 @@ listener.send(
 
 <p>
 {% trans %}
-Unconfirmed transactions are received with transactionInfo.height=0.
-{% endtrans %}
-</p>
-■ {{ 'note'|t }}
-<p>
-{% trans %}
-Please note that the sender may be sending using a namespace when detecting receipt by destination address or mosaic ID. For example, the mosaic ID of XYM on the mainnet is 6BED913FA20223F8, but if a user sends with a namespace ID (symbol.xym), the transaction records the ID E74B99BA41F4AFEE.
+未承認トランザクションはtransactionInfo.height=0で受信します。
 {% endtrans %}
 </p>
 
-<h3>10.3 {{ 'Block monitoring'|t }}</h3>
 <p>
 {% trans %}
-Detects newly generated blocks.
+■注意事項 受信先アドレスやモザイクIDで受信検知をする場合は送信者がネームスペースを利用して送信している場合もあるのでご注意ください。たとえば、メインネットでXYMのモザイクIDは6BED913FA20223F8ですが、ユーザーがネームスペースID(symbol.xym)で送信した場合はトランザクションにはE74B99BA41F4AFEEというIDが記録されています。
+{% endtrans %}
+</p>
+
+<h3>10.3 {{ 'ブロック監視'|t }}</h3>
+<p>
+{% trans %}
+新規に生成されたブロックを検知します。
 {% endtrans %}
 </p>
 
@@ -179,7 +179,7 @@ listener.send(
 );
 </code></pre>
 </div>
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -208,11 +208,10 @@ listener.send(
 </code></pre>
 </div>
 
-
-<h3>10.4 {{ 'Signature request'|t }}</h3>
+<h3>10.4 {{ '署名要求'|t }}</h3>
 <p>
 {% trans %}
-Detects when a transaction requiring a signature occurs.
+署名が必要なトランザクションが発生すると検知します。
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -232,7 +231,7 @@ listener.send(
 );
 </code></pre>
 </div>
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -266,20 +265,20 @@ listener.send(
 </div>
 <p>
 {% trans %}
-All Aggregate Transactions involving the specified address are detected. Whether a cosignature is required is determined by a separate filter.
+指定アドレスが関係するすべてのアグリゲートトランザクションが検知されます。連署が必要かどうかは別途フィルターして判断します。
 {% endtrans %}
 </p>
 
-<h3>10.5 {{ 'Tips for use'|t }}</h3>
+<h3>10.5 {{ '現場で使えるヒント'|t }}</h3>
 
-<h4>10.5.1 {{ 'Continuous connection'|t }}</h4>
+<h4>10.5.1 {{ '常時コネクション'|t }}</h4>
 <p>
 {% trans %}
-Select randomly from the node list and try to connect.
+一覧からランダムに選択し、接続を試みます。
 {% endtrans %}
 </p>
 
-<p>{{ 'Connection to node'|t }}</p>
+<p>{{ 'ノードへの接続'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -326,13 +325,13 @@ function connectNode(nodes) {
 </div>
 <p>
 {% trans %}
-Set a timeout value and re-select a node if connected node response is slow. Check the endpoint /node/health and reselect the node if the status is not normal.
+タイムアウト値を設定しておき、応答の悪いノードに接続した場合は選びなおします。エンドポイント /node/health を確認してステータス異常の場合はノードを選びなおします。
 {% endtrans %}
 </p>
-■{{ 'Creation of repositories'|t }}
+
 <p>
 {% trans %}
-Since there are no repositories in v3, the URLs of nodes that can be connected are returned.
+■レポジトリの作成、ノードURLの取得v3ではリポジトリがないため、接続できるノードのURLを返却します。
 {% endtrans %}
 </p>
 
@@ -363,7 +362,7 @@ function searchUrl(nodes) {
 </code></pre>
 </div>
 
-<p>■{{ 'Continuous connection listeners'|t }}</p>
+<p>■{{ 'リスナーの常時接続'|t }}</p>
 
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
@@ -436,10 +435,10 @@ async function listenerKeepOpening(nodes) {
 </div>
 <p>
 {% trans %}
-If the listener closes, it reconnects.
+リスナーがcloseした場合は再接続します。
 {% endtrans %}
 </p>
-<p>■{{ 'Start of listener'|t }}</p>
+<p>■{{ 'リスナー開始'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -447,10 +446,10 @@ listener = await listenerKeepOpening(NODES);
 </code></pre>
 </div>
 
-<h4>10.5.2 {{ 'Unsigned transaction auto-signature'|t }}</h4>
+<h4>10.5.2 {{ '未署名トランザクション自動連署'|t }}</h4>
 <p>
 {% trans %}
-Detect unsigned transactions, then sign and announce to the network. Two patterns of detection are required: reception during initial screen display and during screen viewing.
+未署名のトランザクションを検知して、署名＆ネットワークにアナウンスします。初期画面表示時と画面閲覧中の受信と2パターンの検知が必要です。
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -623,9 +622,9 @@ async function getAllPartialTxes(address) {
 </div>
 
  
-<p>■{{ 'Note'|t }}</p>
+<p>■{{ '注意事項'|t }}</p>
 <p>
 {% trans %}
-To avoid auto-signing scam transactions, make sure that you ensure a checking procedure is carried out, e.g. by checking the sender's account.
+スキャムトランザクションを自動署名しないように、送信元のアカウントを確認するなどのチェック処理を必ず実施するようにしてください。
 {% endtrans %}
 </p>

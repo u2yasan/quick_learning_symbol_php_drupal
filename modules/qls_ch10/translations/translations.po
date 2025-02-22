@@ -1,0 +1,90 @@
+msgid "Symbol nodes can monitor blockchain state changes via WebSocket communication."
+msgstr ""
+
+msgid "PHP is a server-side language, and monitoring blockchains using WebSockets with PHP is a fairly rare pattern, so here we will show you how to implement it on the front end using javascript. We will introduce how to implement it on the front end using javascript. The following is based on SymbolV3 for quick learning. The listener in v2 is a function dependent on rxjs, so v3 does not have a listener function. Therefore, implementers need to program WebSocket clients."
+msgstr ""
+
+msgid "Detects transactions received by the account."
+msgstr ""
+
+msgid "Unconfirmed transactions are received with transactionInfo.height=0."
+msgstr ""
+
+msgid "Please note that the sender may be sending using a namespace when detecting receipt by destination address or mosaic ID. For example, the mosaic ID of XYM on the mainnet is 6BED913FA20223F8, but if a user sends with a namespace ID (symbol.xym), the transaction records the ID E74B99BA41F4AFEE."
+msgstr ""
+
+msgid "Detects newly generated blocks."
+msgstr ""
+
+msgid "Detects when a transaction requiring a signature occurs."
+msgstr ""
+
+msgid "All Aggregate Transactions involving the specified address are detected. Whether a cosignature is required is determined by a separate filter."
+msgstr ""
+
+msgid "Select randomly from the node list and try to connect."
+msgstr ""
+
+msgid "Set a timeout value and re-select a node if connected node response is slow. Check the endpoint /node/health and reselect the node if the status is not normal."
+msgstr ""
+
+msgid "Since there are no repositories in v3, the URLs of nodes that can be connected are returned."
+msgstr ""
+
+msgid "If the listener closes, it reconnects."
+msgstr ""
+
+msgid "Detect unsigned transactions, then sign and announce to the network. Two patterns of detection are required: reception during initial screen display and during screen viewing."
+msgstr ""
+
+msgid "To avoid auto-signing scam transactions, make sure that you ensure a checking procedure is carried out, e.g. by checking the sender's account."
+msgstr ""
+
+msgid "Chapter 10"
+msgstr ""
+
+msgid "Monitoring"
+msgstr ""
+
+msgid "Listener configuration"
+msgstr ""
+
+msgid "Receiving transactions"
+msgstr ""
+
+msgid "Sample output"
+msgstr ""
+
+msgid "note"
+msgstr ""
+
+msgid "Block monitoring"
+msgstr ""
+
+msgid "Signature request"
+msgstr ""
+
+msgid "Tips for use"
+msgstr ""
+
+msgid "Continuous connection"
+msgstr ""
+
+msgid "Connection to node"
+msgstr ""
+
+msgid "Creation of repositories"
+msgstr ""
+
+msgid "Continuous connection listeners"
+msgstr ""
+
+msgid "Start of listener"
+msgstr ""
+
+msgid "Unsigned transaction auto-signature"
+msgstr ""
+
+msgid "Note"
+msgstr ""
+

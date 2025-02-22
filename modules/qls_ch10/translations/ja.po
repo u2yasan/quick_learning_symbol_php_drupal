@@ -1,0 +1,107 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "Symbol nodes can monitor blockchain state changes via WebSocket communication."
+msgstr "SymbolのノードはWebSocket通信でブロックチェーンの状態変化を監視することが可能です。"
+
+msgid "PHP is a server-side language, and monitoring blockchains using WebSockets with PHP is a fairly rare pattern, so here we will show you how to implement it on the front end using javascript. We will introduce how to implement it on the front end using javascript. The following is based on SymbolV3 for quick learning. The listener in v2 is a function dependent on rxjs, so v3 does not have a listener function. Therefore, implementers need to program WebSocket clients."
+msgstr ""
+"PHPはサーバーサイド言語です。PHPを使用してWebSocketを利用してブロックチェーンを監視するのはかなり稀なパターンかと思いますのでここではjavascriptを用いたフロントエンドでの実装方法を紹介します。\n"
+"\n"
+"以下、速習SymbolV3を元にしています。 事前の環境構築はこちらを参照してください。\n"
+"\n"
+"v2 におけるリスナーは rxjs に依存した機能であるため、 v3 ではリスナーの機能はありません。 したがって、実装者がWebSocketクライアントをプログラミングする必要があります。"
+
+msgid "Detects transactions received by the account."
+msgstr "アカウントが受信したトランザクションを検知します。"
+
+msgid "Unconfirmed transactions are received with transactionInfo.height=0."
+msgstr "未承認トランザクションは transactionInfo.height=0で受信します。"
+
+msgid "Please note that the sender may be sending using a namespace when detecting receipt by destination address or mosaic ID. For example, the mosaic ID of XYM on the mainnet is 6BED913FA20223F8, but if a user sends with a namespace ID (symbol.xym), the transaction records the ID E74B99BA41F4AFEE."
+msgstr "受信先アドレスやモザイクIDで受信検知をする場合は送信者がネームスペースを利用して送信している場合もあるのでご注意ください。 たとえば、メインネットでXYMのモザイクIDは6BED913FA20223F8ですが、ユーザーがネームスペースID(symbol.xym)で送信した場合はトランザクションにはE74B99BA41F4AFEEというIDが記録されています。"
+
+msgid "Detects newly generated blocks."
+msgstr "新規に生成されたブロックを検知します。"
+
+msgid "Detects when a transaction requiring a signature occurs."
+msgstr "署名が必要なトランザクションが発生すると検知します。"
+
+msgid "All Aggregate Transactions involving the specified address are detected. Whether a cosignature is required is determined by a separate filter."
+msgstr "指定アドレスが関係するすべてのアグリゲートトランザクションが検知されます。 連署が必要かどうかは別途フィルターして判断します。"
+
+msgid "Select randomly from the node list and try to connect."
+msgstr "一覧からランダムに選択し、接続を試みます。"
+
+msgid "Set a timeout value and re-select a node if connected node response is slow. Check the endpoint /node/health and reselect the node if the status is not normal."
+msgstr "タイムアウト値を設定しておき、応答の悪いノードに接続した場合は選びなおします。 エンドポイント /node/health　を確認してステータス異常の場合はノードを選びなおします。"
+
+msgid "Since there are no repositories in v3, the URLs of nodes that can be connected are returned."
+msgstr "v3 ではリポジトリがないため、接続できるノードのURLを返却します。"
+
+msgid "If the listener closes, it reconnects."
+msgstr "リスナーがcloseした場合は再接続します。"
+
+msgid "Detect unsigned transactions, then sign and announce to the network. Two patterns of detection are required: reception during initial screen display and during screen viewing."
+msgstr "未署名のトランザクションを検知して、署名＆ネットワークにアナウンスします。 初期画面表示時と画面閲覧中の受信と２パターンの検知が必要です。"
+
+msgid "To avoid auto-signing scam transactions, make sure that you ensure a checking procedure is carried out, e.g. by checking the sender's account."
+msgstr "スキャムトランザクションを自動署名しないように、 送信元のアカウントを確認するなどのチェック処理を必ず実施するようにしてください。"
+
+msgid "Chapter 10"
+msgstr "第10章"
+
+msgid "Monitoring"
+msgstr "監視"
+
+msgid "Listener configuration"
+msgstr "リスナー設定"
+
+msgid "Receiving transactions"
+msgstr "受信検知"
+
+msgid "Sample output"
+msgstr "出力例"
+
+msgid "note"
+msgstr "注意事項"
+
+msgid "Block monitoring"
+msgstr "ブロック監視"
+
+msgid "Signature request"
+msgstr "署名要求"
+
+msgid "Tips for use"
+msgstr "現場で使えるヒント"
+
+msgid "Continuous connection"
+msgstr "常時コネクション"
+
+msgid "Connection to node"
+msgstr "ノードへの接続"
+
+msgid "Creation of repositories"
+msgstr "レポジトリの作成"
+
+msgid "Continuous connection listeners"
+msgstr "リスナーの常時接続"
+
+msgid "Start of listener"
+msgstr "リスナー開始"
+
+msgid "Unsigned transaction auto-signature"
+msgstr "未署名トランザクション自動連署"
+
+msgid "Note"
+msgstr "注意事項"
