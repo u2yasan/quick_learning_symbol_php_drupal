@@ -12,25 +12,19 @@ Description text for Chapter 6.
 {% set qls_ch6_reverse_lookup_namespace_form = path('qls_ch6.reverse_lookup_namespace_form') %}
 {% set qls_ch6_check_receipt_form = path('qls_ch6.check_receipt_form') %}
 
-<h2>{{ 'Chapter 6'|t }} {{ 'Namespaces'|t }}</h2>
+<h2>{{ '第6章'|t }} {{ 'ネームスペース'|t }}</h2>
 
 <p>
 {% trans %}
-Namespaces are human-readable text strings that can be rented and linked with an address or a mosaic. The name has a maximum length of 64 characters (the only allowed characters are a through z, 0 through 9, _ and -).
+Symbolブロックチェーンではネームスペースをレンタルしてアドレスやモザイクに視認性の高い単語をリンクさせることができます。 ネームスペースは最大64文字、利用可能な文字は a, b, c, …, z, 0, 1, 2, …, 9, _ , - です。
 {% endtrans %}
 </p>
 
-<h3>6.1 {{ 'Fee calculation'|t }}</h3>
+<h3>6.1 {{ '手数料の計算'|t }}</h3>
 
 <p>
 {% trans %}
-There is a rental fee associated with registering a namespace which is separate from the network fee. Rental fees fluctuate depending on network activity with costs increasing during busy network periods, therefore it is sensible to check fees before registering a namespace.
-{% endtrans %}
-</p>
-
-<p>
-{% trans %}
-In the following example, the fees are calculated for a 365-day rental of a root namespace.
+ネームスペースのレンタルにはネットワーク手数料とは別にレンタル手数料が発生します。ネットワークの活性度に比例して価格が変動しますので、取得前に確認するようにしてください。ルートネームスペースを365日レンタルする場合の手数料を計算します。
 {% endtrans %}
 </p>
 
@@ -51,7 +45,7 @@ echo "Root Namespace Rental Fee: " . $rootNsRenatalFeeTotal . PHP_EOL;
 </code></pre>
 </div>
 
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -62,12 +56,12 @@ Root Namespace Rental Fee: 210240000 //約210XYM
 
 <p>
 {% trans %}
-The duration is specified by the number of blocks; one block is calculated as 30 seconds. There is a minimum rental period of 30 days (maximum 1825 days).
+期間はブロック数で指定します。1ブロックを30秒として計算しました。最低で30日分はレンタルする必要があります(最大で1825日分)。
 {% endtrans %}
 </p>
 <p>
 {% trans %}
-Calculate the fee for acquiring a sub namespace.
+サブネームスペースの取得手数料を計算します。
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -77,7 +71,7 @@ $childNamespaceRentalFee = $networkApiInstance->getRentalFees()->getEffectiveChi
 echo "Child Namespace Rental Fee: " . $childNamespaceRentalFee . PHP_EOL;
 </code></pre>
 </div>
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -87,13 +81,13 @@ Child Namespace Rental Fee: 10000000 //10XYM
 
 <p>
 {% trans %}
-There is no duration limit specified for the sub namespace. It can be used for as long as the root namespace is registered.
+サブネームスペースに期間指定はありません。ルートネームスペースをレンタルしている限り使用できます。
 {% endtrans %}
 </p>
 
-<h3>6.2 {{ 'Rental'|t }}</h3>
+<h3>6.2 {{ 'レンタル'|t }}</h3>
 <p>
-<a href={{ qls_ch6_create_namespace_form }}>{% trans %}Rent a root namespace.{% endtrans %}</a> ({{ 'Example'|t }}:xembook)
+<a href={{ qls_ch6_create_namespace_form }}>{% trans %}ルートネームスペースをレンタルします{% endtrans %}</a>({{ '例'|t }}:xembook)
 </p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
@@ -128,7 +122,7 @@ try {
 </div>
 
 <p>
-<a href={{ qls_ch6_create_subnamespace_form }}>{% trans %}Rent a sub namespace.{% endtrans %}</a> ({{ 'Example'|t }}:xembook.tomato)
+<a href={{ qls_ch6_create_subnamespace_form }}>{% trans %}サブネームスペースをレンタルします{% endtrans %}</a>({{ '例'|t }}:xembook.tomato)
 </p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
@@ -172,7 +166,7 @@ try {
 
 <p>
 {% trans %}
-You can also create a tier 2 sub namespace, for example in this case, defining xembook.tomato.morning:
+2階層目のサブネームスペースを作成したい場合は例えば、xembook.tomato.morning を定義したい場合は以下のようにします。
 {% endtrans %}
 </p>
 
@@ -186,10 +180,17 @@ $name = "morning"; //サブネームスペース名
 </code></pre>
 </div>
 
-<h4><a href={{ qls_ch6_list_namespaces_form }}>6.2.1 {{ 'Calculation of expiry date'|t }}</a></h4>
+<h4><a href={{ qls_ch6_list_namespaces_form }}>6.2.1 {{ '有効期限の計算'|t }}</a></h4>
+
 <p>
 {% trans %}
-Calculates the expiry date of the rented root namespace.
+トランザクションがブロックに承認されるまでに30秒程度かかります。
+{% endtrans %}
+</p>
+
+<p>
+{% trans %}
+レンタル済みルートネームスペースの有効期限を計算します。
 {% endtrans %}
 </p>
 
@@ -235,10 +236,11 @@ echo "End Date: " . $endDate . PHP_EOL;
 
 <p>
 {% trans %}
-Retrieve information about the namespace expiry and output the date and time of the remaining number of blocks subtracted from the current block height multiplied by 30 seconds (the average block generation interval). For testnet, the update deadline is postponed by about a day from the expiry date. And for the mainnet, this value is 30 days, please note it.
+ネームスペース情報の終了ブロックを取得し、現在のブロック高から差し引いた残ブロック数に30秒(平均ブロック生成間隔) を掛け合わせた日時を出力します。
+テストネットでは設定した有効期限よりも1日程度更新期限が猶予されます。メインネットはこの値が30日となっていますのでご留意ください。
 {% endtrans %}
 </p>
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -246,9 +248,9 @@ End Date: 2024-09-22 04:02:26
 </code></pre>
 </div>
 
-<h3><a href={{ qls_ch6_link_namespace_form }}>6.3 {{ 'Link'|t }}</a></h3>
+<h3><a href={{ qls_ch6_link_namespace_form }}>6.3 {{ 'リンク'|t }}</a></h3>
 
-<h4>6.3.1 {{ 'Link to an account'|t }}</h4>
+<h4>6.3.1 {{ 'アカウントへのリンク'|t }}</h4>
 
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
@@ -284,11 +286,11 @@ try {
 
 <p>
 {% trans %}
-The linked address does not have to be owned by you.
+リンク先のアドレスは自分が所有していなくても問題ありません。
 {% endtrans %}
 </p>
 
-<h4>6.3.2 {{ 'Link to a mosaic'|t }}</h4>
+<h4>6.3.2 {{ 'モザイクへリンク'|t }}</h4>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -323,20 +325,17 @@ try {
 </div>
 <p>
 {% trans %}
-Mosaics can only be linked if it is identical to the address at which the mosaic was created.
+モザイクを作成したアドレスと同一の場合のみリンクできるようです。
 {% endtrans %}
 </p>
 
-<h3><a href={{ qls_ch6_namespace_trnsfer_trnsaction_form }}>6.4 {{ 'Use as an UnresolvedAccount'|t }}</a></h3>
+<h3><a href={{ qls_ch6_namespace_trnsfer_trnsaction_form }}>6.4 {{ '未解決で使用'|t }}</a></h3>
 
 <p>
 {% trans %}
-Designate the destination as UnresolvedAccount to sign and announce the transaction without identifying the address. Transaction is executed for an account resolved on the chain side.
-{% endtrans %}
-</p>
-<p>
-{% trans %}
-Since the namespace cannot be specified directly in v3, data must be processed when operating without specifying the address.
+送信先にUnresolvedAccountとして指定して、アドレスを特定しないままトランザクションを署名・アナウンスします。
+チェーン側で解決されたアカウントに対しての送信が実施されます。
+v3ではネームスペースを直接指定できないため、アドレスを特定しないまま操作する場合はデータを加工する必要があります。
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -374,7 +373,7 @@ try {
 
 <p>
 {% trans %}
-Designate the sending mosaic as an UnresolvedMosaic to sign and announce the transaction without identifying the mosaic ID.
+送信モザイクにUnresolvedMosaicとして指定して、モザイクIDを特定しないままトランザクションを署名・アナウンスします。
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -414,7 +413,7 @@ try {
 
 <p>
 {% trans %}
-To use XYM in a namespace, specify as follows.
+XYMをネームスペースで使用する場合は以下のように指定します。
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -425,7 +424,7 @@ $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
 var_dump($namespaceId);
 </code></pre>
 </div>
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -438,10 +437,10 @@ object(SymbolSdk\Symbol\Models\NamespaceId)#101 (2) {
 </code></pre>
 </div>
 
-<h3><a href={{ qls_ch6_check_namespace_form }}>6.5 {{ 'Reference'|t }}</a></h3>
+<h3><a href={{ qls_ch6_check_namespace_form }}>6.5 {{ '参照'|t }}</a></h3>
 <p>
 {% trans %}
-Refer to the namespace linked to the address.
+アドレスへリンクしたネームスペースを参照します。
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -452,7 +451,7 @@ $namespaceInfo = $namespaceApiInstance->getNamespace(substr($namespaceId, 2));
 var_dump($namespaceInfo);
 </code></pre>
 </div>
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -528,25 +527,25 @@ object(SymbolRestClient\Model\NamespaceInfoDTO)#124 (2) {
 
 <p>
 {% trans %}
-AliasType is as follows.
+AliasTypeは以下の通りです。
 {% endtrans %}
 </p>
-<code><pre>
+<pre>
 {0: 'None', 1: 'Mosaic', 2: 'Address'}
-</pre></code>
+</pre>
 
 <p>
 {% trans %}
-NamespaceRegistrationType is as follows.
+NamespaceRegistrationTypeは以下の通りです。
 {% endtrans %}
 </p>
-<code><pre>
+<pre>
 {0: 'RootNamespace', 1: 'SubNamespace'}
-</pre></code>
+</pre>
 
 <p>
 {% trans %}
-Refer to the namespace linked to the mosaic.
+モザイクへリンクしたネームスペースを参照します。
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -558,7 +557,7 @@ $namespaceInfo = $namespaceApiInstance->getNamespace(substr($namespaceId, 2));
 var_dump($namespaceInfo);
 </code></pre>
 </div>
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -632,10 +631,10 @@ object(SymbolRestClient\Model\NamespaceInfoDTO)#104 (2) {
 </code></pre>
 </div>
 
-<h4><a href={{ qls_ch6_reverse_lookup_namespace_form }}>6.5.1 {{ 'Reverse lookup'|t }}</a></h4>
+<h4><a href={{ qls_ch6_reverse_lookup_namespace_form }}>6.5.1 {{ '逆引き'|t }}</a></h4>
 <p>
 {% trans %}
-Check all namespaces linked to the address.
+アドレスに紐づけられたネームスペースを全て調べます。
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -649,7 +648,7 @@ var_dump($accountNames);
 
 <p>
 {% trans %}
-Check all namespaces linked to the mosaic.
+モザイクに紐づけられたネームスペースを全て調べます。
 {% endtrans %}
 </p>
 <div class="code-container">
@@ -662,15 +661,15 @@ var_dump($mosaicNames);
 </div>
 
 
-<h4><a href={{ qls_ch6_check_receipt_form }}>6.5.2 {{ 'Receipt reference'|t }}</a></h4>
+<h4><a href={{ qls_ch6_check_receipt_form }}>6.5.2 {{ 'レシートの参照'|t }}</a></h4>
 <p>
 {% trans %}
-Check how the blockchain has resolved the namespace used for the transaction.
+トランザクションに使用されたネームスペースをブロックチェーン側がどう解決したかを確認します。
 {% endtrans %}
 </p>
 
 <p>
-{{ 'For address'|t }}
+{{ 'アドレスの場合'|t }}
 </p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
@@ -683,7 +682,7 @@ $state = $receiptApiInstance->searchAddressResolutionStatements(
 echo $state;
 </code></pre>
 </div>
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -718,7 +717,7 @@ echo $state;
 </div>
 
 <p>
-{{ 'For mosaic'|t }}
+{{ 'モザイクの場合'|t }}
 </p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
@@ -729,7 +728,7 @@ $state = $receiptApiInstance->searchMosaicResolutionStatements(
 echo $state;
 </code></pre>
 </div>
-<p class="output-ex">{{ 'Sample output'|t }}</p>
+<p class="output-ex">{{ '出力例'|t }}</p>
 <div class="code-container">
   <button class="toggle-code">Show Code</button>
   <pre><code class="code-block">
@@ -809,35 +808,36 @@ object(stdClass)#142 (2) {
 
 
 <p>
-{{ 'Note'|t }}
+{{ '注意事項'|t }}
 </p>
 <p>
 {% trans %}
-As the namespace itself is rented, the link to the namespace used in past transactions may differ from the link to the current namespace.
-{% endtrans %}
-</p>
-<p>
-{% trans %}
-Always refer to your receipt if you want to know which account you were linked to at the time, e.g. when referring to historical data.
+ネームスペースはレンタル制のため、過去のトランザクションで使用したネームスペースのリンク先と現在のネームスペースのリンク先が異なる可能性があります。
+過去のデータを参照する際などに、その時どのアカウントにリンクしていたかなどを知りたい場合は必ずレシートを参照するようにしてください。
 {% endtrans %}
 </p>
 
-<h3>6.6 {{ 'Tips for use'|t }}</h3>
+<h3>6.6 {{ '現場で使えるヒント'|t }}</h3>
 
-<h4>6.6.1 {{ 'Reciprocal links with external domains'|t }}</h4>
+<h4>6.6.1 {{ '外部ドメインとの相互リンク'|t }}</h4>
 <p>
 {% trans %}
-As duplicate namespaces are restricted by protocol, user can build the brand valuation of one's account on the Symbol by acquiring a namespace that is identical to an internet domain or a well-known trademark name in the real world, and by promoting recognition of the namespace from external sources like official websites, printed materials, etc. (For legal validity, please seek expert opinion.) Beware of hacking external domains and renewing your own Symbol namespaces duration.
+ネームスペースは重複取得がプロトコル上制限されているため、インターネットドメインや実世界で周知されている商標名と同一のネームスペースを取得し、外部(公式サイトや印刷物など) からネームスペース存在の認知を公表することで、Symbol上のアカウントのブランド価値を構築することができます(法的な効力については調整が必要です)。外部ドメイン側のハッキングあるいは、Symbol側でのネームスペース更新忘れにはご注意ください。
 {% endtrans %}
 </p>
 <p>
 {% trans %}
-Note on accounts acquiring a namespace
+ネームスペースを取得するアカウントについての注意ネームスペースはレンタル期限という概念をもつ機能です。今のところ、取得したネームスペースは放棄か延長の選択肢しかありません。運用譲渡などが発生する可能性のあるシステムでネームスペース活用を検討する場合はマルチシグ化(9章) したアカウントでネームスペースを取得することをおすすめします。
 {% endtrans %}
 </p>
 <p>
 {% trans %}
-Namespaces are rented for a specified duration . At the moment, options for acquired namespaces are only abandonment or duration extension. In case of utilising a namespace in a system where operational transfers, etc. are considered, we recommend acquiring a namespace with a multisig account (Chapter 9).
+ネームスペースを取得するアカウントについての注意
+{% endtrans %}
+</p>
+<p>
+{% trans %}
+ネームスペースはレンタル期限という概念をもつ機能です。今のところ、取得したネームスペースは放棄か延長の選択肢しかありません。運用譲渡などが発生する可能性のあるシステムでネームスペース活用を検討する場合はマルチシグ化(9章) したアカウントでネームスペースを取得することをおすすめします。
 {% endtrans %}
 </p>
 

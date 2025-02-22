@@ -1,0 +1,156 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "Namespaces are human-readable text strings that can be rented and linked with an address or a mosaic. The name has a maximum length of 64 characters (the only allowed characters are a through z, 0 through 9, _ and -)."
+msgstr ""
+
+msgid "There is a rental fee associated with registering a namespace which is separate from the network fee. Rental fees fluctuate depending on network activity with costs increasing during busy network periods, therefore it is sensible to check fees before registering a namespace."
+msgstr ""
+
+msgid "In the following example, the fees are calculated for a 365-day rental of a root namespace."
+msgstr ""
+
+msgid "The duration is specified by the number of blocks; one block is calculated as 30 seconds. There is a minimum rental period of 30 days (maximum 1825 days)."
+msgstr ""
+
+msgid "Calculate the fee for acquiring a sub namespace."
+msgstr ""
+
+msgid "There is no duration limit specified for the sub namespace. It can be used for as long as the root namespace is registered."
+msgstr ""
+
+msgid "Rent a root namespace."
+msgstr ""
+
+msgid "Rent a sub namespace."
+msgstr ""
+
+msgid "You can also create a tier 2 sub namespace, for example in this case, defining xembook.tomato.morning:"
+msgstr ""
+
+msgid "Calculates the expiry date of the rented root namespace."
+msgstr ""
+
+msgid "Retrieve information about the namespace expiry and output the date and time of the remaining number of blocks subtracted from the current block height multiplied by 30 seconds (the average block generation interval). For testnet, the update deadline is postponed by about a day from the expiry date. And for the mainnet, this value is 30 days, please note it."
+msgstr ""
+
+msgid "The linked address does not have to be owned by you."
+msgstr ""
+
+msgid "Mosaics can only be linked if it is identical to the address at which the mosaic was created."
+msgstr ""
+
+msgid "Designate the destination as UnresolvedAccount to sign and announce the transaction without identifying the address. Transaction is executed for an account resolved on the chain side."
+msgstr ""
+
+msgid "Since the namespace cannot be specified directly in v3, data must be processed when operating without specifying the address."
+msgstr ""
+
+msgid "Designate the sending mosaic as an UnresolvedMosaic to sign and announce the transaction without identifying the mosaic ID."
+msgstr ""
+
+msgid "To use XYM in a namespace, specify as follows."
+msgstr ""
+
+msgid "Refer to the namespace linked to the address."
+msgstr ""
+
+msgid "AliasType is as follows."
+msgstr ""
+
+msgid "NamespaceRegistrationType is as follows."
+msgstr ""
+
+msgid "Refer to the namespace linked to the mosaic."
+msgstr ""
+
+msgid "Check all namespaces linked to the address."
+msgstr ""
+
+msgid "Check all namespaces linked to the mosaic."
+msgstr ""
+
+msgid "Check how the blockchain has resolved the namespace used for the transaction."
+msgstr ""
+
+msgid "As the namespace itself is rented, the link to the namespace used in past transactions may differ from the link to the current namespace."
+msgstr ""
+
+msgid "Always refer to your receipt if you want to know which account you were linked to at the time, e.g. when referring to historical data."
+msgstr ""
+
+msgid "As duplicate namespaces are restricted by protocol, user can build the brand valuation of one's account on the Symbol by acquiring a namespace that is identical to an internet domain or a well-known trademark name in the real world, and by promoting recognition of the namespace from external sources like official websites, printed materials, etc. (For legal validity, please seek expert opinion.) Beware of hacking external domains and renewing your own Symbol namespaces duration."
+msgstr ""
+
+msgid "Note on accounts acquiring a namespace"
+msgstr ""
+
+msgid "Namespaces are rented for a specified duration . At the moment, options for acquired namespaces are only abandonment or duration extension. In case of utilising a namespace in a system where operational transfers, etc. are considered, we recommend acquiring a namespace with a multisig account (Chapter 9)."
+msgstr ""
+
+msgid "Chapter 6"
+msgstr ""
+
+msgid "Namespaces"
+msgstr ""
+
+msgid "Fee calculation"
+msgstr ""
+
+msgid "Sample output"
+msgstr ""
+
+msgid "Rental"
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Calculation of expiry date"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "Link to an account"
+msgstr ""
+
+msgid "Link to a mosaic"
+msgstr ""
+
+msgid "Use as an UnresolvedAccount"
+msgstr ""
+
+msgid "Reference"
+msgstr ""
+
+msgid "Reverse lookup"
+msgstr ""
+
+msgid "Receipt reference"
+msgstr ""
+
+msgid "For address"
+msgstr ""
+
+msgid "For mosaic"
+msgstr ""
+
+msgid "Note"
+msgstr ""
+
+msgid "Tips for use"
+msgstr ""
+
+msgid "Reciprocal links with external domains"
+msgstr ""
