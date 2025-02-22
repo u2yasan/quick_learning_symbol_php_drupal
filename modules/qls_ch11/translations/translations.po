@@ -1,0 +1,156 @@
+msgid "This section describes restrictions on accounts and global restrictions on mosaics. In this chapter, we will restrict the permissions of existing accounts, so please create a new disposable account to try it out."
+msgstr ""
+
+msgid "RestrictionFlags corresponds to AddressRestrictionFlag in v2."
+msgstr ""
+
+msgid "For AddressRestrictionFlag is as follows."
+msgstr ""
+
+msgid "As with account restrictions, restrictionFlags corresponds to MosaicRestrictionFlag in v2."
+msgstr ""
+
+msgid "MosaicRestrictionFlag is as follows."
+msgstr ""
+
+msgid "There is no restriction function for mosaic outgoing transactions. Please note that this should not to be confused with the global mosaic restriction, which restricts the behaviour of mosaics, described below."
+msgstr ""
+
+msgid "As with account restrictions and mosaic restrictions, restrictionFlags corresponds to v2's OperationRestrictionFlag."
+msgstr ""
+
+msgid "OperationRestrictionFlag is as follows."
+msgstr ""
+
+msgid "There is no restriction function for transaction receipts. The operations that can be specified are as follows."
+msgstr ""
+
+msgid "TransactionType is as follows."
+msgstr ""
+
+msgid "17232: ACCOUNT_OPERATION_RESTRICTION restriction is not permitted. This means that if AllowOutgoingTransactionType is specified, ACCOUNT_OPERATION_RESTRICTION must be included, and If BlockOutgoingTransactionType is specified, ACCOUNT_OPERATION_RESTRICTION cannot be included."
+msgstr ""
+
+msgid "Check the information on the restrictions that you have set"
+msgstr ""
+
+msgid "Mosaic Global Restriction sets the conditions under which mosaics can be transferred. Assigning to each account for numeric metadata dedicated to the mosaic global restriction. The relevant mosaic can only be sent if both the incoming and outgoing accounts meet the conditions."
+msgstr ""
+
+msgid "Set restrictable to true to create a mosaic in Carol."
+msgstr ""
+
+msgid "MosaicRestrictionType is as follows."
+msgstr ""
+
+msgid "Add eligibility information against the Mosaic Global Restriction to Carol and Bob. There are no restrictions on mosaics already owned, as these restrictions apply to incoming and outgoing transactions. For a successful transfer, both sender and receiver must fulfil the conditions. Restrictions can be placed on any account with the private key of the mosaic creator without requiring a signature of consent."
+msgstr ""
+
+msgid "Query the node to check its restriction status."
+msgstr ""
+
+msgid "Check the restriction status by transferring the mosaic."
+msgstr ""
+
+msgid "Failure will result in the following error status."
+msgstr ""
+
+msgid ""Account restriction" and "Mosaic Global Restriction" features can be used to control the properties of Symbol accounts and mosaics. The flexibility of restrictions has the potential to fulfil practical use cases of the Symbol blockchain in real-world situations. For example, it could be necessary to place limitations on the transfer of a specific mosaic to comply with laws and regulations or to avoid specific tokens issued by a business from being traded. Accounts can also be limited to restrict incoming transactions of certain mosaics or from specific users to avoid spam or malicious transactions providing additional safety to Symbol users."
+msgstr ""
+
+msgid "Using "AllowIncomingAddress" to limit funds being received only from a specified address and then sending the entire XYM balance to another account a user can explicitly create an account that is difficult to operate on its own, even with the private key. (Note, it is possibly to be authorised by a node whose minimum fee is 0.)"
+msgstr ""
+
+msgid "A mosaic can be issued with non-transferable settings, if the account creator prohibits the mosaic from being received by their account then the mosaic is locked and cannot be moved from the recipient's account."
+msgstr ""
+
+msgid "Proof of ownership was explained in the chapter on mosaics. By utilising the mosaic global restriction, it is possible to create a mosaic that can only be owned and circulated between accounts that have for instance, gone through a KYC process, creating a unique economic zone to which only the owner can belong."
+msgstr ""
+
+msgid "Chapter 11"
+msgstr ""
+
+msgid "Restrictions"
+msgstr ""
+
+msgid "Account Restrictions"
+msgstr ""
+
+msgid "Specify addresses to restrict incoming and outgoing transactions"
+msgstr ""
+
+msgid "Allowing incoming transactions only from specific addresses"
+msgstr ""
+
+msgid "Permitting outgoing transactions only to specific addresses"
+msgstr ""
+
+msgid "Reject incoming transactions from designated addresses"
+msgstr ""
+
+msgid "Prohibit outgoing transactions to specific addresses"
+msgstr ""
+
+msgid "Restrictions on receiving designated mosaics"
+msgstr ""
+
+msgid "Allowing to receive only transactions containing the specified mosaic"
+msgstr ""
+
+msgid "Rejection of incoming transactions containing specified mosaics"
+msgstr ""
+
+msgid "Restrictions on specified transactions"
+msgstr ""
+
+msgid "Permit only for specified transaction types"
+msgstr ""
+
+msgid "Prohibit only for specified transaction types"
+msgstr ""
+
+msgid "Note"
+msgstr ""
+
+msgid "Confirmation"
+msgstr ""
+
+msgid "Sample output"
+msgstr ""
+
+msgid "Mosaic Global Restriction"
+msgstr ""
+
+msgid "Creating mosaics with global restrictions"
+msgstr ""
+
+msgid "Operator"
+msgstr ""
+
+msgid "Abbreviation"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Applying mosaic restrictions to accounts"
+msgstr ""
+
+msgid "Confirmation of restriction status check"
+msgstr ""
+
+msgid "Confirmation of transfer"
+msgstr ""
+
+msgid "Tips for use"
+msgstr ""
+
+msgid "Account burn"
+msgstr ""
+
+msgid "Mosaic lock"
+msgstr ""
+
+msgid "Proof of membership"
+msgstr ""
+
