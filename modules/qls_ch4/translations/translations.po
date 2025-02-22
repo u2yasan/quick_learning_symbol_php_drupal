@@ -1,0 +1,258 @@
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Updating data on the blockchain is done by announcing transactions to the network."
+msgstr ""
+
+msgid "Below is a description of the lifecycle of a transaction:"
+msgstr ""
+
+msgid "Create transactions in an acceptable format for the blockchain."
+msgstr ""
+
+msgid "Sign the transaction with the account's privatekey."
+msgstr ""
+
+msgid "Announce a signed transaction to any node on the network."
+msgstr ""
+
+msgid "Transactions accepted by a node are propagated to all nodes as unconfirmed state transactions."
+msgstr ""
+
+msgid "In a case where the maximum fee set for a transaction is not enough for the minimum fee set for each node, it will not be propagated to that node."
+msgstr ""
+
+msgid "When an unconfirmed transaction is contained in a subsequent new block (generated approximately every 30 seconds), it becomes an approved transaction."
+msgstr ""
+
+msgid "Transactions that could not reach a consensus agreement between nodes are rolled back to an unconfirmed state."
+msgstr ""
+
+msgid "Transactions that have expired or overflowed the cache are truncated."
+msgstr ""
+
+msgid "Once the block is finalised by the finalisation process of the voting node, the transaction can be treated as final and data can no longer be rolled back."
+msgstr ""
+
+msgid "These are the most basic information for operating a blockchain. You should also see how to generate accounts from private keys and how to generate classes that deal only with public keys and addresses."
+msgstr ""
+
+msgid "Blocks are generated approximately every 30 seconds and are synchronised with other nodes on a block-by-block basis with priority given to transactions that have paid higher fees. If synchronisation fails, it is rolled back and the network repeats this process until consensus agreement is reached across all nodes."
+msgstr ""
+
+msgid "First of all, start with creating the most basic transfer transaction."
+msgstr ""
+
+msgid "Create transaction."
+msgstr ""
+
+msgid "Each setting is explained below."
+msgstr ""
+
+msgid "2 hours is the SDK's default setting. A maximum of 6 hours can be specified."
+msgstr ""
+
+msgid "In a message field, up to 1023 bytes can be attached to a transaction. Also binary data can be sent as raw data."
+msgstr ""
+
+msgid "To be displayed in Explorer, etc., it is necessary to append \\0 at the beginning."
+msgstr ""
+
+msgid "When encryption is performed using MessageEncoder, the message type 0x01, which represents a ciphertext message, is automatically added."
+msgstr ""
+
+msgid "Although paying a small additional fee is better to ensure a transaction is successful, having some knowledge about network fees is a good idea. The account specifies the maximum fee it is willing to pay when it creates the transaction. On the other hand, nodes try to harvest only the transactions with the highest fees into a block at a time. This means that if there are many other transactions that are willing to pay more, the transaction will take longer to be approved. Conversely, if there are many other transactions that want to pay less and your maximum fee is larger, then the transaction will be processed with a fee below the maximum value you set."
+msgstr ""
+
+msgid "The fee paid is determined by a transaction size x feeMultiplier. If it was 176 bytes and your maxFee is set at 100, 17600µXYM = 0.0176XYM is the maximum value you allow to be paid as a fee for the transaction. There are two ways to specify this: as feeMultiplier = 100 or as maxFee = 17600."
+msgstr ""
+
+msgid "To specify as feeMultiprier = 100"
+msgstr ""
+
+msgid "Sign the transaction which you create with the private key and announce it to any node."
+msgstr ""
+
+msgid "If you are using an IDE, $apiInstance->announceTransaction($payload), you may get a warning when you specify the payload here, but don't worry about it."
+msgstr ""
+
+msgid "As in the script above, a response will be sent: packet n was pushed to the network, this means that the transaction has been accepted by the node. However, this only means that there were no anomalies in the formatting of the transaction. In order to maximise the response speed of the node, Symbol returns the response of the received result and disconnects the connection before verifying the content of the transaction. The response value is merely the receipt of this information. If there is an error in the format, the message response will be as follows:"
+msgstr ""
+
+msgid "Sample output of response if announcement fails"
+msgstr ""
+
+msgid "Check the status of transactions accepted by the node."
+msgstr ""
+
+msgid "When it is approved, the output shows  group: \"confirmed\" ."
+msgstr ""
+
+msgid "If it was accepted but an error occurred, the output will show as follows. Rewrite the transaction and try announcing it again."
+msgstr ""
+
+msgid "If the transaction has not been accepted, the output will show the ResourceNotFound error as follows."
+msgstr ""
+
+msgid "This error occurs when the maximum fee specified in the transaction is less than the minimum fee set by the node, or if a transaction that is required to be announced as an aggregate transaction is announced as a single transaction."
+msgstr ""
+
+msgid "It takes around 30 seconds for a transaction to be approved for the block."
+msgstr ""
+
+msgid "Search in Explorer using the hash value that can be retrieved with signedTx.hash."
+msgstr ""
+
+msgid "Even when a transaction is confirmed in a block, the confirmation of the transaction still has the possibility of being revoked if a rollback occurs. After a block has been approved, the probability of a rollback occurring decreases as the approval process proceeds for several blocks. In addition, waiting for the finalisation block, which is carried out by voting nodes, ensures that the recorded data is certain."
+msgstr ""
+
+msgid "After announcing the transaction, it is useful to see the following script to keep track of the chain status."
+msgstr ""
+
+msgid "The reason for putting “sleep” in the middle of the message is that it may go to check the status before the announcement and return an error."
+msgstr ""
+
+msgid "Get a list of the transaction history sent and received by Alice."
+msgstr ""
+
+msgid "If you use an IDE, you may get a warning message because embedded expects a bool type, but here we pass the string true."
+msgstr ""
+
+msgid "Differences in messages when creating Tx payloads"
+msgstr ""
+
+msgid "Not yet verified and will be written after verification"
+msgstr ""
+
+msgid "Aggregate transactions can merge multiple transactions into one. Symbol’s public network supports aggregate transactions containing up to 100 inner transactions (involving up to 25 different cosignatories). The content covered in subsequent chapters includes functions that require an understanding of aggregate transactions. This chapter introduces only the simplest of aggregate transactions."
+msgstr ""
+
+msgid "First, create the transactions to be included in the aggregate transaction. It is not necessary to specify a Deadline at this time. When listing, add toAggregate to the generated transaction and specify the publickey of the sender account. Note that the sender and signing accounts do not always match. This is because of the possibility of scenarios such as 'Alice signing the transaction that Bob sent', which will be explained in subsequent chapters. This is the most important concept in using transactions on the Symbol blockchain. The transactions in this chapter are sent and signed by Alice, so the signature on the aggregate bonded transaction also specifies Alice."
+msgstr ""
+
+msgid "Maximum fee on aggregate transactions"
+msgstr ""
+
+msgid "Aggregate transactions, like regular transactions, can be executed either by specifying the maximum fee directly or by using feeMultiplier. In the previous example, we used the method of specifying the maximum fee directly. Here we introduce the method of specifying the maximum fee by feeMultiplier."
+msgstr ""
+
+msgid "The chapter on Accounts described how to sign and verify data by account. Putting this data into a transaction that is confirmed on the blockchain makes it impossible to delete the fact that an account has proved the existence of certain data at a certain time. It can be considered to have the same meaning as the possession between interested parties of a time-stamped electronic signature.（Legal decisions are left to experts）"
+msgstr ""
+
+msgid "The blockchain updates data such as transactions with the existence of this \"indelible fact that the account has proved\". And also the blockchain can be used as proof of knowledge of a fact that nobody should have known about yet. This section describes two patterns in which data whose existence has been proven can be put on a transaction."
+msgstr ""
+
+msgid "The existence of a file can be proved by recording its digest value in the blockchain."
+msgstr ""
+
+msgid "The calculation of the hash value using SHA256 for files in each operating system is as follows."
+msgstr ""
+
+msgid "As the payload of a transaction can only contain 1023 bytes. Large data is split up and packed into the payload to make an aggregate transaction."
+msgstr ""
+
+msgid "Transaction"
+msgstr ""
+
+msgid "Transaction lifecycle"
+msgstr ""
+
+msgid "Transaction creation"
+msgstr ""
+
+msgid "Signature"
+msgstr ""
+
+msgid "Announcement"
+msgstr ""
+
+msgid "Unconfirmed state transactions"
+msgstr ""
+
+msgid "Confirmed transaction"
+msgstr ""
+
+msgid "Rollbacks"
+msgstr ""
+
+msgid "Finalise"
+msgstr ""
+
+msgid "What is a block?"
+msgstr ""
+
+msgid "Expiry date"
+msgstr ""
+
+msgid "Message"
+msgstr ""
+
+msgid "Empty message"
+msgstr ""
+
+msgid "Plain message"
+msgstr ""
+
+msgid "Encrypted message"
+msgstr ""
+
+msgid "Maximum fee"
+msgstr ""
+
+msgid "Signature and announcement"
+msgstr ""
+
+msgid "Sample output"
+msgstr ""
+
+msgid "Confirmation"
+msgstr ""
+
+msgid "Status confirmation"
+msgstr ""
+
+msgid "Approval Confirmation"
+msgstr ""
+
+msgid "Check with the Explorer"
+msgstr ""
+
+msgid "Mainnet"
+msgstr ""
+
+msgid "Testnet"
+msgstr ""
+
+msgid "Check with the SDK"
+msgstr ""
+
+msgid "Note"
+msgstr ""
+
+msgid "Sample script"
+msgstr ""
+
+msgid "Transaction history"
+msgstr ""
+
+msgid "Aggregate Transactions"
+msgstr ""
+
+msgid "Tips for use"
+msgstr ""
+
+msgid "Proof of existence"
+msgstr ""
+
+msgid "Digital data hash value (SHA256) output method"
+msgstr ""
+
+msgid "Splitting large data"
+msgstr ""

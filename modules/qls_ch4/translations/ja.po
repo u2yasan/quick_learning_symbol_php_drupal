@@ -1,0 +1,261 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+msgid "Updating data on the blockchain is done by announcing transactions to the network."
+msgstr "ブロックチェーン上のデータ更新はトランザクションをネットワークにアナウンスすることによって行います。"
+
+msgid "Below is a description of the lifecycle of a transaction:"
+msgstr "トランザクションを作成してから、改ざんが困難なデータとなるまでを順に説明します。"
+
+msgid "Create transactions in an acceptable format for the blockchain."
+msgstr "ブロックチェーンが受理できるフォーマットでトランザクションを作成します。"
+
+msgid "Sign the transaction with the account's privatekey."
+msgstr "アカウントの秘密鍵でトランザクションを署名します。"
+
+msgid "Announce a signed transaction to any node on the network."
+msgstr "任意のノードに署名済みトランザクションを通知します。"
+
+msgid "Transactions accepted by a node are propagated to all nodes as unconfirmed state transactions."
+msgstr "ノードに受理されたトランザクションは、未承認トランザクションとして全ノードに伝播します。"
+
+msgid "In a case where the maximum fee set for a transaction is not enough for the minimum fee set for each node, it will not be propagated to that node."
+msgstr "トランザクションに設定した最大手数料が、各ノード毎に設定されている最低手数料を満たさない場合はそのノードへは伝播しません。"
+
+msgid "When an unconfirmed transaction is contained in a subsequent new block (generated approximately every 30 seconds), it becomes an approved transaction."
+msgstr "約30秒に1度ごとに生成されるブロックに未承認トランザクションが取り込まれると、承認済みトランザクションとなります。"
+
+msgid "Transactions that could not reach a consensus agreement between nodes are rolled back to an unconfirmed state."
+msgstr "ノード間の合意に達することができずロールバックされたブロックに含まれていたトランザクションは、未承認トランザクションに差し戻されます。"
+
+msgid "Transactions that have expired or overflowed the cache are truncated."
+msgstr "有効期限切れや、キャッシュからあふれたトランザクションは切り捨てられます。"
+
+msgid "Once the block is finalised by the finalisation process of the voting node, the transaction can be treated as final and data can no longer be rolled back."
+msgstr "投票ノードによるファイナライズプロセスによりブロックが確定するとトランザクションはロールバック不可なデータとして扱うことができます。"
+
+msgid "These are the most basic information for operating a blockchain. You should also see how to generate accounts from private keys and how to generate classes that deal only with public keys and addresses."
+msgstr "これらがブロックチェーンを操作するための最も基本的な情報となります。また、秘密鍵からアカウントを生成したり、公開鍵やアドレスのみを扱うクラスの生成方法も確認しておきましょう。"
+
+msgid "Blocks are generated approximately every 30 seconds and are synchronised with other nodes on a block-by-block basis with priority given to transactions that have paid higher fees. If synchronisation fails, it is rolled back and the network repeats this process until consensus agreement is reached across all nodes."
+msgstr "ブロックは約30秒ごとに生成され、高い手数料を支払ったトランザクションから優先に取り込まれ、ブロック単位で他のノードと同期します。同期に失敗するとロールバックして、ネットワークが全体で合意が取れるまでこの作業を繰り返します。"
+
+msgid "First of all, start with creating the most basic transfer transaction."
+msgstr "まずは最も基本的な転送トランザクションを作成してみます。"
+
+msgid "Create transaction."
+msgstr "トランザクションを作成します。"
+
+msgid "Each setting is explained below."
+msgstr "各設定項目について説明します。"
+
+msgid "2 hours is the SDK's default setting. A maximum of 6 hours can be specified."
+msgstr "SDKではデフォルトで2時間後に設定されます。 最大6時間まで指定可能です。"
+
+msgid "In a message field, up to 1023 bytes can be attached to a transaction. Also binary data can be sent as raw data."
+msgstr "トランザクションに最大1023バイトのメッセージを添付することができます。 バイナリデータであってもrawdataとして送信することが可能です。"
+
+msgid "To be displayed in Explorer, etc., it is necessary to append \\0 at the beginning."
+msgstr "エクスプローラーなどで表示するためには先頭に\\0を付加する必要があります。"
+
+msgid "When encryption is performed using MessageEncoder, the message type 0x01, which represents a ciphertext message, is automatically added."
+msgstr "MessageEncoderを使用して暗号化すると、自動で暗号文メッセージを表すメッセージタイプ0x01が付加されます。"
+
+msgid "Although paying a small additional fee is better to ensure a transaction is successful, having some knowledge about network fees is a good idea. The account specifies the maximum fee it is willing to pay when it creates the transaction. On the other hand, nodes try to harvest only the transactions with the highest fees into a block at a time. This means that if there are many other transactions that are willing to pay more, the transaction will take longer to be approved. Conversely, if there are many other transactions that want to pay less and your maximum fee is larger, then the transaction will be processed with a fee below the maximum value you set."
+msgstr "ネットワーク手数料については、常に少し多めに払っておけば問題はないのですが、最低限の知識は持っておく必要があります。 アカウントはトランザクションを作成するときに、ここまでは手数料として払ってもいいという最大手数料を指定します。 一方で、ノードはその時々で最も高い手数料となるトランザクションのみブロックにまとめて収穫しようとします。 つまり、多く払ってもいいというトランザクションが他に多く存在すると承認されるまでの時間が長くなります。 逆に、より少なく払いたいというトランザクションが多く存在し、その総額が大きい場合は、設定した最大額に満たない手数料額で送信が実現します。"
+
+msgid "The fee paid is determined by a transaction size x feeMultiplier. If it was 176 bytes and your maxFee is set at 100, 17600µXYM = 0.0176XYM is the maximum value you allow to be paid as a fee for the transaction. There are two ways to specify this: as feeMultiplier = 100 or as maxFee = 17600."
+msgstr "トランザクションサイズ x feeMultiprilerというもので決定されます。 176バイトだった場合maxFeeを100で設定すると17600μXYM=0.0176XYMを手数料として支払うことを許容します。 feeMultiprier=100として指定する方法とmaxFee=17600として指定する方法があります。"
+
+msgid "To specify as feeMultiprier = 100"
+msgstr "feeMultiprier = 100として指定する方法"
+
+msgid "Sign the transaction which you create with the private key and announce it to any node."
+msgstr "作成したトランザクションを秘密鍵で署名して、任意のノードを通じてアナウンスします。"
+
+msgid "If you are using an IDE, $apiInstance->announceTransaction($payload), you may get a warning when you specify the payload here, but don't worry about it."
+msgstr "IDEを使っている人は$apiInstance->announceTransaction($payload)ここのpayloadの指定でwarningが表示されるかもしれませんが気にしなくて大丈夫です。"
+
+msgid "As in the script above, a response will be sent: packet n was pushed to the network, this means that the transaction has been accepted by the node. However, this only means that there were no anomalies in the formatting of the transaction. In order to maximise the response speed of the node, Symbol returns the response of the received result and disconnects the connection before verifying the content of the transaction. The response value is merely the receipt of this information. If there is an error in the format, the message response will be as follows:"
+msgstr "上記のスクリプトのようにpacket n was pushed to the network というレスポンスがあれば、トランザクションはノードに受理されたことになります。これはトランザクションのフォーマット等に異常が無かった程度の意味しかありません。Symbolではノードの応答速度を極限に高めるため、トランザクションの内容を検証するまえに受信結果の応答を返し接続を切断します。レスポンス値はこの情報を受け取ったにすぎません。フォーマットに異常があった場合は以下のようなメッセージ応答があります。"
+
+msgid "Sample output of response if announcement fails"
+msgstr "アナウンスに失敗した場合の応答例"
+
+msgid "Check the status of transactions accepted by the node."
+msgstr "ノードに受理されたトランザクションのステータスを確認"
+
+msgid "When it is approved, the output shows  group: \"confirmed\" ."
+msgstr "承認されると group: “confirmed”となっています。"
+
+msgid "If it was accepted but an error occurred, the output will show as follows. Rewrite the transaction and try announcing it again."
+msgstr "受理されたものの、エラーが発生していた場合は以下のような出力となります。トランザクションを書き直して再度アナウンスしてみてください。"
+
+msgid "If the transaction has not been accepted, the output will show the ResourceNotFound error as follows."
+msgstr "以下のようにResourceNotFoundエラーが発生した場合はトランザクションが受理されていません。"
+
+msgid "This error occurs when the maximum fee specified in the transaction is less than the minimum fee set by the node, or if a transaction that is required to be announced as an aggregate transaction is announced as a single transaction."
+msgstr "考えられる可能性としては、トランザクションで指定した最大手数料が、ノードで設定された最低手数料に満たない場合や、 アグリゲートトランザクションとしてアナウンスすることが求められているトランザクションを単体のトランザクションでアナウンスした場合に発生するようです。"
+
+msgid "It takes around 30 seconds for a transaction to be approved for the block."
+msgstr "トランザクションがブロックに承認されるまでに30秒程度かかります。"
+
+msgid "Search in Explorer using the hash value that can be retrieved with signedTx.hash."
+msgstr "signedTx.hashで取得できるハッシュ値を使ってエクスプローラーで検索してみましょう。"
+
+msgid "Even when a transaction is confirmed in a block, the confirmation of the transaction still has the possibility of being revoked if a rollback occurs. After a block has been approved, the probability of a rollback occurring decreases as the approval process proceeds for several blocks. In addition, waiting for the finalisation block, which is carried out by voting nodes, ensures that the recorded data is certain."
+msgstr "トランザクションはブロックで承認されたとしても、ロールバックが発生するとトランザクションの承認が取り消される場合があります。ブロックが承認された後、数ブロックの承認が進むと、ロールバックの発生する確率は減少していきます。また、Votingノードの投票で実施されるファイナライズブロックを待つことで、記録されたデータは確実なものとなります。"
+
+msgid "After announcing the transaction, it is useful to see the following script to keep track of the chain status."
+msgstr "トランザクションをアナウンスした後は以下のようなスクリプトを流すと、チェーンの状態を把握しやすくて便利です。※途中sleepを入れているのはアナウンスより先にステータスを確認しに行ってしまいエラーを返す可能性があるためです。"
+
+msgid "The reason for putting “sleep” in the middle of the message is that it may go to check the status before the announcement and return an error."
+msgstr "途中sleepを入れているのはアナウンスより先にステータスを確認しに行ってしまいエラーを返す可能性があるためです。"
+
+msgid "Get a list of the transaction history sent and received by Alice."
+msgstr "が送受信したトランザクション履歴を一覧で取得します。"
+
+msgid "If you use an IDE, you may get a warning message because embedded expects a bool type, but here we pass the string true."
+msgstr "IDEなどを使うとembeddedはbool型を期待するのでwarningが表示されるかもしれませんが、ここでは文字列のtrueを渡します。"
+
+msgid "Differences in messages when creating Tx payloads"
+msgstr "Txペイロード作成時のメッセージの差異"
+
+msgid "Not yet verified and will be written after verification"
+msgstr "未検証のため検証後執筆予定"
+
+msgid "Aggregate transactions can merge multiple transactions into one. Symbol’s public network supports aggregate transactions containing up to 100 inner transactions (involving up to 25 different cosignatories). The content covered in subsequent chapters includes functions that require an understanding of aggregate transactions. This chapter introduces only the simplest of aggregate transactions."
+msgstr "Symbolでは複数のトランザクションを1ブロックにまとめてアナウンスすることができます。最大で100件のトランザクションをまとめることができます(連署者が異なる場合は25アカウントまでを連署指定可能)。以降の章で扱う内容にアグリゲートトランザクションへの理解が必要な機能が含まれますので、本章ではアグリゲートトランザクションのうち、簡単なものだけを紹介します。"
+
+msgid "First, create the transactions to be included in the aggregate transaction. It is not necessary to specify a Deadline at this time. When listing, add toAggregate to the generated transaction and specify the publickey of the sender account. Note that the sender and signing accounts do not always match. This is because of the possibility of scenarios such as 'Alice signing the transaction that Bob sent', which will be explained in subsequent chapters. This is the most important concept in using transactions on the Symbol blockchain. The transactions in this chapter are sent and signed by Alice, so the signature on the aggregate bonded transaction also specifies Alice."
+msgstr "まず、アグリゲートトランザクションに含めるトランザクションを作成します。このときDeadlineを指定する必要はありませんがnetwork は必ず指定してください。(指定しない場合Failure_Core_Wrong_Networkが発生します)リスト化するときに、生成したトランザクションにtoAggregateを追加して送信元アカウントの公開鍵を指定します。ちなみに送信元アカウントと署名アカウントが必ずしも一致するとは限りません。後の章での解説で「Bobの送信トランザクションをAliceが署名する」といった事が起こり得るためこのような書き方をします。これはSymbolブロックチェーンでトランザクションを扱ううえで最も重要な概念になります。なお、本章で扱うトランザクションは同じAliceですので、アグリゲートボンデッドトランザクションへの署名もAliceを指定します。"
+
+msgid "Maximum fee on aggregate transactions"
+msgstr "アグリゲートトランザクションにおける最大手数料"
+
+msgid "Aggregate transactions, like regular transactions, can be executed either by specifying the maximum fee directly or by using feeMultiplier. In the previous example, we used the method of specifying the maximum fee directly. Here we introduce the method of specifying the maximum fee by feeMultiplier."
+msgstr "アグリゲートトランザクションも通常のトランザクション同様、最大手数料を直接指定する方法とfeeMultiprierで指定する方法があります。先の例では最大手数料を直接指定する方法を使用しました。ここではfeeMultiprierで指定する方法を紹介します。"
+
+msgid "The chapter on Accounts described how to sign and verify data by account. Putting this data into a transaction that is confirmed on the blockchain makes it impossible to delete the fact that an account has proved the existence of certain data at a certain time. It can be considered to have the same meaning as the possession between interested parties of a time-stamped electronic signature.（Legal decisions are left to experts）"
+msgstr "アカウントの章でアカウントによるデータの署名と検証する方法について説明しました。このデータをトランザクションに載せてブロックチェーンが承認することで、アカウントがある時刻にあるデータの存在を認知したことを消すことができなくなります。タイムスタンプの刻印された電子署名を利害関係者間で所有することと同じ意味があると考えることもできます。（法律的な判断は他の方にお任せします）"
+
+msgid "The blockchain updates data such as transactions with the existence of this \"indelible fact that the account has proved\". And also the blockchain can be used as proof of knowledge of a fact that nobody should have known about yet. This section describes two patterns in which data whose existence has been proven can be put on a transaction."
+msgstr "ブロックチェーンは、この消せない「アカウントが認知したという事実」の存在をもって送信などのデータ更新を行います。また、誰もがまだ知らないはずの事実を知っていたことの証明としてブロックチェーンを利用することもできます。ここでは、その存在が証明されたデータをトランザクションに載せる2つの方法について説明します。"
+
+msgid "The existence of a file can be proved by recording its digest value in the blockchain."
+msgstr "出力方法ファイルの要約値をブロックチェーンに記録することでそのファイルの存在を証明することができます。"
+
+msgid "The calculation of the hash value using SHA256 for files in each operating system is as follows."
+msgstr "各OSごとのファイルのSHA256でハッシュ値を計算する方法は下記の通りです。"
+
+msgid "As the payload of a transaction can only contain 1023 bytes. Large data is split up and packed into the payload to make an aggregate transaction."
+msgstr "トランザクションのペイロードには1023バイトしか格納できないため、大きなデータは分割してペイロードに詰め込んでアグリゲートトランザクションにします。"
+
+msgid "Transaction"
+msgstr "トランザクション"
+
+msgid "Transaction lifecycle"
+msgstr "トランザクションのライフサイクル"
+
+msgid "Transaction creation"
+msgstr "トランザクション作成"
+
+msgid "Signature"
+msgstr "署名"
+
+msgid "Announcement"
+msgstr "アナウンス"
+
+msgid "Unconfirmed state transactions"
+msgstr "未承認トランザクション"
+
+msgid "Confirmed transaction"
+msgstr "承認済みトランザクション"
+
+msgid "Rollbacks"
+msgstr "ロールバック"
+
+msgid "Finalise"
+msgstr "ファイナライズ"
+
+msgid "What is a block?"
+msgstr "ブロックとは?"
+
+msgid "Expiry date"
+msgstr "有効期限"
+
+msgid "Message"
+msgstr "メッセージ"
+
+msgid "Empty message"
+msgstr "空メッセージ"
+
+msgid "Plain message"
+msgstr "平文メッセージ"
+
+msgid "Encrypted message"
+msgstr "暗号文メッセージ"
+
+msgid "Maximum fee"
+msgstr "最大手数料"
+
+msgid "Signature and announcement"
+msgstr "署名とアナウンス"
+
+msgid "Sample output"
+msgstr "出力例"
+
+msgid "Confirmation"
+msgstr "確認"
+
+msgid "Status confirmation"
+msgstr "ステータスの確認"
+
+msgid "Approval Confirmation"
+msgstr "承認確認"
+
+msgid "Check with the Explorer"
+msgstr "エクスプローラーで確認"
+
+msgid "Mainnet"
+msgstr "メインネット"
+
+msgid "Testnet"
+msgstr "テストネット"
+
+msgid "Check with the SDK"
+msgstr "SDKで確認"
+
+msgid "Note"
+msgstr "注意点"
+
+msgid "Sample script"
+msgstr "スクリプト例"
+
+msgid "Transaction history"
+msgstr "トランザクション履歴"
+
+msgid "Aggregate Transactions"
+msgstr "アグリゲートトランザクション"
+
+msgid "Tips for use"
+msgstr "現場で使えるヒント"
+
+msgid "Proof of existence"
+msgstr "存在証明"
+
+msgid "Digital data hash value (SHA256) output method"
+msgstr "デジタルデータのハッシュ値(SHA256)"
+
+msgid "Splitting large data"
+msgstr "大きなデータの分割"
