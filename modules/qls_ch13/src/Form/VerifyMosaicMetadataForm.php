@@ -283,8 +283,10 @@ class VerifyMosaicMetadataForm extends FormBase {
     // 検証
     // var_dump($treeRootHash === $rootHash);
     // var_dump($treePathHash === $pathHash);
-    \Drupal::logger('qls_ch13')->info('treeRootHash === rootHash: ' . ($treeRootHash === $rootHash));
-    \Drupal::logger('qls_ch13')->info('treePathHash === pathHash: ' . ($treePathHash === $pathHash));
+    // \Drupal::logger('qls_ch13')->info('treeRootHash === rootHash: ' . ($treeRootHash === $rootHash));
+    // \Drupal::logger('qls_ch13')->info('treePathHash === pathHash: ' . ($treePathHash === $pathHash));
+    \Drupal::logger('qls_ch13')->info("treeRootHash === rootHash: @result", ['@result' => ($treeRootHash === $rootHash) ? 'true' : 'false']);
+    \Drupal::logger('qls_ch13')->info("treePathHash === pathHash: @result", ['@result' => ($treePathHash === $pathHash) ? 'true' : 'false']);
     return $treeRootHash === $rootHash && $treePathHash === $pathHash;
     
   }
