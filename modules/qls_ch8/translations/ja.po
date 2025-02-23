@@ -81,7 +81,7 @@ msgid "Generally blockchains require transaction fees for sending transactions. 
 msgstr "一般的にブロックチェーンはトランザクション送信に手数料を必要とします。 そのため、ブロックチェーンを利用しようとするユーザは事前に手数料を取引所から入手しておく必要があります。 このユーザが企業である場合はその管理方法も加えてさらにハードルの高い問題となります。 アグリゲートトランザクションを使用することでハッシュロック費用とネットワーク手数料をサービス提供者が代理で負担することができます。"
 
 msgid "Secret locks are refunded to the account that created the transaction after a specified number of blocks. When the service provider charges the cost of the lock for the Secret Lock account, the amount of tokens owned by the user for the lock will increase after the expiry date has passed. On the other hand, announcing a secret proof transaction before the deadline has passed is treated as a cancellation as the transaction is completed and the funds are returned to the service provider."
-msgstr ""
+msgstr "シークレットロックは指定ブロック数を経過すると元のアカウントへ払い戻されます。 この原理を利用して、シークレットロックしたアカウントにたいしてロック分の費用をサービス提供者が充足しておけば、 期限が過ぎた後ユーザ側がロック分のトークン所有量が増加することになります。 一方で、期限が過ぎる前にシークレット証明トランザクションをアナウンスすると、送信が完了し、サービス提供者に充当戻るためキャンセル扱いとなります。"
 
 msgid "Secret locks can be used to exchange mosaics (tokens) with other chains. Please note that other chains refer to this as a hash time lock contract (HTLC) not to be mistaken for a Symbol Hash Lock."
 msgstr "シークレットロックを使用して、他のチェーンとのトークン・モザイクの交換を行うことができます。 他のチェーンではハッシュタイムロックコントラクト(HTLC)と呼ばれているためハッシュロックと間違えないようにご注意ください。"
