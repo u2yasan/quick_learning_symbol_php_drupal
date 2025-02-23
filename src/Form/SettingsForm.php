@@ -72,9 +72,9 @@ class SettingsForm extends ConfigFormBase {
     for ($i = 1; $i <= 5; $i++) {
       $form["cosignatory{$i}_pvtKey"] = [
         '#type' => 'textfield',
-        '#title' => $this->t("Cosignatory{$i}"),
+        '#title' => $this->t("Cosignatory @number", ['@number' => $i]),
         '#default_value' => $config->get("cosignatory{$i}_pvtKey"),
-        '#description' => $this->t("Cosignatory {$i} of multi-signature"),
+        '#description' => $this->t("Cosignatory @number of multi-signature", ['@number' => $i]),
       ];
     }
     

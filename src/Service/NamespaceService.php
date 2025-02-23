@@ -216,7 +216,10 @@ class NamespaceService {
     try {
       return $callback();
     } catch (Exception $e) {
-      \Drupal::logger('quicklearning_symbol')->error("An error occurred in {$method}: @message", ['@message' => $e->getMessage()]);
+      \Drupal::logger('quicklearning_symbol')->error('Error in @method: @message', [
+        '@method' => $method,
+        '@message' => $e->getMessage(),
+      ]);
       throw $e;
     }
   }
