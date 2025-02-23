@@ -123,7 +123,10 @@ class NodeService {
     try {
       return $callback();
     } catch (Exception $e) {
-      \Drupal::logger('quicklearning_symbol')->error("Error in {$method}: @message", ['@message' => $e->getMessage()]);
+      \Drupal::logger('quicklearning_symbol')->error('Error in @method: @message', [
+        '@method' => $method,
+        '@message' => $e->getMessage(),
+      ]);
       return null;
     }
   }
