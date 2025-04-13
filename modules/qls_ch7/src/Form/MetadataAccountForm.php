@@ -130,7 +130,7 @@ class MetadataAccountForm extends FormBase {
       '#type' => 'textarea',
       '#title' => $this->t('Metadata Value'),
       '#description' => $this->t('Metadata Value. (Max 1024 bytes)'),
-      '#required' => TRUE,
+      // '#required' => TRUE,
     ];
     
     $form['actions'] = [
@@ -230,8 +230,9 @@ class MetadataAccountForm extends FormBase {
     // }
     $oldValue = '';
     if($metadataInfo !== null){
+      // \Drupal::logger('qls_ch7')->notice('metadataInfo:<pre>@object</pre>', ['@object' => print_r($metadataInfo, TRUE)]);
       $data = $metadataInfo->getData();
-      \Drupal::logger('qls_ch7')->notice('metadataInfo->getData():<pre>@object</pre>', ['@object' => print_r($data, TRUE)]);
+      // \Drupal::logger('qls_ch7')->notice('metadataInfo->getData():<pre>@object</pre>', ['@object' => print_r($data, TRUE)]);
       // $oldValue = hex2bin($metadataInfo['data'][0]['metadata_entry']['value']); //16進エンコードされたバイナリ文字列をデコード
       if (!empty($data)) {
         $metadataInfo = $data[0];
