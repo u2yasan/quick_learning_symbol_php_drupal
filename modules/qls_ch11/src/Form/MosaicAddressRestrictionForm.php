@@ -180,7 +180,7 @@ class MosaicAddressRestrictionForm extends FormBase {
     $sig = $accountKey->signTransaction($mosaicAddressResTx);
     // \Drupal::logger('qls_ch11')->info('sig: @sig', ['@sig' => $sig]);
     $payload = $facade->attachSignature($mosaicAddressResTx, $sig);
-    \Drupal::logger('qls_ch11')->info('Mosaic address restriction transaction payload created.');
+
     try {
       $result = $transactionApi->announceTransaction($payload);
       $this->messenger()->addMessage($this->t('AccountAddressRestriction Transaction successfully announced: @result', ['@result' => $result]));

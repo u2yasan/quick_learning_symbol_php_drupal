@@ -258,7 +258,6 @@ class AccountMosaicRestrictionForm extends FormBase {
     //   $node_url = 'http://sym-main-03.opening-line.jp:3000';
     // }
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
     // $apiInstance = new TransactionRoutesApi($client, $config);
     // $namespaceIds = IdGenerator::generateNamespacePath('symbol.xym');
@@ -328,12 +327,12 @@ class AccountMosaicRestrictionForm extends FormBase {
     $sig = $accountKey->signTransaction($tx);
     // \Drupal::logger('qls_ch11')->info('sig: @sig', ['@sig' => $sig]);
     $payload = $facade->attachSignature($tx, $sig);
-    // \Drupal::logger('qls_ch11')->info('payload: <pre>@payload</pre>', ['@payload' => print_r($payload,true)]); 
+
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('AccountAddressRestriction Transaction successfully announced: @result', ['@result' => $result]));
 
     // try {
-    //   $result = $apiInstance->announceTransaction($jsonPayload);
+
     //   $this->messenger()->addMessage($this->t('AccountMosaicRestriction Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (Exception $e) {
     //   \Drupal::logger('qls_ch11')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);

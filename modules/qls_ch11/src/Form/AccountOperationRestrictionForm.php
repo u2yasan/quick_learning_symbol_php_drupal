@@ -366,7 +366,7 @@ class AccountOperationRestrictionForm extends FormBase {
     $sig = $accountKey->signTransaction($tx);
     // \Drupal::logger('qls_ch11')->info('sig: @sig', ['@sig' => $sig]);
     $payload = $facade->attachSignature($tx, $sig);
-    // \Drupal::logger('qls_ch11')->info('payload: <pre>@payload</pre>', ['@payload' => print_r($payload,true)]);
+
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('AccountOperationRestriction Transaction successfully announced: @result', ['@result' => $result]));
 

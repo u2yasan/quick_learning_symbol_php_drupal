@@ -410,7 +410,7 @@ class MultiSigModifyForm extends FormBase {
     $this->messenger()->addMessage($this->t('HashLock Transaction successfully announced: @result', ['@result' => $result]));
     
     // try {
-    //   $result = $apiInstance->announceTransaction($hashLockJsonPayload);
+
     //   $this->messenger()->addMessage($this->t('HashLock Transaction successfully announced: @result', ['@result' => $result]));
 
     //   // echo $result . PHP_EOL;
@@ -418,7 +418,7 @@ class MultiSigModifyForm extends FormBase {
     //   \Drupal::logger('qls_ch9')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);
     //   // echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
     // }
-    sleep(40);
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
 
     /**
      * アグリゲートボンデットTxをアナウンス
@@ -428,7 +428,7 @@ class MultiSigModifyForm extends FormBase {
     $this->messenger()->addMessage($this->t('Aggregated Bounded TxHash: @TxHash',['@TxHash' => $facade->hashTransaction($aggregateTx)]));
 
     // try {
-    //   $result = $apiInstance->announcePartialTransaction($payload);
+
     //   $this->messenger()->addMessage($this->t('Multisig Aggregate Bounded Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (Exception $e) {
     //   \Drupal::logger('qls_ch9')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);

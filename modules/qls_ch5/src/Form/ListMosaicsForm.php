@@ -195,7 +195,7 @@ class ListMosaicsForm extends FormBase {
   // public function updateSymbolAddress(array &$form, FormStateInterface $form_state) {
     
   //   // 入力されたプライベートキーを取得
-  //   if (!$pvtKey || strlen($pvtKey) !== 64) {
+
   //     // エラーメッセージをフォームに追加
   //     $form['symbol_address']['#markup'] = '<div id="symbol-address-wrapper" style="color: red;">'
   //         . $this->t('The private key must be 64 characters long.') . '</div>';
@@ -205,7 +205,7 @@ class ListMosaicsForm extends FormBase {
   //     $network_type = $form_state->getValue('network_type');
   //     $facade = new SymbolFacade($network_type);
   //     try {
-  //       $accountKey = $facade->createAccount(new PrivateKey($pvtKey));
+
   //       $accountRawAddress = $accountKey->address;
         
         
@@ -214,7 +214,6 @@ class ListMosaicsForm extends FormBase {
   //       $accountRawAddress = "Error: Unable to generate address.";
   //     }
   //     // $this->messenger()->addMessage($this->t('RawAddress: @rawAddress', ['@rawAddress' => $accountRawAddress]));
-  //     //\Drupal::logger('qls_ch5')->notice('<pre>@object</pre>', ['@object' => print_r($accountRawAddress, TRUE)]);
       
   //     // 動的に更新するフィールドの値を設定
   //     $form['symbol_address']['#markup'] = '<div id="symbol-address-wrapper">' . 'test' . '</div>';
@@ -260,7 +259,7 @@ class ListMosaicsForm extends FormBase {
       $mosaicInfoArray[] = $mosaicInfo;
       // $mocaisInfo[] = $mosaicApiInstance->getMosaic($mosaic->getId());
     }
-    // \Drupal::logger('qls_ch5')->notice('<pre>@object</pre>', ['@object' => print_r($mocaisInfo, TRUE)]);
+
     $flattenedData = $this->flattenMosaicData($mosaicInfoArray);
 
     // $form_state->set('view_displayed', TRUE);

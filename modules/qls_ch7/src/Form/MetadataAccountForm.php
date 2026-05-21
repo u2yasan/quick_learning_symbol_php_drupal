@@ -212,10 +212,7 @@ class MetadataAccountForm extends FormBase {
         scoped_metadata_key: strtoupper(dechex($keyId)), // 16進数の大文字の文字列に変換
       );
     }
-    // \Drupal::logger('qls_ch7')->notice('metadataInfo:<pre>@object</pre>', ['@object' => print_r($metadataInfo, TRUE)]);
 
-
-    // if($source_pvtKey === $target_pvtKey) {
     //   $metadataInfo = $this->metadataService->searchMetadataEntries(
     //     $sourceAddress,
     //     null,
@@ -230,9 +227,9 @@ class MetadataAccountForm extends FormBase {
     // }
     $oldValue = '';
     if($metadataInfo !== null){
-      // \Drupal::logger('qls_ch7')->notice('metadataInfo:<pre>@object</pre>', ['@object' => print_r($metadataInfo, TRUE)]);
+
       $data = $metadataInfo->getData();
-      // \Drupal::logger('qls_ch7')->notice('metadataInfo->getData():<pre>@object</pre>', ['@object' => print_r($data, TRUE)]);
+
       // $oldValue = hex2bin($metadataInfo['data'][0]['metadata_entry']['value']); //16進エンコードされたバイナリ文字列をデコード
       if (!empty($data)) {
         $metadataInfo = $data[0];
@@ -280,13 +277,13 @@ class MetadataAccountForm extends FormBase {
       $facade->attachSignature($aggregateTx, $sig);
       // 記録先アカウントによる連署
       $coSig = $targetKey->cosignTransaction($aggregateTx);
-      array_push($aggregateTx->cosignatures, $coSig);
+      array_push($aggregateTx->cosignature, $coSig);
       $payload = ['payload' => strtoupper(bin2hex($aggregateTx->serialize()))];
     }
 
     $transactionApi = $this->transactionService->getTransactionApi();
     $result = $transactionApi->announceTransaction($payload);
-    // $result = $this->transactionService->announceTransaction($payload);
+
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result])); 
   }
 

@@ -118,9 +118,6 @@ class CheckReceiptForm extends FormBase {
     }else if($checkType == 'mosaic'){
       $result = $receitApi->searchMosaicResolutionStatements(height: $height);
     }
-
-    $this->messenger()->addMessage($this->t('ResolutionStatements: <pre>@result</pre>', ['@result' => print_r($result, TRUE)]));
-
-   
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
   }
 }

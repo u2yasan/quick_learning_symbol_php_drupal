@@ -165,11 +165,11 @@ class MosaicsTransferTransactionForm extends FormBase {
     ];
 
     $mosaic_count = $form_state->get('mosaic_count');
-    // \Drupal::logger('qls_ch5')->notice('L.182:<pre>@object</pre>', ['@object' => print_r($mosaic_count, TRUE)]); 
+
     // モザイクIDと対応する金額入力フィールドを動的に生成
     for ($i = 0; $i < $mosaic_count; $i++) {
-      // \Drupal::logger('qls_ch5')->notice('L.185:<pre>@object</pre>', ['@object' => print_r($i, TRUE)]); 
-      // \Drupal::logger('qls_ch5')->notice('L.187:<pre>@object</pre>', ['@object' => print_r($mosaic_count, TRUE)]); 
+
+
       $form['mosaics_container']['mosaics'][$i]['mosaic_id'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Mosaic ID @num', ['@num' => $i + 1]),
@@ -183,7 +183,7 @@ class MosaicsTransferTransactionForm extends FormBase {
         '#description' => $this->t('Enter the amount of the mosaic (e.g., 1000000).'),
         '#default_value' => '1000000',
       ];
-      // \Drupal::logger('qls_ch5')->notice('L.200:<pre>@object</pre>', ['@object' => print_r($form['mosaics_container']['mosaics'][$i]['amount'], TRUE)]); 
+
       // 特定のプロパティのみをログに出力
       \Drupal::logger('qls_ch5')->notice('L.196: Amount field value: @value', [
         '@value' => $form['mosaics_container']['mosaics'][$i]['amount']['#title'] ?? '',
@@ -260,7 +260,7 @@ class MosaicsTransferTransactionForm extends FormBase {
     // $mosaics = $form_state->getValue('mosaics', []);
     $mosaics = $form_state->getValue(['mosaics_container', 'mosaics']);
     // デバッグログ
-    // \Drupal::logger('ajax_debug')->notice('L.309:mosaics:<pre>@data</pre>', ['@data' => print_r($mosaics, TRUE)]);
+
     foreach ($mosaics as $index => $mosaic) {
       if (empty($mosaic['mosaic_id'])) {
         // $form_state->setErrorByName("mosaics][$index][mosaic_id", $this->t('Mosaic ID @num is required.', ['@num' => $index + 1]));
@@ -280,15 +280,13 @@ class MosaicsTransferTransactionForm extends FormBase {
     $mosaic_count = $form_state->get('mosaic_count');
     $form_state->set('mosaic_count', $mosaic_count + 1);
     // $mosaic_count_debug = $form_state->get('mosaic_count'); 
-    // \Drupal::logger('qls_ch5')->notice('L.329:<pre>@object</pre>', ['@object' => print_r($mosaic_count_debug, TRUE)]); 
-    
+
     $form_state->setRebuild(TRUE);
-    // \Drupal::logger('qls_ch5')->notice('<pre>@data</pre>', ['@data' => print_r($form['mosaics_container']['mosaics'], TRUE)]);
+
     // \Drupal::logger('qls_ch5')->notice('L.332: Amount field value: @value', [
     //   '@value' => $form['mosaics_container']['mosaics'][$mosaic_count]['amount']['#title'] ?? '',
     // ]);
     // コンテナ部分の内容をデバッグ
-  // \Drupal::logger('ajax_debug')->notice('<pre>@data</pre>', [
   //   '@data' => print_r($form['mosaics_container'], TRUE),
   // ]);
   //   kint($form['mosaics_container']);
@@ -362,7 +360,6 @@ class MosaicsTransferTransactionForm extends FormBase {
 
     $mosaics = $form_state->getValue(['mosaics_container', 'mosaics']);
 
-    // \Drupal::logger('qls_ch5')->notice('424 mosaics:<pre>@data</pre>', ['@data' => print_r($mosaics, TRUE)]);
     foreach ($mosaics as $index => $mosaic) {
       $this->messenger()->addMessage($this->t('Mosaic ID: @id, Amount: @amount', [
         '@id' => '0x'.$mosaic['mosaic_id'],
@@ -380,7 +377,6 @@ class MosaicsTransferTransactionForm extends FormBase {
     //   // タを指定します。
     //   $messageData = "\0".$message;
     //   //$messageData = $message;
-    //   // \Drupal::logger('qls_ch5')->notice('messageData:<pre>@object</pre>', ['@object' => print_r($messageData, TRUE)]);  
 
     //   // 文字列を16進数にエンコード
     //   // $messageData = bin2hex($message);
@@ -393,14 +389,13 @@ class MosaicsTransferTransactionForm extends FormBase {
       
     //     $accountApi = $this->accountService->getAccountApi(); 
     //     $account_info = $accountApi>getAccountInfo($address);
-    //     // \Drupal::logger('qls_ch5')->notice('account_info:<pre>@object</pre>', ['@object' => print_r($account_info, TRUE)]);
-    //     sleep(1);
+
         
     //     if ($account_info) {
-    //       // AccountDTOオブジェクトを取得
-    //       $accountDTO = $account_info->getAccount();
+
+
     //       // 公開鍵を取得
-    //       $recipent_publicKey_str = $accountDTO->getPublicKey();
+
     //       // $recipent_publicKey = new CryptoPublicKey($recipent_publicKey_str);
     //       $recipent_publicKey = new PublicKey($recipent_publicKey_str);
     //     }
@@ -438,13 +433,10 @@ class MosaicsTransferTransactionForm extends FormBase {
     $signature = $senderKey->signTransaction($transferTx);
     $payload = $facade->attachSignature($transferTx, $signature);
 
-    // $result = $this->transactionService->announceTransaction($payload);
     $transactionApi = $this->transactionService->getTransactionApi();
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
-
-
-    sleep(2);
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
     // アナウンススより先にステータスを確認しに行ってしまいエラーを返す可能性があるためのsleep
     
     $hash = $facade->hashTransaction($transferTx);
@@ -457,7 +449,7 @@ class MosaicsTransferTransactionForm extends FormBase {
     * 承認確認
     */
     // after 30 seconds
-    sleep(30);
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
     // $result = $this->transactionService->getTransactionStatus($hash);
     $result = $transactionStatusApi->getTransactionStatus($hash); 
     $this->messenger()->addMessage($this->t('Transaction Status: @result', ['@result' => $result]));

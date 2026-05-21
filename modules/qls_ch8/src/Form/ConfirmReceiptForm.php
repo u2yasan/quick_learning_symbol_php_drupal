@@ -129,7 +129,6 @@ class ConfirmReceiptForm extends FormBase {
     //   $node_url = 'http://sym-main-03.opening-line.jp:3000';
     // }
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
     // $apiInstance = new TransactionRoutesApi($client, $config);
     // $receiptApiInstance = new ReceiptRoutesApi($client, $config);
@@ -154,9 +153,7 @@ class ConfirmReceiptForm extends FormBase {
     );
     // echo 'レシート' . PHP_EOL;
     // echo $result . PHP_EOL;
-    $this->messenger()->addMessage($this->t('searchReceipts: <pre>@result</pre>', ['@result' => $result]));
-
-
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
   }
 
   /**

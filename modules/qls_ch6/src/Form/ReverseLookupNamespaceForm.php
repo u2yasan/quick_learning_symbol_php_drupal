@@ -103,7 +103,7 @@ class ReverseLookupNamespaceForm extends FormBase {
    *   Object describing the current state of the form.
    */
   // public function validateForm(array &$form, FormStateInterface $form_state) {
-  //   if (strlen($pvtKey) !=  64) {
+
   //     // Set an error for the form element with a key of "title".
   //   }
   // }
@@ -124,7 +124,7 @@ class ReverseLookupNamespaceForm extends FormBase {
     $addresses = ["addresses"=> [$address]];
     $namespaceApi = $this->namespaceService->getNamespaceApi();
     $accountNames = $namespaceApi->getAccountsNames($addresses);
-    $this->messenger()->addMessage($this->t('AccountNames: <pre>@result</pre>', ['@result' => print_r($accountNames, TRUE)]));
+  //   $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
   }
 
   /**
@@ -135,7 +135,7 @@ class ReverseLookupNamespaceForm extends FormBase {
     $mosaicIds = ["mosaicIds"=> [$mosaicid]];
     $namespaceApi = $this->namespaceService->getNamespaceApi();
     $mosaicNames = $namespaceApi->getMosaicsNames($mosaicIds);
-    $this->messenger()->addMessage($this->t('MosaicNames: <pre>@result</pre>', ['@result' => print_r($mosaicNames, TRUE)]));
+  //   $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
   }
 
   /**
@@ -159,8 +159,6 @@ class ReverseLookupNamespaceForm extends FormBase {
 
   //   // $namespaceDTO = $namespaceInfoDTO->getNamespace();
   //   // $data = $namespaceDTO->getData();
-  //   $this->messenger()->addMessage($this->t('NamespaceInfoDTO: <pre>@result</pre>', ['@result' => print_r($namespaceInfoDTO, TRUE)]));
-
-   
+  //   Result output suppressed for security.
   // }
 }

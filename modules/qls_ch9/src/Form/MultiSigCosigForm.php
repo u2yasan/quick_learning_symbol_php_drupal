@@ -129,9 +129,9 @@ class MultiSigCosigForm extends FormBase {
 
     // //アナウンス
     // try {
-    //   $result = $apiInstance->announceCosignatureTransaction($body);
+
     //   // echo $result . PHP_EOL;
-    //   $this->messenger()->addMessage($this->t('Cosignature successfully announced: @result', ['@result' => $result]));
+
 
     // } catch (Exception $e) {
     //   \Drupal::logger('qls_ch9')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);

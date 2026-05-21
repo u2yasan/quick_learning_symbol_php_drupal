@@ -214,8 +214,8 @@ class OfflineSigTxForm extends FormBase {
     $signTxHash = $facade->hashTransaction($aggregateTx);
     $signedHash = $accountKey->signTransaction($aggregateTx);
     $signedPayload = $facade->attachSignature($aggregateTx, $signedHash);
-    // \Drupal::logger('qls_ch12')->info('Signed Payload: @signedPayload', ['@signedPayload' => print_r($signedPayload['payload'], TRUE)]);
+
     $this->messenger()->addMessage($this->t('Signed transaction hash: @signTxHash', ['@signTxHash' => $signTxHash]));
-    $this->messenger()->addStatus($this->t('Signed payload created. Displaying signed payloads in Drupal messages is disabled to avoid leaking signatures.'));
+    $this->messenger()->addStatus($this->t('Signed transaction data prepared. Raw signed data is not displayed in Drupal messages.'));
   }
 }

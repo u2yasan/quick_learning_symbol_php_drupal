@@ -12,7 +12,6 @@ use Drupal\Core\Render\RenderContext;
 use SymbolSdk\CryptoTypes\PrivateKey;
 use SymbolSdk\Facade\SymbolFacade;
 
-use SymbolRestClient\Configuration;
 use SymbolRestClient\Api\TransactionRoutesApi;
 use SymbolSdk\Symbol\Models\EmbeddedTransferTransactionV1;
 use SymbolSdk\Symbol\Models\NamespaceRegistrationTransactionV1;
@@ -32,6 +31,7 @@ use SymbolSdk\Symbol\Models\NamespaceRegistrationType;
 use SymbolSdk\Symbol\IdGenerator;
 
 use Drupal\quicklearning_symbol\Service\AccountService;
+use Drupal\quicklearning_symbol\Service\SymbolApiClientFactory;
 
 use GMP;
 
@@ -49,13 +49,21 @@ class HashLockAjaxForm extends FormBase {
   protected $accountService;
 
   /**
+   * The Symbol API client factory.
+   *
+   * @var \Drupal\quicklearning_symbol\Service\SymbolApiClientFactory
+   */
+  protected $apiClientFactory;
+
+  /**
    * Constructs the form.
    *
    * @param \Drupal\quicklearing_symbol\Service\AccountService $account_service
    *   The account service.
    */
-  public function __construct(AccountService $account_service) {
+  public function __construct(AccountService $account_service, SymbolApiClientFactory $api_client_factory) {
     $this->accountService = $account_service;
+    $this->apiClientFactory = $api_client_factory;
   }
   
   // /**
@@ -81,7 +89,8 @@ class HashLockAjaxForm extends FormBase {
   public static function create(ContainerInterface $container) {
     // AccountService をコンストラクタで注入
     $form = new static(
-        $container->get('quicklearning_symbol.account_service')
+      $container->get('quicklearning_symbol.account_service'),
+      $container->get('quicklearning_symbol.api_client_factory')
     );
 
     // 他のサービスをセッターメソッドを使って注入
@@ -110,12 +119,6 @@ class HashLockAjaxForm extends FormBase {
     $form['#attached']['library'][] = 'core/drupal.ajax';
     $form['#attached']['library'][] = 'qls_ch8/hash_lock';
     
-
-    // $network_type = $form_state->getValue('network_type');
-  // \Drupal::logger('qls_ch8')->debug('65 Network Type: @network_type', ['@network_type' => $network_type]);
-  // \Drupal::logger('qls_ch8')->notice('66 network type:<pre>@object</pre>', ['@object' => print_r($network_type, TRUE)]);
-  // \Drupal::logger('debug')->debug('Step 1 Values: @values', ['@values' => print_r($form_state->getValue('step1'), TRUE)]);
-
     $form['description'] = [
       '#type' => 'item',
       '#markup' => $this->t('8.1 ハッシュロック'),
@@ -282,42 +285,7 @@ class HashLockAjaxForm extends FormBase {
    *   Form array.
    */
   public function prompt(array $form, FormStateInterface $form_state) {
-    // \Drupal::logger('qls_ch8')->debug('form:<pre>@form</pre>', ['@form' => print_r($form, TRUE)]);
-    // ラッパー要素が存在するか確認
-    // if (!isset($form['#prefix']) || !isset($form['#suffix'])) {
-    //   \Drupal::logger('qls_ch8')->debug('No wrapper found. Adding wrapper.');
-    //   $form['#prefix'] = '<div id="aggregate-bounded-transaction-wrapper">';
-    //   $form['#suffix'] = '</div>';
-    // }else{
-    //   \Drupal::logger('qls_ch8')->debug('Wrapper found.');
-    // }
-    // デバッグ用ログ
-    // \Drupal::logger('qls_ch8')->debug('AJAX response triggered. Step: @step', [
-    //   '@step' => $form_state->getValue('step'),
-    // ]);
-    // \Drupal::logger('qls_ch8')->debug('Response data: @response', [
-    //   '@response' => json_encode($form),
-    // ]);
 
-    // // AjaxResponse を使用
-    // $response = new AjaxResponse();
-    // $renderer = \Drupal::service('renderer'); // Renderer サービスを取得
-    // $rendered_form = $renderer->render($form); // フォームをレンダリング
-    // // $response->addCommand(new ReplaceCommand('#aggregate-bounded-transaction-wrapper', $form['#prefix'] . $rendered_form . $form['#suffix']));
-    // $response->addCommand(new ReplaceCommand('#aggregate-bounded-transaction-wrapper', $rendered_form));
-    // // // return $form;
-    // // \Drupal::logger('ajax_debug')->debug('AJAX Response: @response', ['@response' => $form['#prefix'] . render($form) . $form['#suffix']]);
-
-    // // // Rendered form
-    // // $rendered_form = \Drupal::service('renderer')->renderPlain($form);
-
-    // // // AjaxResponse を使用
-    // // $response = new AjaxResponse();
-    // // $response->addCommand(new ReplaceCommand('#aggregate-bounded-transaction-wrapper', $rendered_form));
-
-    // // デバッグ用
-    // \Drupal::logger('qls_ch8')->debug('Rendered form: @form', ['@form' => $rendered_form]);
-    // return $response;
     $response = new AjaxResponse();
   
     // Renderer サービスを取得
@@ -329,7 +297,6 @@ class HashLockAjaxForm extends FormBase {
     });
 
     if (!$render_context->isEmpty()) {
-      // デバッグログを出力
       \Drupal::logger('qls_ch8')->error('Rendering context warnings: @warnings', [
         '@warnings' => json_encode($render_context->pop(), JSON_PRETTY_PRINT),
       ]);
@@ -337,8 +304,6 @@ class HashLockAjaxForm extends FormBase {
 
     $response->addCommand(new ReplaceCommand('#aggregate-bounded-transaction-wrapper', $rendered_form));
 
-    \Drupal::logger('qls_ch8')->debug('Rendered form: @form', ['@form' => $rendered_form]);
-    
     return $response;
 
   }
@@ -366,9 +331,7 @@ class HashLockAjaxForm extends FormBase {
       $networkType = new NetworkType(NetworkType::MAINNET);
       $node_url = 'http://sym-main-03.opening-line.jp:3000';
     }
-    $config = new Configuration();
-    $config->setHost($node_url);
-    $client = \Drupal::httpClient();
+    $apiInstance = $this->apiClientFactory->createApiForNodeUrl(TransactionRoutesApi::class, $node_url);
 
     $originator_pvtKey = $form_state->getValue('originator_pvtKey');
     $originatorKey = $facade->createAccount(new PrivateKey($originator_pvtKey));
@@ -378,8 +341,7 @@ class HashLockAjaxForm extends FormBase {
     $recipientAddStr = $form_state->getValue('recipientAddress');
     // $recipientAddress = new UnresolvedAddress($recipientAddStr);
     // AccountServiceを使ってアカウント情報を取得
-    $account_info = $this->accountService->getAccountInfo($node_url, $recipientAddStr);
-    // \Drupal::logger('qls_ch8')->debug('account_info: @account_info', ['@account_info' => print_r($account_info, TRUE)]); 
+    $account_info = $this->accountService->getAccountInfo($recipientAddStr, $node_url);
     $account = $account_info->getAccount(); // AccountDTO を取得
     $address = $account->getAddress(); // address を取得
     $recipentPublicKeyStr = $account->getPublicKey();
@@ -453,45 +415,32 @@ class HashLockAjaxForm extends FormBase {
     /**
      * ハッシュロックをアナウンス
      */
-    $apiInstance = new TransactionRoutesApi($client, $config);
-
     try {
-      $result = $apiInstance->announceTransaction($hashLockJsonPayload);
-      // $this->messenger()->addMessage($this->t('hashLockTx successfully announced: @result', ['@result' => $result]));
+      $apiInstance->announceTransaction($hashLockJsonPayload);
 
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       \Drupal::logger('qls_ch8')->error('Exception when calling TransactionRoutesApi->announceTransaction: @message', ['@message' => $e->getMessage()]);
     }
-    // echo 'ハッシュロックTxHash' . PHP_EOL;
-    // echo $facade->hashTransaction($hashLockTx) . PHP_EOL;
-    
     \Drupal::logger('qls_ch8')->debug('hashLockTx: @tx', ['@tx' => $facade->hashTransaction($hashLockTx)]);
-    sleep(40); 
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
 
     /**
      * アグリゲートボンデットTxをアナウンス
      */
     try {
-      $result = $apiInstance->announcePartialTransaction($payload);
-      // $this->messenger()->addMessage($this->t('Partial Transaction successfully announced: @result', ['@result' => $result]));
+      $apiInstance->announcePartialTransaction($payload);
 
-    } catch (Exception $e) {
-      echo 'Exception when calling TransactionRoutesApi->announcePartialTransaction: ', $e->getMessage(), PHP_EOL;
+    } catch (\Exception $e) {
+      \Drupal::logger('qls_ch8')->error('Exception when calling TransactionRoutesApi->announcePartialTransaction: @message', ['@message' => $e->getMessage()]);
     }
 
-    // echo 'アグリゲートボンデットTxHash' . PHP_EOL;
-    // echo $facade->hashTransaction($aggregateTx) . PHP_EOL;
     \Drupal::logger('qls_ch8')->debug('aggregateTx: @tx', ['@tx' => $facade->hashTransaction($aggregateTx)]);
 
     
     $form_state->set('network_type', $network_type);
     $form_state->set('recipientAddress', $recipientAddress);
-    $form_state->set('originator_pvtKey', $originator_pvtKey);
     $form_state->setValue('step', $form_state->getValue('step') + 1);
-   
-    // \Drupal::logger('qls_ch8')->debug('<pre>@form</pre>', ['@form' => print_r($form, TRUE)]);
-    // \Drupal::logger('qls_ch8')->debug('Keys: @keys', ['@keys' => array_keys($form_state->getValues())]);
-    // \Drupal::logger('qls_ch8')->debug('<pre>@values</pre>', ['@values' => print_r(array_keys($form_state->getValues()), TRUE)]);
+
     $form_state->setRebuild();
     return $form;
   }
@@ -545,24 +494,8 @@ class HashLockAjaxForm extends FormBase {
    *   Object describing the current state of the form.
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    /*
-     * This would normally be replaced by code that actually does something
-     * with the title.
-     */
-//     $values = $this->debugRecursive($form_state->getValues('step1'));
-// \Drupal::logger('debug')->debug('<pre>@values</pre>', ['@values' => print_r($values, TRUE)]);
-    // $network_type = $form_state->getValue(['step1','network_type']);
-    // $network_type = $form_state->getValue(['network_type']);
-    // $keys = array_keys($form_state->getValues());
-    // \Drupal::logger('debug')->debug('Keys: @keys', ['@keys' => print_r($keys, TRUE)]);
-    // \Drupal::logger('debug')->debug('Values: @values', ['@values' => print_r($form_state->getValues('step1'), TRUE)]);
-    // $network_type = $form_state->getValue(['step1_network_type']);
-    // $network_type = $form_state->getValue(['network_type']);
-//     $values = $this->debugRecursive($form_state->getValues('step1'), 2);
-// \Drupal::logger('qls_ch8')->debug('<pre>@values</pre>', ['@values' => print_r($values, TRUE)]);
-    // $network_type = $form_state->getValue('network_type');
     $network_type = $form_state->get('step1_network_type');
-    // \Drupal::logger('qls_ch8')->notice('483 network type:<pre>@object</pre>', ['@object' => print_r($network_type, TRUE)]);
+
     $facade = new SymbolFacade($network_type);
     // ノードURLを設定
     if ($network_type === 'testnet') {
@@ -573,7 +506,11 @@ class HashLockAjaxForm extends FormBase {
       $node_url = 'http://sym-main-03.opening-line.jp:3000';
     }
 
-    $originator_pvtKey = $form_state->get('originator_pvtKey');
+    $originator_pvtKey = $form_state->getValue('originator_pvtKey');
+    if (empty($originator_pvtKey)) {
+      $this->messenger()->addError($this->t('The originator private key must be entered again. Private keys are not carried between form steps.'));
+      return;
+    }
     $ownerKey = $facade->createAccount(new PrivateKey($originator_pvtKey));
    
     // $symbol_address_hidden = $form_state->getValue(['symbol_address_hidden']);
@@ -595,19 +532,13 @@ class HashLockAjaxForm extends FormBase {
     // 署名
     $sig = $ownerKey->signTransaction($tx);
     $payload = $facade->attachSignature($tx, $sig);
-    // \Drupal::logger('qls_ch8')->notice('<pre>@object</pre>', ['@object' => print_r($payload, TRUE)]); 
 
-    // \Drupal::logger('qls_ch8')->notice('<pre>@object</pre>', ['@object' => print_r($networkType, TRUE)]); 
-    $config = new Configuration();
-    $config->setHost($node_url);
-    $client = \Drupal::httpClient();
-    $apiInstance = new TransactionRoutesApi($client, $config);
+    $apiInstance = $this->apiClientFactory->createApiForNodeUrl(TransactionRoutesApi::class, $node_url);
     
     try {
-      $result = $apiInstance->announceTransaction($payload);
-      // echo $result . PHP_EOL;
-      $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
-    } catch (Exception $e) {
+      $apiInstance->announceTransaction($payload);
+      $this->messenger()->addStatus($this->t('Transaction announce request accepted. Use the confirmation form to check final network status.'));
+    } catch (\Exception $e) {
       \Drupal::logger('qls_ch8')->error('トランザクションの発行中にエラーが発生しました: @message', ['@message' => $e->getMessage()]);
     }
 

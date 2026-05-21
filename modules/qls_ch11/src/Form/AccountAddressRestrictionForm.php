@@ -333,7 +333,7 @@ class AccountAddressRestrictionForm extends FormBase {
     $this->messenger()->addMessage($this->t('AccountAddressRestriction Transaction successfully announced: @result', ['@result' => $result]));
 
     // try {
-    //   $result = $apiInstance->announceTransaction($jsonPayload);
+
     //   $this->messenger()->addMessage($this->t('AccountAddressRestriction Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (Exception $e) {
     //   \Drupal::logger('qls_ch11')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);

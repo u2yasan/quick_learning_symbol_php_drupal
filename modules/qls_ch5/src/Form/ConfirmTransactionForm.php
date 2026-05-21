@@ -135,19 +135,16 @@ class ConfirmTransactionForm extends FormBase {
     $transactionApi = $this->transactionService->getTransactionApi();
     $txInfo = $transactionApi->getConfirmedTransaction($txHash);
     $this->messenger()->addMessage($this->t('Transaction History: @txInfo', ['@txInfo' => $txInfo]));
-   
-    // \Drupal::logger('qls_ch5')->notice('txInfo:<pre>@object</pre>', ['@object' => print_r($txInfo, TRUE)]); 
 
     // $this->messenger()->addMessage($this->t('You specified a network_type of %network_type.', ['%network_type' => $network_type]));
 
     // フォームステートにデータを設定
     $meta = $txInfo['meta'];
     $meta_container = $this->getProtectedContainer($meta);
-    // \Drupal::logger('qls_ch5')->notice('meta container:<pre>@object</pre>', ['@object' => print_r($container, TRUE)]); 
- 
+
     $transaction = $txInfo['transaction'];
     $transaction_container = $this->getProtectedContainer($transaction);
-    // \Drupal::logger('qls_ch5')->notice('transaction container:<pre>@object</pre>', ['@object' => print_r($transaction_container, TRUE)]); 
+
     // $form_state->set('meta', $meta);
     // $form_state->set('transaction', $transaction);
     

@@ -254,7 +254,6 @@ class SimpleTransferTransactionForm extends FormBase {
       // メッセージを平文で送信する場合は、そのまま指定します。メッセージはUTF-8 エンコーディングされるため、バイナリデータを送信する場合は、UTF-8 エンコードされたバイナリデータを指定します。
       $messageData = "\0".$message;
       //$messageData = $message;
-      // \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($messageData, TRUE)]);  
 
       // 文字列を16進数にエンコード
       // $messageData = bin2hex($message);
@@ -273,19 +272,16 @@ class SimpleTransferTransactionForm extends FormBase {
         $accountApi = $this->accountService->getAccountApi();
         $account_info = $accountApi->getAccountInfo($address);
 
-        // \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($account_info, TRUE)]);
-        sleep(1);
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
         
         if ($account_info) {
           // JSON形式でアカウント情報を表示
           // $account_info_json = json_encode($account_info, JSON_PRETTY_PRINT);
           // 配列からpublicKeyを取得
           // $recipent_publicKey_str = $account_info_json['account']['publicKey'];
-          // \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($recipent_publicKey_str, TRUE)]);
-          // $recipent_publicKey = new CryptoPublicKey($recipent_publicKey_str);
-          // \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($recipent_publicKey, TRUE)]);
 
-          // AccountDTOオブジェクトを取得
+          // $recipent_publicKey = new CryptoPublicKey($recipent_publicKey_str);
+
           $accountDTO = $account_info->getAccount();
           // 公開鍵を取得
           $recipent_publicKey_str = $accountDTO->getPublicKey();
@@ -322,26 +318,23 @@ class SimpleTransferTransactionForm extends FormBase {
     
     $facade->setMaxFee($transferTx, $feeMultiprier); // 手数料
 
-    // \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($transferTx, TRUE)]);  
     // 出力例
     // /admin/reports/dblog でログを確認
-    // \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($facade, TRUE)]);
 
     // 4.3 署名とアナウンス
     // 作成したトランザクションを秘密鍵で署名して、任意のノードを通じてアナウンスします。
     // 4.3.1 署名
     $signature = $senderKey->signTransaction($transferTx);
     $payload = $facade->attachSignature($transferTx, $signature);
-    // \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($payload, TRUE)]); 
+
     
 
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
     // $apiInstance = new TransactionRoutesApi($this->httpClient, $config);
 
     // try {
-    //   $result = $apiInstance->announceTransaction($payload);
+
     //   // return $result;
     //   $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (\Exception $e) {
@@ -352,7 +345,7 @@ class SimpleTransferTransactionForm extends FormBase {
     // try {
     //   // Drupal Serviceを使う方法
     //   // TransactionServiceを使ってトランザクションを発行
-    //   $result = $this->transactionService->announceTransaction($network_type, $payload);
+
     //   $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
  
     // } catch (\Exception $e) {
@@ -365,7 +358,7 @@ class SimpleTransferTransactionForm extends FormBase {
     // 4.4 確認
     // 4.4.1 ステータスの確認
     // ノードに受理されたトランザクションのステータスを確認
-    sleep(2);
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
     // アナウンススより先にステータスを確認しに行ってしまいエラーを返す可能性があるためのsleep
     
     $hash = $facade->hashTransaction($transferTx);
@@ -373,7 +366,6 @@ class SimpleTransferTransactionForm extends FormBase {
     // try {
     //   $txStatus = $txStatusApi->getTransactionStatus($hash);
     //   $this->messenger()->addMessage($this->t('Transaction Status: @txStatus', ['@txStatus' => $txStatus])); 
-    //   // \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($txStatus, TRUE)]); 
     // } catch (Exception $e) {
     //   // echo 'Exception when calling TransactionRoutesApi->announceTransaction:';
     //   // $e->getMessage();
@@ -407,9 +399,8 @@ class SimpleTransferTransactionForm extends FormBase {
     // }
 
     // // $this->messenger()->addMessage($this->t('You specified a network_type of %network_type.', ['%network_type' => $network_type]));
-    // $this->messenger()->addMessage($this->t('payload: %payload', ['%payload' => $payload['payload']]));
-   
-    // sleep(30);
+
+
     // try {
     //   // Drupal Serviceを使う方法
     //   $result = $this->transactionService->getTransactionStatus($network_type, $hash);
@@ -418,8 +409,7 @@ class SimpleTransferTransactionForm extends FormBase {
     // } catch (\Exception $e) {
     //   $this->messenger()->addError($this->t('Error: @message', ['@message' => $e->getMessage()]));
     // }
-   
-    sleep(35);
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
     $result = $transactionStatusApi->getTransactionStatus($hash); 
     $this->messenger()->addMessage($this->t('Transaction Status: @result', ['@result' => $result]));
  

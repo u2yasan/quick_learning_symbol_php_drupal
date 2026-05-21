@@ -13,7 +13,7 @@ class MosaicDataController {
     if ($mosaicsInfo === NULL) {
       \Drupal::messenger()->addMessage(t('No mosaic data found in session.'));
     } else {
-      \Drupal::logger('mosaic_data')->notice('<pre>@data</pre>', ['@data' => print_r($mosaicsInfo, TRUE)]);
+
     }
 
     return new JsonResponse($mosaicsInfo);

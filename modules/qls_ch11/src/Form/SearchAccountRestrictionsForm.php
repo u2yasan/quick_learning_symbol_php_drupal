@@ -86,6 +86,6 @@ class SearchAccountRestrictionsForm extends FormBase {
       address: $address
     ); 
     $formattedResult = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    $this->messenger()->addMessage($this->t('Account Restrictions: <pre>@result</pre>', ['@result' => $formattedResult])); 
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
   }
 }

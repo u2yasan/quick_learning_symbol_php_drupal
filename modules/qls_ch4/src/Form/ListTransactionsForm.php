@@ -105,8 +105,7 @@ class ListTransactionsForm extends FormBase {
       address: $address, 
       embedded: "true"
     );
-    $this->messenger()->addMessage($this->t('Transaction History: <pre>@result</pre>', ['@result' => $result]));
- 
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
     // try {
     //   $result = $this->transactionService->searchConfirmedTransactions($network_type, $address);
 

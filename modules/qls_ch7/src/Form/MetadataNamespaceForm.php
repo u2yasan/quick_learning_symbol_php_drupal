@@ -197,8 +197,6 @@ class MetadataNamespaceForm extends FormBase {
     // $namespaceApiInstance = new NamespaceRoutesApi($client, $config);
     $namespaceInfo = $namespaceApi->getNamespace(substr($targetNamespace, 2));
 
-    // \Drupal::logger('qls_ch7')->notice('namespaceInfo:<pre>@object</pre>', ['@object' => print_r($namespaceInfo, TRUE)]);
-
     $sourceAddress = new UnresolvedAddress(
       $namespaceInfo['namespace']['owner_address']
     ); // ネームスペース作成者アドレス
@@ -221,7 +219,7 @@ class MetadataNamespaceForm extends FormBase {
     $oldValue = '';
     if($metadataInfo !== null){
       $data = $metadataInfo->getData();
-      \Drupal::logger('qls_ch7')->notice('metadataInfo->getData():<pre>@object</pre>', ['@object' => print_r($data, TRUE)]);
+
       // $oldValue = hex2bin($metadataInfo['data'][0]['metadata_entry']['value']); //16進エンコードされたバイナリ文字列をデコード
       if (!empty($data)) {
         $metadataInfo = $data[0];
@@ -266,7 +264,6 @@ class MetadataNamespaceForm extends FormBase {
     $sig = $sourceKey->signTransaction($aggregateTx);
     $payload = $facade->attachSignature($aggregateTx, $sig);
 
-    // $result = $this->transactionService->announceTransaction($payload);
     $transactionApi = $this->transactionService->getTransactionApi();
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result])); 

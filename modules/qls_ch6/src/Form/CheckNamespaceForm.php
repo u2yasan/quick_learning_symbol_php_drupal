@@ -106,7 +106,7 @@ class CheckNamespaceForm extends FormBase {
   //   }
   // }
   // public function validateForm(array &$form, FormStateInterface $form_state) {
-  //   if (strlen($pvtKey) !=  64) {
+
   //     // Set an error for the form element with a key of "title".
   //   }
   // }
@@ -135,7 +135,7 @@ class CheckNamespaceForm extends FormBase {
 
     // $namespaceDTO = $namespaceInfoDTO->getNamespace();
     // $data = $namespaceDTO->getData();
-    $this->messenger()->addMessage($this->t('NamespaceInfoDTO: <pre>@result</pre>', ['@result' => print_r($namespaceInfoDTO, TRUE)]));
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
     } catch (\Exception $e) {
       $this->messenger()->addError($this->t('Error: @message', ['@message' => $e->getMessage()]));
     }

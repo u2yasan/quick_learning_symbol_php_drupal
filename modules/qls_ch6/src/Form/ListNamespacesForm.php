@@ -172,7 +172,7 @@ class ListNamespacesForm extends FormBase {
    *   Object describing the current state of the form.
    */
   // public function validateForm(array &$form, FormStateInterface $form_state) {
-  //   if (strlen($pvtKey) !=  64) {
+
   //     // Set an error for the form element with a key of "title".
   //   }
   // }
@@ -203,7 +203,7 @@ class ListNamespacesForm extends FormBase {
     $namespace_table_data[] = [];
     foreach ($data as $index => $namespaceInfoDTO) {
       $namespaceDTO = $namespaceInfoDTO->getNamespace();
-      // \Drupal::logger('qls_ch6')->info('namespaceDTO: <pre>@namespaceDTO</pre>', ['@namespaceDTO' => print_r($namespaceDTO, true)]);
+
       // if($namespace['namespace']['depth']!=3){//2階層までのネームスペースを取得
       // \Drupal::logger('qls_ch6')->info('depth: @depth', ['@depth' => $namespace['namespace']['depth']]); 
       $depth = $namespaceDTO->getDepth();
@@ -224,7 +224,7 @@ class ListNamespacesForm extends FormBase {
       $namespaceIds = new NamespaceIds(['namespace_ids' => [$root_namespaceid]]);
       $namespaceApi = $this->namespaceService->getNamespaceApi();
       $namespaces = $namespaceApi->getNamespacesNames($namespaceIds);   
-      // \Drupal::logger('qls_ch6')->info('namespaces: <pre>@namespaces</pre>', ['@namespaces' => print_r($namespaces, true)]);
+
       $namespace_name = $namespaces[0]->getName();
       // \Drupal::logger('qls_ch6')->info('namespace_name: @namespace_name', ['@namespace_name' => $namespace_name]);
 
@@ -308,7 +308,6 @@ class ListNamespacesForm extends FormBase {
        
       }
     }
-    \Drupal::logger('qls_ch6')->info('namespace_table_data: <pre>@namespace_table_data</pre>', ['@namespace_table_data' => print_r($namespace_table_data, true)]); 
 
     // フォームステートにデータを設定
     $form_state->set('namespace_table_data', $namespace_table_data);

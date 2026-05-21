@@ -236,33 +236,30 @@ class AggregateTransferTransactionForm extends FormBase {
     
     // $facade->setMaxFee($aggregateTx, $feeMultiprier); // 手数料
     
-    $requiredCosignatures = 1; // 必要な連署者の数を指定
-    if ($requiredCosignatures > count($aggregateTx->cosignatures)) {
-      $calculatedCosignatures = $requiredCosignatures;
+    $requiredCosignature = 1; // 必要な連署者の数を指定
+    if ($requiredCosignature > count($aggregateTx->cosignature)) {
+      $calculatedCosignature = $requiredCosignature;
     } else {
-      $calculatedCosignatures = count($aggregateTx->cosignatures);
+      $calculatedCosignature = count($aggregateTx->cosignature);
     } 
     $sizePerCosignature = 8 + 32 + 64;
     $calculatedSize = $aggregateTx->size() -
-      count($aggregateTx->cosignatures) * $sizePerCosignature +
-      $calculatedCosignatures * $sizePerCosignature;
+      count($aggregateTx->cosignature) * $sizePerCosignature +
+      $calculatedCosignature * $sizePerCosignature;
     $aggregateTx->fee = new Amount($calculatedSize * 100); // 手数料を設定
-
-    // \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($aggregateTx, TRUE)]);  
 
     // 署名
     $sig = $senderKey->signTransaction($aggregateTx);
     $payload = $facade->attachSignature($aggregateTx, $sig);
-    // \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($payload, TRUE)]); 
+
     
 
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
     // $apiInstance = new TransactionRoutesApi($client, $config);
 
     // try {
-    //   $result = $apiInstance->announceTransaction($payload);
+
     //   // return $result;
     //   $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (\Exception $e) {
@@ -272,7 +269,7 @@ class AggregateTransferTransactionForm extends FormBase {
 
     // try {
     //   // TransactionServiceを使ってトランザクションを発行
-    //   $result = $this->transactionService->announceTransaction($network_type, $payload);
+
     //   $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
  
     // } catch (\Exception $e) {
@@ -281,21 +278,19 @@ class AggregateTransferTransactionForm extends FormBase {
     $transactionApi = $this->transactionService->getTransactionApi();
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
-
-    sleep(3);
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
     $transactionStatusApi = $this->transactionStatusService->getTransactionStatusApi();
     $hash = $facade->hashTransaction($aggregateTx);
     $result = $transactionStatusApi->getTransactionStatus($hash);
     $this->messenger()->addMessage($this->t('Transaction Status: @result', ['@result' => $result]));
-
-    sleep(30);
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
     $result = $transactionStatusApi->getTransactionStatus($hash);
     $this->messenger()->addMessage($this->t('Transaction Status: @result', ['@result' => $result]));
  
     // 4.4 確認
     // 4.4.1 ステータスの確認
     // ノードに受理されたトランザクションのステータスを確認
-    // sleep(3);
+
     // アナウンススより先にステータスを確認しに行ってしまいエラーを返す可能性があるためのsleep
     
     
@@ -303,7 +298,7 @@ class AggregateTransferTransactionForm extends FormBase {
     // try {
     //   $txStatus = $txStatusApi->getTransactionStatus($merkleHash);
     //   $this->messenger()->addMessage($this->t('Transaction Status: @txStatus', ['@txStatus' => $txStatus])); 
-    //   \Drupal::logger('qls_ch4')->notice('<pre>@object</pre>', ['@object' => print_r($txStatus, TRUE)]); 
+
     // } catch (Exception $e) {
     //   // echo 'Exception when calling TransactionRoutesApi->announceTransaction:';
     //   // $e->getMessage();

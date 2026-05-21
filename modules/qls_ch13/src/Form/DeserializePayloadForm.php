@@ -118,11 +118,10 @@ class DeserializePayloadForm extends FormBase {
 
     $payload = $form_state->getValue('payload');
     $tx = TransactionFactory::deserialize(hex2bin($payload));
-    \Drupal::logger('qls_ch13')->info('Payload deserialized for verification.');
+
     $hash = $facade->hashTransaction($tx);
 
-    // $signature = new Signature($tx->signature);
-    // $res = $facade->verifyTransaction($tx, $signature);
+
     // \Drupal::logger('qls_ch13')->info('verify: @res', ['@res' => $res]);
    
     /**
@@ -130,11 +129,11 @@ class DeserializePayloadForm extends FormBase {
      */
     $merkleComponentHash = $hash;
 
-    if (isset($tx->cosignatures) && count($tx->cosignatures) > 0) {
+    if (isset($tx->cosignature) && count($tx->cosignature) > 0) {
       $hasher = new MerkleHashBuilder();
       $hash = new Hash256($hash);
       $hasher->update($hash);
-      foreach ($tx->cosignatures as $cosignature) {
+      foreach ($tx->cosignature as $cosignature) {
         $hasher->update(new Hash256($cosignature->signerPublicKey));
       }
       $merkleComponentHash = $hasher->final();
@@ -150,7 +149,6 @@ class DeserializePayloadForm extends FormBase {
 
     // ノードから取得
     // $config = new Configuration();
-    // $config->setHost($NODE_URL);
     // $client = new GuzzleHttp\Client();
     // $blockApiInstance = new BlockRoutesApi($client, $config);
 
@@ -235,7 +233,7 @@ class DeserializePayloadForm extends FormBase {
 //           }
 
 //           if (isset($innerTx->message)) {
-//               $html .= '<p><strong>Message:</strong> ' . htmlspecialchars($innerTx->message->payload) . '</p>';
+
 //           }
 
 //           $html .= '</div>';
@@ -243,13 +241,13 @@ class DeserializePayloadForm extends FormBase {
 //   }
 
 //   // コサイン署名の表示
-//   if (isset($tx->cosignatures)) {
-//       $html .= '<h2>Cosignatures</h2>';
-//       foreach ($tx->cosignatures as $index => $cosig) {
+
+
+
 //           $html .= '<div style="margin-left: 20px; border-left: 2px solid #ccc; padding-left: 10px;">';
-//           $html .= '<h3>Cosignature #' . ($index + 1) . '</h3>';
+
 //           $html .= '<p><strong>Signer Public Key:</strong> ' . htmlspecialchars($cosig->signerPublicKey) . '</p>';
-//           $html .= '<p><strong>Signature:</strong> ' . htmlspecialchars($cosig->signature) . '</p>';
+
 //           $html .= '</div>';
 //       }
 //   }

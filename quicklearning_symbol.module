@@ -167,3 +167,124 @@ require_once __DIR__ . '/vendor/autoload.php';
 //     'qls_sect13' => 'qls_sect13.description',
 //   ];
 // }
+
+/**
+ * Implements hook_form_alter().
+ */
+function quicklearning_symbol_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id): void {
+  $has_private_key_field = _quicklearning_symbol_harden_private_key_fields($form);
+  $is_generated_key_form = $form_id === 'generate_account_form';
+
+  if ($has_private_key_field || $is_generated_key_form) {
+    $form['#cache']['max-age'] = 0;
+    $form['quicklearning_symbol_security_warning'] = [
+      '#type' => 'item',
+      '#weight' => -1000,
+      '#markup' => t('Security warning: these examples are for testnet learning only. Do not enter production private keys. Private keys, signatures, and signed payloads must not be stored, logged, or shared.'),
+    ];
+    $form['quicklearning_symbol_testnet_confirmation'] = [
+      '#type' => 'checkbox',
+      '#title' => t('I confirm this uses a disposable testnet key only.'),
+      '#required' => TRUE,
+      '#weight' => -999,
+    ];
+  }
+
+  if ($has_private_key_field || _quicklearning_symbol_form_has_sensitive_inputs($form)) {
+    $form['#validate'][] = 'quicklearning_symbol_validate_security_form';
+  }
+}
+
+/**
+ * Harden private key fields recursively.
+ */
+function _quicklearning_symbol_harden_private_key_fields(array &$element): bool {
+  $found = FALSE;
+
+  foreach ($element as $key => &$child) {
+    if (!is_array($child)) {
+      continue;
+    }
+
+    $key_string = is_string($key) ? $key : '';
+    if (preg_match('/(?:pvtKey|private_key)/i', $key_string)) {
+      $child['#type'] = 'password';
+      $child['#attributes']['autocomplete'] = 'off';
+      $child['#attributes']['autocapitalize'] = 'none';
+      $child['#attributes']['spellcheck'] = 'false';
+      unset($child['#default_value']);
+      $found = TRUE;
+    }
+
+    if (_quicklearning_symbol_harden_private_key_fields($child)) {
+      $found = TRUE;
+    }
+  }
+
+  return $found;
+}
+
+/**
+ * Detect sensitive form inputs that require extra validation.
+ */
+function _quicklearning_symbol_form_has_sensitive_inputs(array $element): bool {
+  foreach ($element as $key => $child) {
+    if (is_string($key) && preg_match('/(?:payload|hash|amount|mosaicid|mosaic_id|namespace_id|pubkey|public_key)/i', $key)) {
+      return TRUE;
+    }
+    if (is_array($child) && _quicklearning_symbol_form_has_sensitive_inputs($child)) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Validate sensitive Symbol example inputs.
+ */
+function quicklearning_symbol_validate_security_form(array &$form, \Drupal\Core\Form\FormStateInterface $form_state): void {
+  _quicklearning_symbol_validate_values($form_state->getValues(), $form_state);
+}
+
+/**
+ * Validate nested form values by field name.
+ */
+function _quicklearning_symbol_validate_values(array $values, \Drupal\Core\Form\FormStateInterface $form_state, string $prefix = ''): void {
+  foreach ($values as $key => $value) {
+    $name = $prefix === '' ? (string) $key : $prefix . '][' . (string) $key;
+
+    if (is_array($value)) {
+      _quicklearning_symbol_validate_values($value, $form_state, $name);
+      continue;
+    }
+
+    if (!is_scalar($value)) {
+      continue;
+    }
+
+    $value = trim((string) $value);
+    if ($value === '') {
+      continue;
+    }
+
+    if (preg_match('/(?:pvtKey|private_key)/i', (string) $key) && !preg_match('/^[a-fA-F0-9]{64}$/', $value)) {
+      $form_state->setErrorByName($name, t('Private key must be exactly 64 hexadecimal characters.'));
+    }
+    elseif (preg_match('/(?:pubkey|public_key|signer_pubkey|signerPublicKey)/i', (string) $key) && !preg_match('/^[a-fA-F0-9]{64}$/', $value)) {
+      $form_state->setErrorByName($name, t('Public key must be exactly 64 hexadecimal characters.'));
+    }
+    elseif (preg_match('/(?:tx_hash|transaction_hash|sign_tx_hash|hash)$/i', (string) $key) && !preg_match('/^[a-fA-F0-9]{64}$/', $value)) {
+      $form_state->setErrorByName($name, t('Hash must be exactly 64 hexadecimal characters.'));
+    }
+    elseif (preg_match('/(?:payload|signed_payload)/i', (string) $key) && (!preg_match('/^[a-fA-F0-9]+$/', $value) || strlen($value) > 20000 || strlen($value) % 2 !== 0)) {
+      $form_state->setErrorByName($name, t('Payload must be an even-length hexadecimal string no longer than 20000 characters.'));
+    }
+    elseif (preg_match('/(?:mosaicid|mosaic_id|namespace_id)$/i', (string) $key) && !preg_match('/^(?:0x)?[a-fA-F0-9]{16}$/', $value)) {
+      $form_state->setErrorByName($name, t('Identifier must be 16 hexadecimal characters, optionally prefixed with 0x.'));
+    }
+    elseif (preg_match('/amount/i', (string) $key) && (!preg_match('/^[1-9][0-9]{0,14}$/', $value))) {
+      $form_state->setErrorByName($name, t('Amount must be a positive integer up to 15 digits.'));
+    }
+  }
+}

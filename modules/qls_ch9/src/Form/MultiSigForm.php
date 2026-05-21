@@ -153,7 +153,7 @@ class MultiSigForm extends FormBase {
     $form['mini_approval'] = [
       '#type' => 'textfield',
       '#title' => $this->t('News Min. Approval'),
-      '#description' => $this->t('Minimum signatures to sign a transaction or to add a cosigner'),
+      '#description' => $this->t('Minimum signature to sign a transaction or to add a cosigner'),
       '#required' => TRUE,
       '#attributes' => [
         'type' => 'number', // HTML5 の number 属性
@@ -166,7 +166,7 @@ class MultiSigForm extends FormBase {
     $form['mini_removal'] = [
       '#type' => 'textfield',
       '#title' => $this->t('News Min. Removal'),
-      '#description' => $this->t('Minimum signatures required to remove a cosigner'),
+      '#description' => $this->t('Minimum signature required to remove a cosigner'),
       '#required' => TRUE,
       '#attributes' => [
         'type' => 'number', // HTML5 の number 属性
@@ -263,15 +263,15 @@ class MultiSigForm extends FormBase {
           $account_info = $accountApi->getAccountInfo($cosigner);
           // \Drupal::logger('qls_ch9')->info('account_info: @account_info', ['@account_info' => $account_info]);
           if ($account_info) {
-            // AccountDTOオブジェクトを取得
+
             $accountDTO = $account_info->getAccount();
-            \Drupal::logger('qls_ch9')->info('accountDTO: <pre>@accountDTO</pre>', ['@accountDTO' => print_r($accountDTO,true)]);
+
             // 公開鍵を取得
             $account_pubKeyStr = $accountDTO->getPublicKey();
             $pubAccount = $facade->createPublicAccount(new PublicKey($account_pubKeyStr));//公開鍵クラス
             $account_address = $pubAccount->address;
             \Drupal::logger('qls_ch9')->info('account_address: @account_address', ['@account_address' => print_r($account_address,true)]); 
-            // $account_address = $accountDTO->getAddress();
+
             // \Drupal::logger('qls_ch9')->info('account_pubKeyStr: @account_pubKeyStr', ['@account_pubKeyStr' => $account_pubKeyStr]);
             // $recipent_publicKey = new CryptoPublicKey($recipent_publicKey_str);
             // $recipent_publicKey = new PublicKey($account_pubKeyStr);
@@ -321,13 +321,13 @@ class MultiSigForm extends FormBase {
     $sig = $multisigKey->signTransaction($aggregateTx);
     $payload = $facade->attachSignature($aggregateTx, $sig);
 
-    $this->messenger()->addWarning($this->t('Cosignatory private keys are no longer loaded from Drupal configuration. Use the cosignature form for cosigners.'));
+    $this->messenger()->addWarning($this->t('Co-signer private keys are no longer loaded from Drupal configuration. Use the co-signing form for co-signers.'));
 
     // アナウンス
     $payload = ["payload" => strtoupper(bin2hex($aggregateTx->serialize()))];
-    \Drupal::logger('qls_ch9')->info('Multisig aggregate transaction payload created.');
+
     // try {
-    //   $result = $apiInstance->announceTransaction($payload);
+
     //   $this->messenger()->addMessage($this->t('Aggregate Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (Exception $e) {
     //   \Drupal::logger('qls_ch9')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);
@@ -339,16 +339,14 @@ class MultiSigForm extends FormBase {
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
     $this->messenger()->addMessage($this->t('TxHash: @TxHash', ['@TxHash' => $facade->hashTransaction($aggregateTx)]));
-   
-    sleep(40);
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
     /**
      * 確認
      */
     
     $multisigInfo = $multisigApi->getAccountMultisig($multisigKey->address);
     // \Drupal::logger('qls_ch9')->info('multisigInfo: @multisigInfo', ['@multisigInfo' => print_r($multisigInfo, true)]);
-    $this->messenger()->addMessage($this->t('multisigInfo: <pre>@multisigInfo</pre>', ['@multisigInfo' => print_r($multisigInfo, true)]));
-
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
     /**
      * 連署者アカウントの確認
      */
@@ -356,9 +354,7 @@ class MultiSigForm extends FormBase {
     // echo "===連署者1のマルチシグ情報===" . PHP_EOL;
     // echo $multisigInfo . PHP_EOL;
     // \Drupal::logger('qls_ch9')->info('multisigInfo1: @multisigInfo', ['@multisigInfo' => print_r($multisigInfo, true)]);
-    $this->messenger()->addMessage($this->t('multisigInfo Co-sig1: <pre>@multisigInfo</pre>', ['@multisigInfo' => print_r($multisigInfo, true)]));
-
-  
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
   }
 
 

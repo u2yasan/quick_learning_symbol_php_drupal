@@ -97,7 +97,6 @@ class MultiSigConfirmForm extends FormBase {
     //   $node_url = 'http://sym-main-03.opening-line.jp:3000';
     // }
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
 
     // $apiInstance = new TransactionRoutesApi($client, $config);
@@ -105,15 +104,13 @@ class MultiSigConfirmForm extends FormBase {
     $txInfo = $transactionApi->getConfirmedTransaction($aggregateTxHash);
     $txInfoArray = json_decode(json_encode($txInfo), true); // オブジェクトを配列に変換
     $prettyJson = json_encode($txInfoArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE); // 整形されたJSON文字列を生成 
-    $this->messenger()->addMessage($this->t('Tx info of the Aggregated Confirmed Tx: <pre>@result</pre>', ['@result' => $prettyJson]));
-
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
     // //アナウンス
     // try {
     //   $txInfo = $apiInstance->getConfirmedTransaction($aggregateTxHash);
     //   $txInfoArray = json_decode(json_encode($txInfo), true); // オブジェクトを配列に変換
     //   $prettyJson = json_encode($txInfoArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE); // 整形されたJSON文字列を生成
-    //   $this->messenger()->addMessage($this->t('Tx info of the Aggregated Confirmed Tx: <pre>@result</pre>', ['@result' => $prettyJson]));
-
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
     // } catch (Exception $e) {
     //   \Drupal::logger('qls_ch9')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);
     // }

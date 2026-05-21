@@ -84,8 +84,8 @@ class GenerateAccountFromPubKeyForm extends FormBase {
 
     // 出力例
     // /admin/reports/dblog でログを確認
-    // \Drupal::logger('qls_ch3')->notice('<pre>@object</pre>', ['@object' => print_r($accountPublicAccount, TRUE)]);
-    $this->messenger()->addMessage($this->t('accountPublicAccount:<pre>@object</pre>', ['@object' => print_r($accountPubKey, TRUE)]));
+
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
     $this->messenger()->addMessage($this->t('Public Key: @accountPubKey', ['@accountPubKey' => $accountPubKey]));
   }
 

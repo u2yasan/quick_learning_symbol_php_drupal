@@ -92,7 +92,6 @@ class SearchMosaicRestrictionsForm extends FormBase {
     //   $node_url = 'http://sym-main-03.opening-line.jp:3000';
     // }
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
     // $restrictionAipInstance = new RestrictionMosaicRoutesApi($client, $config);
     // $mosaic_id = "0x".$form_state->getValue('mosaic_id');
@@ -100,14 +99,13 @@ class SearchMosaicRestrictionsForm extends FormBase {
     $restrictionMosaicApi = $this->restrictionMosaicService->getRestrictionMosaicApi();
 
     $mosaic_id = $form_state->getValue('mosaic_id'); 
-    
-    // \Drupal::logger('qls_ch11')->info('jsonPayload: @jsonPayload', ['@jsonPayload' => print_r($jsonPayload, TRUE)]);
+
     try {
       $result = $restrictionMosaicApi->searchMosaicRestrictions(
         mosaic_id: $mosaic_id
       ); 
       $formattedResult = json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-      $this->messenger()->addMessage($this->t('Mosaic Restrictions: <pre>@result</pre>', ['@result' => $formattedResult]));  
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
     } catch (Exception $e) {
       \Drupal::logger('qls_ch11')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);
     } 

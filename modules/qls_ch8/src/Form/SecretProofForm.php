@@ -168,7 +168,7 @@ class SecretProofForm extends FormBase {
     $payload = $facade->attachSignature($proofTx, $proofSig);
 
     // try {
-    //   $result = $apiInstance->announceTransaction($payload);
+
     //   // echo $result . PHP_EOL;
     // } catch (Exception $e) {
     //   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
@@ -179,7 +179,6 @@ class SecretProofForm extends FormBase {
     
     // \Drupal::logger('qls_ch8')->notice('Secret Proof TxHash: @hash', ['@hash' => $facade->hashTransaction($proofTx)]);
 
-    // sleep(30);
 
     /**
      * 結果の確認

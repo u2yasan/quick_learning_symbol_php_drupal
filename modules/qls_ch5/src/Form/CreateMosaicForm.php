@@ -202,7 +202,7 @@ class CreateMosaicForm extends FormBase {
   // public function updateSymbolAddress(array &$form, FormStateInterface $form_state) {
     
   //   // 入力されたプライベートキーを取得
-  //   if (!$pvtKey || strlen($pvtKey) !== 64) {
+
   //     // エラーメッセージをフォームに追加
   //     $form['symbol_address']['#markup'] = '<div id="symbol-address-wrapper" style="color: red;">'
   //         . $this->t('The private key must be 64 characters long.') . '</div>';
@@ -212,7 +212,7 @@ class CreateMosaicForm extends FormBase {
   //     $network_type = $form_state->getValue('network_type');
   //     $facade = new SymbolFacade($network_type);
   //     try {
-  //       $accountKey = $facade->createAccount(new PrivateKey($pvtKey));
+
   //       $accountRawAddress = $accountKey->address;
         
         
@@ -221,7 +221,6 @@ class CreateMosaicForm extends FormBase {
   //       $accountRawAddress = "Error: Unable to generate address.";
   //     }
   //     // $this->messenger()->addMessage($this->t('RawAddress: @rawAddress', ['@rawAddress' => $accountRawAddress]));
-  //     //\Drupal::logger('qls_ch5')->notice('<pre>@object</pre>', ['@object' => print_r($accountRawAddress, TRUE)]);
       
   //     // 動的に更新するフィールドの値を設定
   //     $form['symbol_address']['#markup'] = '<div id="symbol-address-wrapper">' . 'test' . '</div>';
@@ -249,7 +248,7 @@ class CreateMosaicForm extends FormBase {
 
     $duration = $form_state->getValue('duration');
     $mosaic_flags = $form_state->getValue('mosaic_flags');
-    // \Drupal::logger('qls_ch5')->notice('<pre>@object</pre>', ['@object' => print_r($mosaic_flags, TRUE)]);  
+
     $pvtKey = $form_state->getValue('account_pvtKey');
     $accountKey = $facade->createAccount(new PrivateKey($pvtKey));
    
@@ -272,8 +271,7 @@ class CreateMosaicForm extends FormBase {
     }
     // MosaicFlagsオブジェクトを作成
     $mosaicFlags = new MosaicFlags($f);
-    // \Drupal::logger('qls_ch5')->notice('<pre>@object</pre>', ['@object' => print_r($mosaicFlags, TRUE)]); 
-        
+
     $mosaicId = IdGenerator::generateMosaicId($accountKey->address);
     // 桁数のチェック（15桁なら先頭に0を付ける）
     $hexMosaicId = strtoupper(dechex($mosaicId['id']));
@@ -317,7 +315,6 @@ class CreateMosaicForm extends FormBase {
     $sig = $accountKey->signTransaction($aggregateTx);
     $payload = $facade->attachSignature($aggregateTx, $sig);
 
-    // $result = $this->transactionService->announceTransaction($payload);
     $transactionApi = $this->transactionService->getTransactionApi();
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));

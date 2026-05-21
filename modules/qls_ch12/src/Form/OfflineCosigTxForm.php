@@ -140,7 +140,7 @@ class OfflineCosigTxForm extends FormBase {
   
     $payload = $form_state->getValue(['payload_fieldset', 'payload']);
     $tx = TransactionFactory::deserialize(hex2bin($payload)); // バイナリデータにする
-    \Drupal::logger('qls_ch12')->info('Offline aggregate transaction loaded for cosignature.');
+
     $signature = new Signature($tx->signature);
     $res = $facade->verifyTransaction($tx, $signature);
     \Drupal::logger('qls_ch12')->info('verify: @res', ['@res' => $res]);
@@ -180,14 +180,13 @@ class OfflineCosigTxForm extends FormBase {
     $account_pvtKey = $form_state->getValue(['sig_field','account_pvtKey']);
     $accountKey = $facade->createAccount(new PrivateKey($account_pvtKey));
     // $accountPubKey = $accountKey->publicKey;
-    // $cosignature = $facade->cosignTransaction($accountKey->keyPair, $tx, true);
+
     $cosignature = $facade->cosignTransaction($accountKey->keyPair, $tx);
     $cosig_siner_pubkey = $cosignature->signerPublicKey;
     $signedTxSignature = $cosignature->signature;
 
     $signTxHash = $form_state->getValue('sign_tx_hash');
 
-    // $recreatedTx = TransactionFactory::deserialize(hex2bin($signedPayload['payload']));
     // 連署者の署名を追加
     $cosig = new Cosignature();
     // $signTxHash = $facade->hashTransaction($aggregateTx);
@@ -198,17 +197,15 @@ class OfflineCosigTxForm extends FormBase {
     $cosig->version = 0;
     $cosig->signerPublicKey = $cosig_siner_pubkey;
     $cosig->signature = $signedTxSignature;
-    array_push($tx->cosignatures, $cosig);
+    array_push($tx->cosignature, $cosig);
 
     $signedPayload = ["payload" => strtoupper(bin2hex($tx->serialize()))];
-    \Drupal::logger('qls_ch12')->info('Offline cosignature payload created.');
-    $this->messenger()->addStatus($this->t('Offline cosignature payload created. Copying payloads from the message area is disabled to avoid leaking signatures.'));
 
-    // \Drupal::logger('qls_ch12')->info('signedTxSignature: @signedTxSignature', ['@signedTxSignature' => $signedTxSignature]);
-    // $this->messenger()->addMessage($this->t('signedTxSignature: <pre>@signedTxSignature</pre>', ['@signedTxSignature' => $signedTxSignature]));
-    // $signedTxSignerPublicKey = $cosignature->signerPublicKey;
+    $this->messenger()->addStatus($this->t('Offline co-signing data prepared. Raw signed data is not displayed in Drupal messages.'));
+
+
+
     // \Drupal::logger('qls_ch12')->info('signedTxSignerPublicKey: @signedTxSignerPublicKey', ['@signedTxSignerPublicKey' => $signedTxSignerPublicKey]);
-    // $this->messenger()->addMessage($this->t('signedTxSignerPublicKey: <pre>@signedTxSignerPublicKey</pre>', ['@signedTxSignerPublicKey' => $signedTxSignerPublicKey]));
-
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
   }
 }

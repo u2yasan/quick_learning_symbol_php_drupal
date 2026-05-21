@@ -4,6 +4,7 @@ namespace Drupal\quicklearning_symbol\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\quicklearning_symbol\Service\SymbolConfigService;
 
 /**
  * Configure example module settings.
@@ -64,6 +65,20 @@ class SettingsForm extends ConfigFormBase {
     
 
     return parent::buildForm($form, $form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    parent::validateForm($form, $form_state);
+
+    foreach (['node_url_test', 'node_url_main'] as $field_name) {
+      $url = $form_state->getValue($field_name);
+      if ($url !== '' && !SymbolConfigService::isValidNodeUrl($url)) {
+        $form_state->setErrorByName($field_name, $this->t('Enter a valid public http(s) Symbol node URL without credentials, localhost, private IPs, or control characters.'));
+      }
+    }
   }
 
   /**

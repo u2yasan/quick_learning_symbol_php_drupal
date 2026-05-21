@@ -139,6 +139,13 @@ class CreateSubNamespaceForm extends FormBase {
           '#title' => $this->t('Step 2: Sub-Namespace'),
         ];
 
+        $form['step2']['ownder_pvtKey'] = [
+          '#type' => 'password',
+          '#title' => $this->t('Owner Private Key'),
+          '#description' => $this->t('Re-enter the owner private key. It is not carried between steps.'),
+          '#required' => TRUE,
+        ];
+
         $form['step2']['parent_namespace'] = [
           '#type' => 'select',
           '#title' => $this->t('Parent Namespace'),
@@ -250,11 +257,10 @@ class CreateSubNamespaceForm extends FormBase {
   public function nextSubmit(array $form, FormStateInterface $form_state) {
     // $form_state->set('step1_network_type', $form_state->getValue(['step1', 'network_type']));
     $form_state->set('step1_network_type', $form_state->getValue('network_type'));
-    $form_state->set('ownder_pvtKey', $form_state->getValue('ownder_pvtKey'));
     
     // $form_state->set('step1_network_type', $form_state->getValue(['step1', 'network_type']));
-    // \Drupal::logger('qls_ch6')->notice('243 network type:<pre>@object</pre>', ['@object' => print_r($form_state->getValue(['step1', 'network_type']), TRUE)]);
-    // \Drupal::logger('qls_ch6')->notice('244 network type:<pre>@object</pre>', ['@object' => print_r($form_state->getValue('network_type'), TRUE)]);
+
+
     $form_state->setValue('step', $form_state->getValue('step') + 1);
     $form_state->setRebuild();
     return $form;
@@ -386,7 +392,7 @@ class CreateSubNamespaceForm extends FormBase {
      * with the title.
      */
 //     $values = $this->debugRecursive($form_state->getValues('step1'));
-// \Drupal::logger('debug')->debug('<pre>@values</pre>', ['@values' => print_r($values, TRUE)]);
+
     // $network_type = $form_state->getValue(['step1','network_type']);
     // $network_type = $form_state->getValue(['network_type']);
     // $keys = array_keys($form_state->getValues());
@@ -395,10 +401,10 @@ class CreateSubNamespaceForm extends FormBase {
     // $network_type = $form_state->getValue(['step1_network_type']);
     // $network_type = $form_state->getValue(['network_type']);
 //     $values = $this->debugRecursive($form_state->getValues('step1'), 2);
-// \Drupal::logger('qls_ch6')->debug('<pre>@values</pre>', ['@values' => print_r($values, TRUE)]);
+
     // $network_type = $form_state->getValue('network_type');
     // $network_type = $form_state->get('step1_network_type');
-    // \Drupal::logger('qls_ch6')->notice('483 network type:<pre>@object</pre>', ['@object' => print_r($network_type, TRUE)]);
+
     // $facade = new SymbolFacade($network_type);
     // // ノードURLを設定
     // if ($network_type === 'testnet') {
@@ -411,20 +417,20 @@ class CreateSubNamespaceForm extends FormBase {
     $facade = $this->facadeService->getFacade();
     $networkType = $this->facadeService->getNetworkTypeObject();
 
-    $ownder_pvtKey = $form_state->get('ownder_pvtKey');
+    $ownder_pvtKey = $form_state->getValue(['step2', 'ownder_pvtKey']);
     $ownerKey = $facade->createAccount(new PrivateKey($ownder_pvtKey));
    
     $parent_namespace = $form_state->getValue('parent_namespace');
     // $namespace = explode('.', $parent_namespace);
     $namespace = !empty($parent_namespace) ? explode('.', $parent_namespace) : [];
-    // \Drupal::logger('qls_ch6')->debug('502 <pre>@values</pre>', ['@values' => print_r($namespace, TRUE)]);
+
     if (count($namespace) === 2) {
       $root_namespace = $namespace[0];
       $sub_namespace = $namespace[1];
     } else {
       $root_namespace = $namespace[0];
     }
-    // \Drupal::logger('qls_ch6')->debug('508 <pre>@values</pre>', ['@values' => print_r($root_namespace, TRUE)]);
+
     // $mosaicNames = $namespaceApiInstance->getMosaicsNames($mosaicIds);
     if(empty($sub_namespace)){
       $parnetNameId = IdGenerator::generateNamespaceId($root_namespace); //ルートネームスペース名
@@ -468,16 +474,13 @@ class CreateSubNamespaceForm extends FormBase {
     // 署名
     $sig = $ownerKey->signTransaction($tx);
     $payload = $facade->attachSignature($tx, $sig);
-    // \Drupal::logger('qls_ch6')->notice('<pre>@object</pre>', ['@object' => print_r($payload, TRUE)]); 
 
-    // \Drupal::logger('qls_ch6')->notice('<pre>@object</pre>', ['@object' => print_r($networkType, TRUE)]); 
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
     // $apiInstance = new TransactionRoutesApi($client, $config);
     
     // try {
-    //   $result = $apiInstance->announceTransaction($payload);
+
     //   // echo $result . PHP_EOL;
     //   $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (Exception $e) {

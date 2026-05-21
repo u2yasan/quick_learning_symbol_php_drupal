@@ -152,9 +152,9 @@ class MetadataMosaicForm extends FormBase {
     //   '#options' => [],
     //   '#required' => TRUE,
     // ];
-    // $source_pvtKey = $form_state->getValue('source_pvtKey');
-    // \Drupal::logger('qls_ch7')->notice('source_pvtKey:<pre>@object</pre>', ['@object' => print_r($source_pvtKey, TRUE)]);
-    // if($source_pvtKey) {
+
+
+
     //   $form['mosaic_fieldset']['mosaic'] = [
     //     '#type' => 'select',
     //     '#title' => $this->t('Mosaic'),
@@ -234,13 +234,13 @@ class MetadataMosaicForm extends FormBase {
 
     // mosaicの選択値を取得
     $targetMosaic = $form_state->getValue('mosaic');
-    // \Drupal::logger('qls_ch7')->notice('targetMosaic:<pre>@object</pre>', ['@object' => print_r($targetMosaic, TRUE)]);
+
     // キーと値の設定
     $metadata_key = $form_state->getValue('metadata_key');
     $metadata_value = $form_state->getValue('metadata_value');
 
     $keyId = Metadata::metadataGenerateKey($metadata_key);
-    // \Drupal::logger('qls_ch7')->notice('keyId:<pre>@object</pre>', ['@object' => print_r($keyId, TRUE)]);
+
     $newValue = $metadata_value;
 
     // 同じキーのメタデータが登録されているか確認
@@ -255,7 +255,7 @@ class MetadataMosaicForm extends FormBase {
     $oldValue = '';
     if($metadataInfo !== null){
       $data = $metadataInfo->getData();
-      // \Drupal::logger('qls_ch7')->notice('metadataInfo->getData():<pre>@object</pre>', ['@object' => print_r($data, TRUE)]);
+
     // $oldValue = hex2bin($metadataInfo['data'][0]['metadata_entry']['value']); //16進エンコードされたバイナリ文字列をデコード
       if (!empty($data)) {
         $metadataInfo = $data[0];
@@ -272,11 +272,10 @@ class MetadataMosaicForm extends FormBase {
     //     $oldValue = ''; // デフォルト値を設定
     // }
 
-    // \Drupal::logger('qls_ch7')->notice('oldValue:<pre>@object</pre>', ['@object' => print_r($oldValue, TRUE)]);
     $updateValue = Metadata::metadataUpdateValue($oldValue, $newValue, true);
-    // \Drupal::logger('qls_ch7')->notice('updateValue:<pre>@object</pre>', ['@object' => print_r($updateValue, TRUE)]);
+
     // $targetMosaicID = new UnresolvedMosaicId(hexdec($targetMosaic)); 
-    // \Drupal::logger('qls_ch7')->notice('targetMosaicID:<pre>@object</pre>', ['@object' => print_r($targetMosaicID, TRUE)]);
+
     // $tx = new EmbeddedAccountMetadataTransactionV1(
     //   network: $networkType,
     //   signerPublicKey: $sourceKey->publicKey,  // 署名者公開鍵
@@ -295,7 +294,7 @@ class MetadataMosaicForm extends FormBase {
       valueSizeDelta: strlen($newValue) - strlen($oldValue),
       value: $updateValue,
     );
-    // \Drupal::logger('qls_ch7')->notice('tx:<pre>@object</pre>', ['@object' => print_r($tx, TRUE)]);
+
     // マークルハッシュの算出
     $embeddedTransactions = [$tx];
     $merkleHash = $facade->hashEmbeddedTransactions($embeddedTransactions);
@@ -317,7 +316,7 @@ class MetadataMosaicForm extends FormBase {
 
     $transactionApi = $this->transactionService->getTransactionApi();
     $result = $transactionApi->announceTransaction($payload);
-    // $result = $this->transactionService->announceTransaction($payload);
+
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result])); 
 
   }
@@ -327,7 +326,7 @@ class MetadataMosaicForm extends FormBase {
     if(empty($source_pvtKey) || strlen($source_pvtKey) !== 64) {
       return [];
     }
-    // \Drupal::logger('qls_ch7')->notice('384:source_pvtKey:<pre>@object</pre>', ['@object' => print_r($source_pvtKey, TRUE)]);
+
     $options = [];
     // $network_type = $form_state->getValue(['network_type']);
     // if($network_type === 'testnet') {
@@ -346,10 +345,8 @@ class MetadataMosaicForm extends FormBase {
       new PrivateKey($form_state->getValue('source_pvtKey'))
     );
     $sourceAddress = $sourceKey->address->__tostring();
-    // \Drupal::logger('qls_ch7')->notice('393:<pre>@object</pre>', ['@object' => print_r($sourceKey->address->__tostring(), TRUE)]);
 
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
 
     // $accountApiInstance = new AccountRoutesApi($client, $config);
@@ -358,7 +355,7 @@ class MetadataMosaicForm extends FormBase {
     $json_data = json_encode($account, JSON_PRETTY_PRINT);
     $array_data = json_decode($json_data, true);
     // 
-    // \Drupal::logger('qls_ch7')->notice('406:<pre>@object</pre>', ['@object' => print_r($json_data, TRUE)]); 
+
     if ($array_data['account']['mosaics']) {
       foreach ($array_data['account']['mosaics'] as $mosaic) {
         if($mosaic['id']!='72C0212E67A08BCE'){ // testnetのsymbol.xym
@@ -378,7 +375,7 @@ class MetadataMosaicForm extends FormBase {
     //   '5601E87AB77B1F80' => '5601E87AB77B1F80',
     //   '5E37B62006CD4B31' => '5E37B62006CD4B31',
     // ];
-    // \Drupal::logger('qls_ch7')->notice('415:<pre>@object</pre>', ['@object' => print_r($options, TRUE)]); 
+
     return $options;
   }
 
@@ -408,8 +405,7 @@ class MetadataMosaicForm extends FormBase {
     }
      // Log the options returned by getOwnedMosaicOptions
     $options = $this->getOwnedMosaicOptions($form_state);
-    // \Drupal::logger('qls_ch7')->notice('Mosaic options: <pre>@data</pre>', ['@data' => print_r($options, TRUE)]);
-    \Drupal::logger('qls_ch7')->notice('Mosaic options after AJAX: <pre>@data</pre>', ['@data' => print_r($options, TRUE)]);
+
 
     // AJAX リクエスト時に `getOwnedMosaicOptions` を呼び出し
     // $form['mosaic_fieldset']['mosaic'] = [
@@ -426,7 +422,6 @@ class MetadataMosaicForm extends FormBase {
   
     // 出力デバッグ
   // $response = $form['mosaic_fieldset'];
-  // \Drupal::logger('qls_ch7')->notice('Response: <pre>@response</pre>', ['@response' => print_r($response, TRUE)]);
 
   // return $response;
 
@@ -435,7 +430,6 @@ class MetadataMosaicForm extends FormBase {
     //   throw new \Exception('mosaic_fieldset is not set in the form.');
     // }
     // try {
-    //   // \Drupal::logger('qls_ch7')->notice('436:<pre>@data</pre>', ['@data' => print_r($form['mosaic_fieldset'], TRUE)]);
     //   return $form['mosaic_fieldset'];
     // } catch (\Exception $e) {
     //     \Drupal::logger('qls_ch7')->error('Error in promptCallback: @message', ['@message' => $e->getMessage()]);

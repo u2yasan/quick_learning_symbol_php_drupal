@@ -133,7 +133,7 @@ class ListOwnedMosaicsForm extends FormBase {
     // if ($account_info) {
     //   // JSON形式でアカウント情報を表示
     //   $json_data = json_encode($account_info, JSON_PRETTY_PRINT);
-    //   \Drupal::messenger()->addMessage($this->t('Account information: <pre>@data</pre>', ['@data' => $json_data]));
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
     // }
     // else {
     //   \Drupal::messenger()->addMessage($this->t('Failed to retrieve account information.'), 'error');
@@ -141,11 +141,9 @@ class ListOwnedMosaicsForm extends FormBase {
 
     $accountApi = $this->accountService->getAccountApi();
     $account_info = $accountApi->getAccountInfo($address);
-    // \Drupal::messenger()->addMessage($this->t('Account information: <pre>@object</pre>', ['@object' =>  print_r($account_info, TRUE)]))
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
     $json_data = json_encode($account_info, JSON_PRETTY_PRINT);
-    \Drupal::messenger()->addMessage($this->t('Account information: <pre>@object</pre>', ['@object' => $json_data])); 
-    
-
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
   }
 
 }

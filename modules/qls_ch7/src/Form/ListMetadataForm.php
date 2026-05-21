@@ -176,13 +176,13 @@ class ListMetadataForm extends FormBase {
     $source_pvtKey = $form_state->getValue('source_pvtKey');
     $sourceKey = $facade->createAccount(new PrivateKey($source_pvtKey));   
     $sourceAddress = $sourceKey->address; // メタデータ作成者アドレス
-    // \Drupal::logger('qls_ch7')->notice('sourceAddress:<pre>@object</pre>', ['@object' => print_r($sourceAddress, TRUE)]); 
+
     $metadataApi = $this->metadataService->getMetadataApi();
     $metadataInfo = $metadataApi->searchMetadataEntries(
       target_address: $sourceAddress,
       source_address: $sourceAddress,
     );
-    \Drupal::logger('qls_ch7')->notice('metadataInfo:<pre>@object</pre>', ['@object' => print_r($metadataInfo, TRUE)]);
+
     // {
     //   "id": "66A120C284E82060AFC1E5AE",
     //   "metadataEntry": {

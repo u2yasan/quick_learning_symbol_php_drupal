@@ -201,7 +201,7 @@ class HashLockForm extends FormBase {
     ];
 
     $result = $transactionApi->announceCosignatureTransaction($body);
-    $this->messenger()->addMessage($this->t('Cosignature successfully announced: @result', ['@result' => $result])); 
+    $this->messenger()->addMessage($this->t('Co-signed transaction successfully announced: @result', ['@result' => $result])); 
 
   }
 
@@ -318,7 +318,7 @@ class HashLockForm extends FormBase {
     $this->messenger()->addMessage($this->t('hashLockTx successfully announced: @result', ['@result' => $result])); 
     
     \Drupal::logger('qls_ch8')->debug('hashLockTx: @tx', ['@tx' => $facade->hashTransaction($hashLockTx)]);
-    sleep(35); // トランザクションの処理待ち
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
 
     /**
      * アグリゲートボンデットTxをアナウンス
@@ -334,7 +334,7 @@ class HashLockForm extends FormBase {
       ->set('page_values', [
         // Keep only first step values to minimize stored data.
         // 'network_type' => $form_state->getValue('network_type'),
-        // 'originator_pvtKey' => $form_state->getValue('originator_pvtKey'),
+
         // 'symbol_address_hidden' => $form_state->getValue('symbol_address_hidden'),
         // 'recipientAddress' => $form_state->getValue('recipientAddress'),
         // 'mosaicid' => $form_state->getValue('mosaicid'),

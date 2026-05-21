@@ -154,10 +154,9 @@ class NamespaceTransferTransactionForm extends FormBase {
     $networkType = $this->facadeService->getNetworkTypeObject();
  
     $recipient_namespace = $form_state->getValue('recipient_namespace');
-    // \Drupal::logger('qls_ch6')->notice('recipient_namespace:<pre>@object</pre>', ['@object' => print_r($recipient_namespace, TRUE)]); 
+
     // UnresolvedAccount 導出
     $namespaceId = IdGenerator::generateNamespaceId($recipient_namespace); // ルートネームスペースのIDを取得
-    // \Drupal::logger('qls_ch6')->notice('namespaceId:<pre>@object</pre>', ['@object' => print_r($namespaceId, TRUE)]); 
 
     $address = Address::fromNamespaceId(
       new NamespaceId($namespaceId),
@@ -196,7 +195,7 @@ class NamespaceTransferTransactionForm extends FormBase {
 
     $transactionApi = $this->transactionService->getTransactionApi();
     $result = $transactionApi->announceTransaction($payload);
-    // $result = $this->transactionService->announceTransaction($payload);
+
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
 
   }

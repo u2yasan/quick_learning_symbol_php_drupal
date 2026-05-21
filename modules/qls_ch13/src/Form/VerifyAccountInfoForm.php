@@ -117,7 +117,6 @@ class VerifyAccountInfoForm extends FormBase {
     //   $node_url = 'http://sym-main-03.opening-line.jp:3000';
     // }
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
 
     // $blockApiInstance = new BlockRoutesApi($client, $config);

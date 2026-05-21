@@ -3,84 +3,34 @@
 namespace Drupal\quicklearning_symbol\Service;
 
 use SymbolRestClient\Api\AccountRoutesApi;
-use SymbolRestClient\Configuration;
-use GuzzleHttp\ClientInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
 use Exception;
 
 class AccountService {
 
   /**
-   * @var \GuzzleHttp\ClientInterface
-   */
-  protected $httpClient;
-
-  /**
-   * @var \Drupal\Core\Config\ImmutableConfig
-   */
-  protected $config;
-
-  /**
-   * @var string
-   */
-  protected $networkType;
-
-  /**
-   * @var string
-   */
-  protected $nodeUrl;
-
-  /**
-   * @var \SymbolRestClient\Configuration
-   */
-  protected $configuration;
-
-  /**
+   * The AccountRoutesApi client.
+   *
    * @var \SymbolRestClient\Api\AccountRoutesApi
    */
   protected $accountApi;
 
   /**
-   * コンストラクタ
+   * The Symbol API client factory.
    *
-   * @param \GuzzleHttp\ClientInterface $http_client
-   *   HTTPクライアント。
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   設定ファクトリ。
+   * @var \Drupal\quicklearning_symbol\Service\SymbolApiClientFactory
    */
-  public function __construct(ClientInterface $http_client, ConfigFactoryInterface $config_factory) {
-    $this->httpClient = $http_client;
-    
-    // 設定を取得
-    $this->config = $config_factory->get('quicklearning_symbol.settings');
-    $this->networkType = $this->config->get('network_type');
+  protected $apiClientFactory;
 
-    // ネットワークタイプに応じた URL を取得
-    $this->nodeUrl = $this->getNodeUrl($this->networkType);
-
-    // Configuration オブジェクトを作成し、ホストを設定
-    $this->configuration = new Configuration();
-    $this->configuration->setHost($this->nodeUrl);
-
-    // API クライアントを作成
-    $this->accountApi = new AccountRoutesApi($this->httpClient, $this->configuration);
-  }
 
   /**
-   * ネットワークタイプに応じたノードURLを取得
+   * Constructs the service.
    *
-   * @param string $networkType
-   *   ネットワークタイプ ('testnet' または 'mainnet')。
-   *
-   * @return string
-   *   ノードURL。
+   * @param \Drupal\quicklearning_symbol\Service\SymbolApiClientFactory $api_client_factory
+   *   The Symbol API client factory.
    */
-  protected function getNodeUrl(string $networkType) {
-    $urls = [
-      'testnet' => 'http://sym-test-03.opening-line.jp:3000',
-      'mainnet' => 'http://sym-main-03.opening-line.jp:3000',
-    ];
-    return $urls[$networkType] ?? 'http://localhost:3000'; // デフォルトのURL
+  public function __construct(SymbolApiClientFactory $api_client_factory) {
+    $this->apiClientFactory = $api_client_factory;
+    $this->accountApi = $api_client_factory->createApi(AccountRoutesApi::class);
   }
 
   /**
@@ -93,20 +43,16 @@ class AccountService {
     return $this->accountApi;
   }
 
-  // /**
-  //  * アカウント情報を取得
-  //  *
-  //  * @param string $address
-  //  *   アカウントの Symbol アドレス。
-  //  *
-  //  * @return mixed|null
-  //  *   アカウント情報、または `NULL` (エラー時)。
-  //  */
-  // public function getAccountInfo(string $address) {
-  //   return $this->safeApiCall(function () use ($address) {
-  //     return $this->accountApi->getAccountInfo($address);
-  //   }, 'getAccountInfo');
-  // }
+  /**
+   * Gets account information.
+   */
+  public function getAccountInfo(string $address, ?string $node_url = NULL): mixed {
+    $api = $node_url
+      ? $this->apiClientFactory->createApiForNodeUrl(AccountRoutesApi::class, $node_url)
+      : $this->accountApi;
+
+    return $api->getAccountInfo($address);
+  }
 
   // /**
   //  * API 呼び出しを安全に実行

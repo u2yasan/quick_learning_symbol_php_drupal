@@ -324,7 +324,7 @@ class MultiSigACTxForm extends FormBase {
     // \Drupal::logger('qls_ch9')->info('cosignerKeys: @cosignerKeys', ['@cosignerKeys' => print_r($cosignerKeys, true)]);
     foreach ($cosignerKeys as $cosignerKey) {
       $coSig = $facade->cosignTransaction($cosignerKey->keyPair, $aggregateTx);
-      array_push($aggregateTx->cosignatures, $coSig);
+      array_push($aggregateTx->cosignature, $coSig);
     }
     
     // アナウンス
@@ -334,7 +334,7 @@ class MultiSigACTxForm extends FormBase {
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
 
     // try {
-    //   $result = $apiInstance->announceTransaction($payload);
+
     //   $this->messenger()->addMessage($this->t('Multisig Aggregate Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (Exception $e) {
     //   \Drupal::logger('qls_ch9')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);
@@ -343,8 +343,7 @@ class MultiSigACTxForm extends FormBase {
     // echo 'TxHash' . PHP_EOL;
     // echo $facade->hashTransaction($aggregateTx) . PHP_EOL;
     // \Drupal::logger('qls_ch9')->info('TxHash: @TxHash', ['@TxHash' => $facade->hashTransaction($aggregateTx)]);
-   
-    // sleep(35);
+
     // /**
     //  * 確認
     //  */

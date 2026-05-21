@@ -382,13 +382,12 @@ class LinkNamespaceForm extends FormBase {
       /**
        * モザイクへリンク
        */
-      \Drupal::logger('qls_ch6')->notice('namespace:<pre>@object</pre>', ['@object' => print_r($namespace, TRUE)]); 
+
       $namespaceIds = IdGenerator::generateNamespacePath($namespace); // ルートネームスペース
-      \Drupal::logger('qls_ch6')->notice('namespaceIds:<pre>@object</pre>', ['@object' => print_r($namespaceIds, TRUE)]); 
+
       $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
-      \Drupal::logger('qls_ch6')->notice('namespaceId:<pre>@object</pre>', ['@object' => print_r($namespaceId, TRUE)]); 
+
       $mosaicId = new MosaicId($linkmosaic);
-      // \Drupal::logger('qls_ch6')->notice('mosaicId:<pre>@object</pre>', ['@object' => print_r($mosaicId, TRUE)]);
 
       //Tx作成
       $tx = new MosaicAliasTransactionV1(
@@ -402,22 +401,19 @@ class LinkNamespaceForm extends FormBase {
 
     }else if($aliastype_select == 2){
       $linkaddress = $form_state->getValue('address');
-      // \Drupal::logger('qls_ch6')->notice('linkaddress:<pre>@object</pre>', ['@object' => print_r($linkaddress, TRUE)]);
 
       /**
        * アカウントへのリンク
        */
-      \Drupal::logger('qls_ch6')->notice('namespace:<pre>@object</pre>', ['@object' => print_r($namespace, TRUE)]);
+
       $namespaceId = IdGenerator::generateNamespaceId($namespace);
       // $namespaceIds = IdGenerator::generateNamespacePath($namespace); // ルートネームスペース
-      // \Drupal::logger('qls_ch6')->notice('namespaceIds:<pre>@object</pre>', ['@object' => print_r($namespaceIds, TRUE)]);
+
       // $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
-      // \Drupal::logger('qls_ch6')->notice('namespaceId:<pre>@object</pre>', ['@object' => print_r($namespaceId, TRUE)]);
-      // $ownerKey = $facade->createAccount(new PrivateKey($ownder_pvtKey));
+
       $linkaddress = $ownerKey->address;
-      // \Drupal::logger('qls_ch6')->notice('address:<pre>@object</pre>', ['@object' => print_r($address, TRUE)]);
-      // \Drupal::logger('qls_ch6')->notice('new address:<pre>@object</pre>', ['@object' => print_r(new Address($linkaddress), TRUE)]);
-      
+
+
       //Tx作成
       $tx = new AddressAliasTransactionV1(
         network: $networkType,
@@ -435,15 +431,14 @@ class LinkNamespaceForm extends FormBase {
     //署名
     $sig = $ownerKey->signTransaction($tx);
     $payload = $facade->attachSignature($tx, $sig);
-    // \Drupal::logger('qls_ch6')->notice('payload:<pre>@object</pre>', ['@object' => print_r($payload, TRUE)]);
+
 
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
     // $apiInstance = new TransactionRoutesApi($client, $config);
 
 // try {
-//   $result = $apiInstance->announceTransaction($payload);
+
 //   echo $result . PHP_EOL;
 // } catch (Exception $e) {
 //   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
@@ -464,22 +459,21 @@ class LinkNamespaceForm extends FormBase {
 
     // // 署名
     // $sig = $ownerKey->signTransaction($tx);
-    // $payload = $facade->attachSignature($tx, $sig);
+
 
     // // アナウンス
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
     // $apiInstance = new TransactionRoutesApi($client, $config);
     
     // try {
-    //   $result = $apiInstance->announceTransaction($payload);
+
     //   // echo $result . PHP_EOL;
     //   $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (Exception $e) {
     //   \Drupal::logger('qls_ch6')->error('トランザクションの発行中にエラーが発生しました: @message', ['@message' => $e->getMessage()]);
     // }
-    // $result = $this->transactionService->announceTransaction($payload);
+
     $transactionApi = $this->transactionService->getTransactionApi();
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));

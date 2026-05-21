@@ -99,21 +99,21 @@ class OfflineCosigAnnounceTxForm extends FormBase {
     // // $aggregateTx = $facade->getTransaction(new Hash256($signTxHash));
     // $cosig_siner_pubkey_str = $form_state->getValue(['sig_field', 'cosig_siner_pubkey']);
     // $cosig_siner_pubkey = new PublicKey($cosig_siner_pubkey_str);
-    // $cosig_siner_signature = $form_state->getValue(['sig_field', 'cosig_siner_signature']);
-    // $cosigSignerSignatureStr = $form_state->getValue(['sig_field', 'cosig_siner_signature']);
-    // $cosigSignerSignature = new Cosignature($cosigSignerSignatureStr);
+
+
+
 
     // 連署者の署名を追加
-    // $cosignature = new Cosignature();
+
     // // $signTxHash = $facade->hashTransaction($aggregateTx);
-    // $cosignature->parentHash = new Hash256($signTxHash);
-    // $cosignature->version = 0;
-    // $cosignature->signerPublicKey = $cosig_siner_pubkey;
-    // $cosignature->signature = $cosig_siner_signature;
-    // array_push($recreatedTx->cosignatures, $cosignature);
+
+
+
+
+
 
     $signedPayload = ["payload" => strtoupper(bin2hex($recreatedTx->serialize()))];
-    // echo $signedPayload;
+
 
     try {
       $result = $transactionApi->announceTransaction($signedPayload);

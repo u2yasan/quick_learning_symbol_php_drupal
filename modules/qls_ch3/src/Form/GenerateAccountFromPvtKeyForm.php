@@ -106,10 +106,9 @@ class GenerateAccountFromPvtKeyForm extends FormBase {
 
     // 出力例
     // /admin/reports/dblog でログを確認
-    //\Drupal::logger('qls_ch3')->notice('<pre>@object</pre>', ['@object' => print_r($aliceKey, TRUE)]);   
 
     // $this->messenger()->addMessage($this->t('You specified a network_type of %network_type.', ['%network_type' => $network_type]));
-    $this->messenger()->addMessage($this->t('accountKey->addresst:<pre>@object</pre>', ['@object' => print_r($accountRawAddress, TRUE)]));
+    $this->messenger()->addStatus($this->t('Result retrieved. Detailed raw output is suppressed for security.'));
     $this->messenger()->addMessage($this->t('Account address generated. RawAddress: @rawAddress', ['@rawAddress' => $accountRawAddress]));
   }
 

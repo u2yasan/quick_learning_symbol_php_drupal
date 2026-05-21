@@ -251,9 +251,9 @@ class SecretLockForm extends FormBase {
     // 署名
     $lockSig = $originatorKey->signTransaction($lockTx);
     $payload = $facade->attachSignature($lockTx, $lockSig);
-    // \Drupal::logger('qls_ch8')->notice('Secret Lock Payload: @payload', ['@payload' => $payload]);
+
     // try {
-    //   $result = $apiInstance->announceTransaction($payload);
+
     //   $this->messenger()->addMessage($this->t('Lock Transaction successfully announced: @result', ['@result' => $result]));
     //   // echo $result . PHP_EOL;
     // } catch (Exception $e) {
@@ -266,9 +266,7 @@ class SecretLockForm extends FormBase {
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('Lock Transaction successfully announced: @result', ['@result' => $result])); 
     $this->messenger()->addMessage($this->t('Secret Lock TxHash: @hash', ['@hash' => $facade->hashTransaction($lockTx)]));  
-    
 
-    // sleep(1);
 
     // // シークレットプルーフTx作成
     // $proofTx = new SecretProofTransactionV1(
@@ -284,10 +282,10 @@ class SecretLockForm extends FormBase {
 
     // // 署名
     // $proofSig = $bobKey->signTransaction($proofTx);
-    // $payload = $facade->attachSignature($proofTx, $proofSig);
+
 
     // try {
-    //   $result = $apiInstance->announceTransaction($payload);
+
     //   echo $result . PHP_EOL;
     // } catch (Exception $e) {
     //   echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
@@ -295,7 +293,6 @@ class SecretLockForm extends FormBase {
     // echo 'シークレットプルーフTxHash' . PHP_EOL;
     // echo $facade->hashTransaction($proofTx) . PHP_EOL;
 
-    // sleep(30);
 
     /**
      * 結果の確認

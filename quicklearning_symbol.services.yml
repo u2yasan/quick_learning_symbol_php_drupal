@@ -4,7 +4,7 @@ services:
     arguments: ['@config.factory']
   quicklearning_symbol.api_client_factory:
     class: Drupal\quicklearning_symbol\Service\SymbolApiClientFactory
-    arguments: ['@http_client', '@quicklearning_symbol.config']
+    arguments: ['@http_client_factory', '@quicklearning_symbol.config']
   quicklearning_symbol.facade_factory:
     class: Drupal\quicklearning_symbol\Service\SymbolFacadeFactory
     arguments: ['@quicklearning_symbol.config']
@@ -13,43 +13,43 @@ services:
     arguments: ['@quicklearning_symbol.facade_factory']
   quicklearning_symbol.namespace_service:
     class: Drupal\quicklearning_symbol\Service\NamespaceService
-    arguments: ['@http_client', '@config.factory']
+    arguments: ['@quicklearning_symbol.api_client_factory']
   quicklearning_symbol.network_service:
     class: Drupal\quicklearning_symbol\Service\NetworkService
     arguments: ['@quicklearning_symbol.api_client_factory']
   quicklearning_symbol.account_service:
     class: Drupal\quicklearning_symbol\Service\AccountService
-    arguments: ['@http_client', '@config.factory']
+    arguments: ['@quicklearning_symbol.api_client_factory']
   quicklearning_symbol.transaction_service:
     class: 'Drupal\quicklearning_symbol\Service\TransactionService'
     arguments: ['@quicklearning_symbol.api_client_factory', '@quicklearning_symbol.facade_factory']
   quicklearning_symbol.transaction_status_service:
     class: 'Drupal\quicklearning_symbol\Service\TransactionStatusService'
-    arguments: ['@http_client', '@config.factory']     
+    arguments: ['@quicklearning_symbol.api_client_factory']     
   quicklearning_symbol.mosaic_service:
     class: 'Drupal\quicklearning_symbol\Service\MosaicService'
-    arguments: ['@http_client', '@config.factory']    
+    arguments: ['@quicklearning_symbol.api_client_factory']    
   quicklearning_symbol.node_service:
     class: 'Drupal\quicklearning_symbol\Service\NodeService'
-    arguments: ['@http_client', '@config.factory'] 
+    arguments: ['@quicklearning_symbol.api_client_factory'] 
   quicklearning_symbol.block_service:
     class: 'Drupal\quicklearning_symbol\Service\BlockService'
-    arguments: ['@http_client', '@config.factory']   
+    arguments: ['@quicklearning_symbol.api_client_factory']   
   quicklearning_symbol.chain_service:
     class: 'Drupal\quicklearning_symbol\Service\ChainService'
-    arguments: ['@http_client', '@config.factory']      
+    arguments: ['@quicklearning_symbol.api_client_factory']      
   quicklearning_symbol.receipt_service:
     class: 'Drupal\quicklearning_symbol\Service\ReceiptService'
-    arguments: ['@http_client', '@config.factory']     
+    arguments: ['@quicklearning_symbol.api_client_factory']     
   quicklearning_symbol.metadata_service:
     class: 'Drupal\quicklearning_symbol\Service\MetadataService'
-    arguments: ['@http_client', '@config.factory'] 
+    arguments: ['@quicklearning_symbol.api_client_factory'] 
   quicklearning_symbol.multisig_service:
     class: 'Drupal\quicklearning_symbol\Service\MultisigService'
-    arguments: ['@http_client', '@config.factory']
+    arguments: ['@quicklearning_symbol.api_client_factory']
   quicklearning_symbol.restriction_account_service:
     class: 'Drupal\quicklearning_symbol\Service\RestrictionAccountService'
-    arguments: ['@http_client', '@config.factory'] 
+    arguments: ['@quicklearning_symbol.api_client_factory'] 
   quicklearning_symbol.restriction_mosaic_service:
     class: 'Drupal\quicklearning_symbol\Service\RestrictionMosaicService'
-    arguments: ['@http_client', '@config.factory']        
+    arguments: ['@quicklearning_symbol.api_client_factory']        

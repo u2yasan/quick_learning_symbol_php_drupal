@@ -206,7 +206,6 @@ class MultiSigABTxForm extends FormBase {
     //   $node_url = 'http://sym-main-03.opening-line.jp:3000';
     // }
     // $config = new Configuration();
-    // $config->setHost($node_url);
     // $client = \Drupal::httpClient();
 
     // $apiInstance = new TransactionRoutesApi($client, $config);
@@ -250,7 +249,7 @@ class MultiSigABTxForm extends FormBase {
     // $cosignerKeys = [];
     // if (is_array($cosigners)) {
     //   foreach ($cosigners as $cosigner) {
-    //     $cosignerKey = $facade->createAccount(new PrivateKey($cosigner));
+
     //     \Drupal::logger('qls_ch9')->info('cosigner: @cosigner', ['@cosigner' => $cosigner]);
     //     $cosignerKeys[] = $cosignerKey;
     //   }
@@ -304,7 +303,7 @@ class MultiSigABTxForm extends FormBase {
     // \Drupal::logger('qls_ch9')->info('cosignerKeys: @cosignerKeys', ['@cosignerKeys' => print_r($cosignerKeys, true)]);
     // foreach ($cosignerKeys as $cosignerKey) {
     //   $coSig = $facade->cosignTransaction($cosignerKey->keyPair, $aggregateTx);
-    //   array_push($aggregateTx->cosignatures, $coSig);
+
     // }
 
     $namespaceIds = IdGenerator::generateNamespacePath('symbol.xym');
@@ -334,7 +333,7 @@ class MultiSigABTxForm extends FormBase {
     $this->messenger()->addMessage($this->t('HashLock Transaction successfully announced: @result', ['@result' => $result]));
     
     // try {
-    //   $result = $apiInstance->announceTransaction($hashLockJsonPayload);
+
     //   $this->messenger()->addMessage($this->t('HashLock Transaction successfully announced: @result', ['@result' => $result]));
 
     //   // echo $result . PHP_EOL;
@@ -342,7 +341,7 @@ class MultiSigABTxForm extends FormBase {
     //   \Drupal::logger('qls_ch9')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);
     //   // echo 'Exception when calling TransactionRoutesApi->announceTransaction: ', $e->getMessage(), PHP_EOL;
     // }
-    sleep(40);
+    $this->messenger()->addStatus($this->t('Transaction submitted. Use the confirmation form to check final network status.'));
 
     // ボンデッドTxのアナウンス
 
@@ -354,7 +353,7 @@ class MultiSigABTxForm extends FormBase {
     $this->messenger()->addMessage($this->t('Aggregated Bounded TxHash: @TxHash', ['@TxHash' => $facade->hashTransaction($aggregateTx)])); 
 
     // try {
-    //   $result = $apiInstance->announcePartialTransaction($payload);
+
     //   $this->messenger()->addMessage($this->t('Multisig Aggregate Bounded Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (Exception $e) {
     //   \Drupal::logger('qls_ch9')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);
@@ -369,9 +368,9 @@ class MultiSigABTxForm extends FormBase {
     // echo $facade->hashTransaction($hashLockTx) . PHP_EOL;
 
     // アナウンス
-    // $payload = ["payload" => strtoupper(bin2hex($aggregateTx->serialize()))];
+
     // try {
-    //   $result = $apiInstance->announceTransaction($payload);
+
     //   $this->messenger()->addMessage($this->t('Multisig Aggregate Transaction successfully announced: @result', ['@result' => $result]));
     // } catch (Exception $e) {
     //   \Drupal::logger('qls_ch9')->error('Transaction Failed: @message', ['@message' => $e->getMessage()]);
@@ -380,8 +379,7 @@ class MultiSigABTxForm extends FormBase {
     // echo 'TxHash' . PHP_EOL;
     // echo $facade->hashTransaction($aggregateTx) . PHP_EOL;
     // \Drupal::logger('qls_ch9')->info('TxHash: @TxHash', ['@TxHash' => $facade->hashTransaction($aggregateTx)]);
-   
-    // sleep(35);
+
     // /**
     //  * 確認
     //  */
