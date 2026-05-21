@@ -100,8 +100,6 @@ class OfflineCosigAnnounceTxForm extends FormBase {
     // $cosig_siner_pubkey_str = $form_state->getValue(['sig_field', 'cosig_siner_pubkey']);
     // $cosig_siner_pubkey = new PublicKey($cosig_siner_pubkey_str);
     // $cosig_siner_signature = $form_state->getValue(['sig_field', 'cosig_siner_signature']);
-    // $account_pvtKey = $form_state->getValue(['sig_field', 'account_pvtKey']);
-    // $accountKey = $facade->createAccount(new PrivateKey($account_pvtKey));
     // $cosigSignerSignatureStr = $form_state->getValue(['sig_field', 'cosig_siner_signature']);
     // $cosigSignerSignature = new Cosignature($cosigSignerSignatureStr);
 
@@ -116,7 +114,6 @@ class OfflineCosigAnnounceTxForm extends FormBase {
 
     $signedPayload = ["payload" => strtoupper(bin2hex($recreatedTx->serialize()))];
     // echo $signedPayload;
-    // \Drupal::logger('qls_ch12')->info('signedPayload: @signedPayload', ['@signedPayload' => $signedPayload]);
 
     try {
       $result = $transactionApi->announceTransaction($signedPayload);

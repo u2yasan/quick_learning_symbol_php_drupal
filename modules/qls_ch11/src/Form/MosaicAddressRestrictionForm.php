@@ -144,7 +144,6 @@ class MosaicAddressRestrictionForm extends FormBase {
     // $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
 
     $account_pvtKey = $form_state->getValue('account_pvtKey');
-    // \Drupal::logger('qls_ch11')->info('account_pvtKey: @account_pvtKey', ['@account_pvtKey' => $account_pvtKey]);
     $accountKey = $facade->createAccount(new PrivateKey($account_pvtKey));
     $accountPubKey = $accountKey->publicKey;
     // \Drupal::logger('qls_ch11')->info('accountKey_pubKey: @accountKey', ['@accountKey' => $accountKey->publicKey]);
@@ -181,7 +180,7 @@ class MosaicAddressRestrictionForm extends FormBase {
     $sig = $accountKey->signTransaction($mosaicAddressResTx);
     // \Drupal::logger('qls_ch11')->info('sig: @sig', ['@sig' => $sig]);
     $payload = $facade->attachSignature($mosaicAddressResTx, $sig);
-    \Drupal::logger('qls_ch11')->info('Payload: @payload', ['@payload' => print_r($payload, TRUE)]);
+    \Drupal::logger('qls_ch11')->info('Mosaic address restriction transaction payload created.');
     try {
       $result = $transactionApi->announceTransaction($payload);
       $this->messenger()->addMessage($this->t('AccountAddressRestriction Transaction successfully announced: @result', ['@result' => $result]));

@@ -214,7 +214,6 @@ class SecretLockForm extends FormBase {
     $networkType = $this->facadeService->getNetworkTypeObject();
 
     $originator_pvtKey = $form_state->getValue('originator_pvtKey');
-    // \Drupal::logger('qls_ch8')->notice('originator_pvtKey: @originator_pvtKey', ['@originator_pvtKey' => $originator_pvtKey]); 
     $originatorKey = $facade->createAccount(new PrivateKey($originator_pvtKey));
     // \Drupal::logger('qls_ch8')->notice('signerPublicKey: @signerPublicKey', ['@signerPublicKey' => $originatorKey->publicKey]);
     

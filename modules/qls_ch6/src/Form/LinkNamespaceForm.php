@@ -413,7 +413,6 @@ class LinkNamespaceForm extends FormBase {
       // \Drupal::logger('qls_ch6')->notice('namespaceIds:<pre>@object</pre>', ['@object' => print_r($namespaceIds, TRUE)]);
       // $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
       // \Drupal::logger('qls_ch6')->notice('namespaceId:<pre>@object</pre>', ['@object' => print_r($namespaceId, TRUE)]);
-      // $ownder_pvtKey = $form_state->get('ownder_pvtKey');
       // $ownerKey = $facade->createAccount(new PrivateKey($ownder_pvtKey));
       $linkaddress = $ownerKey->address;
       // \Drupal::logger('qls_ch6')->notice('address:<pre>@object</pre>', ['@object' => print_r($address, TRUE)]);

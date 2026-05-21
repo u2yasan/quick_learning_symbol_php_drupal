@@ -12,7 +12,7 @@ qls_ch12.settings:
     _form: '\Drupal\qls_ch12\Form\SettingsForm'
     _title: 'Section 12 Settings'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer quicklearning symbol settings'
 
 qls_ch12.offline_sig_tx_form:
   path: '/quicklearning_symbol/qls_ch12/offline_sig_tx_form'
@@ -20,7 +20,7 @@ qls_ch12.offline_sig_tx_form:
     _form: '\Drupal\qls_ch12\Form\OfflineSigTxForm'
     _title: 'Section 12 Offline Sig Tx Form'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'
 
 qls_ch12.offline_cosig_tx_form:
   path: '/quicklearning_symbol/qls_ch12/offline_cosig_tx_form'
@@ -28,7 +28,7 @@ qls_ch12.offline_cosig_tx_form:
     _form: '\Drupal\qls_ch12\Form\OfflineCosigTxForm'
     _title: 'Section 12 Offline Co-Sig Tx Form'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'
 
 qls_ch12.offline_cosig_announce_tx_form:
   path: '/quicklearning_symbol/qls_ch12/offline_cosig_announce_tx_form'
@@ -36,4 +36,4 @@ qls_ch12.offline_cosig_announce_tx_form:
     _form: '\Drupal\qls_ch12\Form\OfflineCosigAnnounceTxForm'
     _title: 'Section 12 Offline Co-Sig Announce Tx Form'
   requirements:
-    _permission: 'access content'    
+    _permission: 'use quicklearning symbol transaction examples'    

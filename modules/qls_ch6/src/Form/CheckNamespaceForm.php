@@ -106,10 +106,8 @@ class CheckNamespaceForm extends FormBase {
   //   }
   // }
   // public function validateForm(array &$form, FormStateInterface $form_state) {
-  //   $pvtKey = $form_state->getValue('account_pvtKey');
   //   if (strlen($pvtKey) !=  64) {
   //     // Set an error for the form element with a key of "title".
-  //     $form_state->setErrorByName('account_pvtKey', $this->t('The private key must be 64 characters long.'));
   //   }
   // }
 

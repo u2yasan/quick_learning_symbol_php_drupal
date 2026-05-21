@@ -195,7 +195,6 @@ class ListMosaicsForm extends FormBase {
   // public function updateSymbolAddress(array &$form, FormStateInterface $form_state) {
     
   //   // 入力されたプライベートキーを取得
-  //   $pvtKey = $form_state->getValue('account_pvtKey');
   //   if (!$pvtKey || strlen($pvtKey) !== 64) {
   //     // エラーメッセージをフォームに追加
   //     $form['symbol_address']['#markup'] = '<div id="symbol-address-wrapper" style="color: red;">'

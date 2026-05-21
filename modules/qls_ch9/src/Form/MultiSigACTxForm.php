@@ -333,7 +333,6 @@ class MultiSigACTxForm extends FormBase {
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('Transaction successfully announced: @result', ['@result' => $result]));
 
-    // \Drupal::logger('qls_ch9')->info('payload: @payload', ['@payload' => print_r($payload, true)]);
     // try {
     //   $result = $apiInstance->announceTransaction($payload);
     //   $this->messenger()->addMessage($this->t('Multisig Aggregate Transaction successfully announced: @result', ['@result' => $result]));

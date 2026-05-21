@@ -175,7 +175,6 @@ class OfflineSigTxForm extends FormBase {
     $networkType = $this->facadeService->getNetworkTypeObject();
 
     $account_pvtKey = $form_state->getValue('account_pvtKey');
-    // \Drupal::logger('qls_ch12')->info('account_pvtKey: @account_pvtKey', ['@account_pvtKey' => $account_pvtKey]);
     $accountKey = $facade->createAccount(new PrivateKey($account_pvtKey));
     $accountPubKey = $accountKey->publicKey;
     // \Drupal::logger('qls_ch12')->info('accountKey_pubKey: @accountKey', ['@accountKey' => $accountKey->publicKey]);
@@ -216,8 +215,7 @@ class OfflineSigTxForm extends FormBase {
     $signedHash = $accountKey->signTransaction($aggregateTx);
     $signedPayload = $facade->attachSignature($aggregateTx, $signedHash);
     // \Drupal::logger('qls_ch12')->info('Signed Payload: @signedPayload', ['@signedPayload' => print_r($signedPayload['payload'], TRUE)]);
-    $this->messenger()->addMessage($this->t('Signe Tx Hash @signTxHash', ['@signTxHash' => $signTxHash]));
-    $this->messenger()->addMessage($this->t('Signed Hash @signedHash', ['@signedHash' => $signedHash]));
-    $this->messenger()->addMessage($this->t('Signed Payload <pre>@signedPayload</pre>', ['@signedPayload' => print_r($signedPayload['payload'], TRUE)]));
+    $this->messenger()->addMessage($this->t('Signed transaction hash: @signTxHash', ['@signTxHash' => $signTxHash]));
+    $this->messenger()->addStatus($this->t('Signed payload created. Displaying signed payloads in Drupal messages is disabled to avoid leaking signatures.'));
   }
 }

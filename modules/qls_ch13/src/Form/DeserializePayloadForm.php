@@ -118,13 +118,12 @@ class DeserializePayloadForm extends FormBase {
 
     $payload = $form_state->getValue('payload');
     $tx = TransactionFactory::deserialize(hex2bin($payload));
-    \Drupal::logger('qls_ch13')->info('tx: @tx', ['@tx' => print_r($tx, TRUE)]);
+    \Drupal::logger('qls_ch13')->info('Payload deserialized for verification.');
     $hash = $facade->hashTransaction($tx);
 
     // $signature = new Signature($tx->signature);
     // $res = $facade->verifyTransaction($tx, $signature);
     // \Drupal::logger('qls_ch13')->info('verify: @res', ['@res' => $res]);
-    // $this->messenger()->addMessage($this->t('Signed Payload <pre>@signedPayload</pre>', ['@signedPayload' => print_r($signedPayload['payload'], TRUE)]));
    
     /**
      * マークルコンポーネントハッシュの計算

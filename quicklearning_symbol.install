@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall hooks for Quick Learning Symbol.
+ */
+
+/**
+ * Remove private keys previously stored in configuration.
+ */
+function quicklearning_symbol_update_11001(): void {
+  $config_factory = \Drupal::configFactory();
+
+  $quicklearning_symbol = $config_factory->getEditable('quicklearning_symbol.settings');
+  $quicklearning_symbol
+    ->clear('restrict_account_pvtKey')
+    ->clear('cosignatory1_pvtKey')
+    ->clear('cosignatory2_pvtKey')
+    ->clear('cosignatory3_pvtKey')
+    ->clear('cosignatory4_pvtKey')
+    ->clear('cosignatory5_pvtKey')
+    ->save();
+
+  $qls_ch9 = $config_factory->getEditable('qls_ch9.settings');
+  $qls_ch9
+    ->clear('multisig_pvtKey')
+    ->clear('cosignatory1_pvtKey')
+    ->clear('cosignatory2_pvtKey')
+    ->clear('cosignatory3_pvtKey')
+    ->clear('cosignatory4_pvtKey')
+    ->clear('cosignatory5_pvtKey')
+    ->save();
+}

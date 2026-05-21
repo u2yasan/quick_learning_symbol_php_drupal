@@ -139,9 +139,8 @@ class OfflineCosigTxForm extends FormBase {
     // $networkType = $this->facadeService->getNetworkTypeObject();
   
     $payload = $form_state->getValue(['payload_fieldset', 'payload']);
-    // \Drupal::logger('qls_ch12')->info('payload: @payload', ['@payload' => $payload]);
     $tx = TransactionFactory::deserialize(hex2bin($payload)); // バイナリデータにする
-    \Drupal::logger('qls_ch12')->info('tx: @tx', ['@tx' => print_r($tx, TRUE)]);
+    \Drupal::logger('qls_ch12')->info('Offline aggregate transaction loaded for cosignature.');
     $signature = new Signature($tx->signature);
     $res = $facade->verifyTransaction($tx, $signature);
     \Drupal::logger('qls_ch12')->info('verify: @res', ['@res' => $res]);
@@ -179,7 +178,6 @@ class OfflineCosigTxForm extends FormBase {
     $tx = TransactionFactory::deserialize(hex2bin($payload)); // バイナリデータにする
 
     $account_pvtKey = $form_state->getValue(['sig_field','account_pvtKey']);
-    \Drupal::logger('qls_ch12')->info('account_pvtKey: @account_pvtKey', ['@account_pvtKey' => $account_pvtKey]);
     $accountKey = $facade->createAccount(new PrivateKey($account_pvtKey));
     // $accountPubKey = $accountKey->publicKey;
     // $cosignature = $facade->cosignTransaction($accountKey->keyPair, $tx, true);
@@ -203,8 +201,8 @@ class OfflineCosigTxForm extends FormBase {
     array_push($tx->cosignatures, $cosig);
 
     $signedPayload = ["payload" => strtoupper(bin2hex($tx->serialize()))];
-    \Drupal::logger('qls_ch12')->info('signedPayload: @signedPayload', ['@signedPayload' => print_r($signedPayload, TRUE)]);
-    $this->messenger()->addMessage($this->t('signedPayload: @signedPayload', ['@signedPayload' => $signedPayload['payload']])); 
+    \Drupal::logger('qls_ch12')->info('Offline cosignature payload created.');
+    $this->messenger()->addStatus($this->t('Offline cosignature payload created. Copying payloads from the message area is disabled to avoid leaking signatures.'));
 
     // \Drupal::logger('qls_ch12')->info('signedTxSignature: @signedTxSignature', ['@signedTxSignature' => $signedTxSignature]);
     // $this->messenger()->addMessage($this->t('signedTxSignature: <pre>@signedTxSignature</pre>', ['@signedTxSignature' => $signedTxSignature]));

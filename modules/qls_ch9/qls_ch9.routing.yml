@@ -12,8 +12,7 @@ qls_ch9.settings:
     _form: '\Drupal\qls_ch9\Form\SettingsForm'
     _title: 'Qucik Learning Symbol Section 9 Settings'
   requirements:
-    _permission: 'access content'
-    # _permission: 'administer site configuration'
+    _permission: 'administer quicklearning symbol settings'
 
 qls_ch9.multi_sig_form:
   path: '/quicklearning_symbol/qls_ch9/multi_sig_form'
@@ -21,7 +20,7 @@ qls_ch9.multi_sig_form:
     _form: '\Drupal\qls_ch9\Form\MultiSigForm'
     _title: 'Qucik Learning Symbol Section 9 Multi Signature Form'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'
 
 qls_ch9.multi_sig_actx_form:
   path: '/quicklearning_symbol/qls_ch9/multi_sig_actx_form'
@@ -29,7 +28,7 @@ qls_ch9.multi_sig_actx_form:
     _form: '\Drupal\qls_ch9\Form\MultiSigACTxForm'
     _title: 'Qucik Learning Symbol Section 9 Multi Signature Aggregate Complete Transaction Form'
   requirements:
-    _permission: 'access content'    
+    _permission: 'use quicklearning symbol transaction examples'    
 
 qls_ch9.multi_sig_abtx_form:
   path: '/quicklearning_symbol/qls_ch9/multi_sig_abtx_form'
@@ -37,7 +36,7 @@ qls_ch9.multi_sig_abtx_form:
     _form: '\Drupal\qls_ch9\Form\MultiSigABTxForm'
     _title: 'Qucik Learning Symbol Section 9 Multi Signature Aggregate Bounded Transaction Form'
   requirements:
-    _permission: 'access content'  
+    _permission: 'use quicklearning symbol transaction examples'  
 
 qls_ch9.multi_sig_cosig_form:
   path: '/quicklearning_symbol/qls_ch9/multi_sig_cosig_form'
@@ -45,7 +44,7 @@ qls_ch9.multi_sig_cosig_form:
     _form: '\Drupal\qls_ch9\Form\MultiSigCosigForm'
     _title: 'Qucik Learning Symbol Section 9 Multi Signature Co-Signature Transaction Form'
   requirements:
-    _permission: 'access content'      
+    _permission: 'use quicklearning symbol transaction examples'      
 
 qls_ch9.multi_sig_confirm_form:
   path: '/quicklearning_symbol/qls_ch9/multi_sig_confirm_form'
@@ -53,7 +52,7 @@ qls_ch9.multi_sig_confirm_form:
     _form: '\Drupal\qls_ch9\Form\MultiSigConfirmForm'
     _title: 'Qucik Learning Symbol Section 9 Multi Signature Confirm Transaction Form'
   requirements:
-    _permission: 'access content'          
+    _permission: 'use quicklearning symbol transaction examples'          
 
 qls_ch9.multi_sig_modify_form:
   path: '/quicklearning_symbol/qls_ch9/multi_sig_modify_form'
@@ -61,4 +60,4 @@ qls_ch9.multi_sig_modify_form:
     _form: '\Drupal\qls_ch9\Form\MultiSigModifyForm'
     _title: 'Qucik Learning Symbol Section 9 Multi Signature Modify Form'
   requirements:
-    _permission: 'access content'      
+    _permission: 'use quicklearning symbol transaction examples'      

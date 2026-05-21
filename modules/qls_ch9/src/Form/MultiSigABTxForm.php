@@ -370,7 +370,6 @@ class MultiSigABTxForm extends FormBase {
 
     // アナウンス
     // $payload = ["payload" => strtoupper(bin2hex($aggregateTx->serialize()))];
-    // \Drupal::logger('qls_ch9')->info('payload: @payload', ['@payload' => print_r($payload, true)]);
     // try {
     //   $result = $apiInstance->announceTransaction($payload);
     //   $this->messenger()->addMessage($this->t('Multisig Aggregate Transaction successfully announced: @result', ['@result' => $result]));

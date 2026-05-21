@@ -110,7 +110,7 @@ class GenerateAccountFromPvtKeyForm extends FormBase {
 
     // $this->messenger()->addMessage($this->t('You specified a network_type of %network_type.', ['%network_type' => $network_type]));
     $this->messenger()->addMessage($this->t('accountKey->addresst:<pre>@object</pre>', ['@object' => print_r($accountRawAddress, TRUE)]));
-    $this->messenger()->addMessage($this->t('Account created from Private Key! RawAddress: @rawAddress', ['@rawAddress' => $accountRawAddress]));
+    $this->messenger()->addMessage($this->t('Account address generated. RawAddress: @rawAddress', ['@rawAddress' => $accountRawAddress]));
   }
 
 }

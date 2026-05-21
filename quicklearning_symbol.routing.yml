@@ -12,4 +12,4 @@ quicklearning_symbol.settings:
     _form: '\Drupal\quicklearning_symbol\Form\SettingsForm'
     _title: 'Quick Learning Symbol Settings'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer quicklearning symbol settings'

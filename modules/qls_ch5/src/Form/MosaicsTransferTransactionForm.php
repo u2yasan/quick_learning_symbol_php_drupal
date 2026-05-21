@@ -104,14 +104,11 @@ class MosaicsTransferTransactionForm extends FormBase {
       '#default_value' => 'TAJZXDFDOCVYVID4S45BLPGSPLPFUQIAUO5PBIA',
     ];
 
-    // `sender_pvtKey` を復元
-    $saved_sender_pvtKey = $form_state->get('sender_pvtKey') ?? '';
     $form['sender_pvtKey'] = [
       '#type' => 'password',
       '#title' => $this->t('Sender Private Key'),
       '#description' => $this->t('Enter the private key of the sender.'),
       '#required' => TRUE,
-      '#default_value' => $saved_sender_pvtKey,
     ];
 
     // $form['deadline'] = [

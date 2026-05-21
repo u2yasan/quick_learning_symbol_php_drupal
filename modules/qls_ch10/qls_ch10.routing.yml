@@ -12,7 +12,7 @@ qls_ch10.settings:
     _form: '\Drupal\qls_ch10\Form\SettingsForm'
     _title: 'QLS SS10 Settings'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer quicklearning symbol settings'
 
 qls_ch10.multi_sig_form:
   path: '/quicklearning_symbol/qls_ch10/multi_sig_form'
@@ -20,4 +20,4 @@ qls_ch10.multi_sig_form:
     _form: '\Drupal\qls_ch10\Form\MultiSigForm'
     _title: 'QLS SS10 Multi Signature Form'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'

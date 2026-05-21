@@ -286,7 +286,6 @@ class HashLockForm extends FormBase {
     // 署名
     $sig = $originatorKey->signTransaction($aggregateTx);
     $payload = $facade->attachSignature($aggregateTx, $sig);
-    // \Drupal::logger('qls_ch8')->debug('payload: @payload', ['@payload' => print_r(payload, TRUE)]); 
     /**
      * ハッシュロック
      */

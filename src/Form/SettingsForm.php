@@ -58,25 +58,9 @@ class SettingsForm extends ConfigFormBase {
       '#description' => 'http://sym-main-03.opening-line.jp:3000',
     ];
 
-    // NOTE: do NOT save private key in database especially in plain text.
-    $form['restrict_account_pvtKey'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Account Private Key to be restricted'),
-      '#default_value' => $config->get('restrict_account_pvtKey'),
-      '#description' => $this->t('Restrict account'),
-    ];
     $form['symbol_address'] = [
       '#markup' => '<div id="symbol_address">Symbol Address</div>',
     ];
-
-    for ($i = 1; $i <= 5; $i++) {
-      $form["cosignatory{$i}_pvtKey"] = [
-        '#type' => 'textfield',
-        '#title' => $this->t("Cosignatory @number", ['@number' => $i]),
-        '#default_value' => $config->get("cosignatory{$i}_pvtKey"),
-        '#description' => $this->t("Cosignatory @number of multi-signature", ['@number' => $i]),
-      ];
-    }
     
 
     return parent::buildForm($form, $form_state);
@@ -91,12 +75,6 @@ class SettingsForm extends ConfigFormBase {
       ->set('network_type', $form_state->getValue('network_type'))
       ->set('test_node_url', $form_state->getValue('node_url_test'))
       ->set('main_node_url', $form_state->getValue('node_url_main'))
-      ->set('restrict_account_pvtKey', $form_state->getValue('restrict_account_pvtKey'))
-      ->set('cosignatory1_pvtKey', $form_state->getValue('cosignatory1_pvtKey'))
-      ->set('cosignatory2_pvtKey', $form_state->getValue('cosignatory2_pvtKey'))
-      ->set('cosignatory3_pvtKey', $form_state->getValue('cosignatory3_pvtKey'))
-      ->set('cosignatory4_pvtKey', $form_state->getValue('cosignatory4_pvtKey'))
-      ->set('cosignatory5_pvtKey', $form_state->getValue('cosignatory5_pvtKey'))
       ->save();
 
     parent::submitForm($form, $form_state);

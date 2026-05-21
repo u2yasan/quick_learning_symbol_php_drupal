@@ -1,0 +1,9 @@
+administer quicklearning symbol settings:
+  title: 'Administer Quick Learning Symbol settings'
+  description: 'Configure Symbol network settings used by the Quick Learning Symbol examples.'
+  restrict access: true
+
+use quicklearning symbol transaction examples:
+  title: 'Use Quick Learning Symbol transaction examples'
+  description: 'Access examples that accept private keys or create, sign, or announce Symbol transactions.'
+  restrict access: true

@@ -12,7 +12,7 @@ qls_ch13.settings:
     _form: '\Drupal\qls_ch13\Form\SettingsForm'
     _title: 'Section 13 Settings'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer quicklearning symbol settings'
 
 qls_ch13.deserialize_payload_form:
   path: '/quicklearning_symbol/qls_ch13/deserialize_payload_form'
@@ -20,7 +20,7 @@ qls_ch13.deserialize_payload_form:
     _form: '\Drupal\qls_ch13\Form\DeserializePayloadForm'
     _title: 'Section 13 Deserialize Payload Form'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'
 
 qls_ch13.verify_importance_block_form:
   path: '/quicklearning_symbol/qls_ch13/verify_importance_block_form'
@@ -28,7 +28,7 @@ qls_ch13.verify_importance_block_form:
     _form: '\Drupal\qls_ch13\Form\VerifyImoprtanceBlockForm'
     _title: 'Section 13 Verify Imoprtance Block Form'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'
     
 qls_ch13.verify_account_info_form:
   path: '/quicklearning_symbol/qls_ch13/verify_account_info_form'
@@ -36,7 +36,7 @@ qls_ch13.verify_account_info_form:
     _form: '\Drupal\qls_ch13\Form\VerifyAccountInfoForm'
     _title: 'Section 13 Verify Account Info Form'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'
 
 qls_ch13.verify_mosaic_metadata_form:
   path: '/quicklearning_symbol/qls_ch13/verify_mosaic_metadata_form'
@@ -44,7 +44,7 @@ qls_ch13.verify_mosaic_metadata_form:
     _form: '\Drupal\qls_ch13\Form\VerifyMosaicMetadataForm'
     _title: 'Section 13 Verify Mosaic Metadata Form'
   requirements:
-    _permission: 'access content'    
+    _permission: 'use quicklearning symbol transaction examples'    
 
 qls_ch13.verify_account_metadata_form:
   path: '/quicklearning_symbol/qls_ch13/verify_account_metadata_form'
@@ -52,4 +52,4 @@ qls_ch13.verify_account_metadata_form:
     _form: '\Drupal\qls_ch13\Form\VerifyAccountMetadataForm'
     _title: 'Section 13 Verify Account Metadata Form'
   requirements:
-    _permission: 'access content'    
+    _permission: 'use quicklearning symbol transaction examples'    

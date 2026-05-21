@@ -201,7 +201,7 @@ class HashLockAjaxForm extends FormBase {
         ];
 
         $form['step2']['cosigner_pvtKey'] = [
-          '#type' => 'textfield',
+          '#type' => 'password',
           '#title' => $this->t('Co-signer Private Key'),
           '#description' => $this->t('Enter the private key of the co-signer.'),
           '#required' => TRUE,

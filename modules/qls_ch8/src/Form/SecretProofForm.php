@@ -177,7 +177,6 @@ class SecretProofForm extends FormBase {
     $result = $transactionApi->announceTransaction($payload);
     $this->messenger()->addMessage($this->t('Lock Transaction successfully announced: @result', ['@result' => $result])); 
     
-    // \Drupal::logger('qls_ch8')->notice('payload: @payload', ['@payload' => $payload]);
     // \Drupal::logger('qls_ch8')->notice('Secret Proof TxHash: @hash', ['@hash' => $facade->hashTransaction($proofTx)]);
 
     // sleep(30);

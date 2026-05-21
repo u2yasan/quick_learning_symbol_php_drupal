@@ -147,7 +147,6 @@ class MosaicGlobalRestrictionForm extends FormBase {
     // $namespaceId = new NamespaceId($namespaceIds[count($namespaceIds) - 1]);
 
     $account_pvtKey = $form_state->getValue('account_pvtKey');
-    // \Drupal::logger('qls_ch11')->info('account_pvtKey: @account_pvtKey', ['@account_pvtKey' => $account_pvtKey]);
     $accountKey = $facade->createAccount(new PrivateKey($account_pvtKey));
     $accountPubKey = $accountKey->publicKey;
     // \Drupal::logger('qls_ch11')->info('accountKey_pubKey: @accountKey', ['@accountKey' => $accountKey->publicKey]);

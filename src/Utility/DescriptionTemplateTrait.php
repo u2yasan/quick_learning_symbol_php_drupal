@@ -2,6 +2,9 @@
 
 namespace Drupal\quicklearning_symbol\Utility;
 
+use Drupal\Core\Extension\ModuleExtensionList;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 /**
  * Trait to implement a "drop-in" template for Example's controllers.
  *
@@ -24,6 +27,36 @@ namespace Drupal\quicklearning_symbol\Utility;
  * @see https://www.drupal.org/developing/api/8/localization
  */
 trait DescriptionTemplateTrait {
+
+  /**
+   * The module extension list service.
+   *
+   * @var \Drupal\Core\Extension\ModuleExtensionList
+   */
+  protected ModuleExtensionList $moduleExtensionList;
+
+  /**
+   * Constructs a description page controller.
+   *
+   * @param \Drupal\Core\Extension\ModuleExtensionList $module_extension_list
+   *   The module extension list service.
+   */
+  public function __construct(ModuleExtensionList $module_extension_list) {
+    $this->moduleExtensionList = $module_extension_list;
+  }
+
+  /**
+   * Creates a description page controller.
+   *
+   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   *   The service container.
+   *
+   * @return static
+   *   A controller instance.
+   */
+  public static function create(ContainerInterface $container): static {
+    return new static($container->get('extension.list.module'));
+  }
 
   /**
    * Generate a render array with our templated content.
@@ -72,8 +105,7 @@ trait DescriptionTemplateTrait {
    *   Path string.
    */
   protected function getDescriptionTemplatePath() {
-    return \Drupal::service('extension.list.module')
-      ->getPath($this->getModuleName()) . '/templates/description.html.twig';
+    return $this->moduleExtensionList->getPath($this->getModuleName()) . '/templates/description.html.twig';
   }
 
 }

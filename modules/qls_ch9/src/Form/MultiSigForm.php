@@ -321,75 +321,11 @@ class MultiSigForm extends FormBase {
     $sig = $multisigKey->signTransaction($aggregateTx);
     $payload = $facade->attachSignature($aggregateTx, $sig);
 
-    // このような秘密鍵の扱いはしないように
-    // Configサービスからモジュール設定をロード
-    $config = \Drupal::config('qls_ch9.settings');
-    // 特定の設定値を取得
-    $cosignatory1_pvtKey = $config->get('cosignatory1_pvtKey');
-    if ($cosignatory1_pvtKey){
-      $coSigPvtKey1 = new PrivateKey($cosignatory1_pvtKey);
-      $coSigKey1 = $facade->createAccount($coSigPvtKey1);  
-      $coSig1 = $facade->cosignTransaction($coSigKey1->keyPair, $aggregateTx);
-      array_push($aggregateTx->cosignatures, $coSig1);
-    }
-    $cosignatory2_pvtKey = $config->get('cosignatory2_pvtKey');
-    if ($cosignatory1_pvtKey){
-      $coSigPvtKey2 = new PrivateKey($cosignatory2_pvtKey);
-      $coSigKey2 = $facade->createAccount($coSigPvtKey2); 
-      $coSig2 = $facade->cosignTransaction($coSigKey2->keyPair, $aggregateTx);
-      array_push($aggregateTx->cosignatures, $coSig2);
-    }
-    $cosignatory3_pvtKey = $config->get('cosignatory3_pvtKey');
-    if ($cosignatory3_pvtKey){
-      $coSigPvtKey3 = new PrivateKey($cosignatory3_pvtKey);
-      $coSigKey3 = $facade->createAccount($coSigPvtKey3); 
-      $coSig3 = $facade->cosignTransaction($coSigKey3->keyPair, $aggregateTx);
-      array_push($aggregateTx->cosignatures, $coSig3);
-    }
-    
-    // $cosignatory4_pvtKey = $config->get('cosignatory4_pvtKey');
-    // if ($cosignatory4_pvtKey){
-    //   $coSigPvtKey4 = new PrivateKey($cosignatory4_pvtKey);
-    //   $coSigKey4 = $facade->createAccount($coSigPvtKey4); 
-    //   $coSig4 = $facade->cosignTransaction($coSigKey4->keyPair, $aggregateTx);
-    //   array_push($aggregateTx->cosignatures, $coSig4);
-    // } 
-    // $cosignatory5_pvtKey = $config->get('cosignatory5_pvtKey');
-    // if ($cosignatory5_pvtKey){
-    //   $coSigPvtKey5 = new PrivateKey($cosignatory5_pvtKey);
-    //   $coSigKey5 = $facade->createAccount($coSigPvtKey5); 
-    //   $coSig5 = $facade->cosignTransaction($coSigKey5->keyPair, $aggregateTx);
-    //   array_push($aggregateTx->cosignatures, $coSig5);
-    // } 
-
-    // //TAEF3VF4OYCKPSSJQAAN4FS2WAZLC6IKKCE3UIQ
-    // $coSigPvtKey1 = new PrivateKey('0ABF4B7CA4250A5B741C78058717BA872A4A29297048F3DA55E54A42A28FE07F');
-    // $coSigKey1 = $facade->createAccount($coSigPvtKey1); 
-    // //TDT5NHDLPIIE3A7QN7VQYSJNNH7UXO74GS6HJ4Y
-    // $coSigPvtKey2 = new PrivateKey('13C00A6E532F757BE4575F6F6E5965C2BFD401961B644E11EE7BF36834662048');
-    // $coSigKey2 = $facade->createAccount($coSigPvtKey2);
-    // //TA6PXWRS7ELMZM2EL4S64NZPF6RW7EJVH2XAW2Q
-    // $coSigPvtKey3 = new PrivateKey('EC559FA3FD54DBABACD5F293E6324F53E03EF5B60B1DEB6FAF5F22A7651C8BB3');
-    // $coSigKey3 = $facade->createAccount($coSigPvtKey3);
-
-    // $coSigPvtKey4 = $config->get('Cosignatory4');
-    // $coSigKey4 = $facade->createAccount($coSigPvtKey4);
-    // $coSigPvtKey5 = $config->get('Cosignatory5');
-    // $coSigKey5 = $facade->createAccount($coSigPvtKey5);
-
-    // 追加・除外対象として指定したアカウントによる連署
-    
-    
-    
-    // $coSig4 = $facade->cosignTransaction($coSigKey4->keyPair, $aggregateTx);
-    // array_push($aggregateTx->cosignatures, $coSig4);
-    // $coSig5 = $facade->cosignTransaction($coSigKey5->keyPair, $aggregateTx);
-    // array_push($aggregateTx->cosignatures, $coSig4);
+    $this->messenger()->addWarning($this->t('Cosignatory private keys are no longer loaded from Drupal configuration. Use the cosignature form for cosigners.'));
 
     // アナウンス
     $payload = ["payload" => strtoupper(bin2hex($aggregateTx->serialize()))];
-    // \Drupal::logger('qls_ch9')->info('payload: @payload', ['@payload' => $payload]);
-    \Drupal::logger('qls_ch9')->info('payload: @payload', ['@payload' => print_r($payload, true)]);
+    \Drupal::logger('qls_ch9')->info('Multisig aggregate transaction payload created.');
     // try {
     //   $result = $apiInstance->announceTransaction($payload);
     //   $this->messenger()->addMessage($this->t('Aggregate Transaction successfully announced: @result', ['@result' => $result]));

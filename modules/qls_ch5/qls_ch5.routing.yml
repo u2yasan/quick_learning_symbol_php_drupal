@@ -12,7 +12,7 @@ qls_ch5.create_mosaic_form:
     _form: '\Drupal\qls_ch5\Form\CreateMosaicForm'
     _title: 'Qucik Learning Symbol Section 5'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'
 
 qls_ch5.list_mosaics_form:
   path: '/quicklearning_symbol/qls_ch5/list_mosaics_form'
@@ -20,15 +20,23 @@ qls_ch5.list_mosaics_form:
     _form: '\Drupal\qls_ch5\Form\ListMosaicsForm'
     _title: 'Qucik Learning Symbol Section 5'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'
 
 qls_ch5.mosaics_transfer_transaction_form:
+  path: '/quicklearning_symbol/qls_ch5/mosaics_transfer_transaction_form'
+  defaults:
+    _form: '\Drupal\qls_ch5\Form\MosaicsTransferTransactionForm'
+    _title: 'Qucik Learning Symbol Section 5'
+  requirements:
+    _permission: 'use quicklearning symbol transaction examples'
+
+qls_ch5.mosaics_transfer_transaction_form_legacy:
   path: '/quicklearning_symbol/qls_ch5/mosaics_trnasfer_transaction_form'
   defaults:
     _form: '\Drupal\qls_ch5\Form\MosaicsTransferTransactionForm'
     _title: 'Qucik Learning Symbol Section 5'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'
 
 qls_ch5.confirm_transaction_form:
   path: '/quicklearning_symbol/qls_ch5/confirm_transaction_form'
@@ -36,7 +44,7 @@ qls_ch5.confirm_transaction_form:
     _form: '\Drupal\qls_ch5\Form\ConfirmTransactionForm'
     _title: 'Qucik Learning Symbol Section 5'
   requirements:
-    _permission: 'access content'
+    _permission: 'use quicklearning symbol transaction examples'
 
 qls_ch5.json_table:
   path: '/json_table'
@@ -44,7 +52,7 @@ qls_ch5.json_table:
     _controller: '\Drupal\qls_ch5\Controller\JsonTableController::renderTable'
     _title: 'JSON Table'
   requirements:
-    _permission: 'access content'    
+    _permission: 'use quicklearning symbol transaction examples'    
 
 qls_ch5.mosaic_data:
   path: '/mosaic_data'
@@ -52,4 +60,4 @@ qls_ch5.mosaic_data:
     _controller: '\Drupal\qls_ch5\Controller\MosaicDataController::getMosaicData'
     _format: 'json'
   requirements:
-    _permission: 'access content' 
+    _permission: 'use quicklearning symbol transaction examples' 
