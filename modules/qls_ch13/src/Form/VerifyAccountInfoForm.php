@@ -241,9 +241,10 @@ class VerifyAccountInfoForm extends FormBase {
     $result = $this->checkState($stateProof, $addressStateHash, $addressPathHash, $rootHash);
 
 
+    $esc = static fn($v): string => htmlspecialchars((string) $v, ENT_QUOTES, 'UTF-8');
     $element = $form['container'];
     $element['box']['#markup'] = '<h1>Account Info</h1>'
-    .'<h2>checkState: '.$result.'</h2>';
+    .'<h2>checkState: '.$esc($result).'</h2>';
     // .'<h1>importanceブロックの検証</h1>'.print_r($hash === $blockInfo['meta']['hash'], TRUE)
     // .'<h1>AccountInfo</h1>'.print_r($accountInfo, TRUE)
     // .'<h1>stateHashの検証</h1>'.print_r($hash === $blockInfo['block']['state_hash'], TRUE);

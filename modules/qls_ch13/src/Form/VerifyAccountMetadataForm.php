@@ -174,10 +174,11 @@ class VerifyAccountMetadataForm extends FormBase {
     //検証
     $result2 = $this->checkState($stateProof2, $stateHash2, $pathHash2, $rootHash2);
 
+    $esc = static fn($v): string => htmlspecialchars((string) $v, ENT_QUOTES, 'UTF-8');
     $element = $form['container'];
     $element['box']['#markup'] = '<h1>Account Info</h1>'
-    .'<h2>State Hash 2</h2> '.$stateHash2
-    .'<h2>検証</h2> '.$result2;
+    .'<h2>State Hash 2</h2> '.$esc($stateHash2)
+    .'<h2>検証</h2> '.$esc($result2);
     // .'<h1>importanceブロックの検証</h1>'.print_r($hash === $blockInfo['meta']['hash'], TRUE)
     // .'<h1>AccountInfo</h1>'.print_r($accountInfo, TRUE)
     // .'<h1>stateHashの検証</h1>'.print_r($hash === $blockInfo['block']['state_hash'], TRUE);

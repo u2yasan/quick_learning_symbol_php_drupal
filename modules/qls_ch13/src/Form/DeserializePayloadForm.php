@@ -198,11 +198,15 @@ class DeserializePayloadForm extends FormBase {
     }
 
 
+    // Escape every dynamic value: the deserialized transaction and node
+    // responses can contain attacker-controlled bytes (e.g. transfer message
+    // payloads), so they must never be printed as raw markup.
+    $esc = static fn($v): string => htmlspecialchars((string) $v, ENT_QUOTES, 'UTF-8');
     $element = $form['container'];
-    $element['box']['#markup'] = '<h1>Deserialized Payload</h1>'.$tx
-    .'<h1>hash</h1>'.$hash.'<h1>merkleComponentHash</h1>'.strtoupper($merkleComponentHash)
-    .'<h1>InBlockの検証</h1>'.print_r($resutl, TRUE)
-    .'<h1>ブロックヘッダーの検証</h1>'.print_r($hash === $blockInfo['meta']['hash'], TRUE);
+    $element['box']['#markup'] = '<h1>Deserialized Payload</h1><pre>'.$esc($tx).'</pre>'
+    .'<h1>hash</h1>'.$esc($hash).'<h1>merkleComponentHash</h1>'.$esc(strtoupper($merkleComponentHash))
+    .'<h1>InBlockの検証</h1><pre>'.$esc(print_r($resutl, TRUE)).'</pre>'
+    .'<h1>ブロックヘッダーの検証</h1><pre>'.$esc(print_r($hash === $blockInfo['meta']['hash'], TRUE)).'</pre>';
     // .'<h1>署名の検証</h1>'.$res;
     // $element['box']['#markup'] = $this->transactionToHtml($tx);
     return $element;
@@ -340,10 +344,6 @@ class DeserializePayloadForm extends FormBase {
     if(strlen($treePathHash) % 2 == 1){
       $treePathHash = substr($treePathHash, 0, -1);
     }
-
-    // 検証
-    var_dump($treeRootHash === $rootHash);
-    var_dump($treePathHash === $pathHash);
 
   }
 

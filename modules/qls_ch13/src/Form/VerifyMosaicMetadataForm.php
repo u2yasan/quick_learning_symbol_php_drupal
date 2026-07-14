@@ -182,10 +182,11 @@ class VerifyMosaicMetadataForm extends FormBase {
     //検証
     $result = $this->checkState($stateProof1, $stateHash1, $pathHash1, $rootHash1);
 
+    $esc = static fn($v): string => htmlspecialchars((string) $v, ENT_QUOTES, 'UTF-8');
     $element = $form['container'];
     $element['box']['#markup'] = '<h1>Account Info</h1>'
-    .'<h2>State Hash 1</h2> '.$stateHash1
-    .'<h2>検証</h2> '.$result;
+    .'<h2>State Hash 1</h2> '.$esc($stateHash1)
+    .'<h2>検証</h2> '.$esc($result);
     // .'<h1>importanceブロックの検証</h1>'.print_r($hash === $blockInfo['meta']['hash'], TRUE)
     // .'<h1>AccountInfo</h1>'.print_r($accountInfo, TRUE)
     // .'<h1>stateHashの検証</h1>'.print_r($hash === $blockInfo['block']['state_hash'], TRUE);

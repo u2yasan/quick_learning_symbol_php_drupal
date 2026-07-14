@@ -162,11 +162,14 @@ class VerifyImoprtanceBlockForm extends FormBase {
     // echo "===stateHashの検証===" . PHP_EOL;
     // var_dump($hash === $blockInfo['block']['state_hash']);
 
+    // $blockInfo is fetched from a (potentially untrusted) Symbol node, so its
+    // fields must be escaped before being dumped into markup.
+    $esc = static fn($v): string => htmlspecialchars((string) $v, ENT_QUOTES, 'UTF-8');
     $element = $form['container'];
     $element['box']['#markup'] = '<h1>Block Info</h1>'
-    .'<h1>importanceブロックの検証</h1><pre>'.print_r($hash === $blockInfo['meta']['hash'], TRUE).'</pre>'
-    .'<h1>blockInfo</h1><pre>'.print_r($blockInfo, TRUE).'</pre>'
-    .'<h1>stateHashの検証</h1><pre>'.print_r($hash === $blockInfo['block']['state_hash'], TRUE).'</pre>';
+    .'<h1>importanceブロックの検証</h1><pre>'.$esc(print_r($hash === $blockInfo['meta']['hash'], TRUE)).'</pre>'
+    .'<h1>blockInfo</h1><pre>'.$esc(print_r($blockInfo, TRUE)).'</pre>'
+    .'<h1>stateHashの検証</h1><pre>'.$esc(print_r($hash === $blockInfo['block']['state_hash'], TRUE)).'</pre>';
     // $element['box']['#markup'] = $this->transactionToHtml($tx);
     return $element;
   }
@@ -257,10 +260,6 @@ class VerifyImoprtanceBlockForm extends FormBase {
     if(strlen($treePathHash) % 2 == 1){
       $treePathHash = substr($treePathHash, 0, -1);
     }
-
-    // 検証
-    var_dump($treeRootHash === $rootHash);
-    var_dump($treePathHash === $pathHash);
 
   }
 
